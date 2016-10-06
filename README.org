@@ -1,1 +1,23 @@
-# maze
+* Maze
+
+This is a project written in C and using the SDL v2 library.
+
+It is currently under development.
+
+The goal is to produce a 3D maze that looks like this:
+
+[[file:images/example_1.png]]
+
+* Compile with this command (requires SDL2 to be installed):
+
+#+BEGIN_EXAMPLE
+gcc main.c init_instance.c $(sdl2-config --cflags) $(sdl2-config --libs)
+#+END_EXAMPLE
+
+* Installing SDL2 (Mac OS X + Ubuntu 16.04)
+
+Run the following installation script with root privileges:
+
+[[https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/graphics_programming/install_SDL2.sh][SDL2 Installation script for Mac OS X / Ubuntu]]
+
+No instructions are provided for installing SDL2 on other OSes at this time.
