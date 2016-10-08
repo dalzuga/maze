@@ -11,7 +11,7 @@ The goal is to produce a 3D maze that looks like this:
 * Compile with this command (requires SDL2 to be installed):
 
 #+BEGIN_EXAMPLE
-gcc main.c init_instance.c $(sdl2-config --cflags) $(sdl2-config --libs)
+gcc main.c init_instance.c draw_functions.c $(sdl2-config --cflags) $(sdl2-config --libs)
 #+END_EXAMPLE
 
 * Installing SDL2 (Mac OS X + Ubuntu 16.04)
