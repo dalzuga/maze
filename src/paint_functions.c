@@ -57,12 +57,35 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 
 	for (i = 0; i < X_RES; i++)
 	{
+		d_slice = calculate_dslice(map, p, i);
 		/* slice_height = WALL_HEIGHT / d_slice * 277; */
 		slice_height = precompute / d_slice; /* see ^^ above comment */
 		precompute[1] = slice_height / 2;
 		top = Y_CENTER + precompute[1];
 		bottom = Y_CENTER - precompute[1];
 	}
+}
+
+
+/**
+ * calculate_dslice - gets necessary calculations
+ *
+ *
+ */
+int calculate_dslice(int **map, GamePlayer *p, int beta)
+{
+	int dslice = 1;
+
+	if (DEBUG == 1)
+	{
+		printf("angle beta: %d, dslice: %d\n", beta);
+	}
+
+	/*
+	 * code to calculate dslice
+	 */
+
+	return (dslice);
 }
 
 
