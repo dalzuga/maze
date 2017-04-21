@@ -32,6 +32,7 @@ void draw_game()
 void start_position(int **map, GamePlayer *p)
 {
 	map = make_map(4, 4);
+	_print_map(map, 4, 4);
 
 	p = malloc(sizeof(GamePlayer));
 	if (p == NULL)
@@ -43,6 +44,4 @@ void start_position(int **map, GamePlayer *p)
 	p->x = 1;
 	p->y = 1;
 	p->theta = 45;
-
-	_print_map(map, 4, 4);
 }
