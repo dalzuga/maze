@@ -5,6 +5,8 @@
 #include <unistd.h>
 
 #define DEBUG 1
+#define SCALE_X 2
+#define SCALE_Y 2
 
 typedef struct SDL_Instance
 {
