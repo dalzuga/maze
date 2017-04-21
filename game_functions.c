@@ -4,16 +4,18 @@
  *
  *
  */
-void draw_game()
+void draw_game(SDL_Instance instance __attribute__((unused)))
 {
 	/* declarations */
 	int **map;
 	GamePlayer *p;
+	/* int ang; */
 	/* end declarations */
 
 	/* inits */
 	map = NULL;
 	p = NULL;
+	/* ang = 0; */
 	/* end inits */
 
 	start_position(&map, p);
@@ -23,7 +25,7 @@ void draw_game()
 	 * TODO - need to code free_map() to free the map here
 	 */
 
-	free(p);
+	free(p);		/* frees the player */
 }
 
 /**

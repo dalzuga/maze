@@ -25,8 +25,7 @@ int poll_events(void);
 void draw_map();
 int **make_map(int rows, int cols);
 void init_map(int **map, int rows, int cols);
-void draw_game();
-
+void draw_game(SDL_Instance instance);
 /* print_map - prints a map */
 void print_map(int **map, int rows, int cols);
 
