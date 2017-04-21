@@ -1,14 +1,4 @@
 #include "demo.h"
-
-/**
- *
- *
- */
-void draw_game()
-{
-	draw_map();
-}
-
 /**
  *
  *

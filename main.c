@@ -11,12 +11,12 @@ int main(void)
 	{
 		sleep(1); 	/* one second */
 		/* usleep(500000); /\* one half second *\/ */
-		draw_game();
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
 		if (poll_events() == 1)
 			break;
-		draw_stuff(instance);
+		/* draw_stuff(instance); */
+		draw_game(instance);
 		SDL_RenderPresent(instance.renderer);
 	}
 	SDL_DestroyRenderer(instance.renderer);
