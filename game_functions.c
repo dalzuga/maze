@@ -16,9 +16,13 @@ void draw_game()
 	p = NULL;
 	/* end inits */
 
-	start_position(map, p);
+	start_position(&map, p);
 
-	free(map);
+	/*
+	 * need to free_map()
+	 */
+
+	_print_map(map, 4, 4);
 	free(p);
 }
 
@@ -29,13 +33,12 @@ void draw_game()
  *
  * Return: Nothing.
  */
-void start_position(int **map, GamePlayer *p)
+void start_position(int ***map, GamePlayer *p)
 {
-	map = make_map(4, 4);
-	map[1][1] = 1;
-	map[1][2] = 1;
-	map[2][2] = 1;
-	_print_map(map, 4, 4);
+	*map = make_map(4, 4);
+	(*map)[1][1] = 1;
+	(*map)[1][2] = 1;
+	(*map)[2][2] = 1;
 
 	p = malloc(sizeof(GamePlayer));
 	if (p == NULL)
