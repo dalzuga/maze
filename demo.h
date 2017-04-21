@@ -15,6 +15,11 @@ int poll_events(void);
 void draw_map();
 int **make_map(int rows, int cols);
 void init_map(int **map, int rows, int cols);
+
+/* print_map - prints a map */
 void print_map(int **map, int rows, int cols);
+
+/* _print_map - calls print_map if debugging is on. */
+void _print_map(int **map, int rows, int cols);
 
 #endif

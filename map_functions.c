@@ -4,6 +4,15 @@
  *
  *
  */
+void draw_game()
+{
+	draw_map();
+}
+
+/**
+ *
+ *
+ */
 void draw_map()
 {
 	/* declarations */
@@ -27,10 +36,7 @@ void draw_map()
 	map[1][2] = 1;
 	map[2][2] = 1;
 
-	if (DEBUG)
-	{
-		print_map(map, rows, cols);
-	}
+	_print_map(map, rows, cols);
 
 	free(map);
 }
@@ -98,6 +104,23 @@ void init_map(int **map, int rows, int cols)
 		}
 	}
 }
+
+/**
+ * _print_map - calls print_map if debugging is on.
+ * @map - map to print
+ * @rows - number of rows
+ * @cols - number of columns
+ *
+ * Return: Nothing.
+ */
+void _print_map(int **map, int rows, int cols)
+{
+	if (DEBUG)
+	{
+		return print_map(map, rows, cols);
+	}
+}
+
 
 /**
  * print_map - prints a map
