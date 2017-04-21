@@ -1,2 +1,2 @@
-all: main.c init_instance.c draw_functions.c map_functions.c game_functions.c paint_functions.c
-	gcc -Wall -Werror -Wextra -pedantic main.c init_instance.c draw_functions.c map_functions.c game_functions.c paint_functions.c -g -I/usr/include/SDL2 -D_REENTRANT -L/usr/lib/x86_64-linux-gnu -lSDL2
+all: src/main.c src/init_instance.c src/draw_functions.c src/map_functions.c src/game_functions.c src/paint_functions.c
+	gcc -Wall -Werror -Wextra -pedantic -g src/main.c src/init_instance.c src/draw_functions.c src/map_functions.c src/game_functions.c src/paint_functions.c -I/usr/include/SDL2 -D_REENTRANT -L/usr/lib/x86_64-linux-gnu -lSDL2
