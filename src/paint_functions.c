@@ -1,7 +1,11 @@
 #include "../headers/demo.h"
 
 /**
- * paint - paints the environment symbolized by the map
+ * paint_environment - paints the environment from the player's POV
+ *
+ * @instance: SDL window and renderer instance
+ * @map: address of map
+ * @p: address of player
  *
  */
 void paint_environment(SDL_Instance instance, int **map, GamePlayer *p)
@@ -10,4 +14,48 @@ void paint_environment(SDL_Instance instance, int **map, GamePlayer *p)
 	SDL_RenderDrawLine(instance.renderer, 50, 100, 200, 400);
 
 	printf("player: %p | map: %p\n", (void *) p, (void *) map);
+
+	/* paint_walls(instance, map, p); */
+	paint_calculations(map, p);
+}
+
+/**
+ * paint_walls - paints the walls
+ *
+ * @instance: SDL window and renderer instance
+ * @map: address of map
+ * @p: address of player
+ *
+ */
+void paint_walls(SDL_Instance instance __attribute__ ((unused)),
+		 int **map __attribute__ ((unused)),
+		 GamePlayer *p __attribute__((unused)))
+{
+	int i, j;		/* declarations */
+
+	for (i = 0; i < Y_RES; i++)
+	{
+		for (j = 0; j < X_RES; j++)
+		{
+		}
+	}
+}
+
+/**
+ * paint_calculations - gets necessary calculations
+ *
+ *
+ */
+void paint_calculations(int **map __attribute__((unused)), GamePlayer *p)
+{
+	int start_angle, end_angle; /* declarations */
+
+	start_angle = p->theta - FIELD_ANGLE / 2;
+	end_angle = p->theta + FIELD_ANGLE / 2;
+
+	if (DEBUG)
+	{
+		printf("start angle: %d, end angle: %d\n", start_angle,
+		       end_angle);
+	}
 }

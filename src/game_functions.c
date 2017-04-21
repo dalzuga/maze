@@ -3,7 +3,7 @@
 /**
  * game_start - entry point for the game engine
  *
- * @instance - SDL window and renderer instance
+ * @instance: SDL window and renderer instance
  *
  * Return: Nothing.
  */
@@ -56,8 +56,8 @@ void draw_game(SDL_Instance instance, int **map, GamePlayer *p)
  * start_position - allocates a map and player. Both must be freed by the user
  * of this function.
  *
- * @map - address of map
- * @p - address of player
+ * @map: address of map
+ * @p: address of player
  *
  * Return: Nothing.
  */

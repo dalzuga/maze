@@ -7,6 +7,9 @@
 #define DEBUG 1
 #define SCALE_X 2
 #define SCALE_Y 2
+#define X_RES 320 * SCALE_X
+#define Y_RES 240 * SCALE_Y
+#define FIELD_ANGLE 60
 
 typedef struct SDL_Instance
 {
@@ -43,6 +46,9 @@ void print_map(int **map, int rows, int cols);
 /* start_position - allocates a map and player, both must be freed. */
 void start_position(int ***map, GamePlayer **p);
 
-/*  */
+/* paint_environment - paints the environment from the player's POV */
 void paint_environment(SDL_Instance instance, int **map, GamePlayer *p);
+
+/* paint_calculations - gets necessary calculations */
+void paint_calculations(int **map __attribute__((unused)), GamePlayer *p);
 #endif
