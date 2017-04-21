@@ -32,7 +32,6 @@ void print_map(int **map, int rows, int cols);
 
 /* _print_map - calls print_map if debugging is on. */
 void _print_map(int **map, int rows, int cols);
-
 /* start_position - allocates a map and player, both must be freed. */
 void start_position(int **map, GamePlayer *p);
 

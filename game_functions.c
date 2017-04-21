@@ -32,6 +32,9 @@ void draw_game()
 void start_position(int **map, GamePlayer *p)
 {
 	map = make_map(4, 4);
+	map[1][1] = 1;
+	map[1][2] = 1;
+	map[2][2] = 1;
 	_print_map(map, 4, 4);
 
 	p = malloc(sizeof(GamePlayer));
