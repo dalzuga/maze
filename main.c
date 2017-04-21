@@ -9,7 +9,8 @@ int main(void)
 
 	while(1)
 	{
-		usleep(1000000);
+		sleep(1); 	/* one second */
+		/* usleep(500000); /\* one half second *\/ */
 		draw_map();
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);

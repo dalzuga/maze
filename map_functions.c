@@ -18,6 +18,10 @@ void draw_map()
 	/* end inits */
 
 	map = make_map(rows, cols);
+	if (map == NULL)
+	{
+		return;
+	}
 
 	map[1][1] = 1;
 	map[1][2] = 1;
@@ -27,6 +31,8 @@ void draw_map()
 	{
 		print_map(map, rows, cols);
 	}
+
+	free(map);
 }
 
 /**
@@ -34,7 +40,7 @@ void draw_map()
  * @rows - number of rows
  * @cols - number of columns
  *
- * Return: pointer to map.
+ * Return: pointer to map. On error, returns NULL.
  */
 int **make_map(int rows, int cols)
 {
@@ -51,7 +57,7 @@ int **make_map(int rows, int cols)
 	if (map == NULL)
 	{
 		perror("malloc");
-		return;
+		return NULL;
 	}
 
 	for (i = 0; i < rows; i++)
