@@ -77,5 +77,5 @@ void start_position(int ***map, GamePlayer **p)
 
 	(*p)->x = 1;
 	(*p)->y = 1;
-	(*p)->theta = 45;
+	(*p)->theta = 17;
 }

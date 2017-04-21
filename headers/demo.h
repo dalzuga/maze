@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <unistd.h>
+#include <math.h>
 
 #define DEBUG 1
 #define SCALE_X 2
