@@ -42,7 +42,7 @@ int **make_map(int rows, int cols)
 {
 	/* declarations */
 	int **map;
-	int i, j;
+	int i;
 	/* end declarations */
 
 	/* inits */
@@ -73,7 +73,8 @@ int **make_map(int rows, int cols)
 }
 
 /**
- * init_map - initializes a map
+ * init_map - initializes a map with borders made of blocks. '1' represents a
+ * block, '0' represents free space.
  *
  * @map - map to initialize
  * @rows - number of rows
@@ -90,7 +91,17 @@ void init_map(int **map, int rows, int cols)
 	{
 		for (j = 0; j < cols; j++)
 		{
+			/* border - left || right */
+			if (j == 0 || j == cols)
+			{
+				map[i][j] = 1;
+			}
 			map[i][j] = 0;
+		}
+		/* border - top || bottom */
+		if (i == 0 || i == rows)
+		{
+			map[i][j] = 1;
 		}
 	}
 }
@@ -107,7 +118,7 @@ void _print_map(int **map, int rows, int cols)
 {
 	if (DEBUG)
 	{
-		return print_map(map, rows, cols);
+		print_map(map, rows, cols);
 	}
 }
 

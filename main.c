@@ -45,4 +45,6 @@ int poll_events(void)
 			break;
 		}
 	}
+
+	return (0);
 }
