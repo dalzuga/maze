@@ -9,6 +9,8 @@ int main(void)
 
 	while(1)
 	{
+		usleep(1000000);
+		draw_map();
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
 		if (poll_events() == 1)
