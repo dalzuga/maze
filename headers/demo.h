@@ -6,11 +6,15 @@
 #include <math.h>
 
 #define DEBUG 1
-#define SCALE_X 2
-#define SCALE_Y 2
+#define SCALE_X 1
+#define SCALE_Y 1
 #define X_RES 320 * SCALE_X
 #define Y_RES 240 * SCALE_Y
 #define FIELD_ANGLE 60
+#define BLOCK_UNITS 64
+#define WALL_HEIGHT 64
+#define PLAYER_HEIGHT WALL_HEIGHT / 2
+#define Y_CENTER BLOCK_UNITS / 2
 
 typedef struct SDL_Instance
 {
@@ -52,4 +56,8 @@ void paint_environment(SDL_Instance instance, int **map, GamePlayer *p);
 
 /* paint_calculations - gets necessary calculations */
 void paint_calculations(int **map __attribute__((unused)), GamePlayer *p);
+
+/* paint_projection - paints the walls */
+void paint_projection(SDL_Instance instance, int **map, GamePlayer *p);
+
 #endif

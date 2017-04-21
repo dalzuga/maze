@@ -31,15 +31,40 @@ void paint_walls(SDL_Instance instance __attribute__ ((unused)),
 		 int **map __attribute__ ((unused)),
 		 GamePlayer *p __attribute__((unused)))
 {
-	int i, j;		/* declarations */
+	paint_projection(instance, map, p); /* call helper */
+}
 
-	for (i = 0; i < Y_RES; i++)
+/**
+ * paint_projection - paints the walls
+ *
+ * @instance: SDL window and renderer instance
+ * @map: address of map
+ * @p: address of player
+ *
+ */
+void paint_projection(SDL_Instance instance __attribute__ ((unused)),
+		      int **map __attribute__ ((unused)),
+		      GamePlayer *p __attribute__((unused)))
+{
+	/* declarations */
+	int i;
+	int slice_height;
+	long unsigned int d_slice; /* distance to wall slice */
+	long unsigned int precompute[2];
+	int top, bottom;
+
+	precompute[0] = WALL_HEIGHT * 277;
+
+	for (i = 0; i < X_RES; i++)
 	{
-		for (j = 0; j < X_RES; j++)
-		{
-		}
+		/* slice_height = WALL_HEIGHT / d_slice * 277; */
+		slice_height = precompute / d_slice; /* see ^^ above comment */
+		precompute[1] = slice_height / 2;
+		top = Y_CENTER + precompute[1];
+		bottom = Y_CENTER - precompute[1];
 	}
 }
+
 
 /**
  * paint_calculations - gets necessary calculations
