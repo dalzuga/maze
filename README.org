@@ -11,10 +11,10 @@ The goal is to produce a 3D maze that looks like this:
 * Compile with this command (requires SDL2 to be installed):
 
 #+BEGIN_EXAMPLE
-gcc main.c init_instance.c draw_functions.c $(sdl2-config --cflags) $(sdl2-config --libs)
+gcc -Wall -Werror -Wextra -pedantic src/main.c src/init_instance.c src/draw_functions.c src/map_functions.c src/game_functions.c src/paint_functions.c $(sdl2-config --cflags) $(sdl2-config --libs)
 #+END_EXAMPLE
 
-* Installing SDL2 (Mac OS X + Ubuntu 16.04)
+* Installing SDL2 (Mac OS X + Ubuntu 16.04 + Ubuntu 14.04)
 
 Run the following installation script with root privileges:
 
