@@ -27,14 +27,21 @@ int poll_events(void);
 void draw_map();
 int **make_map(int rows, int cols);
 void init_map(int **map, int rows, int cols);
-void draw_game(SDL_Instance instance);
-/* print_map - prints a map */
-void print_map(int **map, int rows, int cols);
+
+/*  */
+void draw_game(SDL_Instance instance, int **map, GamePlayer *p);
+
+/* game_start - entry point for the game engine */
+void game_start(SDL_Instance instance);
 
 /* _print_map - calls print_map if debugging is on. */
 void _print_map(int **map, int rows, int cols);
+
+/* print_map - prints a map */
+void print_map(int **map, int rows, int cols);
+
 /* start_position - allocates a map and player, both must be freed. */
-void start_position(int ***map, GamePlayer *p);
+void start_position(int ***map, GamePlayer **p);
 
 /*  */
 void paint_environment(SDL_Instance instance, int **map, GamePlayer *p);

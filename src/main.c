@@ -7,18 +7,8 @@ int main(void)
 	if (init_instance(&instance) != 0)
 		return (1);
 
-	while(1)
-	{
-		sleep(1); 	/* one second */
-		/* usleep(500000); /\* one half second *\/ */
-		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
-		SDL_RenderClear(instance.renderer);
-		if (poll_events() == 1)
-			break;
-		/* draw_stuff(instance); */
-		draw_game(instance);
-		SDL_RenderPresent(instance.renderer);
-	}
+	game_start(instance);
+
 	SDL_DestroyRenderer(instance.renderer);
 	SDL_DestroyWindow(instance.window);
 	SDL_Quit();
