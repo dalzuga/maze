@@ -34,4 +34,6 @@ void _print_map(int **map, int rows, int cols);
 /* start_position - allocates a map and player, both must be freed. */
 void start_position(int ***map, GamePlayer *p);
 
+/*  */
+void paint_environment(SDL_Instance instance, int **map, GamePlayer *p);
 #endif

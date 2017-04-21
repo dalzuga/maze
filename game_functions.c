@@ -4,7 +4,7 @@
  *
  *
  */
-void draw_game(SDL_Instance instance __attribute__((unused)))
+void draw_game(SDL_Instance instance)
 {
 	/* declarations */
 	int **map;
@@ -20,6 +20,8 @@ void draw_game(SDL_Instance instance __attribute__((unused)))
 
 	start_position(&map, p);
 	_print_map(map, 4, 4);
+
+	paint_environment(instance, map, p);
 
 	/*
 	 * TODO - need to code free_map() to free the map here
