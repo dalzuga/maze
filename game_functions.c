@@ -17,17 +17,19 @@ void draw_game()
 	/* end inits */
 
 	start_position(&map, p);
+	_print_map(map, 4, 4);
 
 	/*
-	 * need to free_map()
+	 * TODO - need to code free_map() to free the map here
 	 */
 
-	_print_map(map, 4, 4);
 	free(p);
 }
 
 /**
- * start_position - allocates a map and player, both must be freed.
+ * start_position - allocates a map and player. Both must be freed by the user
+ * of this function.
+ *
  * @map - map
  * @p - player
  *
