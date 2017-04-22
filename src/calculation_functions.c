@@ -18,7 +18,7 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 	if (DEBUG == 1)
 	{
 		printf("angle beta: %f, dslice: %d\n",
-		       (double) i / (double) X_RES, dslice);
+		       (double) p->theta + (double) i / (double) X_RES, dslice);
 	}
 
 	/*
