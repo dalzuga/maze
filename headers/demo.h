@@ -11,7 +11,8 @@
 #define X_RES 320 * SCALE_X
 #define Y_RES 240 * SCALE_Y
 #define FIELD_ANGLE 60
-#define BLOCK_UNITS 64
+#define BLOCK_UNITS SQRT_BLOCK_UNITS * SQRT_BLOCK_UNITS
+#define SQRT_BLOCK_UNITS 8
 #define WALL_HEIGHT 64
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
 #define Y_CENTER BLOCK_UNITS / 2
@@ -65,7 +66,14 @@ void paint_walls(SDL_Instance instance __attribute__ ((unused)),
 /* paint_projection - paints the walls */
 void paint_projection(SDL_Instance instance, int **map, GamePlayer *p);
 
-/* calculate_dslice - gets necessary calculations */
-int calculate_dslice(int **map, GamePlayer *p, int beta);
+/* calculate_dslice - calculate distance to wall slice */
+int calculate_dslice(int **map __attribute__ ((unused)),
+		     GamePlayer *p, int beta,
+		     int *px __attribute__((unused)),
+		     int *py __attribute__((unused)));
+
+/*  */
+int calculate_pposition(int **map __attribute__ ((unused)),
+			GamePlayer *p, int *px, int *py);
 
 #endif
