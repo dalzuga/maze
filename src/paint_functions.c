@@ -60,7 +60,7 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 
 	for (i = 0; i < X_RES; i++)
 	{
-		if (i < 10)
+		if (1)
 		{
 			d_slice = calculate_dslice(map, p, i, &px, &py);
 		}
@@ -86,8 +86,7 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 void paint_calculations(int **map __attribute__((unused)), GamePlayer *p)
 {
 	int start_angle, end_angle;
-	int alpha;		    /* alpha is the angle of the ray being
-				       cast */
+	int alpha;		/* alpha is the angle of the ray being cast */
 
 	start_angle = p->theta - FIELD_ANGLE / 2;
 	end_angle = p->theta + FIELD_ANGLE / 2;
