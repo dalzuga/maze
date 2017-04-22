@@ -37,8 +37,8 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 int calculate_pposition(int **map __attribute__ ((unused)),
 			GamePlayer *p __attribute__((unused)), int *px, int *py)
 {
-	*px = p->x * SQRT_BLOCK_UNITS;
-	*py = p->y * SQRT_BLOCK_UNITS;
+	*px = (p->x + 1) * SQRT_BLOCK_UNITS - SQRT_BLOCK_UNITS_HALF;
+	*py = (p->y + 1) * SQRT_BLOCK_UNITS - SQRT_BLOCK_UNITS_HALF;
 
 	if (DEBUG == 1)
 	{
