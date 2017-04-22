@@ -51,7 +51,7 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 	int slice_height;
 	long unsigned int d_slice; /* distance to wall slice */
 	long unsigned int precompute[2];
-	int top, bottom;
+	int top __attribute__ ((unused)), bottom __attribute__ ((unused));
 
 	precompute[0] = WALL_HEIGHT * 277;
 
@@ -59,15 +59,16 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 	{
 		d_slice = calculate_dslice(map, p, i);
 		/* slice_height = WALL_HEIGHT / d_slice * 277; */
-		slice_height = precompute[0] / d_slice; /* see ^^ above comment */
+		slice_height = precompute[0] / d_slice; /*see ^^ above comment*/
 		precompute[1] = slice_height / 2;
 		top = Y_CENTER + precompute[1];
 		bottom = Y_CENTER - precompute[1];
-		if (DEBUG == 1)
-		{
-			printf("top: %d, bottom: %d\n", top, bottom);
-			usleep(50000);
-		}
+		/* if (DEBUG == 1) */
+		/* { */
+		/* 	printf("top: %d, bottom: %d\n", top, bottom); */
+		/* 	usleep(50000); */
+		/* 	/\* getline(NULL, 0, stdin); *\/ */
+		/* } */
 	}
 }
 
