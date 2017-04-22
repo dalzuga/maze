@@ -57,7 +57,15 @@ void paint_environment(SDL_Instance instance, int **map, GamePlayer *p);
 /* paint_calculations - gets necessary calculations */
 void paint_calculations(int **map __attribute__((unused)), GamePlayer *p);
 
+/* paint_walls - paints the walls */
+void paint_walls(SDL_Instance instance __attribute__ ((unused)),
+		 int **map __attribute__ ((unused)),
+		 GamePlayer *p __attribute__((unused)));
+
 /* paint_projection - paints the walls */
 void paint_projection(SDL_Instance instance, int **map, GamePlayer *p);
+
+/* calculate_dslice - gets necessary calculations */
+int calculate_dslice(int **map, GamePlayer *p, int beta);
 
 #endif

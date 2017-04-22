@@ -15,7 +15,7 @@ void paint_environment(SDL_Instance instance, int **map, GamePlayer *p)
 
 	printf("player: %p | map: %p\n", (void *) p, (void *) map);
 
-	/* paint_walls(instance, map, p); */
+	paint_walls(instance, map, p);
 	paint_calculations(map, p);
 }
 
@@ -35,7 +35,7 @@ void paint_walls(SDL_Instance instance __attribute__ ((unused)),
 }
 
 /**
- * paint_projection - paints the walls
+ * paint_projection - paints the wall
  *
  * @instance: SDL window and renderer instance
  * @map: address of map
@@ -59,35 +59,17 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 	{
 		d_slice = calculate_dslice(map, p, i);
 		/* slice_height = WALL_HEIGHT / d_slice * 277; */
-		slice_height = precompute / d_slice; /* see ^^ above comment */
+		slice_height = precompute[0] / d_slice; /* see ^^ above comment */
 		precompute[1] = slice_height / 2;
 		top = Y_CENTER + precompute[1];
 		bottom = Y_CENTER - precompute[1];
+		if (DEBUG == 1)
+		{
+			printf("top: %d, bottom: %d\n", top, bottom);
+			usleep(50000);
+		}
 	}
 }
-
-
-/**
- * calculate_dslice - gets necessary calculations
- *
- *
- */
-int calculate_dslice(int **map, GamePlayer *p, int beta)
-{
-	int dslice = 1;
-
-	if (DEBUG == 1)
-	{
-		printf("angle beta: %d, dslice: %d\n", beta);
-	}
-
-	/*
-	 * code to calculate dslice
-	 */
-
-	return (dslice);
-}
-
 
 /**
  * paint_calculations - gets necessary calculations
