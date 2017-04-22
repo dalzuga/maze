@@ -7,7 +7,7 @@
  */
 int calculate_dslice(int **map __attribute__ ((unused)),
 		     GamePlayer __attribute__ ((unused)) *p,
-		     int beta,
+		     int i,
 		     int *px __attribute__((unused)),
 		     int *py __attribute__((unused)))
 {
@@ -15,17 +15,31 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 	int dslice = 98;
 	int alpha __attribute__((unused)) = 0;
 
-	if (DEBUG % 2 == 0)
+	if (DEBUG == 1)
 	{
-		printf("angle beta: %d, dslice: %d\n", beta, dslice);
+		printf("angle beta: %f, dslice: %d\n",
+		       (double) i / (double) X_RES, dslice);
 	}
 
 	/*
 	 * code to calculate dslice
 	 */
 
+	/* calculate_angle(map, p, i); */
+
+	/*
+	 * end code to calculate dslice
+	 */
+
+
 	return (dslice);
 }
+
+/**
+ *
+ *
+ */
+
 
 /**
  * calculate_pposition - calculates player position in the center of the
