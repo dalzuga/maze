@@ -60,7 +60,7 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 
 	for (i = 0; i < X_RES; i++)
 	{
-		if (1)
+		if (i < 10)
 		{
 			d_slice = calculate_dslice(map, p, i, &px, &py);
 		}

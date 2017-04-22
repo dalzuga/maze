@@ -13,12 +13,14 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 {
 	/* declarations + inits */
 	int dslice = 98;
-	int alpha __attribute__((unused)) = 0;
+	double beta = (double) FIELD_ANGLE * i / (double) X_RES;
+	double alpha __attribute__((unused)) = 0;
+	double theta = p->theta - FIELD_ANGLE / 2;
 
 	if (DEBUG == 1)
 	{
-		printf("angle beta: %f, dslice: %d\n",
-		       (double) FIELD_ANGLE * i / (double) X_RES, dslice);
+		printf("angle beta: %f, dslice: %d, theta + beta: %f\n",
+		       beta, dslice, theta + beta);
 	}
 
 	/*
