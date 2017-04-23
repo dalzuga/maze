@@ -12,26 +12,40 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 		     int *py __attribute__((unused)))
 {
 	/* declarations + inits */
-	int dslice = 98;
+	double dslice = 98;
 	double beta = (double) FIELD_ANGLE * i / (double) X_RES;
 	double alpha __attribute__((unused)) = 0;
 	double theta = p->theta - FIELD_ANGLE / 2;
+	double precompute[1];
 
-	if (DEBUG == 1)
-	{
-		printf("angle beta: %f, dslice: %d, theta + beta: %f\n",
-		       beta, dslice, theta + beta);
-	}
+	/* cos(t + b) */
+	precompute[0] = cos((theta + beta) * M_PI / 180);
 
 	/*
 	 * code to calculate dslice
 	 */
 
-	/* calculate_angle(map, p, i); */
+	/* put player on (1,1) for now */
+	*px = 96;
+	*py = 96;
+
+	dslice = precompute[0] / (double) Y_CENTER;
 
 	/*
 	 * end code to calculate dslice
 	 */
+
+	if (DEBUG == 1)
+	{
+		/* printf("theta + beta: %f, cos(theta + beta): %f\n", */
+		/* theta + beta, cos(theta + beta)); */
+		printf("--1--");
+		printf("theta + beta: %f, cos(theta + beta): %f, dslice:%f\n",
+		       theta + beta, precompute[0], dslice);
+		/* printf("angle beta: %f, dslice: %f, theta + beta: %f\n", */
+		/*        beta, dslice, theta + beta); */
+		printf("--2--");
+	}
 
 
 	return (dslice);
