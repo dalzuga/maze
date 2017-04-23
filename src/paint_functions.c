@@ -77,24 +77,3 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 		/* } */
 	}
 }
-
-/**
- * paint_calculations - gets necessary calculations
- *
- *
- */
-void paint_calculations(int **map __attribute__((unused)), GamePlayer *p)
-{
-	int start_angle, end_angle;
-	int alpha;		/* alpha is the angle of the ray being cast */
-
-	start_angle = p->theta - FIELD_ANGLE / 2;
-	end_angle = p->theta + FIELD_ANGLE / 2;
-	alpha = 90 - start_angle;
-
-	if (DEBUG)
-	{
-		printf("start angle: %d, end angle: %d, alpha: %d, cos(alpha): \
-%d\n", start_angle, end_angle, alpha, (int) round(cos(alpha)));
-	}
-}
