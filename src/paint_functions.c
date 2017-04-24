@@ -65,8 +65,8 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 		/* slice_height = WALL_HEIGHT / d_slice * 277; */
 		slice_height = precompute[0] / d_slice; /* see ^^ */
 		precompute[1] = slice_height / 2;
-		top = Y_CENTER + precompute[1];
-		bottom = Y_CENTER - precompute[1];
+		top = Y_RES / 2 + precompute[1];
+		bottom = Y_RES / 2 - precompute[1];
 		if (DEBUG == 1)
 		{
 			printf("slice_height: %f, top: %d, bottom: %d\n",

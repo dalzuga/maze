@@ -25,11 +25,7 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	 * code to calculate dslice
 	 */
 
-	/* put player on (1,1) for now */
-	*px = 96;
-	*py = 96;
-
-	d_slice = Y_CENTER / precompute[0];
+	d_slice = (*py) / precompute[0];
 
 	/*
 	 * end code to calculate dslice
@@ -37,6 +33,9 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 
 	if (DEBUG == 1)
 	{
+		printf("player position on map: (%d, %d), absolute: (%d, %d)\n",
+		       p->x, p->y, *px, *py);
+
 		printf("cos((theta + beta) * M_PI / 180): %f\n", precompute[0]);
 		printf("theta + beta: %f, cos(theta + beta): %f, d_slice: %f\n",
 		       theta + beta, precompute[0], d_slice);
