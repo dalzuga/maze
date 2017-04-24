@@ -28,7 +28,7 @@ void game_start(SDL_Instance instance)
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
 		if (poll_events() == 1)
-			break;
+			break; 	/* press ESC twice to exit a.out */
 		/* draw_stuff(instance); */
 		draw_game(instance, map, p);
 		fflush(stdout);

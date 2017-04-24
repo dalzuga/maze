@@ -63,12 +63,13 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 	{
 		d_slice = calculate_dslice(map, p, i, &px, &py);
 		/* slice_height = WALL_HEIGHT / d_slice * 277; */
-		slice_height = precompute[0] / (double) d_slice; /* see ^^ */
+		slice_height = precompute[0] / d_slice; /* see ^^ */
 		precompute[1] = slice_height / 2;
 		top = Y_CENTER + precompute[1];
 		bottom = Y_CENTER - precompute[1];
-		if (DEBUG == 1)
+		if (DEBUG)
 		{
+			printf("precompute[1]:");
 			printf("top: %d, bottom: %d\n", top, bottom);
 			if (poll_events() == 1)
 			{
