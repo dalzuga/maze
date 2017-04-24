@@ -39,7 +39,7 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	{
 		/* printf("theta + beta: %f, cos(theta + beta): %f\n", */
 		/* theta + beta, cos(theta + beta)); */
-		printf("theta + beta: %f, cos(theta + beta): %f, dslice: %f\n",
+		printf("theta + beta: %f, cos(theta + beta): %f, d_slice: %f\n",
 		       theta + beta, precompute[0], d_slice);
 		/* printf("angle beta: %f, dslice: %f, theta + beta: %f\n", */
 		/*        beta, dslice, theta + beta); */
