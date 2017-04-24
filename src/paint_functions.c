@@ -54,6 +54,7 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 	int top __attribute__ ((unused)), bottom __attribute__ ((unused));
 	int px, py;
 
+	/* inits */
 	precompute[0] = WALL_HEIGHT * 277;
 
 	calculate_pposition(map, p, &px, &py);
@@ -65,7 +66,7 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 			d_slice = calculate_dslice(map, p, i, &px, &py);
 		}
 		/* slice_height = WALL_HEIGHT / d_slice * 277; */
-		slice_height = precompute[0] / d_slice; /*see ^^ above comment*/
+		slice_height = precompute[0] / (double) d_slice; /* see ^^ */
 		precompute[1] = slice_height / 2;
 		top = Y_CENTER + precompute[1];
 		bottom = Y_CENTER - precompute[1];

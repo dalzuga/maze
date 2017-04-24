@@ -18,7 +18,7 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 	double theta = p->theta - FIELD_ANGLE / 2;
 	double precompute[1];
 
-	/* cos(t + b) */
+	/* cos(theta + beta), as radians */
 	precompute[0] = cos((theta + beta) * M_PI / 180);
 
 	/*
@@ -29,7 +29,7 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 	*px = 96;
 	*py = 96;
 
-	dslice = precompute[0] / (double) Y_CENTER;
+	dslice = Y_CENTER / precompute[0];
 
 	/*
 	 * end code to calculate dslice
@@ -39,12 +39,10 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 	{
 		/* printf("theta + beta: %f, cos(theta + beta): %f\n", */
 		/* theta + beta, cos(theta + beta)); */
-		printf("--1--");
-		printf("theta + beta: %f, cos(theta + beta): %f, dslice:%f\n",
+		printf("theta + beta: %f, cos(theta + beta): %f, dslice: %f\n",
 		       theta + beta, precompute[0], dslice);
 		/* printf("angle beta: %f, dslice: %f, theta + beta: %f\n", */
 		/*        beta, dslice, theta + beta); */
-		printf("--2--");
 	}
 
 
