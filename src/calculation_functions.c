@@ -5,18 +5,18 @@
  *
  *
  */
-int calculate_dslice(int **map __attribute__ ((unused)),
+double calculate_dslice(int **map __attribute__ ((unused)),
 		     GamePlayer __attribute__ ((unused)) *p,
 		     int i,
 		     int *px __attribute__((unused)),
 		     int *py __attribute__((unused)))
 {
 	/* declarations + inits */
-	double dslice = 98;
+	double d_slice = 98;
 	double beta = (double) FIELD_ANGLE * i / (double) X_RES;
 	double alpha __attribute__((unused)) = 0;
 	double theta = p->theta - FIELD_ANGLE / 2;
-	double precompute[1];
+	double precompute[1] = { 0 };
 
 	/* cos(theta + beta), as radians */
 	precompute[0] = cos((theta + beta) * M_PI / 180);
@@ -29,7 +29,7 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 	*px = 96;
 	*py = 96;
 
-	dslice = Y_CENTER / precompute[0];
+	d_slice = Y_CENTER / precompute[0];
 
 	/*
 	 * end code to calculate dslice
@@ -40,13 +40,13 @@ int calculate_dslice(int **map __attribute__ ((unused)),
 		/* printf("theta + beta: %f, cos(theta + beta): %f\n", */
 		/* theta + beta, cos(theta + beta)); */
 		printf("theta + beta: %f, cos(theta + beta): %f, dslice: %f\n",
-		       theta + beta, precompute[0], dslice);
+		       theta + beta, precompute[0], d_slice);
 		/* printf("angle beta: %f, dslice: %f, theta + beta: %f\n", */
 		/*        beta, dslice, theta + beta); */
 	}
 
 
-	return (dslice);
+	return (d_slice);
 }
 
 /**
