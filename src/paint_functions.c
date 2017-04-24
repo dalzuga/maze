@@ -48,9 +48,9 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 {
 	/* declarations */
 	int i;
-	int slice_height;
-	long unsigned int d_slice; /* distance to wall slice */
-	long unsigned int precompute[2];
+	double slice_height;
+	double d_slice; /* distance to wall slice */
+	double precompute[2];
 	int top __attribute__ ((unused)), bottom __attribute__ ((unused));
 	int px, py;
 
@@ -70,6 +70,10 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 		if (DEBUG == 1)
 		{
 			printf("top: %d, bottom: %d\n", top, bottom);
+			if (poll_events() == 1)
+			{
+				break;
+			}
 			usleep(50000);
 			/* getline(NULL, 0, stdin); */
 		}
