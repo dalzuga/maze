@@ -69,9 +69,8 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 		bottom = Y_CENTER - precompute[1];
 		if (DEBUG == 1)
 		{
-			printf("precompute[1]: %f, slice_height: %f, top: %d, \
-bottom: %d\n", precompute[1], slice_height, top, bottom);
-			/* printf("top: %d, bottom: %d\n", top, bottom); */
+			printf("slice_height: %f, top: %d, bottom: %d\n",
+			       slice_height, top, bottom);
 			if (poll_events() == 1)
 			{
 				break;

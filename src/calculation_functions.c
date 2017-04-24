@@ -37,12 +37,9 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 
 	if (DEBUG == 1)
 	{
-		/* printf("theta + beta: %f, cos(theta + beta): %f\n", */
-		/* theta + beta, cos(theta + beta)); */
+		printf("cos((theta + beta) * M_PI / 180): %f\n", precompute[0]);
 		printf("theta + beta: %f, cos(theta + beta): %f, d_slice: %f\n",
 		       theta + beta, precompute[0], d_slice);
-		/* printf("angle beta: %f, dslice: %f, theta + beta: %f\n", */
-		/*        beta, dslice, theta + beta); */
 	}
 
 
@@ -91,7 +88,7 @@ void paint_calculations(int **map __attribute__((unused)), GamePlayer *p)
 	end_angle = p->theta + FIELD_ANGLE / 2;
 	alpha = 90 - start_angle;
 
-	if (DEBUG)
+	if (DEBUG == 2)
 	{
 		printf("start angle: %d, end angle: %d, alpha: %d, cos(alpha): \
 %d\n", start_angle, end_angle, alpha, (int) round(cos(alpha)));
