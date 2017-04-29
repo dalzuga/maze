@@ -33,6 +33,7 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 
 	if (DEBUG == 1)
 	{
+		printf("---------------3--------------\n");
 		printf("player position on map: (%d, %d), absolute: (%d, %d)\n",
 		       p->x, p->y, *px, *py);
 
@@ -66,6 +67,7 @@ int calculate_pposition(int **map __attribute__ ((unused)),
 
 	if (DEBUG == 1)
 	{
+		printf("---------------2--------------\n");
 		printf("p->x: %d, px: %d, ", p->x, *px);
 		printf("p->y: %d, py: %d\n", p->y, *py);
 	}

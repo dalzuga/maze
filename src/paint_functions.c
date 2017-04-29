@@ -13,6 +13,7 @@ void paint_environment(SDL_Instance instance, int **map, GamePlayer *p)
 	SDL_SetRenderDrawColor(instance.renderer, 0x80, 0x80, 0x80, 0xFF);
 	/* SDL_RenderDrawLine(instance.renderer, 50, 100, 200, 400); */
 
+	printf("---------------1--------------\n");
 	printf("player: %p | map: %p\n", (void *) p, (void *) map);
 
 	paint_walls(instance, map, p);
@@ -69,13 +70,15 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 		bottom = Y_RES / 2 - precompute[1];
 		if (DEBUG == 1)
 		{
+			printf("---------------4--------------\n");
 			printf("slice_height: %f, top: %d, bottom: %d\n",
 			       slice_height, top, bottom);
+			printf("------------------------------\n");
 			if (poll_events() == 1)
 			{
 				break;
 			}
-			usleep(5000);
+			usleep(50000);
 			/* getline(NULL, 0, stdin); */
 		}
 
