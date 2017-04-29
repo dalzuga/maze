@@ -30,7 +30,7 @@ void game_start(SDL_Instance instance)
 		if (poll_events() == 1)
 			break; 	/* press ESC twice to exit a.out */
 		/* draw_stuff(instance); */
-		draw_game(instance, map, p);
+		paint_environment(instance, map, p);
 		fflush(stdout);
 		SDL_RenderPresent(instance.renderer);
 	}
