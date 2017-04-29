@@ -78,7 +78,7 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 			{
 				break;
 			}
-			usleep(50000);
+			usleep(500000);
 			/* getline(NULL, 0, stdin); */
 		}
 
