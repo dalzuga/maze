@@ -13,9 +13,9 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 {
 	/* declarations + inits */
 	double d_slice = 98;
-	double beta = (double) FIELD_ANGLE * i / (double) X_RES;
+	double beta = (double) FOV_ANGLE * i / (double) X_RES;
 	double alpha __attribute__((unused)) = 0;
-	double theta = p->theta - FIELD_ANGLE / 2;
+	double theta = p->theta - FOV_ANGLE / 2;
 	double precompute[1] = { 0 };
 
 	/* cos(theta + beta), as radians */
@@ -85,8 +85,8 @@ void paint_calculations(int **map __attribute__((unused)), GamePlayer *p)
 	int start_angle, end_angle;
 	int alpha;		/* alpha is the angle of the ray being cast */
 
-	start_angle = p->theta - FIELD_ANGLE / 2;
-	end_angle = p->theta + FIELD_ANGLE / 2;
+	start_angle = p->theta - FOV_ANGLE / 2;
+	end_angle = p->theta + FOV_ANGLE / 2;
 	alpha = 90 - start_angle;
 
 	if (DEBUG == 2)
