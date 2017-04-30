@@ -42,6 +42,9 @@ void init_map(int **map, int rows, int cols);
 /*  */
 void draw_game(SDL_Instance instance, int **map, GamePlayer *p);
 
+/*  */
+int check_edge_cases(void);
+
 /* game_start - entry point for the game engine */
 void game_start(SDL_Instance instance);
 
