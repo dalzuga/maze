@@ -17,7 +17,7 @@ void paint_environment(SDL_Instance instance, int **map, GamePlayer *p)
 	printf("player: %p | map: %p\n", (void *) p, (void *) map);
 
 	paint_walls(instance, map, p);
-	paint_calculations(map, p);
+	print_calculations(map, p); /* if DEBUG equals 2 */
 }
 
 /**

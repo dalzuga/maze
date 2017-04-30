@@ -56,8 +56,8 @@ void start_position(int ***map, GamePlayer **p);
 /* paint_environment - paints the environment from the player's POV */
 void paint_environment(SDL_Instance instance, int **map, GamePlayer *p);
 
-/* paint_calculations - gets necessary calculations */
-void paint_calculations(int **map __attribute__((unused)), GamePlayer *p);
+/* print_calculations - gets necessary calculations */
+void print_calculations(int **map __attribute__((unused)), GamePlayer *p);
 
 /* paint_walls - paints the walls */
 void paint_walls(SDL_Instance instance __attribute__ ((unused)),

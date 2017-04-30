@@ -80,7 +80,7 @@ int calculate_pposition(int **map __attribute__ ((unused)),
  *
  *
  */
-void paint_calculations(int **map __attribute__((unused)), GamePlayer *p)
+void print_calculations(int **map __attribute__((unused)), GamePlayer *p)
 {
 	int start_angle, end_angle;
 	int alpha;		/* alpha is the angle of the ray being cast */
