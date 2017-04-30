@@ -63,8 +63,16 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 	for (i = 0; i < X_RES; i++)
 	{
 		d_slice = calculate_dslice(map, p, i, &px, &py);
+
+		if (d_slice <= 0) /* take advantage of [tag: optimization1] and
+				     avoid division by 0 */
+		{
+			break;
+		}
+
 		/* slice_height = WALL_HEIGHT / d_slice * 277; */
 		slice_height = precompute[0] / d_slice; /* see ^^ */
+
 		precompute[1] = slice_height / 2;
 		top = Y_RES / 2 + precompute[1];
 		bottom = Y_RES / 2 - precompute[1];

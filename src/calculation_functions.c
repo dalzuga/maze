@@ -6,10 +6,10 @@
  *
  */
 double calculate_dslice(int **map __attribute__ ((unused)),
-		     GamePlayer __attribute__ ((unused)) *p,
-		     int i,
-		     int *px __attribute__((unused)),
-		     int *py __attribute__((unused)))
+			GamePlayer __attribute__ ((unused)) *p,
+			int i,
+			int *px __attribute__((unused)),
+			int *py __attribute__((unused)))
 {
 	/* declarations + inits */
 	double d_slice = 98;
@@ -17,6 +17,11 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	double alpha __attribute__((unused)) = 0;
 	double theta = p->theta - FOV_ANGLE / 2;
 	double precompute[1] = { 0 };
+
+	if ((theta + beta) >= 90) /* tag: optimization1 */
+	{
+		return (0);
+	}
 
 	/* cos(theta + beta), as radians */
 	precompute[0] = cos((theta + beta) * M_PI / 180);
