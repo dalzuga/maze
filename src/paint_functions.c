@@ -78,10 +78,11 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 			{
 				break;
 			}
-			usleep(500000);
+			usleep(5000);
 			/* getline(NULL, 0, stdin); */
 		}
 
 		SDL_RenderDrawLine(instance.renderer, i, top, i, bottom);
+		SDL_RenderPresent(instance.renderer);
 	}
 }
