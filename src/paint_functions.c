@@ -57,7 +57,7 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 
 	/* inits */
 	precompute[2] =		/* distance to projection plane */
-	  X_RES / (2 * tan((PROJ_DISTANCE) / 2));
+	  X_RES / (2 * tan((FOV_RADIANS) / 2));
 
 	precompute[0] = WALL_HEIGHT * precompute[2];
 
