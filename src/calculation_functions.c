@@ -45,8 +45,11 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 		printf("cos((theta + beta) * M_PI / 180): %f\n", precompute[0]);
 		printf("theta + beta: %f, cos(theta + beta): %f, d_slice: %f\n",
 		       theta + beta, precompute[0], d_slice);
+		printf("beta - FOV_ANGLE / 2: %f\n", beta - FOV_ANGLE / 2);
 	}
 
+	/* correct for spherical distortion */
+	d_slice = d_slice * cos((beta - FOV_ANGLE / 2) * M_PI / 180);
 
 	return (d_slice);
 }
