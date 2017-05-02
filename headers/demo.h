@@ -18,6 +18,7 @@
 #define WALL_HEIGHT 64
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
 #define Y_CENTER SQRT_BLOCK_UNITS / 2
+#define PROJ_DISTANCE FOV_ANGLE * M_PI / 180
 
 typedef struct SDL_Instance
 {

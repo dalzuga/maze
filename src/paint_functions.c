@@ -51,12 +51,15 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 	int i;
 	double slice_height;
 	double d_slice; /* distance to wall slice */
-	double precompute[2];
+	double precompute[3];
 	int top __attribute__ ((unused)), bottom __attribute__ ((unused));
 	int px, py;
 
 	/* inits */
-	precompute[0] = WALL_HEIGHT * 277;
+	precompute[2] =		/* distance to projection plane */
+	  X_RES / (2 * tan((PROJ_DISTANCE) / 2));
+
+	precompute[0] = WALL_HEIGHT * precompute[2];
 
 	calculate_pposition(map, p, &px, &py);
 
