@@ -84,12 +84,15 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 			printf("---------------4--------------\n");
 			printf("slice_height: %f, top: %d, bottom: %d\n",
 			       slice_height, top, bottom);
+			printf("i: %d, X_RES: %d\n", i, X_RES);
+			printf("i / X_RES: %f\n", (double) i / X_RES);
+			printf("FOV_ANGLE: %d\n", FOV_ANGLE);
 			printf("------------------------------\n");
 			if (poll_events() == 1)
 			{
 				break;
 			}
-			usleep(5000);
+			usleep(SLEEP_TIME);
 			/* getline(NULL, 0, stdin); */
 		}
 
