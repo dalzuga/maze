@@ -63,9 +63,9 @@ void draw_game(SDL_Instance instance, int **map, GamePlayer *p)
 void start_position(int ***map, GamePlayer **p)
 {
 	*map = make_map(4, 4);
-	(*map)[1][1] = 1;
-	(*map)[1][2] = 1;
-	(*map)[2][2] = 1;
+	(*map)[1][1] = 0;
+	(*map)[1][2] = 0;
+	(*map)[2][2] = 0;
 
 	*p = malloc(sizeof(GamePlayer));
 	if (*p == NULL)
@@ -74,7 +74,7 @@ void start_position(int ***map, GamePlayer **p)
 		exit(EXIT_FAILURE);
 	}
 
-	(*p)->x = 1;
+	(*p)->x = 2;
 	(*p)->y = 1;
 	(*p)->theta = 20;
 }
