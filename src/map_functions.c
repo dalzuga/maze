@@ -1,7 +1,9 @@
 #include "../headers/demo.h"
+
 /**
+ * draw_map - makes a map
  *
- *
+ * Return: Nothing.
  */
 void draw_map()
 {

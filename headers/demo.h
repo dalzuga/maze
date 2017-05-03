@@ -83,4 +83,10 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 int calculate_pposition(int **map __attribute__ ((unused)),
 			GamePlayer *p, int *px, int *py);
 
+/* vertical_intersects - finds the closest vertical wall hit by the ray */
+double vertical_intersects(int ***map, GamePlayer **p, int *px, int *py);
+
+/* horizontal_intersects - finds the closest horizontal wall hit by the ray */
+double horizontal_intersects(int ***map, GamePlayer **p, int *px, int *py);
+
 #endif
