@@ -75,7 +75,7 @@ void paint_projection(SDL_Instance instance, int **map, GamePlayer *p);
 
 /* calculate_dslice - calculate distance to wall slice */
 double calculate_dslice(int **map __attribute__ ((unused)),
-		     GamePlayer *p, int beta,
+		     GamePlayer *p, int i,
 		     int *px __attribute__((unused)),
 		     int *py __attribute__((unused)));
 
