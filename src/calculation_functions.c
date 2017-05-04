@@ -78,6 +78,27 @@ int calculate_pposition(int **map __attribute__ ((unused)),
 }
 
 /**
+ * calculate_block - inverse of calculate_pposition
+ *
+ *
+ */
+void calculate_block(int px, int py)
+{
+	int map_x = 0, map_y = 0;
+
+	map_x = px / SQRT_BLOCK_UNITS;
+	map_y = py / SQRT_BLOCK_UNITS;
+
+	if (DEBUG == 2)
+	{
+		printf("---------------5--------------\n");
+		printf("map_x: %d\n", map_x);
+		printf("map_y: %d\n", map_y);
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
  * paint_calculations - gets necessary calculations
  *
  *
