@@ -16,21 +16,17 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	double beta = (double) FOV_ANGLE * i / (double) X_RES;
 	double alpha __attribute__((unused)) = 0;
 	double theta = p->theta - FOV_ANGLE / 2;
-	double precompute[1] = { 0 };
 
 	if ((theta + beta) >= 90) /* tag: optimization1 */
 	{
 		return (0);
 	}
 
-	/* cos(theta + beta), as radians */
-	precompute[0] = cos((theta + beta) * M_PI / 180);
-
 	/*
 	 * code to calculate dslice
 	 */
 
-	d_slice = (*py) / precompute[0];
+	d_slice = (*py) / (cos((theta + beta) * M_PI / 180));
 
 	/*
 	 * end code to calculate dslice
@@ -42,9 +38,10 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 		printf("player position on map: (%d, %d), absolute: (%d, %d)\n",
 		       p->x, p->y, *px, *py);
 
-		printf("cos((theta + beta) * M_PI / 180): %f\n", precompute[0]);
+		printf("cos((theta + beta) * M_PI / 180): %f\n",
+		       cos((theta + beta) * M_PI / 180));
 		printf("theta + beta: %f, cos(theta + beta): %f, d_slice: %f\n",
-		       theta + beta, precompute[0], d_slice);
+		       theta + beta, cos((theta + beta) * M_PI / 180), d_slice);
 		printf("beta - FOV_ANGLE / 2: %f\n", beta - FOV_ANGLE / 2);
 	}
 
