@@ -88,9 +88,17 @@ int calculate_pposition(int **map __attribute__ ((unused)),
 void calculate_block(int px, int py);
 
 /* vertical_intersects - finds the closest vertical wall hit by the ray */
-double vertical_intersects(int ***map, GamePlayer **p, int *px, int *py);
+double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
+			   int *py);
+
+/*  */
+int get_pix(int **map, GamePlayer *p, int *px);
 
 /* horizontal_intersects - finds the closest horizontal wall hit by the ray */
-double horizontal_intersects(int ***map, GamePlayer **p, int *px, int *py);
+double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
+			     int *py);
+
+/*  */
+int get_piy(int **map, GamePlayer *p, int *px, int *py);
 
 #endif

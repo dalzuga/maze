@@ -26,6 +26,7 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	 * code to calculate dslice
 	 */
 
+	vertical_intersects(map, p, beta, px, py);
 	d_slice = (*py) / (cos((theta + beta) * M_PI / 180));
 
 	/*
