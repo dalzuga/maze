@@ -99,6 +99,6 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 			     int *py);
 
 /*  */
-int get_piy(int **map, GamePlayer *p, int *px, int *py);
+int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py);
 
 #endif
