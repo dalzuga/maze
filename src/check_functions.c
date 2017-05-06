@@ -33,7 +33,7 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 	Ax = SQRT_BLOCK_UNITS;
 
 	/* calculate piy and Ay */
-	piy = pix / tan(alpha * M_PI / 180);
+	piy = pix * tan(alpha * M_PI / 180);
 
 	if (DEBUG == 1)
 	{
