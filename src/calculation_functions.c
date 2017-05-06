@@ -36,8 +36,8 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	if (DEBUG == 1)
 	{
 		printf("---------------3--------------\n");
-		printf("player position on map: (%d, %d), absolute: (%d, %d)\n",
-		       p->x, p->y, *px, *py);
+		printf("player position on map: (%d, %d), absolute: (%d, %d), \
+p->theta: %d\n", p->x, p->y, *px, *py, p->theta);
 
 		printf("cos((theta + beta) * M_PI / 180): %f\n",
 		       cos((theta + beta) * M_PI / 180));
