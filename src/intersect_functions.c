@@ -39,6 +39,8 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 		printf("alpha (degrees): %f\n", alpha);
 		printf("pix: %d, piy: %d\n", pix, piy);
 		printf("Ax: %d, Ay: %d\n", Ax, Ay);
+		printf("Distance to vertical axis: %f\n",
+		       (pix / cos(alpha * M_PI / 180)));
 	}
 
 	return (0);
@@ -106,6 +108,8 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 		printf("alpha (degrees): %f\n", alpha);
 		printf("pix: %d, piy: %d\n", pix, piy);
 		printf("Ax: %d, Ay: %d\n", Ax, Ay);
+		printf("Distance to horizontal axis: %f\n",
+		       (piy / sin(alpha * M_PI / 180)));
 	}
 
 	return (0);
