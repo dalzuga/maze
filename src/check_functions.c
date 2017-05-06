@@ -10,12 +10,12 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 	/* declarations */
 	int theta;
 	double alpha;
-	int pix, Ax, piy;
+	int pix, Ax, piy, Ay;
 
 	/* inits */
 	theta = p->theta % 360;
-	pix = 0;
 	alpha = 0;
+	pix = Ax = piy = Ay = 0;
 
 	if (DEBUG == 2)
 	{
@@ -34,13 +34,14 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 
 	/* calculate piy and Ay */
 	piy = pix * tan(alpha * M_PI / 180);
+	Ay = Ax * tan(alpha * M_PI / 180);
 
 	if (DEBUG == 1)
 	{
 		printf("---------------7--------------\n");
 		printf("alpha (degrees): %f\n", alpha);
 		printf("pix: %d, piy: %d\n", pix, piy);
-		printf("Ax: %d\n", Ax);
+		printf("Ax: %d, Ay: %d\n", Ax, Ay);
 	}
 
 	/* if ( (theta < 90) || (theta > 270) ) /\* facing up *\/ */
