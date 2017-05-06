@@ -9,12 +9,12 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 {
 	/* declarations */
 	int theta;
-	double alpha;
+	double alpha, dist;
 	int pix, Ax, piy, Ay;
 
 	/* inits */
 	theta = p->theta % 360; /* this may not be necessary */
-	alpha = 0;
+	alpha = dist = 0;
 	pix = Ax = piy = Ay = 0;
 
 	if (DEBUG == 2)
@@ -33,17 +33,18 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 	piy = pix * tan(alpha * M_PI / 180);
 	Ay = Ax * tan(alpha * M_PI / 180);
 
+	dist = pix / cos(alpha * M_PI / 180);
+
 	if (DEBUG == 1)
 	{
 		printf("---------------7--------------\n");
 		printf("alpha (degrees): %f\n", alpha);
 		printf("pix: %d, piy: %d\n", pix, piy);
 		printf("Ax: %d, Ay: %d\n", Ax, Ay);
-		printf("Distance to vertical axis: %f\n",
-		       (pix / cos(alpha * M_PI / 180)));
+		printf("Distance to vertical axis: %f\n", dist);
 	}
 
-	return (0);
+	return (dist);
 }
 
 /**
@@ -78,12 +79,12 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 {
 	/* declarations */
 	int theta;
-	double alpha;
+	double alpha, dist;
 	int pix, Ax, piy, Ay;
 
 	/* inits */
 	theta = p->theta % 360; /* this may not be necessary */
-	alpha = 0;
+	alpha = dist = 0;
 	pix = Ax = piy = Ay = 0;
 
 	if (DEBUG == 2)
@@ -102,17 +103,18 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 	pix = piy / tan(alpha * M_PI / 180);
 	Ax = Ay / tan(alpha * M_PI / 180);
 
+	dist = piy / sin(alpha * M_PI / 180);
+
 	if (DEBUG == 1)
 	{
 		printf("---------------9--------------\n");
 		printf("alpha (degrees): %f\n", alpha);
 		printf("pix: %d, piy: %d\n", pix, piy);
 		printf("Ax: %d, Ay: %d\n", Ax, Ay);
-		printf("Distance to horizontal axis: %f\n",
-		       (piy / sin(alpha * M_PI / 180)));
+		printf("Distance to horizontal axis: %f\n", dist);
 	}
 
-	return (0);
+	return (dist);
 }
 
 /**

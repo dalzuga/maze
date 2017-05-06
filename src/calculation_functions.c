@@ -16,6 +16,7 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	double beta = (double) FOV_ANGLE * i / (double) X_RES;
 	double alpha __attribute__((unused)) = 0;
 	double theta = p->theta - FOV_ANGLE / 2;
+	double dist_v = 0, dist_h = 0;
 
 	if ((theta + beta) >= 90) /* tag: optimization1 */
 	{
@@ -26,9 +27,21 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	 * code to calculate dslice
 	 */
 
-	vertical_intersects(map, p, beta, px, py);
-	horizontal_intersects(map, p, beta, px, py);
-	d_slice = (*py) / (cos((theta + beta) * M_PI / 180));
+	dist_v = vertical_intersects(map, p, beta, px, py);
+	dist_h = horizontal_intersects(map, p, beta, px, py);
+
+	if (dist_v <= dist_h)
+	{
+		d_slice = (*py) / dist_v;
+	}
+	else
+	{
+		d_slice = (*px) / dist_h;
+	}
+
+	printf("d_slice: %f\n", d_slice);
+
+	/* d_slice = (*py) / (cos((theta + beta) * M_PI / 180)); */
 
 	/*
 	 * end code to calculate dslice
