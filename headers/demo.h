@@ -6,7 +6,7 @@
 #include <math.h>
 
 #define DEBUG 1
-#define SLEEP_TIME 50000
+#define SLEEP_TIME 5000
 #define SCALE_X 1
 #define SCALE_Y 1
 #define X_RES 320 * SCALE_X

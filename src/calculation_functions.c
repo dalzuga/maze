@@ -30,16 +30,23 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	dist_v = vertical_intersects(map, p, beta, px, py);
 	dist_h = horizontal_intersects(map, p, beta, px, py);
 
+	/* vertical_intersects(map, p, beta, px, py); */
+	/* horizontal_intersects(map, p, beta, px, py); */
+
 	if (dist_v <= dist_h)
 	{
-		d_slice = (*py) / dist_v;
+		printf("####################\n");
+		printf("dist_v: %f\n", dist_v);
+		d_slice = dist_v;
 	}
 	else
 	{
-		d_slice = (*px) / dist_h;
+		printf("####################\n");
+		printf("dist_h: %f\n", dist_h);
+		d_slice = dist_h;
 	}
 
-	printf("d_slice: %f\n", d_slice);
+	/* printf("d_slice: %f\n", d_slice); */
 
 	/* d_slice = (*py) / (cos((theta + beta) * M_PI / 180)); */
 
@@ -61,7 +68,7 @@ p->theta: %d\n", p->x, p->y, *px, *py, p->theta);
 	}
 
 	/* correct for spherical distortion */
-	d_slice = d_slice * cos((beta - FOV_ANGLE / 2) * M_PI / 180);
+	/* d_slice = d_slice * cos((beta - FOV_ANGLE / 2) * M_PI / 180); */
 
 	return (d_slice);
 }

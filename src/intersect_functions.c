@@ -33,7 +33,7 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 	piy = pix * tan(alpha * M_PI / 180);
 	Ay = Ax * tan(alpha * M_PI / 180);
 
-	dist = pix / cos(alpha * M_PI / 180);
+	dist = (pix + Ax) / cos(alpha * M_PI / 180);
 
 	if (DEBUG == 1)
 	{
@@ -103,7 +103,7 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 	pix = piy / tan(alpha * M_PI / 180);
 	Ax = Ay / tan(alpha * M_PI / 180);
 
-	dist = piy / sin(alpha * M_PI / 180);
+	dist = (piy + Ay) / sin(alpha * M_PI / 180);
 
 	if (DEBUG == 1)
 	{
