@@ -8,12 +8,28 @@ The goal is to produce a 3D maze that looks like this:
 
 [[file:images/example_1.png]]
 
-* Compile with this command (requires SDL2 to be installed):
+* Compiling (requires SDL2 to be installed):
+** Ubuntu 14.04 + 16.04:
+
+Compile using ~make~, or, alternatively, with this commmand
 
 #+BEGIN_EXAMPLE
-gcc -Wall -Werror -Wextra -pedantic -g src/main.c src/init_instance.c src/draw_functions.c src/map_functions.c src/game_functions.c src/paint_functions.c src/calculation_functions.c src/intersect_functions.c -lm $(sdl2-config --cflags) $(sdl2-config --libs)
+gcc -Wall -Werror -Wextra -pedantic -g src/main.c src/init_instance.c src/draw_functions.c src/map_functions.c src/game_functions.c src/paint_functions.c src/calculation_functions.c src/intersect_functions.c -lm $(sdl2-config --cflags) $(sdl2-config --libs) -lSDL2_ttf
 #+END_EXAMPLE
 
+** macOS 10.12.4
+
+Compile with the command below:
+
+#+BEGIN_EXAMPLE
+gcc -Wall -Werror -Wextra -pedantic -g src/main.c src/init_instance.c src/draw_functions.c src/map_functions.c src/game_functions.c src/paint_functions.c src/calculation_functions.c src/intersect_functions.c -lm -I/usr/local/include/ -D_THREAD_SAFE $(sdl2-config --libs)
+#+END_EXAMPLE
+
+Notes:\\
+There is a bug in ~sdl2-config~ when returning the SDL2 compilation flags on macOS. To get around that, you must get the compilation flags manually: run ~sdl2-config --cflags~ and simply strip the trailing "SDL2" from the include path.
+
+* Running the program
+Run with ~./a.out~.
 * Installing SDL2 (Mac OS X + Ubuntu 16.04 + Ubuntu 14.04)
 
 Run the following installation script with root privileges:
