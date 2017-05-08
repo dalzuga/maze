@@ -76,7 +76,7 @@ void start_position(int ***map, GamePlayer **p)
 
 	(*p)->x = 2;
 	(*p)->y = 1;
-	(*p)->theta = 10;
+	(*p)->theta = 90;
 }
 
 int poll_events(void)

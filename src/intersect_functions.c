@@ -40,11 +40,6 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 
 	dist = (pix + Ax) / cos(alpha * M_PI / 180);
 
-	if (dist < 0)
-	{
-		dist = -dist;
-	}
-
 	if (DEBUG == 1)
 	{
 		printf("---------------7--------------\n");
@@ -54,7 +49,7 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 		printf("Distance to vertical axis: %f\n", dist);
 	}
 
-	return (dist);
+	return (fabs(dist));
 }
 
 /**
@@ -120,11 +115,6 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 
 	dist = (piy + Ay) / sin(alpha * M_PI / 180);
 
-	if (dist < 0)
-	{
-		dist = -dist;
-	}
-
 	if (DEBUG == 1)
 	{
 		printf("---------------9--------------\n");
@@ -134,7 +124,7 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 		printf("Distance to horizontal axis: %f\n", dist);
 	}
 
-	return (dist);
+	return fabs(dist);
 }
 
 /**
