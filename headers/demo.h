@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 1
+#define DEBUG 0
 #define SLEEP_TIME 5000
 #define SCALE_X 1
 #define SCALE_Y 1

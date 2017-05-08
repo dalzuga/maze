@@ -67,12 +67,6 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 	{
 		d_slice = calculate_dslice(map, p, i, &px, &py);
 
-		if (d_slice <= 0) /* take advantage of [tag: optimization1] and
-				     avoid division by 0 */
-		{
-			break;
-		}
-
 		/* slice_height = WALL_HEIGHT / d_slice * 277; */
 		slice_height = precompute[0] / d_slice; /* see ^^ */
 
@@ -97,6 +91,10 @@ void paint_projection(SDL_Instance instance __attribute__ ((unused)),
 		}
 
 		SDL_RenderDrawLine(instance.renderer, i, top, i, bottom);
-		SDL_RenderPresent(instance.renderer);
+
+		if (DEBUG == 1)
+		{
+			SDL_RenderPresent(instance.renderer);
+		}
 	}
 }

@@ -23,8 +23,8 @@ void game_start(SDL_Instance instance)
 
 	while(1)
 	{
-		sleep(1); 	/* one second */
-		/* usleep(500000); /\* one half second *\/ */
+		/* sleep(1); 	/\* one second *\/ */
+		usleep(50000); /* 50ms */
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
 		if (poll_events() == 1)
@@ -33,6 +33,7 @@ void game_start(SDL_Instance instance)
 		paint_environment(instance, map, p);
 		fflush(stdout);
 		SDL_RenderPresent(instance.renderer);
+		(p->theta) += 5;
 	}
 
 	/*
@@ -76,7 +77,7 @@ void start_position(int ***map, GamePlayer **p)
 
 	(*p)->x = 2;
 	(*p)->y = 1;
-	(*p)->theta = 90;
+	(*p)->theta = 0;
 }
 
 int poll_events(void)

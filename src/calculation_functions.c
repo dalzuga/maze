@@ -18,11 +18,6 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 	double theta = p->theta - FOV_ANGLE / 2;
 	double dist_v = 0, dist_h = 0;
 
-	if ((theta + beta) >= 90) /* tag: optimization1 */
-	{
-		return (0);
-	}
-
 	/*
 	 * code to calculate dslice
 	 */
@@ -35,14 +30,10 @@ double calculate_dslice(int **map __attribute__ ((unused)),
 
 	if (dist_v <= dist_h)
 	{
-		printf("####################\n");
-		printf("dist_v: %f\n", dist_v);
 		d_slice = dist_v;
 	}
 	else
 	{
-		printf("####################\n");
-		printf("dist_h: %f\n", dist_h);
 		d_slice = dist_h;
 	}
 
