@@ -13,7 +13,7 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 	int pix, Ax, piy, Ay;
 
 	/* inits */
-	theta = p->theta % 360; /* this may not be necessary */
+	theta = p->theta - FOV_ANGLE / 2;
 	alpha = dist = 0;
 	pix = Ax = piy = Ay = 0;
 
@@ -22,6 +22,11 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 		printf("---------------2--1--------------\n");
 		printf("%p\n", (void *) map);
 		printf("%p\n", (void *) py);
+	}
+
+	if ((theta + beta) < 0)
+	{
+		alpha = 90 + ((double) theta + beta);
 	}
 
 	alpha = (90 - ( (double) theta + beta ));
@@ -34,6 +39,11 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 	Ay = Ax * tan(alpha * M_PI / 180);
 
 	dist = (pix + Ax) / cos(alpha * M_PI / 180);
+
+	if (dist < 0)
+	{
+		dist = -dist;
+	}
 
 	if (DEBUG == 1)
 	{
@@ -83,7 +93,7 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 	int pix, Ax, piy, Ay;
 
 	/* inits */
-	theta = p->theta % 360; /* this may not be necessary */
+	theta = p->theta - FOV_ANGLE / 2;
 	alpha = dist = 0;
 	pix = Ax = piy = Ay = 0;
 
@@ -92,6 +102,11 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 		printf("---------------2--1--------------\n");
 		printf("%p\n", (void *) map);
 		printf("%p\n", (void *) px);
+	}
+
+	if ((theta + beta) < 0)
+	{
+		alpha = 90 + ((double) theta + beta);
 	}
 
 	alpha = (90 - ( (double) theta + beta ));
@@ -104,6 +119,11 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 	Ax = Ay / tan(alpha * M_PI / 180);
 
 	dist = (piy + Ay) / sin(alpha * M_PI / 180);
+
+	if (dist < 0)
+	{
+		dist = -dist;
+	}
 
 	if (DEBUG == 1)
 	{

@@ -68,7 +68,7 @@ p->theta: %d\n", p->x, p->y, *px, *py, p->theta);
 	}
 
 	/* correct for spherical distortion */
-	/* d_slice = d_slice * cos((beta - FOV_ANGLE / 2) * M_PI / 180); */
+	d_slice = d_slice * cos((beta - FOV_ANGLE / 2) * M_PI / 180);
 
 	return (d_slice);
 }
