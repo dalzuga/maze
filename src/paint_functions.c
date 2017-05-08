@@ -13,8 +13,11 @@ void paint_environment(SDL_Instance instance, int **map, GamePlayer *p)
 	SDL_SetRenderDrawColor(instance.renderer, 0x80, 0x80, 0x80, 0xFF);
 	/* SDL_RenderDrawLine(instance.renderer, 50, 100, 200, 400); */
 
-	printf("---------------1--------------\n");
-	printf("player: %p | map: %p\n", (void *) p, (void *) map);
+	if (DEBUG == 1)
+	{
+		printf("---------------1--------------\n");
+		printf("player: %p | map: %p\n", (void *) p, (void *) map);
+	}
 
 	paint_walls(instance, map, p);
 	print_calculations(map, p); /* if DEBUG equals 2 */
