@@ -22,5 +22,6 @@ void game_func02(SDL_Instance instance, int **map, GamePlayer *p)
 	/* inits */
 	col_height = WALL_HEIGHT * p->dpp / rclen;
 
-	
+	top = Y_RES / 2 + col_height / 2;
+	bottom = Y_RES / 2 - col_height / 2;
 }
