@@ -17,7 +17,7 @@ void game_func02(SDL_Instance instance, int **map, GamePlayer *p)
 	double rclen;		/* ray cast length */
 	int top, bottom;
 
-	rclen = calc_rclen();
+	rclen = calc_rclen(map, p);
 
 	/* inits */
 	col_height = WALL_HEIGHT * p->dpp / rclen;
