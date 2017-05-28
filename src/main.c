@@ -9,7 +9,7 @@ int main(void)
 
 	if (check_edge_cases() != 0)
 	{
-		return (2);
+		return (1);
 	}
 
 	game_start(instance);
