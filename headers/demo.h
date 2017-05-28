@@ -27,7 +27,7 @@ typedef struct GamePlayer
   int x;			/* player x-position */
   int y;			/* player y-position */
   int theta; 			/* angle between 0 and 359 degrees */
-  double ppd;			/* distance to projection plane */
+  double dpp;			/* distance to projection plane */
 } GamePlayer;
 
 int init_instance(SDL_Instance *);

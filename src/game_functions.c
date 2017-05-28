@@ -22,7 +22,7 @@ void game_start(SDL_Instance instance)
 	start_position(&map, &p);
 	_print_map(map, 4, 4);
 
-	p->ppd = X_RES / 2 / tan(FOV_ANGLE / 2);
+	p->dpp = X_RES / 2 / tan(FOV_ANGLE / 2);
 
 	game_func01(instance, map, p);
 
