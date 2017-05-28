@@ -21,7 +21,8 @@ void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
 			break; 	/* press ESC twice to exit a.out */
 
 		/* draw_stuff(instance); */
-		paint_environment(instance, map, p);
+		game_func02(instance, map, p);
+
 		fflush(stdout);
 
 		SDL_RenderPresent(instance.renderer);
