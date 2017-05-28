@@ -22,6 +22,8 @@ void game_start(SDL_Instance instance)
 	start_position(&map, &p);
 	_print_map(map, 4, 4);
 
+	game_func01(instance, map, p);
+
 	/*
 	 * TODO - need to code free_map() to free the map here
 	 */
