@@ -95,6 +95,18 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 /*  */
 int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py);
 
+/* calc_rclen - calculate how far the ray cast travels until it meets a wall. */
+double calc_rclen(int **map, GamePlayer *p, int i);
 
+/*
+ * calc_pxpy - calculates player position in the center of the
+ * player's block. This is necessary because we are using finer resolution to
+ * position player inside the block itself.
+ *
+ */
+void calc_pxpy(GamePlayer *p, int *px, int *py);
+
+/* game_func01 - entry point for the game engine */
+void game_func01(SDL_Instance instance, int **map, GamePlayer *p);
 
 #endif
