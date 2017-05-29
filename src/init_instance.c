@@ -13,8 +13,8 @@ int init_instance(SDL_Instance *instance)
 	/* Create a new window instance */
 	instance->window = SDL_CreateWindow("SDL2 \\o/", SDL_WINDOWPOS_CENTERED,
 					    SDL_WINDOWPOS_CENTERED,
-					    320 * SCALE_X,
-					    240 * SCALE_Y, 0);
+					    X_RES,
+					    Y_RES, 0);
 
 	if (instance->window == NULL)
 	{

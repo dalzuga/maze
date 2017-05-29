@@ -18,39 +18,19 @@ void game_start(SDL_Instance instance)
 	map = NULL;
 	p = NULL;
 	/* end inits */
+
 	start_position(&map, &p);
 	_print_map(map, 4, 4);
 
-	while(1)
-	{
-		/* sleep(1); 	/\* one second *\/ */
-		usleep(30000); /* 30ms */
-		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
-		SDL_RenderClear(instance.renderer);
-		if (poll_events() == 1)
-			break; 	/* press ESC twice to exit a.out */
-		/* draw_stuff(instance); */
-		paint_environment(instance, map, p);
-		fflush(stdout);
-		SDL_RenderPresent(instance.renderer);
-		(p->theta) += 1;
-		p->theta = p->theta % 360;
-	}
+	p->dpp = X_RES / 2 / tan(FOV_ANGLE / 2);
+
+	game_func01(instance, map, p);
 
 	/*
 	 * TODO - need to code free_map() to free the map here
 	 */
 
 	free(p);		/* frees the player */
-}
-
-/**
- *
- *
- */
-void draw_game(SDL_Instance instance, int **map, GamePlayer *p)
-{
-	paint_environment(instance, map, p);
 }
 
 /**

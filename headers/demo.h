@@ -7,19 +7,12 @@
 
 #define DEBUG 0
 #define SLEEP_TIME 5000
-#define SCALE_X 1
-#define SCALE_Y 1
-#define X_RES 320 * SCALE_X
-#define Y_RES 240 * SCALE_Y
-#define FOV_ANGLE 60
-#define FOV_ANGLE_HALF FOV_ANGLE / 2;
-#define BLOCK_UNITS SQRT_BLOCK_UNITS * SQRT_BLOCK_UNITS
-#define SQRT_BLOCK_UNITS 64
-#define SQRT_BLOCK_UNITS_HALF SQRT_BLOCK_UNITS / 2
-#define WALL_HEIGHT 64
+#define X_RES 320
+#define Y_RES 240
+#define FOV_ANGLE 60 * M_PI / 180
+#define BLOCK_UNITS 64
+#define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
-#define Y_CENTER SQRT_BLOCK_UNITS / 2
-#define FOV_RADIANS FOV_ANGLE * M_PI / 180
 
 typedef struct SDL_Instance
 {
@@ -32,6 +25,7 @@ typedef struct GamePlayer
   int x;			/* player x-position */
   int y;			/* player y-position */
   int theta; 			/* angle between 0 and 359 degrees */
+  double dpp;			/* distance to projection plane */
 } GamePlayer;
 
 int init_instance(SDL_Instance *);
@@ -100,5 +94,22 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 
 /*  */
 int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py);
+
+/* calc_rclen - calculate how far the ray cast travels until it meets a wall. */
+double calc_rclen(int **map, GamePlayer *p, int i);
+
+/*
+ * calc_pxpy - calculates player position in the center of the
+ * player's block. This is necessary because we are using finer resolution to
+ * position player inside the block itself.
+ *
+ */
+void calc_pxpy(GamePlayer *p, int *px, int *py);
+
+/* game_func01 - entry point for the game engine */
+void game_func01(SDL_Instance instance, int **map, GamePlayer *p);
+
+/* draws the game on the projection plane (monitor) */
+void game_func02(SDL_Instance instance, int **map, GamePlayer *p);
 
 #endif
