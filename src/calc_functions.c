@@ -17,7 +17,7 @@ double calc_rclen(int **map, GamePlayer *p, int i)
 	double theta = p->theta - FOV_ANGLE / 2;
 
 	/* inits */
-	calc_pxpy(&px, &py);
+	calc_pxpy(p, &px, &py);
 
 	rclen = py / cos(theta + beta);
 
@@ -25,7 +25,7 @@ double calc_rclen(int **map, GamePlayer *p, int i)
 	{
 		printf("---------------3--------------\n");
 		printf("player position on map: (%d, %d), absolute: (%d, %d), \
-p->theta (degrees): %d\n", p->x, p->y, px, py, p->theta * M_PI / 180);
+p->theta (degrees): %f\n", p->x, p->y, px, py, p->theta * M_PI / 180);
 		/* printf("cos((theta + beta) * 180 / M_PI): %f\n", */
 		/*        cos((theta + beta) * 180 / M_PI)); */
 		printf("theta + beta (degrees): %f, cos(theta + beta): %f, \
@@ -47,10 +47,10 @@ rclen: %f\n", (theta + beta) * 180 / M_PI, cos(theta + beta), rclen);
  *
  *
  */
-void calc_pxpy(int *px, int *py)
+void calc_pxpy(GamePlayer *p, int *px, int *py)
 {
-	px = (p->x + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
-	py = (p->y + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
+	*px = (p->x + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
+	*py = (p->y + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
 
 	if (DEBUG == 1)
 	{
