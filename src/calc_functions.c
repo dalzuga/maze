@@ -8,7 +8,7 @@
  *
  * Return: length of the ray-line.
  */
-double calc_rclen(int **map, GamePlayer *p, int i)
+double calc_rclen(int **map __attribute__ ((unused)), GamePlayer *p, int i)
 {
 	/* declarations + inits */
 	double rclen = -1;
