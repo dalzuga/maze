@@ -13,8 +13,8 @@ void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
 {
 	while(1)
 	{
-		sleep(1); 	/* one second */
-		/* usleep(30000); /\* 30ms *\/ */
+		/* sleep(1); 	/\* one second *\/ */
+		usleep(30000); /* 30ms */
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
 		if (poll_events() == 1)
