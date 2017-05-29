@@ -19,13 +19,13 @@ double calc_rclen(int **map, GamePlayer *p, int i)
 	/* inits */
 	calc_pxpy(&px, &py);
 
-	rclen = (*py) / cos(theta + beta);
+	rclen = py / cos(theta + beta);
 
 	if (DEBUG == 1)
 	{
 		printf("---------------3--------------\n");
 		printf("player position on map: (%d, %d), absolute: (%d, %d), \
-p->theta (degrees): %d\n", p->x, p->y, *px, *py, p->theta * M_PI / 180);
+p->theta (degrees): %d\n", p->x, p->y, px, py, p->theta * M_PI / 180);
 		/* printf("cos((theta + beta) * 180 / M_PI): %f\n", */
 		/*        cos((theta + beta) * 180 / M_PI)); */
 		printf("theta + beta (degrees): %f, cos(theta + beta): %f, \
