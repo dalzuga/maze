@@ -11,10 +11,8 @@
 #define Y_RES 240
 #define FOV_ANGLE 60 * M_PI / 180
 #define BLOCK_UNITS 64
-#define SQRT_BLOCK_UNITS_HALF SQRT_BLOCK_UNITS
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
-#define Y_CENTER SQRT_BLOCK_UNITS / 2
 
 typedef struct SDL_Instance
 {
@@ -96,5 +94,7 @@ double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 
 /*  */
 int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py);
+
+
 
 #endif
