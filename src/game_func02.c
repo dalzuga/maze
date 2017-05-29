@@ -19,7 +19,7 @@ void game_func02(SDL_Instance instance, int **map, GamePlayer *p)
 
 	for (i = 0; i < X_RES; i++)
 	{
-		rclen = calc_rclen(map, p);
+		rclen = calc_rclen(map, p, i);
 		col_height = WALL_HEIGHT * p->dpp / rclen;
 		top = Y_RES / 2 + col_height / 2;
 		bottom = Y_RES / 2 - col_height / 2;
