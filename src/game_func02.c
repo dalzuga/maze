@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * game_func02 - entry point for the game engine
+ * game_func02 - draws the game on the projection plane (monitor)
  *
  * @instance: SDL window and renderer instance
  * @map: the current map

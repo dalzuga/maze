@@ -34,15 +34,6 @@ void game_start(SDL_Instance instance)
 }
 
 /**
- *
- *
- */
-void draw_game(SDL_Instance instance, int **map, GamePlayer *p)
-{
-	paint_environment(instance, map, p);
-}
-
-/**
  * start_position - allocates a map and player. Both must be freed by the user
  * of this function.
  *
