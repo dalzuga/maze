@@ -19,23 +19,23 @@ double calc_rclen(int **map __attribute__ ((unused)), GamePlayer *p, int i)
 	/* inits */
 	calc_pxpy(p, &px, &py);
 
-	rclen = py / cos(theta + beta);
+	rclen = py / cos((theta + beta) * M_PI / 180);
 
 	if (DEBUG == 1)
 	{
 		printf("---------------3--------------\n");
 		printf("player position on map: (%d, %d), absolute: (%d, %d), \
-p->theta (degrees): %f\n", p->x, p->y, px, py, p->theta * M_PI / 180);
-		/* printf("cos((theta + beta) * 180 / M_PI): %f\n", */
-		/*        cos((theta + beta) * 180 / M_PI)); */
-		printf("theta + beta (degrees): %f, cos(theta + beta): %f, \
-rclen: %f\n", (theta + beta) * 180 / M_PI, cos(theta + beta), rclen);
-		printf("(beta - FOV_ANGLE) / 2 (degrees): %f\n", \
-		       (beta - FOV_ANGLE / 2) * 180 / M_PI);
+p->theta: %d\n", p->x, p->y, px, py, p->theta);
+
+		printf("cos((theta + beta) * M_PI / 180): %f\n",
+		       cos((theta + beta) * M_PI / 180));
+		printf("theta + beta: %f, cos(theta + beta): %f, rclen: %f\n",
+		       theta + beta, cos((theta + beta) * M_PI / 180), rclen);
+		printf("beta - FOV_ANGLE / 2: %f\n", beta - FOV_ANGLE / 2);
 	}
 
 	/* correct for spherical distortion */
-	rclen = rclen * cos(beta - FOV_ANGLE / 2);
+	rclen = rclen * cos((beta - FOV_ANGLE / 2) * M_PI / 180);
 
 	return (rclen);
 }
