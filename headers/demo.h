@@ -109,7 +109,7 @@ void calc_pxpy(GamePlayer *p, int *px, int *py);
 /* game_func01 - entry point for the game engine */
 void game_func01(SDL_Instance instance, int **map, GamePlayer *p);
 
-/* game_func02 - entry point for the game engine */
+/* draws the game on the projection plane (monitor) */
 void game_func02(SDL_Instance instance, int **map, GamePlayer *p);
 
 #endif
