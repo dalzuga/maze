@@ -29,7 +29,7 @@ int check_edge_cases(void)
 		return (1);
 	}
 
-	if (FOV_ANGLE <= 0 || SQRT_BLOCK_UNITS <= 0 || WALL_HEIGHT <= 0)
+	if (FOV_ANGLE <= 0 || BLOCK_UNITS <= 0 || WALL_HEIGHT <= 0)
 	{
 		printf("Wrong game parameters.\n");
 		return (1);
