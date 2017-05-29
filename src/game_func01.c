@@ -27,7 +27,7 @@ void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
 
 		SDL_RenderPresent(instance.renderer);
 
-		(p->theta) += 1;
+		(p->theta) += 1 * M_PI / 180;
 		p->theta = p->theta % 360;
 	}
 

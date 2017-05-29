@@ -5,17 +5,39 @@
  *
  * @map: address of map
  * @p: address of player
+ *
+ * Return: length of the ray-line.
  */
 double calc_rclen(int **map, GamePlayer *p)
 {
-	/* declarations */
+	/* declarations + inits */
 	double rclen = -1;
 	int px = -1, py = -1;
+	double beta = (double) FOV_ANGLE * i / (double) X_RES;
+	double theta = p->theta - FOV_ANGLE / 2;
 
 	/* inits */
 	calc_pxpy(&px, &py);
 
-	
+	rclen = (*py) / cos(theta + beta);
+
+	if (DEBUG == 1)
+	{
+		printf("---------------3--------------\n");
+		printf("player position on map: (%d, %d), absolute: (%d, %d), \
+p->theta (degrees): %d\n", p->x, p->y, *px, *py, p->theta * M_PI / 180);
+		/* printf("cos((theta + beta) * 180 / M_PI): %f\n", */
+		/*        cos((theta + beta) * 180 / M_PI)); */
+		printf("theta + beta (degrees): %f, cos(theta + beta): %f, \
+rclen: %f\n", (theta + beta) * 180 / M_PI, cos(theta + beta), rclen);
+		printf("(beta - FOV_ANGLE) / 2 (degrees): %f\n", \
+		       (beta - FOV_ANGLE / 2) * 180 / M_PI);
+	}
+
+	/* correct for spherical distortion */
+	rclen = rclen * cos(beta - FOV_ANGLE / 2);
+
+	return (rclen);
 }
 
 /**
