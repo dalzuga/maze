@@ -116,4 +116,10 @@ void game_func02(SDL_Instance instance, int **map, GamePlayer *p);
 /* game_func03 - sets the wall color */
 void game_func03(SDL_Instance instance);
 
+/* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
+double calc_dvi(int **map, GamePlayer *p, double beta, int *px, int *py);
+
+/* calc_dhi - finds the closest horizontal wall (y == C) hit by the ray */
+double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py);
+
 #endif
