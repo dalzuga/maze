@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * calc_dhi - finds the closest horizontal wall (y == C) hit by the ray
+ * calc_dhi - finds the closest vertical wall (x == C) hit by the ray
  *
  */
 double calc_dhi(int **map, GamePlayer *p, double beta)
@@ -14,13 +14,13 @@ double calc_dhi(int **map, GamePlayer *p, double beta)
 	/* inits */
 	theta = p->theta - FOV_ANGLE / 2;
 	alpha = dist = 0;
-	piy = Ax = pix = Ay = 0;
+	pix = Ax = piy = Ay = 0;
 
 	if (DEBUG == 2)
 	{
-		printf("---------------2--2--------------\n");
+		printf("---------------2--1--------------\n");
 		printf("%p\n", (void *) map);
-		/* printf("%p\n", (void *) p->px); */
+		/* printf("%p\n", (void *) p->py); */
 	}
 
 	if ((theta + beta) < 0)
@@ -30,20 +30,16 @@ double calc_dhi(int **map, GamePlayer *p, double beta)
 
 	alpha = (90 - ( (double) theta + beta ));
 
-	piy = get_piy(map, p);
-	Ay = BLOCK_UNITS;
+	pix = get_pix(map, p);
+	Ax = BLOCK_UNITS;
 
-	/* calculate pix and Ax */
-	pix = piy / tan(alpha * M_PI / 180);
-	Ax = Ay / tan(alpha * M_PI / 180);
+	/* calculate piy and Ay */
+	piy = pix * tan(alpha * M_PI / 180);
+	Ay = Ax * tan(alpha * M_PI / 180);
 
-	/* /\* delete *\/ */
-	/* calc_pixax(map, p, i, alpha, piy); */
-	/* /\* end delete *\/ */
+	dist = (pix + Ax) / cos(alpha * M_PI / 180);
 
-	dist = (piy + Ay) / sin(alpha * M_PI / 180);
-
-	return fabs(dist);
+	return (fabs(dist));
 }
 
 /**
