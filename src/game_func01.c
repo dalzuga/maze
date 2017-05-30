@@ -13,8 +13,14 @@ void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
 {
 	while(1)
 	{
-		/* sleep(1); 	/\* one second *\/ */
-		usleep(30000); /* 30ms */
+		if (DEBUG == 1)
+		{
+			sleep(1); /* one second */
+		}
+		else
+		{
+			usleep(30000); /* 30ms */
+		}
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
 		if (poll_events() == 1)
@@ -27,7 +33,7 @@ void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
 
 		SDL_RenderPresent(instance.renderer);
 
-		(p->theta) += 1 * M_PI / 180;
+		p->theta += ANGLE_STEP;
 		p->theta = p->theta % 360;
 	}
 

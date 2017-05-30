@@ -31,9 +31,7 @@ void game_func02(SDL_Instance instance, int **map, GamePlayer *p)
 			       col_height, top, bottom);
 			printf("i: %d, X_RES: %d\n", i, X_RES);
 			printf("i / X_RES: %f\n", (double) i / X_RES);
-			printf("FOV_ANGLE (radians): %f\n", FOV_ANGLE);
-			printf("FOV_ANGLE (degrees): %f\n",
-			       FOV_ANGLE * 180 / M_PI);
+			printf("FOV_ANGLE: %d\n", FOV_ANGLE);
 			printf("------------------------------\n");
 			if (poll_events() == 1)
 			{
@@ -42,6 +40,7 @@ void game_func02(SDL_Instance instance, int **map, GamePlayer *p)
 			usleep(SLEEP_TIME);
 		}
 
+		game_func03(instance);
 		SDL_RenderDrawLine(instance.renderer, i, top, i, bottom);
 
 		if (DEBUG == 1)

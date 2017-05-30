@@ -9,10 +9,11 @@
 #define SLEEP_TIME 5000
 #define X_RES 320
 #define Y_RES 240
-#define FOV_ANGLE 60 * M_PI / 180
+#define FOV_ANGLE 60
 #define BLOCK_UNITS 64
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
+#define ANGLE_STEP 1
 
 typedef struct SDL_Instance
 {
@@ -111,5 +112,8 @@ void game_func01(SDL_Instance instance, int **map, GamePlayer *p);
 
 /* draws the game on the projection plane (monitor) */
 void game_func02(SDL_Instance instance, int **map, GamePlayer *p);
+
+/* game_func03 - sets the wall color */
+void game_func03(SDL_Instance instance);
 
 #endif
