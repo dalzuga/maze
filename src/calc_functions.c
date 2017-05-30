@@ -11,7 +11,7 @@
 double calc_rclen(int **map __attribute__ ((unused)), GamePlayer *p, int i)
 {
 	/* declarations + inits */
-	double rclen = -1;
+	double rclen = -1, dvi = -1, dhi = -1;
 	int px = -1, py = -1;
 	double beta = (double) FOV_ANGLE * i / (double) X_RES;
 	double theta = p->theta - FOV_ANGLE / 2;
@@ -19,7 +19,10 @@ double calc_rclen(int **map __attribute__ ((unused)), GamePlayer *p, int i)
 	/* inits */
 	calc_pxpy(p, &px, &py);
 
-	rclen = py / cos((theta + beta) * M_PI / 180);
+	dvi = calc_dvi(map, p, beta, &px, &py);
+	dhi = calc_dhi(map, p, beta, &px, &py);
+
+	rclen = fmin(dvi, dhi);
 
 	if (DEBUG == 1)
 	{

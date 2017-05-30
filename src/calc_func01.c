@@ -4,8 +4,7 @@
  * calc_dvi - finds the closest vertical wall (x == C) hit by the ray
  *
  */
-double calc_dvi(int **map, GamePlayer *p, double beta, int *px,
-			   int *py)
+double calc_dvi(int **map, GamePlayer *p, double beta, int *px, int *py)
 {
 	/* declarations */
 	int theta;
@@ -32,7 +31,7 @@ double calc_dvi(int **map, GamePlayer *p, double beta, int *px,
 	alpha = (90 - ( (double) theta + beta ));
 
 	pix = get_pix(map, p, px);
-	Ax = SQRT_BLOCK_UNITS;
+	Ax = BLOCK_UNITS;
 
 	/* calculate piy and Ay */
 	piy = pix * tan(alpha * M_PI / 180);
@@ -63,7 +62,7 @@ int get_pix(int **map __attribute__((unused)), GamePlayer *p, int *px)
 	edge_x = 0;
 
 	/* get x-coordinate of right edge of block */
-	edge_x = p->y + 1 * SQRT_BLOCK_UNITS;
+	edge_x = p->y + 1 * BLOCK_UNITS;
 
 	if (DEBUG == 1)
 	{
@@ -79,8 +78,7 @@ int get_pix(int **map __attribute__((unused)), GamePlayer *p, int *px)
  * calc_dhi - finds the closest horizontal wall (y == C) hit by the ray
  *
  */
-double calc_dhi(int **map, GamePlayer *p, double beta, int *px,
-			     int *py)
+double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py)
 {
 	/* declarations */
 	int theta;
@@ -107,7 +105,7 @@ double calc_dhi(int **map, GamePlayer *p, double beta, int *px,
 	alpha = (90 - ( (double) theta + beta ));
 
 	piy = get_piy(map, p, py);
-	Ay = SQRT_BLOCK_UNITS;
+	Ay = BLOCK_UNITS;
 
 	/* calculate piy and Ay */
 	pix = piy / tan(alpha * M_PI / 180);
@@ -138,7 +136,7 @@ int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py)
 	edge_y = 0;
 
 	/* get x-coordinate of right edge of block */
-	edge_y = p->x + 1 * SQRT_BLOCK_UNITS;
+	edge_y = p->x + 1 * BLOCK_UNITS;
 
 	if (DEBUG == 1)
 	{
