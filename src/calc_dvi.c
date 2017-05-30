@@ -4,7 +4,7 @@
  * calc_dvi - finds the closest vertical wall (x == C) hit by the ray
  *
  */
-double calc_dvi(int **map, GamePlayer *p, double beta, int *px, int *py)
+double calc_dvi(int **map, GamePlayer *p, double beta)
 {
 	/* declarations */
 	int theta;
@@ -20,7 +20,7 @@ double calc_dvi(int **map, GamePlayer *p, double beta, int *px, int *py)
 	{
 		printf("---------------2--1--------------\n");
 		printf("%p\n", (void *) map);
-		printf("%p\n", (void *) py);
+		/* printf("%p\n", (void *) p->py); */
 	}
 
 	if ((theta + beta) < 0)
@@ -30,7 +30,7 @@ double calc_dvi(int **map, GamePlayer *p, double beta, int *px, int *py)
 
 	alpha = (90 - ( (double) theta + beta ));
 
-	pix = get_pix(map, p, px);
+	pix = get_pix(map, p);
 	Ax = BLOCK_UNITS;
 
 	/* calculate piy and Ay */
@@ -46,7 +46,7 @@ double calc_dvi(int **map, GamePlayer *p, double beta, int *px, int *py)
  *
  *
  */
-int get_pix(int **map __attribute__((unused)), GamePlayer *p, int *px)
+int get_pix(int **map __attribute__((unused)), GamePlayer *p)
 {
 	int edge_x;
 
@@ -62,5 +62,5 @@ int get_pix(int **map __attribute__((unused)), GamePlayer *p, int *px)
 	}
 
 	/* return the distance from player to right edge of block */
-	return (*px - edge_x);
+	return (p->px - edge_x);
 }

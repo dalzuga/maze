@@ -27,6 +27,8 @@ typedef struct GamePlayer
   int y;			/* player y-position */
   int theta; 			/* angle between 0 and 359 degrees */
   double dpp;			/* distance to projection plane */
+  int px;
+  int py;
 } GamePlayer;
 
 int init_instance(SDL_Instance *);
@@ -87,14 +89,14 @@ double vertical_intersects(int **map, GamePlayer *p, double beta, int *px,
 			   int *py);
 
 /*  */
-int get_pix(int **map, GamePlayer *p, int *px);
+int get_pix(int **map, GamePlayer *p);
 
 /* horizontal_intersects - finds the closest horizontal wall hit by the ray */
 double horizontal_intersects(int **map, GamePlayer *p, double beta, int *px,
 			     int *py);
 
 /*  */
-int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py);
+int get_piy(int **map __attribute__((unused)), GamePlayer *p);
 
 /* calc_rclen - calculate how far the ray cast travels until it meets a wall. */
 double calc_rclen(int **map, GamePlayer *p, int i);
@@ -105,7 +107,7 @@ double calc_rclen(int **map, GamePlayer *p, int i);
  * position player inside the block itself.
  *
  */
-void calc_pxpy(GamePlayer *p, int *px, int *py);
+void calc_pxpy(GamePlayer *p);
 
 /* game_func01 - entry point for the game engine */
 void game_func01(SDL_Instance instance, int **map, GamePlayer *p);
@@ -119,10 +121,16 @@ void game_func03(SDL_Instance instance);
 /* calc_func01 - calculate how far the ray cast travels until it meets a wall */
 double calc_func01(int **map __attribute__ ((unused)), GamePlayer *p, int i);
 
+/* calc_func02 - calculate how far the ray cast travels until it meets a wall */
+double calc_func02(int **map __attribute__ ((unused)), GamePlayer *p, int i);
+
 /* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
-double calc_dvi(int **map, GamePlayer *p, double beta, int *px, int *py);
+double calc_dvi(int **map, GamePlayer *p, double beta);
 
 /* calc_dhi - finds the closest horizontal wall (y == C) hit by the ray */
-double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py);
+double calc_dhi(int **map, GamePlayer *p, double beta);
+
+/* calc_rcwrapper - wrapper to calculate intersects */
+double calc_intwrapper(int **map, GamePlayer *p, int i);
 
 #endif

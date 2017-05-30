@@ -4,12 +4,12 @@
  * calc_dhi - finds the closest horizontal wall (y == C) hit by the ray
  *
  */
-double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py)
+double calc_dhi(int **map, GamePlayer *p, double beta)
 {
 	/* declarations */
 	int theta;
 	double alpha, dist;
-	int pix, Ax, piy, Ay;
+	int pix __attribute__((unused)), Ax, piy, Ay;
 
 	/* inits */
 	theta = p->theta - FOV_ANGLE / 2;
@@ -20,7 +20,7 @@ double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py)
 	{
 		printf("---------------2--2--------------\n");
 		printf("%p\n", (void *) map);
-		printf("%p\n", (void *) px);
+		/* printf("%p\n", (void *) p->px); */
 	}
 
 	if ((theta + beta) < 0)
@@ -30,23 +30,18 @@ double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py)
 
 	alpha = (90 - ( (double) theta + beta ));
 
-	piy = get_piy(map, p, py);
+	piy = get_piy(map, p);
 	Ay = BLOCK_UNITS;
 
 	/* calculate pix and Ax */
 	pix = piy / tan(alpha * M_PI / 180);
 	Ax = Ay / tan(alpha * M_PI / 180);
 
-	dist = (piy + Ay) / sin(alpha * M_PI / 180);
+	/* /\* delete *\/ */
+	/* calc_pixax(map, p, i, alpha, piy); */
+	/* /\* end delete *\/ */
 
-	if (DEBUG == 1)
-	{
-		printf("---------------9--------------\n");
-		printf("alpha (degrees): %f\n", alpha);
-		printf("pix: %d, piy: %d\n", pix, piy);
-		printf("Ax: %d, Ay: %d\n", Ax, Ay);
-		printf("Distance to horizontal axis: %f\n", dist);
-	}
+	dist = (piy + Ay) / sin(alpha * M_PI / 180);
 
 	return fabs(dist);
 }
@@ -55,7 +50,7 @@ double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py)
  *
  *
  */
-int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py)
+int get_piy(int **map __attribute__((unused)), GamePlayer *p)
 {
 	int edge_y;
 
@@ -71,5 +66,5 @@ int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py)
 	}
 
 	/* return the distance from player to right edge of block */
-	return (*py - edge_y);
+	return (p->py - edge_y);
 }
