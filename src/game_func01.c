@@ -33,7 +33,7 @@ void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
 
 		SDL_RenderPresent(instance.renderer);
 
-		p->theta += 5;
+		p->theta += ANGLE_STEP;
 		p->theta = p->theta % 360;
 	}
 
