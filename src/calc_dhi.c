@@ -4,31 +4,15 @@
  * calc_dhi - finds the closest vertical wall (x == C) hit by the ray
  *
  */
-double calc_dhi(int **map, GamePlayer *p, double beta)
+double calc_dhi(int **map, GamePlayer *p, double alpha)
 {
 	/* declarations */
-	int theta;
-	double alpha, dist;
+	double dist;
 	int pix, Ax, piy, Ay;
 
 	/* inits */
-	theta = p->theta - FOV_ANGLE / 2;
-	alpha = dist = 0;
+	dist = 0;
 	pix = Ax = piy = Ay = 0;
-
-	if (DEBUG == 2)
-	{
-		printf("---------------2--1--------------\n");
-		printf("%p\n", (void *) map);
-		/* printf("%p\n", (void *) p->py); */
-	}
-
-	if ((theta + beta) < 0)
-	{
-		alpha = 90 + ((double) theta + beta);
-	}
-
-	alpha = (90 - ( (double) theta + beta ));
 
 	pix = get_pix(map, p);
 	Ax = BLOCK_UNITS;

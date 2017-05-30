@@ -125,12 +125,15 @@ double calc_func01(int **map __attribute__ ((unused)), GamePlayer *p, int i);
 double calc_func02(int **map __attribute__ ((unused)), GamePlayer *p, int i);
 
 /* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
-double calc_dvi(int **map, GamePlayer *p, double beta);
+double calc_dvi(int **map, GamePlayer *p, double alpha);
 
 /* calc_dhi - finds the closest horizontal wall (y == C) hit by the ray */
-double calc_dhi(int **map, GamePlayer *p, double beta);
+double calc_dhi(int **map, GamePlayer *p, double alpha);
 
 /* calc_rcwrapper - wrapper to calculate intersects */
 double calc_intwrapper(int **map, GamePlayer *p, int i);
+
+/* calc_alpha - calculates angle alpha */
+double calc_alpha(int **map, GamePlayer *p, int i);
 
 #endif
