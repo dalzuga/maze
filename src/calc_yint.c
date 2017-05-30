@@ -33,7 +33,7 @@ double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py)
 	piy = get_piy(map, p, py);
 	Ay = BLOCK_UNITS;
 
-	/* calculate piy and Ay */
+	/* calculate pix and Ax */
 	pix = piy / tan(alpha * M_PI / 180);
 	Ax = Ay / tan(alpha * M_PI / 180);
 
