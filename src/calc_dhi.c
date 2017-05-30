@@ -9,12 +9,12 @@ double calc_dhi(int **map, GamePlayer *p, double beta)
 	/* declarations */
 	int theta;
 	double alpha, dist;
-	int pix __attribute__((unused)), Ax, piy, Ay;
+	int pix, Ax, piy, Ay;
 
 	/* inits */
 	theta = p->theta - FOV_ANGLE / 2;
 	alpha = dist = 0;
-	pix = Ax = piy = Ay = 0;
+	piy = Ax = pix = Ay = 0;
 
 	if (DEBUG == 2)
 	{
