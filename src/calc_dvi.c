@@ -35,8 +35,6 @@ double calc_vblock(int **map, GamePlayer *p, double alpha)
 	pix = piy / tan(alpha * M_PI / 180);
 	Ax = Ay / tan(alpha * M_PI / 180);
 
-	calc_vblock(map, p, alpha);
-
 	dist = (piy + 2 * Ay) / sin(alpha * M_PI / 180);
 
 	return (fabs(dist));
