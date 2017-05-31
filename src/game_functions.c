@@ -44,7 +44,7 @@ void game_start(SDL_Instance instance)
  */
 void start_position(GameMap **map, GamePlayer **p)
 {
-	*map = make_map(4, 4);
+	*map = make_map(MAP_ROWS, MAP_COLS);
 	(*map)->array[1][1] = 0;
 	(*map)->array[1][2] = 0;
 	(*map)->array[2][2] = 0;

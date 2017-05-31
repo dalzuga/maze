@@ -40,5 +40,11 @@ int check_edge_cases(void)
 		return (1);
 	}
 
+	if (MAP_ROWS < 3 || MAP_COLS < 3)
+	{
+		printf("Wrong game parameters.\n");
+		return (1);
+	}
+
 	return (0);
 }
