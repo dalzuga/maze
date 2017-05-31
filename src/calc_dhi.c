@@ -51,7 +51,7 @@ int get_piy(GameMap *map __attribute__((unused)), GamePlayer *p)
 
 	edge_y = 0;
 
-	/* get x-coordinate of right edge of block */
+	/* get y-coordinate of top edge of block */
 	edge_y = (p->x + 1) * BLOCK_UNITS;
 
 	if (DEBUG == 1)
