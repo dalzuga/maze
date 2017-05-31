@@ -59,6 +59,7 @@ void start_position(int ***map, GamePlayer **p)
 	(*p)->x = 1;
 	(*p)->y = 1;
 	(*p)->theta = 0;
+	calc_pxpy(*p);
 }
 
 int poll_events(void)

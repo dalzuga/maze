@@ -15,7 +15,6 @@ double calc_intwrapper(int **map, GamePlayer *p, int i)
 	double dvi = -1, dhi = -1, alpha = -1;
 
 	/* inits */
-	calc_pxpy(p);
 	alpha = calc_alpha(map, p, i);
 
 	dvi = calc_dvi(map, p, alpha);
@@ -46,24 +45,4 @@ double calc_alpha(int **map, GamePlayer *p, int i)
 	}
 
 	return (alpha);
-}
-
-/**
- * calc_pxpy - calculates player position in the center of the player's
- * block. This is necessary because we are using finer resolution to position
- * player inside the block itself.
- *
- *
- */
-void calc_pxpy(GamePlayer *p)
-{
-	p->px = (p->x + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
-	p->py = (p->y + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
-
-	if (DEBUG == 1)
-	{
-		printf("---------------2--------------\n");
-		printf("p->x: %d, px: %d, ", p->x, p->px);
-		printf("p->y: %d, py: %d\n", p->y, p->py);
-	}
 }
