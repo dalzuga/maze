@@ -47,33 +47,3 @@ double calc_alpha(int **map, GamePlayer *p, int i)
 
 	return (alpha);
 }
-
-/**
- * calc_dhi - finds the closest vertical wall (x == C) hit by the ray
- *
- */
-double calc_dhi(int **map, GamePlayer *p, double beta)
-{
-	/* declarations */
-	int theta;
-	double alpha, dist;
-	int pix, Ax, piy, Ay;
-
-	/* inits */
-	theta = p->theta - FOV_ANGLE / 2;
-	alpha = dist = 0;
-	pix = Ax = piy = Ay = 0;
-
-	alpha = (90 - ( (double) theta + beta ));
-
-	pix = get_pix(map, p);
-	Ax = BLOCK_UNITS;
-
-	/* calculate piy and Ay */
-	piy = pix * tan(alpha * M_PI / 180);
-	Ay = Ax * tan(alpha * M_PI / 180);
-
-	dist = (pix + Ax) / cos(alpha * M_PI / 180);
-
-	return (fabs(dist));
-}

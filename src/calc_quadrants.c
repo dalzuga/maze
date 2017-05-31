@@ -7,29 +7,26 @@
 double calc_quadrants(double beta, double theta)
 {
 	/* declaration */
-	double tplusb = calc_quad01(beta, theta);
+	double tplusb = calc_quad01(beta + theta);
 
 	if (tplusb > 0 && tplusb < 90) /* quadrant I */
 	{
-		return (tplusb);
+		return (90 - tplusb);
 	}
 	else if (tplusb > 90 && tplusb < 180) /* quadrant II */
 	{
-
+		return (tplusb - 90);
 	}
 	else if (tplusb < -90) /* quadrant III */
 	{
-
+		return ((-1) * (tplusb + 90));
 	}
 	else if (tplusb < 0 && tplusb > -90) /* quadrant IV */
 	{
-
-	}
-	else			/* we're on an axis */
-	{
-		return (0);
+		return (tplusb + 90);
 	}
 
+	return (0); 		/* alpha is 0 if we're on an axis */
 }
 
 /**
