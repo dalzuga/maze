@@ -139,4 +139,7 @@ double calc_alpha(int **map, GamePlayer *p, int i);
 /* calc_quadrants - calculates alpha based on quadrant */
 double calc_quadrants(double beta, double theta);
 
+/* calc_quad01 - helper for calc_quadrants() */
+double calc_quad01(double tplusb);
+
 #endif
