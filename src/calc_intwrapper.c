@@ -33,7 +33,7 @@ double calc_alpha(int **map, GamePlayer *p, int i)
 	double alpha, beta, theta;
 
 	beta = (double) FOV_ANGLE * i / (double) X_RES;
-	theta = (double) p->theta;
+	theta = (double) p->theta - FOV_ANGLE / 2;
 
 	alpha = calc_quadrants(beta, theta);
 
