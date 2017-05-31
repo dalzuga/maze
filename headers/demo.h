@@ -143,4 +143,10 @@ double calc_quadrants(double beta, double theta);
 /* calc_quad01 - special modding function, guarantees range (-180, 180] */
 double calc_quad01(double tplusb);
 
+/* calc_vblock - finds the closest vertical wall (y == C) hit by the ray */
+double calc_vblock(int **map, GamePlayer *p, double alpha);
+
+/* calc_hblock - finds the closest horizontal wall (y == C) hit by the ray */
+double calc_hblock(int **map, GamePlayer *p, double alpha);
+
 #endif

@@ -8,6 +8,20 @@ double calc_dvi(int **map, GamePlayer *p, double alpha)
 {
 	/* declarations */
 	double dist;
+
+	dist = calc_vblock(map, p, alpha);
+
+	return fabs(dist);
+}
+
+/**
+ * calc_vblock - finds the closest vertical wall (y == C) hit by the ray
+ *
+ */
+double calc_vblock(int **map, GamePlayer *p, double alpha)
+{
+	/* declarations */
+	double dist;
 	int pix, Ax, piy, Ay;
 
 	/* inits */
@@ -21,9 +35,11 @@ double calc_dvi(int **map, GamePlayer *p, double alpha)
 	pix = piy / tan(alpha * M_PI / 180);
 	Ax = Ay / tan(alpha * M_PI / 180);
 
+	calc_vblock(map, p, alpha);
+
 	dist = (piy + 2 * Ay) / sin(alpha * M_PI / 180);
 
-	return fabs(dist);
+	return (fabs(dist));
 }
 
 /**

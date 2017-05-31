@@ -8,6 +8,20 @@ double calc_dhi(int **map, GamePlayer *p, double alpha)
 {
 	/* declarations */
 	double dist;
+
+	dist = calc_hblock(map, p, alpha);
+
+	return (fabs(dist));
+}
+
+/**
+ * calc_hblock - finds the closest horizontal wall (y == C) hit by the ray
+ *
+ */
+double calc_hblock(int **map, GamePlayer *p, double alpha)
+{
+	/* declarations */
+	double dist;
 	int pix, Ax, piy, Ay;
 
 	/* inits */
@@ -21,10 +35,13 @@ double calc_dhi(int **map, GamePlayer *p, double alpha)
 	piy = pix * tan(alpha * M_PI / 180);
 	Ay = Ax * tan(alpha * M_PI / 180);
 
+	calc_hblock(map, p, alpha);
+
 	dist = (pix + 2 * Ax) / cos(alpha * M_PI / 180);
 
 	return (fabs(dist));
 }
+
 
 /**
  *
