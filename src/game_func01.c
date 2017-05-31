@@ -9,7 +9,7 @@
  *
  * Return: Nothing.
  */
-void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
+void game_func01(SDL_Instance instance, GameMap *map, GamePlayer *p)
 {
 	while(1)
 	{

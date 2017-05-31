@@ -4,7 +4,7 @@
  * calc_dvi - finds the closest vertical wall (y == C) hit by the ray
  *
  */
-double calc_dvi(int **map, GamePlayer *p, double alpha)
+double calc_dvi(GameMap *map, GamePlayer *p, double alpha)
 {
 	/* declarations */
 	double dist;
@@ -18,7 +18,7 @@ double calc_dvi(int **map, GamePlayer *p, double alpha)
  * calc_vblock - finds the closest vertical wall (y == C) hit by the ray
  *
  */
-double calc_vblock(int **map, GamePlayer *p, double alpha)
+double calc_vblock(GameMap *map, GamePlayer *p, double alpha)
 {
 	/* declarations */
 	double dist;
@@ -44,7 +44,7 @@ double calc_vblock(int **map, GamePlayer *p, double alpha)
  *
  *
  */
-int get_pix(int **map __attribute__((unused)), GamePlayer *p)
+int get_pix(GameMap *map __attribute__((unused)), GamePlayer *p)
 {
 	int edge_x;
 

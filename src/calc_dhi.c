@@ -4,7 +4,7 @@
  * calc_dhi - finds the closest horizontal wall (x == C) hit by the ray
  *
  */
-double calc_dhi(int **map, GamePlayer *p, double alpha)
+double calc_dhi(GameMap *map, GamePlayer *p, double alpha)
 {
 	/* declarations */
 	double dist;
@@ -18,7 +18,7 @@ double calc_dhi(int **map, GamePlayer *p, double alpha)
  * calc_hblock - finds the closest horizontal wall (y == C) hit by the ray
  *
  */
-double calc_hblock(int **map, GamePlayer *p, double alpha)
+double calc_hblock(GameMap *map, GamePlayer *p, double alpha)
 {
 	/* declarations */
 	double dist;
@@ -45,7 +45,7 @@ double calc_hblock(int **map, GamePlayer *p, double alpha)
  *
  *
  */
-int get_piy(int **map __attribute__((unused)), GamePlayer *p)
+int get_piy(GameMap *map __attribute__((unused)), GamePlayer *p)
 {
 	int edge_y;
 

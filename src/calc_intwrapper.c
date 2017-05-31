@@ -9,7 +9,7 @@
  *
  * Return: length of the ray-line.
  */
-double calc_intwrapper(int **map, GamePlayer *p, int i)
+double calc_intwrapper(GameMap *map, GamePlayer *p, int i)
 {
 	/* declarations + inits */
 	double dvi = -1, dhi = -1, alpha = -1;
@@ -27,7 +27,7 @@ double calc_intwrapper(int **map, GamePlayer *p, int i)
  * calc_alpha - calculates angle alpha
  *
  */
-double calc_alpha(int **map, GamePlayer *p, int i)
+double calc_alpha(GameMap *map, GamePlayer *p, int i)
 {
 	double alpha, beta, theta;
 

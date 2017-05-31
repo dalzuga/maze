@@ -1,49 +1,16 @@
 #include "../headers/demo.h"
 
 /**
- * draw_map - makes a map
- *
- * Return: Nothing.
- */
-void draw_map()
-{
-	/* declarations */
-	int **map;
-	int rows, cols;
-	/* end declarations */
-
-	/* inits */
-	map = NULL;
-	rows = 4;
-	cols = 4;
-	/* end inits */
-
-	map = make_map(rows, cols);
-	if (map == NULL)
-	{
-		return;
-	}
-
-	map[1][1] = 1;
-	map[1][2] = 1;
-	map[2][2] = 1;
-
-	_print_map(map, rows, cols);
-
-	free(map);
-}
-
-/**
  * make_map - creates a map on the heap
  * @rows - number of rows
  * @cols - number of columns
  *
  * Return: pointer to map. On error, returns NULL.
  */
-int **make_map(int rows, int cols)
+GameMap *make_map(int rows, int cols)
 {
 	/* declarations */
-	int **map;
+	GameMap *map;
 	int i;
 	/* end declarations */
 
@@ -51,27 +18,37 @@ int **make_map(int rows, int cols)
 	map = NULL;
 	/* end inits */
 
-	map = malloc(sizeof(int *) * rows);
+	map = malloc(sizeof(GameMap));
 	if (map == NULL)
 	{
 		perror("malloc");
-		return NULL;
+		return (NULL);
+	}
+
+	map->rows = rows;
+	map->cols = cols;
+
+	map->array = malloc(sizeof(int *) * rows);
+	if (map->array == NULL)
+	{
+		perror("malloc");
+		return (NULL);
 	}
 
 	for (i = 0; i < rows; i++)
 	{
-		map[i] = malloc(sizeof(int) * cols);
-		if (map[i] == NULL)
+		map->array[i] = malloc(sizeof(int) * cols);
+		if (map->array[i] == NULL)
 		{
 			perror("malloc");
-			return NULL;
+			return (NULL);
 		}
 	}
 
 	/* initialize map */
-	init_map(map, rows, cols);
+	init_map(map);
 
-	return map;
+	return (map);
 }
 
 /**
@@ -84,26 +61,26 @@ int **make_map(int rows, int cols)
  *
  * Return: Nothing.
  */
-void init_map(int **map, int rows, int cols)
+void init_map(GameMap *map)
 {
 	int i;
 	int j;
 
-	for (i = 0; i < rows; i++)
+	for (i = 0; i < map->rows; i++)
 	{
-		for (j = 0; j < cols; j++)
+		for (j = 0; j < map->cols; j++)
 		{
 			/* default to 0 */
-			map[i][j] = 0;
+			map->array[i][j] = 0;
 			/* border - left || right */
-			if (j == 0 || j == cols - 1)
+			if (j == 0 || j == map->cols - 1)
 			{
-				map[i][j] = 1;
+				map->array[i][j] = 1;
 			}
 			/* border - top || bottom */
-			if (i == 0 || i == rows - 1)
+			if (i == 0 || i == map->rows - 1)
 			{
-				map[i][j] = 1;
+				map->array[i][j] = 1;
 			}
 		}
 	}
@@ -117,24 +94,24 @@ void init_map(int **map, int rows, int cols)
  *
  * Return: Nothing.
  */
-void _print_map(int **map, int rows, int cols)
+void _print_map(GameMap *map)
 {
 	if (DEBUG)
 	{
-		print_map(map, rows, cols);
+		print_map(map->array, map->rows, map->cols);
 	}
 }
 
 
 /**
  * print_map - prints a map
- * @map - map to print
+ * @array - map array to print
  * @rows - number of rows
  * @cols - number of columns
  *
  * Return: Nothing.
  */
-void print_map(int **map, int rows, int cols)
+void print_map(int **array, int rows, int cols)
 {
 	int i;
 	int j;
@@ -143,7 +120,7 @@ void print_map(int **map, int rows, int cols)
 	{
 		for (j = 0; j < cols; j++)
 		{
-			printf("%d", map[i][j]);
+			printf("%d", array[i][j]);
 		}
 		printf("\n");
 	}
