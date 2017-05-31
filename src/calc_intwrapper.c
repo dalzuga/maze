@@ -21,19 +21,10 @@ double calc_intwrapper(GameMap *map, GamePlayer *p, int i)
 
 	if (tplusb == 0)
 	{
-		return (get_piy(map, p));
-	}
-	if (tplusb == 90)
-	{
-		return (get_pix(map, p));
-	}
-	if (tplusb == 180)
-	{
-		return (get_piy(map, p));
-	}
-	if (tplusb == -90)
-	{
-		return (get_pix(map, p));
+		/* 8*64-32 */
+		/* sleep(1); */
+		/* printf("\t\t%d---\n", map->cols); */
+		return ((map->cols - 2) * BLOCK_UNITS + get_piy(map, p));
 	}
 
 	/* inits */
