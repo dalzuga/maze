@@ -13,6 +13,28 @@ double calc_intwrapper(GameMap *map, GamePlayer *p, int i)
 {
 	/* declarations + inits */
 	double dvi = -1, dhi = -1, alpha = -1;
+	double beta, theta, tplusb;
+
+	beta = (double) FOV_ANGLE * i / (double) X_RES;
+	theta = (double) p->theta - FOV_ANGLE / 2;
+	tplusb = calc_quad01(beta + theta);
+
+	if (tplusb == 0)
+	{
+		return (get_piy(map, p));
+	}
+	if (tplusb == 90)
+	{
+		return (get_pix(map, p));
+	}
+	if (tplusb == 180)
+	{
+		return (get_piy(map, p));
+	}
+	if (tplusb == -90)
+	{
+		return (get_pix(map, p));
+	}
 
 	/* inits */
 	alpha = calc_alpha(map, p, i);
