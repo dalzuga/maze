@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * calc_dhi - finds the closest vertical wall (x == C) hit by the ray
+ * calc_dhi - finds the closest horizontal wall (x == C) hit by the ray
  *
  */
 double calc_dhi(int **map, GamePlayer *p, double alpha)
@@ -21,7 +21,7 @@ double calc_dhi(int **map, GamePlayer *p, double alpha)
 	piy = pix * tan(alpha * M_PI / 180);
 	Ay = Ax * tan(alpha * M_PI / 180);
 
-	dist = (pix + Ax) / cos(alpha * M_PI / 180);
+	dist = (pix + 2 * Ax) / cos(alpha * M_PI / 180);
 
 	return (fabs(dist));
 }
@@ -37,7 +37,7 @@ int get_piy(int **map __attribute__((unused)), GamePlayer *p)
 	edge_y = 0;
 
 	/* get x-coordinate of right edge of block */
-	edge_y = p->x + 1 * BLOCK_UNITS;
+	edge_y = (p->x + 1) * BLOCK_UNITS;
 
 	if (DEBUG == 1)
 	{
