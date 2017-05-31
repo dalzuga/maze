@@ -56,7 +56,7 @@ void start_position(int ***map, GamePlayer **p)
 		exit(EXIT_FAILURE);
 	}
 
-	(*p)->x = 2;
+	(*p)->x = 1;
 	(*p)->y = 1;
 	(*p)->theta = 0;
 }

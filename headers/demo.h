@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 0
-#define SLEEP_TIME 5000
+#define DEBUG 1
+#define SLEEP_TIME 50000
 #define X_RES 320
 #define Y_RES 240
 #define FOV_ANGLE 60
