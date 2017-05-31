@@ -37,7 +37,7 @@ void game_func02(SDL_Instance instance, int **map, GamePlayer *p)
 			{
 				break;
 			}
-			usleep(SLEEP_TIME);
+			usleep(DEBUG_SLEEP);
 		}
 
 		game_func03(instance);
