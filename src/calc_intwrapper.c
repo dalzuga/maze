@@ -35,13 +35,7 @@ double calc_alpha(int **map, GamePlayer *p, int i)
 	beta = (double) FOV_ANGLE * i / (double) X_RES;
 	theta = (double) p->theta;
 
-	/* IV quadrant, pretend we're at qudrant I */
-	if ((theta + beta) < 0)
-	{
-		alpha = 90 + ( theta + beta);
-	}
-
-	alpha = (90 - ( (double) theta + beta ));
+	alpha = calc_quadrants(beta, theta);
 
 	if (DEBUG == 1)
 	{

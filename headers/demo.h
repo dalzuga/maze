@@ -136,4 +136,7 @@ double calc_intwrapper(int **map, GamePlayer *p, int i);
 /* calc_alpha - calculates angle alpha */
 double calc_alpha(int **map, GamePlayer *p, int i);
 
+/* calc_quadrants - calculates alpha based on quadrant */
+double calc_quadrants(double beta, double theta);
+
 #endif
