@@ -24,7 +24,7 @@ double calc_intwrapper(GameMap *map, GamePlayer *p, int i)
 		/* 8*64-32 */
 		/* sleep(1); */
 		/* printf("\t\t%d---\n", map->cols); */
-		dvi = (map->cols - 2) * BLOCK_UNITS + get_piy(map, p);
+		dvi = (map->cols - 2) * BLOCK_UNITS + get_pix(map, p);
 		dhi = (map->rows - 2) * BLOCK_UNITS + get_piy(map, p);
 		return (fmin(dvi, dhi));
 	}
