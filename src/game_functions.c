@@ -10,7 +10,7 @@
 void game_start(SDL_Instance instance)
 {
 	/* declarations */
-	int **map;
+	GameMap *map;
 	GamePlayer *p;
 	/* end declarations */
 
@@ -20,7 +20,7 @@ void game_start(SDL_Instance instance)
 	/* end inits */
 
 	start_position(&map, &p);
-	_print_map(map, 4, 4);
+	_print_map(map);
 
 	p->dpp = X_RES / 2 / tan((FOV_ANGLE / 2) * M_PI / 180);
 
@@ -42,12 +42,12 @@ void game_start(SDL_Instance instance)
  *
  * Return: Nothing.
  */
-void start_position(int ***map, GamePlayer **p)
+void start_position(GameMap **map, GamePlayer **p)
 {
-	*map = make_map(4, 4);
-	(*map)[1][1] = 0;
-	(*map)[1][2] = 0;
-	(*map)[2][2] = 0;
+	*map = make_map(MAP_ROWS, MAP_COLS);
+	(*map)->array[1][1] = 0;
+	(*map)->array[1][2] = 0;
+	(*map)->array[2][2] = 0;
 
 	*p = malloc(sizeof(GamePlayer));
 	if (*p == NULL)
@@ -56,9 +56,10 @@ void start_position(int ***map, GamePlayer **p)
 		exit(EXIT_FAILURE);
 	}
 
-	(*p)->x = 2;
+	(*p)->x = 1;
 	(*p)->y = 1;
-	(*p)->theta = 0;
+	(*p)->theta = 225;
+	calc_pxpy(*p);
 }
 
 int poll_events(void)

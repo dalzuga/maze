@@ -1,149 +1,45 @@
 #include "../headers/demo.h"
 
 /**
- * calc_dvi - finds the closest vertical wall (x == C) hit by the ray
+ * calc_func01 - calculate how far the ray cast travels until it meets a wall.
  *
+ * @map: address of map
+ * @p: address of player
+ * @i: specific ray within projection plane
+ *
+ * Return: length of the ray-line.
  */
-double calc_dvi(int **map, GamePlayer *p, double beta, int *px, int *py)
+double calc_func01(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i)
 {
-	/* declarations */
-	int theta;
-	double alpha, dist;
-	int pix, Ax, piy, Ay;
+	/* declarations + inits */
+	double rclen = -1;
+	double beta = (double) FOV_ANGLE * i / (double) X_RES;
 
 	/* inits */
-	theta = p->theta - FOV_ANGLE / 2;
-	alpha = dist = 0;
-	pix = Ax = piy = Ay = 0;
+	rclen = calc_func02(map, p, i);
 
-	if (DEBUG == 2)
-	{
-		printf("---------------2--1--------------\n");
-		printf("%p\n", (void *) map);
-		printf("%p\n", (void *) py);
-	}
+	/* correct for spherical distortion */
+	rclen = rclen * cos((beta - FOV_ANGLE / 2) * M_PI / 180);
 
-	if ((theta + beta) < 0)
-	{
-		alpha = 90 + ((double) theta + beta);
-	}
-
-	alpha = (90 - ( (double) theta + beta ));
-
-	pix = get_pix(map, p, px);
-	Ax = BLOCK_UNITS;
-
-	/* calculate piy and Ay */
-	piy = pix * tan(alpha * M_PI / 180);
-	Ay = Ax * tan(alpha * M_PI / 180);
-
-	dist = (pix + Ax) / cos(alpha * M_PI / 180);
-
-	if (DEBUG == 1)
-	{
-		printf("---------------7--------------\n");
-		printf("alpha (degrees): %f\n", alpha);
-		printf("pix: %d, piy: %d\n", pix, piy);
-		printf("Ax: %d, Ay: %d\n", Ax, Ay);
-		printf("Distance to vertical axis: %f\n", dist);
-	}
-
-	return (fabs(dist));
+	return (rclen);
 }
 
 /**
+ * calc_pxpy - calculates player position in the center of the player's
+ * block. This is necessary because we are using finer resolution to position
+ * player inside the block itself.
  *
  *
  */
-int get_pix(int **map __attribute__((unused)), GamePlayer *p, int *px)
+void calc_pxpy(GamePlayer *p)
 {
-	int edge_x;
-
-	edge_x = 0;
-
-	/* get x-coordinate of right edge of block */
-	edge_x = p->y + 1 * BLOCK_UNITS;
+	p->px = (p->x + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
+	p->py = (p->y + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
 
 	if (DEBUG == 1)
 	{
-		printf("---------------6--------------\n");
-		printf("edge_x: %d\n", edge_x);
+		printf("---------------2--------------\n");
+		printf("p->x: %d, px: %d, ", p->x, p->px);
+		printf("p->y: %d, py: %d\n", p->y, p->py);
 	}
-
-	/* return the distance from player to right edge of block */
-	return (*px - edge_x);
-}
-
-/**
- * calc_dhi - finds the closest horizontal wall (y == C) hit by the ray
- *
- */
-double calc_dhi(int **map, GamePlayer *p, double beta, int *px, int *py)
-{
-	/* declarations */
-	int theta;
-	double alpha, dist;
-	int pix, Ax, piy, Ay;
-
-	/* inits */
-	theta = p->theta - FOV_ANGLE / 2;
-	alpha = dist = 0;
-	pix = Ax = piy = Ay = 0;
-
-	if (DEBUG == 2)
-	{
-		printf("---------------2--1--------------\n");
-		printf("%p\n", (void *) map);
-		printf("%p\n", (void *) px);
-	}
-
-	if ((theta + beta) < 0)
-	{
-		alpha = 90 + ((double) theta + beta);
-	}
-
-	alpha = (90 - ( (double) theta + beta ));
-
-	piy = get_piy(map, p, py);
-	Ay = BLOCK_UNITS;
-
-	/* calculate piy and Ay */
-	pix = piy / tan(alpha * M_PI / 180);
-	Ax = Ay / tan(alpha * M_PI / 180);
-
-	dist = (piy + Ay) / sin(alpha * M_PI / 180);
-
-	if (DEBUG == 1)
-	{
-		printf("---------------9--------------\n");
-		printf("alpha (degrees): %f\n", alpha);
-		printf("pix: %d, piy: %d\n", pix, piy);
-		printf("Ax: %d, Ay: %d\n", Ax, Ay);
-		printf("Distance to horizontal axis: %f\n", dist);
-	}
-
-	return fabs(dist);
-}
-
-/**
- *
- *
- */
-int get_piy(int **map __attribute__((unused)), GamePlayer *p, int *py)
-{
-	int edge_y;
-
-	edge_y = 0;
-
-	/* get x-coordinate of right edge of block */
-	edge_y = p->x + 1 * BLOCK_UNITS;
-
-	if (DEBUG == 1)
-	{
-		printf("---------------8--------------\n");
-		printf("edge_y: %d\n", edge_y);
-	}
-
-	/* return the distance from player to right edge of block */
-	return (*py - edge_y);
 }

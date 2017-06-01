@@ -9,7 +9,7 @@
  *
  * Return: Nothing.
  */
-void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
+void game_func01(SDL_Instance instance, GameMap *map, GamePlayer *p)
 {
 	while(1)
 	{
@@ -19,7 +19,7 @@ void game_func01(SDL_Instance instance, int **map, GamePlayer *p)
 		}
 		else
 		{
-			usleep(30000); /* 30ms */
+			usleep(FRAME_SLEEP);
 		}
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
