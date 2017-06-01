@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 0
+#define DEBUG 1
 #define DEBUG_SLEEP 5000
 #define FRAME_SLEEP 30000 	/* 30ms */
 #define X_RES 320
@@ -15,8 +15,8 @@
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
 #define ANGLE_STEP 1
-#define MAP_ROWS 4
-#define MAP_COLS 10
+#define MAP_ROWS 10
+#define MAP_COLS 4
 
 typedef struct SDL_Instance
 {
@@ -67,10 +67,13 @@ void print_map(int **array, int rows, int cols);
 void start_position(GameMap **map, GamePlayer **p);
 
 /*  */
-int get_pix(GameMap *map, GamePlayer *p);
+int get_pix(GameMap *map, GamePlayer *p, double alpha);
+
+/* calc_pix - calculates pix */
+int calc_pix(GameMap *map __attribute__((unused)), GamePlayer *p, double alpha);
 
 /*  */
-int get_piy(GameMap *map __attribute__((unused)), GamePlayer *p);
+int get_piy(GameMap *map, GamePlayer *p);
 
 /*
  * calc_pxpy - calculates player position in the center of the
