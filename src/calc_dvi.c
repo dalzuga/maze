@@ -37,11 +37,6 @@ double calc_vblock(GameMap *map, GamePlayer *p, double alpha, double tplusb)
 
 	coeff = calc_coeffAx(map, p, alpha, tplusb);
 
-	 if (tplusb >= 0)
-	 {
-		 dist = (pix + (coeff) * Ax) / cos(alpha * M_PI / 180);
-	}
-
 	dist = (pix + coeff * Ax) / cos(alpha * M_PI / 180);
 
 	return (fabs(dist));
@@ -58,16 +53,18 @@ int calc_coeffAx(GameMap *map, GamePlayer *p, double alpha, double tplusb)
 	if (tplusb >= 0)
 	{
 		c = map->cols - 2 - p->x;
-		printf("-----------------------------------------\n");
-		printf("c: %d, alpha: %f\n", c, alpha);
-		printf("------------------------------------------\n");
+		if (DEBUG == 1)
+		{
+			printf("c: %d, alpha: %.1f, \ttplusb > 0\n", c, alpha);
+		}
 		return (c);
 	}
 
 	c = (p->x - 1);
-	printf("-----------------------------------------\n");
-	printf("c: %d, alpha: %f\n", c, alpha);
-	printf("------------------------------------------\n");
+	if (DEBUG == 1)
+	{
+		printf("c: %d, alpha: %.1f, \ttplusb < 0\n", c, alpha);
+	}
 	return (c);
 }
 
