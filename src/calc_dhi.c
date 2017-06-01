@@ -35,7 +35,12 @@ double calc_hblock(GameMap *map, GamePlayer *p, double alpha)
 	pix = piy / tan(alpha * M_PI / 180);
 	Ax = Ay / tan(alpha * M_PI / 180);
 
-	dist = (piy + (map->rows - 2) * Ay) / sin(alpha * M_PI / 180);
+	if (alpha <= 0)
+	{
+		dist = (piy + (map->rows - 2) * Ay) / sin(alpha * M_PI / 180);
+	}
+
+	dist = (piy + (3) * Ay) / sin(alpha * M_PI / 180);
 
 	return (fabs(dist));
 }

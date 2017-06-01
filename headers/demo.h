@@ -15,8 +15,8 @@
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
 #define ANGLE_STEP 1
-#define MAP_ROWS 10
-#define MAP_COLS 4
+#define MAP_ROWS 4
+#define MAP_COLS 10
 
 typedef struct SDL_Instance
 {
@@ -99,7 +99,7 @@ double calc_func01(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 double calc_func02(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 
 /* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
-double calc_dvi(GameMap *map, GamePlayer *p, double alpha);
+double calc_dvi(GameMap *map, GamePlayer *p, double alpha, double tplusb);
 
 /* calc_dhi - finds the closest horizontal wall (y == C) hit by the ray */
 double calc_dhi(GameMap *map, GamePlayer *p, double alpha);
@@ -117,9 +117,12 @@ double calc_quadrants(double beta, double theta);
 double calc_quad01(double tplusb);
 
 /* calc_vblock - finds the closest vertical wall (y == C) hit by the ray */
-double calc_vblock(GameMap *map, GamePlayer *p, double alpha);
+double calc_vblock(GameMap *map, GamePlayer *p, double alpha, double tplusb);
 
 /* calc_hblock - finds the closest horizontal wall (y == C) hit by the ray */
 double calc_hblock(GameMap *map, GamePlayer *p, double alpha);
+
+/* calc_coeffAx - calculate coefficient of Ax */
+int calc_coeffAx(GameMap *map, GamePlayer *p, double alpha, double tplusb);
 
 #endif

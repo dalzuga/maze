@@ -58,7 +58,7 @@ void start_position(GameMap **map, GamePlayer **p)
 
 	(*p)->x = 1;
 	(*p)->y = 1;
-	(*p)->theta = 0;
+	(*p)->theta = 225;
 	calc_pxpy(*p);
 }
 

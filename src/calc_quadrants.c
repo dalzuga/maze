@@ -47,37 +47,3 @@ double calc_quad01(double tplusb)
 
 	return (tplusb);
 }
-
-/**
- * calc_pix - calculates pix
- *
- */
-int calc_pix(GameMap *map __attribute__((unused)), GamePlayer *p, double alpha)
-{
-	int edge_x, pix;
-
-	alpha = calc_quad01(alpha);
-
-	if (alpha >= 0 && alpha <= 180) /* quadrants I, II */
-	{
-		/* get x-coordinate of right edge of block */
-		edge_x = (p->y + 1) * BLOCK_UNITS;
-		/* get the distance from player to right edge of block */
-		pix = p->px - edge_x;
-		return (pix);
-	}
-
-	/* get x-coordinate of left edge of block */
-	edge_x = (p->y) * BLOCK_UNITS; /* quadrants III, IV */
-	/* get the distance from player to right edge of block */
-	pix = p->px - edge_x;
-
-	if (DEBUG == 1)
-	{
-		printf("---------------6--------------\n");
-		printf("edge_x: %d, alpha: %f\n", edge_x, alpha);
-		printf("pix: %d\n", pix);
-	}
-
-	return (pix);
-}
