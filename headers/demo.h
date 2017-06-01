@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 0
+#define DEBUG 1
 #define DEBUG_SLEEP 5000
 #define FRAME_SLEEP 30000 	/* 30ms */
 #define X_RES 320

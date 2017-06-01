@@ -44,21 +44,21 @@ double calc_vblock(GameMap *map, GamePlayer *p, double alpha)
  *
  *
  */
-int get_pix(GameMap *map __attribute__((unused)), GamePlayer *p)
+int get_piy(GameMap *map __attribute__((unused)), GamePlayer *p)
 {
-	int edge_x;
+	int edge_y;
 
-	edge_x = 0;
+	edge_y = 0;
 
-	/* get x-coordinate of right edge of block */
-	edge_x = (p->y + 1) * BLOCK_UNITS;
+	/* get y-coordinate of top edge of block */
+	edge_y = (p->x + 1) * BLOCK_UNITS;
 
 	if (DEBUG == 1)
 	{
-		printf("---------------6--------------\n");
-		printf("edge_x: %d\n", edge_x);
+		printf("---------------8--------------\n");
+		printf("edge_y: %d\n", edge_y);
 	}
 
 	/* return the distance from player to right edge of block */
-	return (p->px - edge_x);
+	return (p->py - edge_y);
 }

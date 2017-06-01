@@ -40,26 +40,25 @@ double calc_hblock(GameMap *map, GamePlayer *p, double alpha)
 	return (fabs(dist));
 }
 
-
 /**
  *
  *
  */
-int get_piy(GameMap *map __attribute__((unused)), GamePlayer *p)
+int get_pix(GameMap *map __attribute__((unused)), GamePlayer *p)
 {
-	int edge_y;
+	int edge_x;
 
-	edge_y = 0;
+	edge_x = 0;
 
-	/* get y-coordinate of top edge of block */
-	edge_y = (p->x + 1) * BLOCK_UNITS;
+	/* get x-coordinate of right edge of block */
+	edge_x = (p->y + 1) * BLOCK_UNITS;
 
 	if (DEBUG == 1)
 	{
-		printf("---------------8--------------\n");
-		printf("edge_y: %d\n", edge_y);
+		printf("---------------6--------------\n");
+		printf("edge_x: %d\n", edge_x);
 	}
 
 	/* return the distance from player to right edge of block */
-	return (p->py - edge_y);
+	return (p->px - edge_x);
 }
