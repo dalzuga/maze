@@ -102,7 +102,7 @@ double calc_func02(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 double calc_dvi(GameMap *map, GamePlayer *p, double alpha, double tplusb);
 
 /* calc_dhi - finds the closest horizontal wall (y == C) hit by the ray */
-double calc_dhi(GameMap *map, GamePlayer *p, double alpha);
+double calc_dhi(GameMap *map, GamePlayer *p, double alpha, double tplusb);
 
 /* calc_rcwrapper - wrapper to calculate intersects */
 double calc_intwrapper(GameMap *map, GamePlayer *p, int i);
@@ -120,9 +120,12 @@ double calc_quad01(double tplusb);
 double calc_vblock(GameMap *map, GamePlayer *p, double alpha, double tplusb);
 
 /* calc_hblock - finds the closest horizontal wall (y == C) hit by the ray */
-double calc_hblock(GameMap *map, GamePlayer *p, double alpha);
+double calc_hblock(GameMap *map, GamePlayer *p, double alpha, double tplusb);
 
 /* calc_coeffAx - calculate coefficient of Ax */
 int calc_coeffAx(GameMap *map, GamePlayer *p, double alpha, double tplusb);
+
+/* calc_coeffAy - calculate coefficient of Ay */
+int calc_coeffAy(GameMap *map, GamePlayer *p, double alpha, double tplusb);
 
 #endif

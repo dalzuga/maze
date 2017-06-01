@@ -25,7 +25,7 @@ double calc_intwrapper(GameMap *map, GamePlayer *p, int i)
 		/* sleep(1); */
 		/* printf("\t\t%d---\n", map->cols); */
 		dvi = calc_dvi(map, p, 90, tplusb);
-		dhi = calc_dhi(map, p, 90);
+		dhi = calc_dhi(map, p, 90, tplusb);
 		return (fmin(dvi, dhi));
 	}
 
@@ -33,7 +33,7 @@ double calc_intwrapper(GameMap *map, GamePlayer *p, int i)
 	alpha = calc_alpha(map, p, i);
 
 	dvi = calc_dvi(map, p, alpha, tplusb);
-	dhi = calc_dhi(map, p, alpha);
+	dhi = calc_dhi(map, p, alpha, tplusb);
 
 	return (fmin(dvi, dhi));
 }
