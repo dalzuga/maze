@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * game_start - entry point for the game engine
+ * maze_start - entry point for the game engine
  *
  * @instance: SDL window and renderer instance
  *
@@ -27,12 +27,16 @@ void game_start(SDL_Instance instance)
 		usleep(30000); /* 30ms */
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
+
 		if (poll_events() == 1)
 			break; 	/* press ESC twice to exit a.out */
-		/* draw_stuff(instance); */
+
 		paint_environment(instance, map, p);
+
 		fflush(stdout);
+
 		SDL_RenderPresent(instance.renderer);
+
 		(p->theta) += 1;
 		p->theta = p->theta % 360;
 	}
@@ -42,15 +46,6 @@ void game_start(SDL_Instance instance)
 	 */
 
 	free(p);		/* frees the player */
-}
-
-/**
- *
- *
- */
-void draw_game(SDL_Instance instance, int **map, GamePlayer *p)
-{
-	paint_environment(instance, map, p);
 }
 
 /**
