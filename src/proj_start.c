@@ -32,12 +32,12 @@ int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 
 }
 
-int proj_fill(SDL_Instance)
+int proj_fill(SDL_Instance instance)
 {
 	int i;
 
 	for (i = 0; i < X_RES; i++)
 	{
-		SDL_
+		draw_line(instance i, Y_RES);
 	}
 }
