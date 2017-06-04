@@ -8,7 +8,7 @@
  * @p: address of player
  *
  */
-void proj_start(SDL_Instance instance, int **map, GamePlayer *p)
+int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 {
 	int i, Px, Py, dhi;
 	double ap; /* alpha prime */
@@ -20,7 +20,7 @@ void proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 	for (i = 0; i < X_RES; i++)
 	{
 		ap += i / FOV_ANGLE;
-		if (map[Px / 64][Py / 64] != 1)
+		if (map[Px / 64][Py / 64] != 0)
 		{
 			proj_d(instance, i, Y_RES);
 		}
