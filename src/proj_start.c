@@ -17,7 +17,7 @@ int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 	/* inits */
 	Px = p->x;
 	Py = p->y;
-	ap = (double) p->theta;
+	ap = (double) p->theta - FOV_ANGLE / 2;
 
 	if (special_where(instance, map, p) == 1)
 	{
@@ -27,12 +27,6 @@ int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 	for (i = 0; i < X_RES; i++)
 	{
 		ap += (double) i / (double) FOV_ANGLE;
-		if (special_case() == 0)
-		{
-			dhi = get_dhi(instance, p, map, ap);
-			proj_i(instance, i, dhi);
-		}
-
 		printf("dhi: %d\n", dhi);
 	}
 

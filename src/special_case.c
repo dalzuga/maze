@@ -46,7 +46,7 @@ int special_case(SDL_Instance instance, GameMap *map, GamePlayer *p, double *ap)
 		return (0);
 	}
 
-	for (i = 0
+	
 
 	return (1);
 }
