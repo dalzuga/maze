@@ -21,13 +21,23 @@ int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 
 	if (special_where(instance, map, p) == 1)
 	{
+		proj_fill(instance);
 		return (1);
 	}
 
 	for (i = 0; i < X_RES; i++)
 	{
 		ap += (double) i / (double) FOV_ANGLE;
-		printf("dhi: %d\n", dhi);
 	}
 
+}
+
+int proj_fill(SDL_Instance)
+{
+	int i;
+
+	for (i = 0; i < X_RES; i++)
+	{
+		SDL_
+	}
 }
