@@ -23,11 +23,3 @@ void proj_i(SDL_Instance instance, int i, int dw)
 {
 	
 }
-
-int special_case(ap)
-{
-	if (ap == 0 || ap == 90 || ap == 180 || ap == 270)
-	{
-		/* special case */
-	}
-}
