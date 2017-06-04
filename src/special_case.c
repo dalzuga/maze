@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * proj_where - determine where we are in the world
+ * special_where - determine where we are in the world
  *
  * @instance: SDL window and renderer instance
  * @map: address of map
@@ -9,7 +9,7 @@
  *
  * Return: 0 if our location is valid, 1 otherwise.
  */
-int proj_where(SDL_Instance instance, int **map, GamePlayer *p)
+int special_where(SDL_Instance instance, int **map, GamePlayer *p)
 {
 	int Px, Py;
 
@@ -33,4 +33,20 @@ int proj_where(SDL_Instance instance, int **map, GamePlayer *p)
 		/* we are at a valid location in the map */
 		return (0);
 	}
+}
+
+
+int special_case(SDL_Instance instance, GameMap *map, GamePlayer *p, double *ap)
+{
+	int i;
+
+	if (!(ap == 0 || ap == 90 || ap == 180 || ap == 270))
+	{
+		/* if not special case */
+		return (0);
+	}
+
+	for (i = 0
+
+	return (1);
 }
