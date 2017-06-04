@@ -31,7 +31,7 @@ void game_start(SDL_Instance instance)
 		if (poll_events() == 1)
 			break; 	/* press ESC twice to exit a.out */
 
-		paint_environment(instance, map, p);
+		proj_start(instance, map, p);
 
 		fflush(stdout);
 
