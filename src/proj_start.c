@@ -28,6 +28,7 @@ int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 	for (i = 0; i < X_RES; i++)
 	{
 		ap += (double) i / (double) FOV_ANGLE;
+		get_dhi(map, p, ap);
 	}
 
 }
@@ -38,6 +39,6 @@ int proj_fill(SDL_Instance instance)
 
 	for (i = 0; i < X_RES; i++)
 	{
-		draw_line(instance i, Y_RES);
+		draw_line(instance, i, X_RES);
 	}
 }
