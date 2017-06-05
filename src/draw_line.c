@@ -4,8 +4,8 @@
  */
 int draw_line(SDL_Instance instance, int col, int height)
 {
-	int top = 0;
-	int bottom = height;
+	int top = Y_RES / 2 + height / 2;
+	int bottom = Y_RES / 2 - height / 2;
 
 	SDL_RenderDrawLine(instance.renderer, i, top, i, bottom);
 
