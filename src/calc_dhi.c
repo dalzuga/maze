@@ -8,7 +8,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int i)
 {
 	/* declarations */
 	double ap;
-	int dy, Py, Ay, Ya, c, j, tmp;
+	int dy, Py, Ay, Ya, c, tmp;
 
 	/* inits */
 	ap = p->theta + (double) i / X_RES * FOV_ANGLE;
@@ -16,27 +16,25 @@ double calc_dhi(GameMap *map, GamePlayer *p, int i)
 
 	Py = p->py;
 	dy = (64) * (Py/64) - Py - 1;
-	Ay = Py + dy;
 	Ya = -BLOCK_UNITS;
 
+	Ay = Py + dy;
 	printf("Ay: %d\n", Ay);
 
 	for (c = 0; ; c++)
 	{
-		tmp = (Py + dy + c * Ya) / 64;
-		if (tmp < 0 || tmp > map->rows)
+		tmp = (Py + dy + c * Ya);
+		if (tmp < 0 || tmp > map->rows * 64)
 		{
+			c--;
 			break;
-		}
-		else
-		{
-			j = tmp;
 		}
 	}
 
+	printf("Zy: %d\n", Py + dy + c * Ya);
+
 	printf("map_size: (%d, %d)\n", map->cols, map->rows);
 	printf("c: %d\n", c);
-	printf("j: %d\n", j);
 
 	return (ap);
 }
