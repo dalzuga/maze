@@ -7,64 +7,7 @@
  *
  * Return: Nothing.
  */
-void game_start(SDL_Instance instance)
+void game_start()
 {
-	proj_start(instance, map, p);
-
-	/*
-	 * TODO - need to code free_map() to free the map here
-	 */
-
-	free(p);		/* frees the player */
-}
-
-/**
- * start_position - allocates a map and player. Both must be freed by the user
- * of this function.
- *
- * @map: address of map
- * @p: address of player
- *
- * Return: Nothing.
- */
-void start_position(int ***map, GamePlayer **p)
-{
-	*map = make_map(4, 4);
-	(*map)[1][1] = 0;
-	(*map)[1][2] = 0;
-	(*map)[2][2] = 0;
-
-	*p = malloc(sizeof(GamePlayer));
-	if (*p == NULL)
-	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
-	}
-
-	(*p)->x = 2;
-	(*p)->y = 1;
-	(*p)->theta = 30;
-}
-
-int poll_events(void)
-{
-	SDL_Event event;
-	SDL_KeyboardEvent key;
-
-	while (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			return (1);
-		case SDL_KEYDOWN:
-			key = event.key;
-			/* If 'ESCAPE' is pressed */
-			if (key.keysym.scancode == 0x29)
-				return (1);
-			break;
-		}
-	}
-
-	return (0);
+	proj_start(map, p);
 }
