@@ -21,19 +21,22 @@ double calc_dhi(GameMap *map, GamePlayer *p, int i)
 	if (0 <= ap && ap < 90)
 	{
 		dy = (64) * (Py/64) - Py - 1;
-		Ya = -BLOCK_UNITS;
+		Ya = -64;
 	}
 	else if (90 <= ap && ap < 180)
 	{
-
+		dy = (64) * (Py/64 + 1) - Py;
+		Ya = 64;
 	}
 	else if (180 <= ap && ap < 270)
 	{
-
+		dy = (64) * (Py/64 + 1) - Py;
+		Ya = 64;
 	}
 	else
 	{
-
+		dy = (64) * (Py/64) - Py - 1;
+		Ya = -64;
 	}
 
 	for (c = 0; ; c++)
