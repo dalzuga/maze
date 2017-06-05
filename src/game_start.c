@@ -56,10 +56,12 @@ void start_position(GameMap **map, GamePlayer **p)
 		exit(EXIT_FAILURE);
 	}
 
-	(*p)->x = 1;
-	(*p)->y = 1;
+	(*p)->px = 96;
+	(*p)->py = 96;
 	(*p)->theta = 0;
-	calc_pxpy(*p);
+
+	(*p)->x = (*p)->px / BLOCK_UNITS;
+	(*p)->y = (*p)->py / BLOCK_UNITS;
 }
 
 int poll_events(void)

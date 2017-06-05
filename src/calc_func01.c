@@ -13,33 +13,13 @@ double calc_func01(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i)
 {
 	/* declarations + inits */
 	double rclen = -1;
-	double beta = (double) FOV_ANGLE * i / (double) X_RES;
+	/* double beta = (double) FOV_ANGLE * i / (double) X_RES; */
 
 	/* inits */
 	rclen = calc_func02(map, p, i);
 
-	/* correct for spherical distortion */
-	rclen = rclen * cos((beta - FOV_ANGLE / 2) * M_PI / 180);
+	/* /\* correct for spherical distortion *\/ */
+	/* rclen = rclen * cos((beta - FOV_ANGLE / 2) * M_PI / 180); */
 
 	return (rclen);
-}
-
-/**
- * calc_pxpy - calculates player position in the center of the player's
- * block. This is necessary because we are using finer resolution to position
- * player inside the block itself.
- *
- *
- */
-void calc_pxpy(GamePlayer *p)
-{
-	p->px = (p->x + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
-	p->py = (p->y + 1) * BLOCK_UNITS - BLOCK_UNITS / 2;
-
-	if (DEBUG == 1)
-	{
-		printf("---------------2--------------\n");
-		printf("p->x: %d, px: %d, ", p->x, p->px);
-		printf("p->y: %d, py: %d\n", p->y, p->py);
-	}
 }

@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 0
-#define DEBUG_SLEEP 5000
+#define DEBUG 1
+#define DEBUG_SLEEP 500000
 #define FRAME_SLEEP 30000 	/* 30ms */
 #define X_RES 320
 #define Y_RES 240
@@ -99,7 +99,7 @@ double calc_func02(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 double calc_dvi(GameMap *map, GamePlayer *p, double alpha);
 
 /* calc_dhi - finds the closest horizontal wall (y == C) hit by the ray */
-double calc_dhi(GameMap *map, GamePlayer *p, double alpha);
+double calc_dhi(GameMap *map, GamePlayer *p, int i);
 
 /* calc_rcwrapper - wrapper to calculate intersects */
 double calc_intwrapper(GameMap *map, GamePlayer *p, int i);
