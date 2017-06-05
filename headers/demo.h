@@ -27,19 +27,10 @@ typedef struct SDL_Instance
 
 typedef struct GamePlayer
 {
-  int x;			/* player x-position */
-  int y;			/* player y-position */
   int theta; 			/* angle between 0 and 359 degrees */
   double dpp;			/* distance to projection plane */
   int px;
   int py;
 } GamePlayer;
-
-typedef struct GameMap
-{
-  int **array;
-  int rows;
-  int cols;
-} GameMap;
 
 #endif

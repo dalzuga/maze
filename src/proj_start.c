@@ -9,7 +9,7 @@
  *
  * Return: 0 on success, 1 otherwise;
  */
-int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
+int proj_start()
 {
 	int i, Px, Py, dhi;
 	double ap; /* alpha prime */
@@ -19,26 +19,11 @@ int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 	Py = p->y;
 	ap = (double) p->theta - FOV_ANGLE / 2;
 
-	if (special_where(instance, map, p) == 1)
-	{
-		proj_fill(instance);
-		return (1);
-	}
-
 	for (i = 0; i < X_RES; i++)
 	{
-		get_dhi(map, p, ap);
+		dhi = get_dhi(map, p, ap);
+		printf("i: %d\tdhi: %d\n", i, dhi);
 		ap += (double) i / (double) FOV_ANGLE;
 	}
 
-}
-
-int proj_fill(SDL_Instance instance)
-{
-	int i;
-
-	for (i = 0; i < X_RES; i++)
-	{
-		draw_line(instance, i, X_RES);
-	}
 }
