@@ -119,4 +119,7 @@ double calc_vblock(GameMap *map, GamePlayer *p, double alpha);
 /* calc_hblock - finds the closest horizontal wall (y == C) hit by the ray */
 double calc_hblock(GameMap *map, GamePlayer *p, double alpha);
 
+/* calc_mod360 - special modding function, guarantees range [0, 360) */
+double calc_mod360(double angle);
+
 #endif
