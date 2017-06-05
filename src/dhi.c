@@ -4,7 +4,7 @@
  *
  *
  */
-int get_dhi(double ap)
+int get_dhi(int Px, int Py, int dy, int Ya, double ap)
 {
 	double alpha = (90 - ap);
 	int c, i, j, Px, Py, dy, Ya;
@@ -43,6 +43,8 @@ int dhi_j(int Py, int dy, int c, int Ya)
 	j += dy;
 	j += c * Ya;
 	j = j / 64;
+
+	return (j);
 }
 
 int dhi_dhi(int Px, int dy, int c, int Ya, double alpha)
