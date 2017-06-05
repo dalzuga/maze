@@ -1,3 +1,10 @@
+#ifndef DEMO_H
+#define DEMO_H
+
+
+
+#endif
+
 #include "../headers/demo.h"
 
 /**
@@ -27,8 +34,9 @@ int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 
 	for (i = 0; i < X_RES; i++)
 	{
-		ap += (double) i / (double) FOV_ANGLE;
 		get_dhi(map, p, ap);
+
+		ap += (double) i / (double) FOV_ANGLE;
 	}
 
 }

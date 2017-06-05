@@ -34,17 +34,3 @@ int special_where(SDL_Instance instance, int **map, GamePlayer *p)
 		return (0);
 	}
 }
-
-
-int special_case(SDL_Instance instance, GameMap *map, GamePlayer *p, double *ap)
-{
-	int i;
-
-	if (!(ap == 0 || ap == 90 || ap == 180 || ap == 270))
-	{
-		/* if not special case */
-		return (0);
-	}
-
-	return (1);
-}
