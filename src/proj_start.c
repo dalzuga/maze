@@ -28,7 +28,6 @@ int proj_start(SDL_Instance instance, int **map, GamePlayer *p)
 	for (i = 0; i < X_RES; i++)
 	{
 		get_dhi(map, p, ap);
-
 		ap += (double) i / (double) FOV_ANGLE;
 	}
 
