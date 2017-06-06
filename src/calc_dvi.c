@@ -15,7 +15,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
 
-	Py = p->py;
+	Px = p->px;
 	/* end inits */
 
 	if (0 <= ap && ap < 90)
@@ -41,8 +41,8 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	for (c = 0; ; c++)
 	{
-		j = (Px + dx + c * Xa) / 64;
-		if (j < 0 || j > map->cols)
+		i = (Px + dx + c * Xa) / 64;
+		if (i < 0 || i > map->cols)
 		{
 			c = c - 2;
 			break;

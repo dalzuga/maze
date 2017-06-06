@@ -96,7 +96,7 @@ double calc_func01(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 double calc_func02(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 
 /* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
-double calc_dvi(GameMap *map, GamePlayer *p, double alpha);
+double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715);
 
 /* calc_dhi - finds the closest horizontal wall (y == C) hit by the ray */
 double calc_dhi(GameMap *map, GamePlayer *p, int i);
