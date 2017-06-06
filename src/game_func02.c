@@ -22,7 +22,7 @@ void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
 	{
 		/* rclen = calc_func01(map, p, i); */
 
-		rclen = calc_dhi(map, p, i);
+		rclen = calc_dvi(map, p, i);
 
 		col_height = WALL_HEIGHT * p->dpp / rclen;
 		top = Y_RES / 2 + col_height / 2;

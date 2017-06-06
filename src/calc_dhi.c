@@ -8,7 +8,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
 	/* declarations */
 	double ap;
-	int Ay __attribute__((unused));
+	int By __attribute__((unused));
 	int dy, Py, Ya, c, j;
 
 	/* inits */
@@ -51,12 +51,13 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	if (DEBUG == 1)
 	{
-		printf("----------9--1----------\n");
-		Ay = Py + dy;
-		printf("Ay: %d\n", Ay);
+		printf("-------------9--1-------------\n");
+		By = Py + dy;
+		printf("By: %d\n", By);
 		printf("Zy: %d\n", Py + dy + c * Ya);
 
-		printf("map_size: (%d, %d)\n", map->cols, map->rows);
+		printf("map_size: (%d, %d),", map->cols, map->rows);
+		printf("player_pos: (%d, %d)\n", p->px, p->py);
 		printf("c: %d\n", c);
 	}
 

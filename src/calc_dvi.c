@@ -51,12 +51,14 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	if (DEBUG == 1)
 	{
-		printf("----------9--2----------\n");
+		printf("-------------9--2-------------\n");
 		Ax = Px + dx;
-		printf("Ax: %d\n", Ax);
-		printf("Zx: %d\n", Px + dx + c * Xa);
+		printf("Ax: %d\t\t", Ax);
+		printf("Zx: %d\t\t", Px + dx + c * Xa);
+		printf("ap: %f\n", ap);
 
-		printf("map_size: (%d, %d)\n", map->cols, map->rows);
+		printf("map_size: (%d, %d), ", map->cols, map->rows);
+		printf("player_pos: (%d, %d)\n", p->px, p->py);
 		printf("c: %d\n", c);
 	}
 
