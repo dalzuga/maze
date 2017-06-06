@@ -4,7 +4,7 @@
  * calc_dhi - finds the closest horizontal wall (x == C) hit by the ray
  *
  */
-double calc_dhi(GameMap *map, GamePlayer *p, int i)
+double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
 	/* declarations */
 	double ap;
@@ -12,7 +12,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int i)
 	int dy, Py, Ya, c, j;
 
 	/* inits */
-	ap = p->theta + (double) i / X_RES * FOV_ANGLE;
+	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
 
 	Py = p->py;
@@ -51,6 +51,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int i)
 
 	if (DEBUG == 1)
 	{
+		printf("----------9--1----------\n");
 		Ay = Py + dy;
 		printf("Ay: %d\n", Ay);
 		printf("Zy: %d\n", Py + dy + c * Ya);
