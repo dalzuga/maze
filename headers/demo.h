@@ -58,10 +58,10 @@ int check_edge_cases(void);
 void game_start(SDL_Instance instance);
 
 /* _print_map - calls print_map if debugging is on. */
-void _print_map(GameMap *map);
+void _print_map(GameMap *map, GamePlayer *p);
 
 /* print_map - prints a map */
-void print_map(int **array, int rows, int cols);
+void print_map(int **array, int rows, int cols, int Px, int Py);
 
 /* start_position - allocates a map and player, both must be freed. */
 void start_position(GameMap **map, GamePlayer **p);
