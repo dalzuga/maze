@@ -94,11 +94,11 @@ void init_map(GameMap *map)
  *
  * Return: Nothing.
  */
-void _print_map(GameMap *map)
+void _print_map(GameMap *map, GamePlayer *p)
 {
 	if (DEBUG)
 	{
-		print_map(map->array, map->rows, map->cols);
+		print_map(map->array, map->rows, map->cols, p->px, p->py);
 	}
 }
 
@@ -111,7 +111,7 @@ void _print_map(GameMap *map)
  *
  * Return: Nothing.
  */
-void print_map(int **array, int rows, int cols)
+void print_map(int **array, int rows, int cols, int Px, int Py)
 {
 	int i;
 	int j;
@@ -120,7 +120,14 @@ void print_map(int **array, int rows, int cols)
 	{
 		for (j = 0; j < cols; j++)
 		{
-			printf("%d", array[i][j]);
+			if (i == Py / BLOCK_UNITS && j == Px / BLOCK_UNITS)
+			{
+				printf("P");
+			}
+			else
+			{
+				printf("%d", array[i][j]);
+			}
 		}
 		printf("\n");
 	}

@@ -9,7 +9,8 @@
  *
  * Return: Nothing.
  */
-void game_func02(SDL_Instance instance, GameMap *map, GamePlayer *p)
+void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
+		 GamePlayer *p)
 {
 	/* declarations */
 	int i;
@@ -19,7 +20,10 @@ void game_func02(SDL_Instance instance, GameMap *map, GamePlayer *p)
 
 	for (i = 0; i < X_RES; i++)
 	{
-		rclen = calc_func01(map, p, i);
+		/* rclen = calc_func01(map, p, i); */
+
+		rclen = calc_dvi(map, p, i);
+
 		col_height = WALL_HEIGHT * p->dpp / rclen;
 		top = Y_RES / 2 + col_height / 2;
 		bottom = Y_RES / 2 - col_height / 2;
@@ -40,12 +44,12 @@ void game_func02(SDL_Instance instance, GameMap *map, GamePlayer *p)
 			usleep(DEBUG_SLEEP);
 		}
 
-		game_func03(instance);
-		SDL_RenderDrawLine(instance.renderer, i, top, i, bottom);
+		/* game_func03(instance); */
+		/* SDL_RenderDrawLine(instance.renderer, i, top, i, bottom); */
 
-		if (DEBUG == 1)
-		{
-			SDL_RenderPresent(instance.renderer);
-		}
+		/* if (DEBUG == 1) */
+		/* { */
+		/* 	SDL_RenderPresent(instance.renderer); */
+		/* } */
 	}
 }

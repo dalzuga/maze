@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 0
-#define DEBUG_SLEEP 5000
+#define DEBUG 1
+#define DEBUG_SLEEP 500000
 #define FRAME_SLEEP 30000 	/* 30ms */
 #define X_RES 320
 #define Y_RES 240
@@ -15,8 +15,8 @@
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
 #define ANGLE_STEP 1
-#define MAP_ROWS 4
-#define MAP_COLS 4
+#define MAP_ROWS 5
+#define MAP_COLS 10
 
 typedef struct SDL_Instance
 {
@@ -58,10 +58,10 @@ int check_edge_cases(void);
 void game_start(SDL_Instance instance);
 
 /* _print_map - calls print_map if debugging is on. */
-void _print_map(GameMap *map);
+void _print_map(GameMap *map, GamePlayer *p);
 
 /* print_map - prints a map */
-void print_map(int **array, int rows, int cols);
+void print_map(int **array, int rows, int cols, int Px, int Py);
 
 /* start_position - allocates a map and player, both must be freed. */
 void start_position(GameMap **map, GamePlayer **p);
@@ -96,10 +96,10 @@ double calc_func01(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 double calc_func02(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 
 /* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
-double calc_dvi(GameMap *map, GamePlayer *p, double alpha);
+double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715);
 
 /* calc_dhi - finds the closest horizontal wall (y == C) hit by the ray */
-double calc_dhi(GameMap *map, GamePlayer *p, double alpha);
+double calc_dhi(GameMap *map, GamePlayer *p, int i);
 
 /* calc_rcwrapper - wrapper to calculate intersects */
 double calc_intwrapper(GameMap *map, GamePlayer *p, int i);
@@ -118,5 +118,8 @@ double calc_vblock(GameMap *map, GamePlayer *p, double alpha);
 
 /* calc_hblock - finds the closest horizontal wall (y == C) hit by the ray */
 double calc_hblock(GameMap *map, GamePlayer *p, double alpha);
+
+/* calc_mod360 - special modding function, guarantees range [0, 360) */
+double calc_mod360(double angle);
 
 #endif

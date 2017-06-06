@@ -20,7 +20,7 @@ void game_start(SDL_Instance instance)
 	/* end inits */
 
 	start_position(&map, &p);
-	_print_map(map);
+	_print_map(map, p);
 
 	p->dpp = X_RES / 2 / tan((FOV_ANGLE / 2) * M_PI / 180);
 
@@ -56,10 +56,12 @@ void start_position(GameMap **map, GamePlayer **p)
 		exit(EXIT_FAILURE);
 	}
 
-	(*p)->x = 1;
-	(*p)->y = 1;
-	(*p)->theta = 0;
-	calc_pxpy(*p);
+	(*p)->px = 198;
+	(*p)->py = 198;
+	(*p)->theta = 58;
+
+	(*p)->x = (*p)->px / BLOCK_UNITS;
+	(*p)->y = (*p)->py / BLOCK_UNITS;
 }
 
 int poll_events(void)
