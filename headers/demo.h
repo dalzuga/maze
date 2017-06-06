@@ -16,7 +16,7 @@
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
 #define ANGLE_STEP 1
 #define MAP_ROWS 10
-#define MAP_COLS 10
+#define MAP_COLS 5
 
 typedef struct SDL_Instance
 {
