@@ -42,9 +42,9 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	for (c = 0; ; c++)
 	{
 		j = (Py + dy + c * Ya) / 64;
-		i = (Py + dy + c * Ya) / tan(ap) / 64;
+		i = (p->px + (Py + dy + c * Ya) / tan(ap)) / 64;
 
-		printf("(i, j): (%d, %d)###########################\n", i, j);
+		printf("(i, j): (%d, %d)\n", i, j);
 
 		if (j < 0 || j > map->rows)
 		{
@@ -57,8 +57,9 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	{
 		printf("-------------9--1-------------\n");
 		By = Py + dy;
-		printf("By: %d\n", By);
-		printf("Zy: %d\n", Py + dy + c * Ya);
+		printf("By: %d\t\t", By);
+		printf("Zy: %d\t\t", Py + dy + c * Ya);
+		printf("ap: %f\n", ap);
 
 		printf("map_size: (%d, %d),", map->cols, map->rows);
 		printf("player_pos: (%d, %d)\n", p->px, p->py);
