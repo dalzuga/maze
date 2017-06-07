@@ -65,5 +65,11 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	res = (dx + c * Xa) / sin(ap);
 
+	if (DEBUG == 1)
+	{
+		printf("-------------10-2-------------\n");
+		printf("res: %f\n", res);
+	}
+
 	return (res);
 }
