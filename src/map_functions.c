@@ -122,7 +122,7 @@ void print_map(GameMap *map, GamePlayer *p)
 		{
 			if (i == Py / BLOCK_UNITS && j == Px / BLOCK_UNITS)
 			{
-				printf("P");
+				printf("\033[31;47mP\033[0m");
 			}
 			else
 			{
