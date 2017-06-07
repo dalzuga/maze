@@ -49,7 +49,10 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		j = (Py + dy + c * Ya) / 64;
 		i = (p->px + (Py + dy + c * Ya) / tan(ap)) / 64;
 
-		printf("(i, j): (%d, %d)\n", i, j);
+		if (DEBUG == 2)
+		{
+			printf("(i, j): (%d, %d)\n", i, j);
+		}
 
 		if (j < 0 || j > map->rows)
 		{
