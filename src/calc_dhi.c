@@ -54,7 +54,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	deltaY = dy + c * Ya;
 	i = (p->px + (deltaY / tan(ap))) / 64;
-	j = Py + deltaY / 64;
+	j = (Py + deltaY) / 64;
 
 	if (DEBUG == 2)
 	{
