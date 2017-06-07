@@ -39,26 +39,22 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		Ya = -64;
 	}
 
-	if (DEBUG == 2)
-	{
-		printf("-------------11-1-------------\n");
-	}
-
 	for (c = 0; ; c++)
 	{
 		j = (Py + dy + c * Ya) / 64;
 		i = (p->px + (Py + dy + c * Ya) / tan(ap)) / 64;
-
-		if (DEBUG == 2)
-		{
-			printf("(i, j): (%d, %d)\n", i, j);
-		}
 
 		if (j < 0 || j > map->rows)
 		{
 			c = c - 2;
 			break;
 		}
+	}
+
+	if (DEBUG == 2)
+	{
+		printf("-------------11-1-------------\n");
+		printf("(i, j): (%d, %d)\n", i, j);
 	}
 
 	if (DEBUG == 2)
