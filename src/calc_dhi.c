@@ -39,6 +39,11 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		Ya = -64;
 	}
 
+	if (DEBUG == 2)
+	{
+		printf("-------------11-1-------------\n");
+	}
+
 	for (c = 0; ; c++)
 	{
 		j = (Py + dy + c * Ya) / 64;
@@ -53,7 +58,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		}
 	}
 
-	if (DEBUG == 1)
+	if (DEBUG == 2)
 	{
 		printf("-------------9--1-------------\n");
 		By = Py + dy;

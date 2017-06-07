@@ -37,6 +37,9 @@ void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
 			printf("i / X_RES: %f\n", (double) i / X_RES);
 			printf("FOV_ANGLE: %d\n", FOV_ANGLE);
 			printf("------------------------------\n");
+		}
+		if (DEBUG > 0)
+		{
 			if (poll_events() == 1)
 			{
 				break;

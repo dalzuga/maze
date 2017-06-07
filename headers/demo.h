@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 1
-#define DEBUG_SLEEP 500000
+#define DEBUG 2
+#define DEBUG_SLEEP 1000000
 #define FRAME_SLEEP 30000 	/* 30ms */
 #define X_RES 320
 #define Y_RES 240
@@ -15,8 +15,8 @@
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
 #define ANGLE_STEP 1
-#define MAP_ROWS 5
-#define MAP_COLS 10
+#define MAP_ROWS 20
+#define MAP_COLS 20
 
 typedef struct SDL_Instance
 {
