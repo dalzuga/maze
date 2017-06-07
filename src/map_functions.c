@@ -98,7 +98,7 @@ void _print_map(GameMap *map, GamePlayer *p)
 {
 	if (DEBUG)
 	{
-		print_map(map->array, map->rows, map->cols, p->px, p->py);
+		print_map(map, p);
 	}
 }
 
@@ -111,14 +111,14 @@ void _print_map(GameMap *map, GamePlayer *p)
  *
  * Return: Nothing.
  */
-void print_map(int **array, int rows, int cols, int Px, int Py)
+void print_map(GameMap *map, GamePlayer *p)
 {
-	int i;
-	int j;
+	int i, j;
+	int Px = p->px, Py = p->py;
 
-	for (i = 0; i < rows; i++)
+	for (i = 0; i < map->rows; i++)
 	{
-		for (j = 0; j < cols; j++)
+		for (j = 0; j < map->cols; j++)
 		{
 			if (i == Py / BLOCK_UNITS && j == Px / BLOCK_UNITS)
 			{
@@ -126,7 +126,7 @@ void print_map(int **array, int rows, int cols, int Px, int Py)
 			}
 			else
 			{
-				printf("%d", array[i][j]);
+				printf("%d", map->array[i][j]);
 			}
 		}
 		printf("\n");

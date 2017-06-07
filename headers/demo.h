@@ -61,7 +61,7 @@ void game_start(SDL_Instance instance);
 void _print_map(GameMap *map, GamePlayer *p);
 
 /* print_map - prints a map */
-void print_map(int **array, int rows, int cols, int Px, int Py);
+void print_map(GameMap *map, GamePlayer *p);
 
 /* start_position - allocates a map and player, both must be freed. */
 void start_position(GameMap **map, GamePlayer **p);
