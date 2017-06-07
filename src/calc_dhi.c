@@ -9,7 +9,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	/* declarations */
 	double ap;
 	int By __attribute__((unused));
-	int dy, Py, Ya, c, j;
+	int dy, Py, Ya, c, i, j;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
@@ -42,6 +42,10 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	for (c = 0; ; c++)
 	{
 		j = (Py + dy + c * Ya) / 64;
+		i = (Py + dy + c * Ya) / tan(ap) / 64;
+
+		printf("(i, j): (%d, %d)###########################\n", i, j);
+
 		if (j < 0 || j > map->rows)
 		{
 			c = c - 2;
