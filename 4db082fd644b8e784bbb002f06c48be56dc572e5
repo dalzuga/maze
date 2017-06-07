@@ -1,0 +1,2 @@
+Function trace is not calc_intwrapper() --> calc_dhi().
+It is directly game_func02() --> calc_d{h,v}i().
