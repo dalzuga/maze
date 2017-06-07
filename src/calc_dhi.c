@@ -61,6 +61,8 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("-------------11-1-------------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("deltaY: %d\n", deltaY);
+		printf("dy: %d\n", dy);
+		printf("c: %d\n", c);
 	}
 
 	if (DEBUG == 2)
@@ -73,7 +75,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 		printf("map_size: (%d, %d)\t", map->cols, map->rows);
 		printf("player_pos: (%d, %d)\n", p->px, p->py);
-		printf("c: %d\n", c);
 	}
 
 	return (ap);
