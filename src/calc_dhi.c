@@ -9,13 +9,14 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	/* declarations */
 	double ap;
 	int By __attribute__((unused));
-	int dy, Py, Ya, c, i, j, deltaY;
+	int dx, dy, Px, Py, Ya, Xa, c, i, j;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
 
 	Py = p->py;
+	Px = p->px;
 	/* end inits */
 
 	if (0 <= ap && ap < 90)
@@ -41,42 +42,37 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	for (c = 0; ; c++)
 	{
-		deltaY = dy + c * Ya;
-		j = (Py + deltaY) / 64;
+		j = Py + dy + c * Ya;
 
-		if (j < 0 || j > map->rows)
+		if ((j/64) < 0 || (j/64) > map->rows)
 		{
 			c = c - 2;
 			break;
 		}
 	}
 
-	deltaY = dy + c * Ya;
+	dx = fabs(dy / tan(ap * M_PI / 180));
+	Xa = fabs(Ya / tan(ap * M_PI / 180));
 
 	if (ap < 180)
 	{
-		i = (p->px - (deltaY / tan(ap * M_PI / 180))) / 64;
+		i = Px + dx + c * Xa;
 	}
 	else if (ap > 180)
 	{
-		i = (p->px + (deltaY / tan(ap * M_PI / 180))) / 64;
+		i = Px - dx - c * Xa;
 	}
-	j = (Py + deltaY) / 64;
+	else
+	{
+		i = Px;
+	}
+
+	j = Py + dy + c * Ya;
 
 	if (DEBUG == 2)
 	{
 		printf("-------------11-1-------------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
-		printf("deltaY: %d\n", deltaY);
-		printf("p->px + (deltaY / tan(ap * M_PI / 180)): %f\n",
-		       p->px + (deltaY / tan(ap * M_PI / 180)));
-		printf("deltaY / tan(ap * M_PI / 180): %f\n\n",
-		       deltaY / tan(ap * M_PI / 180));
-		printf("p->px + (deltaY / -tan(ap * M_PI / 180)): %f\n",
-		       p->px + (deltaY / -tan(ap * M_PI / 180)));
-		printf("deltaY / -tan(ap * M_PI / 180): %f\n\n",
-		       deltaY / -tan(ap * M_PI / 180));
-		printf("tan(ap * M_PI / 180): %f\n", tan(ap * M_PI / 180));
 		printf("ap: %f\n", ap);
 	}
 
@@ -89,7 +85,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ap: %f\n", ap);
 
 		printf("map_size: (%d, %d)\t", map->cols, map->rows);
-		printf("player_pos: (%d, %d)\n", p->px, p->py);
+		printf("player_pos: (%d, %d)\n", Px, Py);
 	}
 
 	return (ap);
