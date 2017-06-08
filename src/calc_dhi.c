@@ -52,7 +52,15 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	}
 
 	deltaY = dy + c * Ya;
-	i = (p->px + (deltaY / tan(ap * M_PI / 180))) / 64;
+
+	if (ap < 180)
+	{
+		i = (p->px - (deltaY / tan(ap * M_PI / 180))) / 64;
+	}
+	else if (ap > 180)
+	{
+		i = (p->px + (deltaY / tan(ap * M_PI / 180))) / 64;
+	}
 	j = (Py + deltaY) / 64;
 
 	if (DEBUG == 2)
@@ -62,8 +70,14 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("deltaY: %d\n", deltaY);
 		printf("p->px + (deltaY / tan(ap * M_PI / 180)): %f\n",
 		       p->px + (deltaY / tan(ap * M_PI / 180)));
-		printf("deltaY / tan(ap * M_PI / 180): %f\n",
+		printf("deltaY / tan(ap * M_PI / 180): %f\n\n",
 		       deltaY / tan(ap * M_PI / 180));
+		printf("p->px + (deltaY / -tan(ap * M_PI / 180)): %f\n",
+		       p->px + (deltaY / -tan(ap * M_PI / 180)));
+		printf("deltaY / -tan(ap * M_PI / 180): %f\n\n",
+		       deltaY / -tan(ap * M_PI / 180));
+		printf("tan(ap * M_PI / 180): %f\n", tan(ap * M_PI / 180));
+		printf("ap: %f\n", ap);
 	}
 
 	if (DEBUG == 1)
