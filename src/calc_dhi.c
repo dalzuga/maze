@@ -78,7 +78,8 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("c: %d\t", c);
 		printf("Ya: %d\n\n", Ya);
 
-		printf("Px + dx + c * Xa: %d\n\n", Px + dx + c * Xa);
+		printf("(Px + dx + c * Xa) / 64: %d\n\n",
+		       (Px + dx + c * Xa) / 64);
 
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("ap: %f\n", ap);
