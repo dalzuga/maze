@@ -60,6 +60,10 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("-------------11-1-------------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("deltaY: %d\n", deltaY);
+		printf("p->px + (deltaY / tan(ap * M_PI / 180)): %f\n",
+		       p->px + (deltaY / tan(ap * M_PI / 180)));
+		printf("deltaY / tan(ap * M_PI / 180): %f\n",
+		       deltaY / tan(ap * M_PI / 180));
 	}
 
 	if (DEBUG == 1)
