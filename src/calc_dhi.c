@@ -57,6 +57,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (ap < 180)
 	{
 		i = Px + dx + c * Xa;
+		printf("i: %d\n", i);
 	}
 	else if (ap > 180)
 	{
@@ -72,21 +73,18 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (DEBUG == 2)
 	{
 		printf("-------------11-1-------------\n");
+		printf("Px: %d\t\t", Px);
+		printf("dx: %d\t", dx);
+		printf("c: %d\t", c);
+		printf("Ya: %d\n\n", Ya);
+
+		printf("Px + dx + c * Xa: %d\n\n", Px + dx + c * Xa);
+
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("ap: %f\n", ap);
+
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
 		printf("ppcs4715: %d\n", ppcs4715);
-	}
-
-	if (DEBUG == 1)
-	{
-		printf("-------------9--1-------------\n");
-		By = Py + dy;
-		printf("By: %d\t\t", By);
-		printf("Zy: %d\t\t", Py + dy + c * Ya);
-		printf("ap: %f\n", ap);
-
-		printf("map_size: (%d, %d)\t", map->cols, map->rows);
 	}
 
 	return (ap);
