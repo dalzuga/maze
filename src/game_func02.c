@@ -24,12 +24,6 @@ void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
 
 		rclen = calc_dhi(map, p, i);
 
-		if (DEBUG == 2)
-		{
-			printf("-------------12-1-------------\n");
-			printf("i: %d\n", i);
-		}
-
 		col_height = WALL_HEIGHT * p->dpp / rclen;
 		top = Y_RES / 2 + col_height / 2;
 		bottom = Y_RES / 2 - col_height / 2;
