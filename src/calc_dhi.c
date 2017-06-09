@@ -73,8 +73,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (DEBUG == 2)
 	{
 		printf("-------------11-1-------------\n");
-		printf("(Px + Dx + c * Xa) / 64: %d\n\n",
-		       (Px + Dx + c * Xa) / 64);
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
