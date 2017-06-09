@@ -7,13 +7,14 @@
 double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
 	/* declarations */
-	double ap;
+	double ap, res;
 	int Ax __attribute__((unused));
 	int dx, Px, Xa, c, i;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
+	res = 0;
 
 	Px = p->px;
 	/* end inits */
@@ -62,5 +63,13 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("c: %d\n", c);
 	}
 
-	return (ap);
+	res = (dx + c * Xa) / sin(ap);
+
+	if (DEBUG == 1)
+	{
+		printf("-------------10-2-------------\n");
+		printf("res: %f\n", res);
+	}
+
+	return (res);
 }

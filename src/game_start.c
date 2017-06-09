@@ -56,9 +56,9 @@ void start_position(GameMap **map, GamePlayer **p)
 		exit(EXIT_FAILURE);
 	}
 
-	(*p)->px = 198;
-	(*p)->py = 198;
-	(*p)->theta = 58;
+	(*p)->px = START_X;
+	(*p)->py = START_Y;
+	(*p)->theta = START_THETA;
 
 	(*p)->x = (*p)->px / BLOCK_UNITS;
 	(*p)->y = (*p)->py / BLOCK_UNITS;
