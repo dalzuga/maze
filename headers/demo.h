@@ -6,7 +6,7 @@
 #include <math.h>
 
 #define DEBUG 2
-#define DEBUG_SLEEP 1000000
+#define DEBUG_SLEEP 600000
 #define FRAME_SLEEP 30000 	/* 30ms */
 #define X_RES 320
 #define Y_RES 240
@@ -19,7 +19,7 @@
 #define MAP_COLS 10
 #define START_X 198
 #define START_Y 198
-#define START_THETA 1
+#define START_THETA 89
 
 typedef struct SDL_Instance
 {
