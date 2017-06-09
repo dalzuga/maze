@@ -19,7 +19,7 @@
 #define MAP_COLS 10
 #define START_X 198
 #define START_Y 198
-#define START_THETA 58
+#define START_THETA 1
 
 typedef struct SDL_Instance
 {
