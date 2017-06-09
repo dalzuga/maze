@@ -51,8 +51,8 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		}
 	}
 
-	Dx = fabs(dy / tan(ap * M_PI / 180));
-	Xa = fabs(Ya / tan(ap * M_PI / 180));
+	Dx = fabs(dy * tan(ap * M_PI / 180));
+	Xa = fabs(Ya * tan(ap * M_PI / 180));
 
 	if (ap < 180)
 	{
