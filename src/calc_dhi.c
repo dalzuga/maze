@@ -15,6 +15,11 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
 
+	if (axis_angle(ap))
+	{
+		return (special_dhi(map, p, ap));
+	}
+
 	Py = p->py;
 	Px = p->px;
 	/* end inits */
@@ -82,4 +87,27 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	}
 
 	return (ap);
+}
+
+/**
+ * special_dhi - calculates distance when angle is on an axis
+ */
+int special_dhi(GameMap *map, GamePlayer *p, double angle)
+{
+	int Px, Py;
+
+	Py = p->py;
+	Px = p->px;
+
+	switch ((int) angle)
+	{
+	case 0:
+		return (map->rows * 64 - Py - 1);
+	case 90:
+		return (map->cols * 64 - Px - 1);
+	case 180:
+		return (Py - map->rows * 64);
+	default:
+		return (Px - map->cols * 64);
+	}
 }

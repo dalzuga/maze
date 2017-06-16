@@ -125,4 +125,10 @@ double calc_hblock(GameMap *map, GamePlayer *p, double alpha);
 /* calc_mod360 - special modding function, guarantees range [0, 360) */
 double calc_mod360(double angle);
 
+/* axis_angle - if the angle is on an axis */
+int axis_angle(double angle);
+
+/* special_dhi - calculates distance when angle is on an axis */
+int special_dhi(GameMap *map, GamePlayer *p, double angle);
+
 #endif
