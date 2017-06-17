@@ -17,64 +17,65 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	if (axis_angle(ap))
 	{
-		return (special_dhi(map, p, ap));
-	}
-
-	Py = p->py;
-	Px = p->px;
-	/* end inits */
-
-	if (0 <= ap && ap < 90)
-	{
-		dy = (64) * (Py/64) - Py - 1;
-		Ya = -64;
-	}
-	else if (90 <= ap && ap < 180)
-	{
-		dy = (64) * (Py/64 + 1) - Py;
-		Ya = 64;
-	}
-	else if (180 <= ap && ap < 270)
-	{
-		dy = (64) * (Py/64 + 1) - Py;
-		Ya = 64;
+		return (special_dhi(map, p, ap, ppcs4715));
 	}
 	else
 	{
-		dy = (64) * (Py/64) - Py - 1;
-		Ya = -64;
-	}
+		Py = p->py;
+		Px = p->px;
+		/* end inits */
 
-	for (c = 0; ; c++)
-	{
-		j = Py + dy + c * Ya;
-
-		if ((j/64) < 0 || (j/64) > map->rows)
+		if (0 <= ap && ap < 90)
 		{
-			c = c - 2;
-			break;
+			dy = (64) * (Py/64) - Py - 1;
+			Ya = -64;
 		}
-	}
+		else if (90 <= ap && ap < 180)
+		{
+			dy = (64) * (Py/64 + 1) - Py;
+			Ya = 64;
+		}
+		else if (180 <= ap && ap < 270)
+		{
+			dy = (64) * (Py/64 + 1) - Py;
+			Ya = 64;
+		}
+		else
+		{
+			dy = (64) * (Py/64) - Py - 1;
+			Ya = -64;
+		}
 
-	Dx = fabs(dy * tan(ap * M_PI / 180));
-	Xa = fabs(Ya * tan(ap * M_PI / 180));
+		for (c = 0; ; c++)
+		{
+			j = Py + dy + c * Ya;
 
-	if (ap < 180)
-	{
-		i = Px + Dx + c * Xa;
-		printf("i: %d\n", i);
-	}
-	else if (ap > 180)
-	{
-		i = Px - Dx - c * Xa;
-	}
-	else
-	{
-		i = Px;
-	}
+			if ((j/64) < 0 || (j/64) > map->rows)
+			{
+				c = c - 2;
+				break;
+			}
+		}
 
-	j = Py + dy + c * Ya;
+		Dx = fabs(dy * tan(ap * M_PI / 180));
+		Xa = fabs(Ya * tan(ap * M_PI / 180));
 
+		if (ap < 180)
+		{
+			i = Px + Dx + c * Xa;
+			printf("i: %d\n", i);
+		}
+		else if (ap > 180)
+		{
+			i = Px - Dx - c * Xa;
+		}
+		else
+		{
+			i = Px;
+		}
+
+		j = Py + dy + c * Ya;
+	}
 	if (DEBUG == 2)
 	{
 		printf("-------------11-1-------------\n");
@@ -92,9 +93,9 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 /**
  * special_dhi - calculates distance when angle is on an axis
  */
-int special_dhi(GameMap *map, GamePlayer *p, double angle)
+int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 {
-	int Px, Py;
+	int Px, Py, dist;
 
 	Py = p->py;
 	Px = p->px;
@@ -102,12 +103,23 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle)
 	switch ((int) angle)
 	{
 	case 0:
-		return (map->rows * 64 - Py - 1);
+		dist = (map->rows * 64 - Py - 1);
 	case 90:
-		return (map->cols * 64 - Px - 1);
+		dist = (map->cols * 64 - Px - 1);
 	case 180:
-		return (Py - map->rows * 64);
+		dist = (Py - map->rows * 64);
 	default:
-		return (Px - map->cols * 64);
+		dist = (Px - map->cols * 64);
 	}
+
+	if (DEBUG == 2)
+	{
+		printf("----------11-1-SPECIAL--------\n");
+		printf("player_pos: (%d, %d)\t\t", Px, Py);
+		printf("ap: %f\n", angle);
+		printf("(dist/64): %d\n", dist/64);
+		printf("ppcs4715: %d\n", ppcs4715);
+	}
+
+	return (dist);
 }

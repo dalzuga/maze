@@ -19,7 +19,7 @@
 #define MAP_COLS 30
 #define START_X 198
 #define START_Y (198 + 96)
-#define START_THETA 60
+#define START_THETA 88
 
 typedef struct SDL_Instance
 {
@@ -129,6 +129,6 @@ double calc_mod360(double angle);
 int axis_angle(double angle);
 
 /* special_dhi - calculates distance when angle is on an axis */
-int special_dhi(GameMap *map, GamePlayer *p, double angle);
+int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
 
 #endif
