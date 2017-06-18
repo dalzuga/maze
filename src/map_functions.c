@@ -112,20 +112,20 @@ void _print_map(GameMap *map, GamePlayer *p)
  */
 void print_map(GameMap *map, GamePlayer *p)
 {
-	int i, j;
+	int j, i;
 	int Px = p->px, Py = p->py;
 
-	for (i = 0; i < map->rows; i++)
+	for (j = 0; j < map->rows; j++)
 	{
-		for (j = 0; j < map->cols; j++)
+		for (i = 0; i < map->cols; i++)
 		{
-			if (i == Py / BLOCK_UNITS && j == Px / BLOCK_UNITS)
+			if (i == Px / BLOCK_UNITS && j == Py / BLOCK_UNITS)
 			{
 				cprintf(31, 43, "%s", "P");
 			}
 			else
 			{
-				printf("%d", map->array[i][j]);
+				printf("%d", map->array[j][i]);
 			}
 		}
 		printf("\n");

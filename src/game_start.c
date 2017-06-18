@@ -21,6 +21,7 @@ void game_start(SDL_Instance instance)
 
 	start_position(&map, &p);
 	_print_map(map, p);
+	exit(EXIT_FAILURE);
 
 	p->dpp = X_RES / 2 / tan((FOV_ANGLE / 2) * M_PI / 180);
 
