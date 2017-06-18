@@ -103,7 +103,7 @@ void _print_map(GameMap *map, GamePlayer *p)
 }
 
 /**
- * cprint_map - prints a map with color
+ * print_map - prints a map
  * @array - map array to print
  * @rows - number of rows
  * @cols - number of columns
@@ -121,8 +121,43 @@ void print_map(GameMap *map, GamePlayer *p)
 		{
 			if (i == Py / BLOCK_UNITS && j == Px / BLOCK_UNITS)
 			{
-				printf("\033[31;47mP\033[0m");
-				/* cprintf(31, 47, "%s", "P"); */
+				cprintf(31, 43, "%s", "P");
+			}
+			else
+			{
+				printf("%d", map->array[i][j]);
+			}
+		}
+		printf("\n");
+	}
+}
+
+/**
+ * rcprint_map - prints a map with ray hitting wall
+ * @array - map array to print
+ * @rows - number of rows
+ * @cols - number of columns
+ * @x - x-coordinate of where ray hits
+ * @y - y-coordinate of where ray hits
+ *
+ * Return: Nothing.
+ */
+void rcprint_map(GameMap *map, GamePlayer *p, int x, int y)
+{
+	int i, j;
+	int Px = p->px, Py = p->py;
+
+	for (i = 0; i < map->rows; i++)
+	{
+		for (j = 0; j < map->cols; j++)
+		{
+			if (i == Py / BLOCK_UNITS && j == Px / BLOCK_UNITS)
+			{
+				cprintf(31, 42, "%s", "P");
+			}
+			else if (i == x && j == y)
+			{
+				cprintf(31, 43, "%s", "X");
 			}
 			else
 			{
