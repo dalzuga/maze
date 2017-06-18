@@ -21,6 +21,8 @@
 #define START_Y (198 + 96)
 #define START_THETA 0
 
+#define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
+
 typedef struct SDL_Instance
 {
   SDL_Window *window;

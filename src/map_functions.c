@@ -102,9 +102,8 @@ void _print_map(GameMap *map, GamePlayer *p)
 	}
 }
 
-
 /**
- * print_map - prints a map
+ * cprint_map - prints a map with color
  * @array - map array to print
  * @rows - number of rows
  * @cols - number of columns
@@ -123,6 +122,7 @@ void print_map(GameMap *map, GamePlayer *p)
 			if (i == Py / BLOCK_UNITS && j == Px / BLOCK_UNITS)
 			{
 				printf("\033[31;47mP\033[0m");
+				/* cprintf(31, 47, "%s", "P"); */
 			}
 			else
 			{
