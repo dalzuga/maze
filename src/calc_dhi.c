@@ -67,7 +67,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			{
 				i = (map->cols - 1) * 64;
 			}
-			printf("i: %d\n", i);
 		}
 		else if (ap > 180)
 		{
