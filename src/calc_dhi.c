@@ -108,6 +108,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 	Py = p->py;
 	Px = p->px;
+	dist = -999999;
 
 	switch ((int) angle)
 	{
