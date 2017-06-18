@@ -42,7 +42,7 @@ void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
 		{
 			if (poll_events() == 1)
 			{
-				break;
+				exit(EXIT_FAILURE); /* press ESC to exit */
 			}
 			usleep(DEBUG_SLEEP);
 		}

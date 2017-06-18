@@ -24,7 +24,7 @@ void game_func01(SDL_Instance instance, GameMap *map, GamePlayer *p)
 		/* SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0); */
 		/* SDL_RenderClear(instance.renderer); */
 		if (poll_events() == 1)
-			break; 	/* press ESC twice to exit a.out */
+			break;
 
 		/* draw_stuff(instance); */
 		game_func02(instance, map, p);
