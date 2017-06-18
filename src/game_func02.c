@@ -62,18 +62,9 @@ void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
  */
 int axis_angle(double angle)
 {
-	switch ((int) angle)
+	if (angle == 0 || angle == 90 || angle == 180 || angle == 270)
 	{
-	case 0:
 		return (1);
-	case 90:
-		return (1);
-	case 180:
-		return (1);
-	case 270:
-		return (1);
-	default:
-		break;
 	}
 
 	return (0);

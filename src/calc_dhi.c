@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * calc_dhi - finds the closest horizontal wall (x == C) hit by the ray
+ * calc_dhi - finds the closest horizontal wall (y == C) hit by the ray
  *
  */
 double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
@@ -104,7 +104,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
  */
 int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 {
-	int Px, Py, dist;
+	int Px, Py, i, j, dist;
 
 	Py = p->py;
 	Px = p->px;
@@ -112,22 +112,35 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	switch ((int) angle)
 	{
 	case 0:
+		i = Px;
+		j = 64 - 1;
 		dist = (map->rows * 64 - Py - 1);
+		break;
 	case 90:
+		i = (map->cols - 1) * 64;
+		j = Py;
 		dist = (map->cols * 64 - Px - 1);
+		break;
 	case 180:
+		i = (map->rows - 1) * 64;
+		j = Px;
 		dist = (Py - map->rows * 64);
-	default:
+		break;
+	case 270:
+		i = 64 - 1;
+		j = Py;
 		dist = (Px - map->cols * 64);
+		break;
 	}
 
 	if (DEBUG == 2)
 	{
 		printf("----------11-1-SPECIAL--------\n");
+		printf("(i, j): (%d, %d)\t\t", i, j);
+		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
 		printf("ap: %f\n", angle);
-		printf("(dist/64): %d\n", dist/64);
-		printf("ppcs4715: %d\n", ppcs4715);
+		printf("\t\tppcs4715: %d\n", ppcs4715);
 	}
 
 	return (dist);
