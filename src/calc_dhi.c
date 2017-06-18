@@ -63,11 +63,19 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		if (ap < 180)
 		{
 			i = Px + Dx + c * Xa;
+			if (i > map->cols * 64)
+			{
+				i = (map->cols - 1) * 64;
+			}
 			printf("i: %d\n", i);
 		}
 		else if (ap > 180)
 		{
 			i = Px - Dx - c * Xa;
+			if (i < 64 - 1)
+			{
+				i = 64 - 1;
+			}
 		}
 		else
 		{
@@ -76,6 +84,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 		j = Py + dy + c * Ya;
 	}
+
 	if (DEBUG == 2)
 	{
 		printf("-------------11-1-------------\n");
