@@ -136,6 +136,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 	if (DEBUG == 2)
 	{
+		rcprint_map(map, p, j/64, i/64);
 		printf("----------11-1-SPECIAL--------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
