@@ -19,7 +19,7 @@
 #define MAP_COLS 30
 #define START_X 198
 #define START_Y (198 + 96)
-#define START_THETA 177
+#define START_THETA 267
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 

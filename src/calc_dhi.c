@@ -86,7 +86,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	if (DEBUG == 2)
 	{
-		rcprint_map(map, p, j/64, i/64);
 		printf("-------------11-1-------------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
@@ -94,6 +93,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ap: %f\n", ap);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
+		rcprint_map(map, p, j/64, i/64);
 	}
 
 	return (ap);
@@ -136,13 +136,13 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 	if (DEBUG == 2)
 	{
-		rcprint_map(map, p, j/64, i/64);
 		printf("----------11-1-SPECIAL--------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
 		printf("ap: %f\n", angle);
 		printf("\t\tppcs4715: %d\n", ppcs4715);
+		rcprint_map(map, p, j/64, i/64);
 	}
 
 	return (dist);
