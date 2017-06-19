@@ -123,8 +123,8 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		dist = (map->cols * 64 - Px - 1);
 		break;
 	case 180:
-		i = (map->rows - 1) * 64;
-		j = Px;
+		i = Px;
+		j = (map->rows - 1) * 64;
 		dist = (Py - map->rows * 64);
 		break;
 	case 270:
