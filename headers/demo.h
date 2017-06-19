@@ -6,7 +6,7 @@
 #include <math.h>
 
 #define DEBUG 2
-#define DEBUG_SLEEP 600000
+#define DEBUG_SLEEP 100000
 #define FRAME_SLEEP 30000 	/* 30ms */
 #define X_RES 320
 #define Y_RES 240
@@ -19,7 +19,9 @@
 #define MAP_COLS 30
 #define START_X 198
 #define START_Y (198 + 96)
-#define START_THETA 60
+#define START_THETA 267
+
+#define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 
 typedef struct SDL_Instance
 {
@@ -65,6 +67,9 @@ void _print_map(GameMap *map, GamePlayer *p);
 
 /* print_map - prints a map */
 void print_map(GameMap *map, GamePlayer *p);
+
+/* rcprint_map - prints a map with ray hitting wall */
+void rcprint_map(GameMap *map, GamePlayer *p, int x, int y);
 
 /* start_position - allocates a map and player, both must be freed. */
 void start_position(GameMap **map, GamePlayer **p);
@@ -124,5 +129,11 @@ double calc_hblock(GameMap *map, GamePlayer *p, double alpha);
 
 /* calc_mod360 - special modding function, guarantees range [0, 360) */
 double calc_mod360(double angle);
+
+/* axis_angle - if the angle is on an axis */
+int axis_angle(double angle);
+
+/* special_dhi - calculates distance when angle is on an axis */
+int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
 
 #endif

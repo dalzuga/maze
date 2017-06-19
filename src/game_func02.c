@@ -42,7 +42,7 @@ void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
 		{
 			if (poll_events() == 1)
 			{
-				break;
+				exit(EXIT_FAILURE); /* press ESC to exit */
 			}
 			usleep(DEBUG_SLEEP);
 		}
@@ -55,4 +55,17 @@ void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
 		/* 	SDL_RenderPresent(instance.renderer); */
 		/* } */
 	}
+}
+
+/**
+ * axis_angle - if the angle is on an axis
+ */
+int axis_angle(double angle)
+{
+	if (angle == 0 || angle == 90 || angle == 180 || angle == 270)
+	{
+		return (1);
+	}
+
+	return (0);
 }
