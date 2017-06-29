@@ -46,6 +46,13 @@ typedef struct GameMap
   int cols;
 } GameMap;
 
+typedef struct MazeStruct
+{
+  SDL_Instance instance;
+  GameMap *map;
+  GamePlayer *p;
+} MazeStruct;
+
 int init_instance(SDL_Instance *);
 void draw_stuff(SDL_Instance);
 int poll_events(void);
@@ -135,5 +142,8 @@ int axis_angle(double angle);
 
 /* special_dhi - calculates distance when angle is on an axis */
 int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
+
+/* init_function - initialize all members of MazeStruct */
+void init_function(MazeStruct maze);
 
 #endif

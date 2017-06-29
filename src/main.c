@@ -2,8 +2,12 @@
 
 int main(void)
 {
-	SDL_Instance instance;
+	/* declarations */
+	MazeStruct maze;
 
+	init_function(&maze);
+
+	/* inits */
 	if (init_instance(&instance) != 0)
 		return (1);
 
