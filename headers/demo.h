@@ -144,6 +144,6 @@ int axis_angle(double angle);
 int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
 
 /* init_function - initialize all members of MazeStruct */
-void init_function(MazeStruct maze);
+void init_function(MazeStruct *maze);
 
 #endif

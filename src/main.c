@@ -5,21 +5,13 @@ int main(void)
 	/* declarations */
 	MazeStruct maze;
 
+	/* inits */
 	init_function(&maze);
 
-	/* inits */
-	if (init_instance(&instance) != 0)
-		return (1);
+	game_start(maze.instance);
 
-	if (check_edge_cases() != 0)
-	{
-		return (1);
-	}
-
-	game_start(instance);
-
-	SDL_DestroyRenderer(instance.renderer);
-	SDL_DestroyWindow(instance.window);
+	SDL_DestroyRenderer(maze.instance.renderer);
+	SDL_DestroyWindow(maze.instance.window);
 	SDL_Quit();
 
 	return (0);
