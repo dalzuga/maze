@@ -78,8 +78,8 @@ void print_map(GameMap *map, GamePlayer *p);
 /* rcprint_map - prints a map with ray hitting wall */
 void rcprint_map(GameMap *map, GamePlayer *p, int x, int y);
 
-/* start_position - allocates a map and player, both must be freed. */
-void start_position(GameMap **map, GamePlayer **p);
+/* game_init_params - allocates and inits a map and player, both must be freed. */
+void game_init_params(GameMap **map, GamePlayer **p);
 
 /*  */
 int get_pix(GameMap *map, GamePlayer *p);

@@ -19,7 +19,7 @@ void game_main(SDL_Instance instance)
 	p = NULL;
 	/* end inits */
 
-	start_position(&map, &p);
+	game_init_params(&map, &p);
 	_print_map(map, p);
 
 	p->dpp = X_RES / 2 / tan((FOV_ANGLE / 2) * M_PI / 180);
@@ -31,37 +31,6 @@ void game_main(SDL_Instance instance)
 	 */
 
 	free(p);		/* frees the player */
-}
-
-/**
- * start_position - allocates a map and player. Both must be freed by the user
- * of this function.
- *
- * @map: address of map
- * @p: address of player
- *
- * Return: Nothing.
- */
-void start_position(GameMap **map, GamePlayer **p)
-{
-	*map = make_map(MAP_ROWS, MAP_COLS);
-	(*map)->array[1][1] = 0;
-	(*map)->array[1][2] = 0;
-	(*map)->array[2][2] = 0;
-
-	*p = malloc(sizeof(GamePlayer));
-	if (*p == NULL)
-	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
-	}
-
-	(*p)->px = START_X;
-	(*p)->py = START_Y;
-	(*p)->theta = START_THETA;
-
-	(*p)->x = (*p)->px / BLOCK_UNITS;
-	(*p)->y = (*p)->py / BLOCK_UNITS;
 }
 
 int poll_events(void)
