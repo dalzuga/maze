@@ -143,7 +143,7 @@ int axis_angle(double angle);
 /* special_dhi - calculates distance when angle is on an axis */
 int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
 
-/* init_function - initialize all members of MazeStruct */
-void init_function(MazeStruct *maze);
+/* init_main - initialize all members of MazeStruct */
+void init_main(MazeStruct *maze);
 
 #endif

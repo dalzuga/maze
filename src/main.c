@@ -6,7 +6,7 @@ int main(void)
 	MazeStruct maze;
 
 	/* inits */
-	init_function(&maze);
+	init_main(&maze);
 
 	game_start(maze.instance);
 
