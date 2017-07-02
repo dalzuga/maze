@@ -10,7 +10,6 @@ int main(void)
 
 	game_start(maze.instance);
 
-
 	return (0);
 }
 

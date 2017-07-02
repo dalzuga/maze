@@ -6,10 +6,10 @@
  */
 void init_main(MazeStruct *maze)
 {
-	if (check_edge_cases() != 0)
-		exit_function(maze);
-
 	if (init_instance(&(maze->instance)) != 0)
+		exit(2);
+
+	if (check_edge_cases() != 0)
 		exit_function(maze);
 }
 
