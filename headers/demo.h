@@ -66,8 +66,8 @@ void init_map(GameMap *map);
 /* check_edge_cases - check game parameters before running */
 int check_edge_cases(void);
 
-/* game_start - entry point for the game engine */
-void game_start(SDL_Instance instance);
+/* game_main - entry point for the game engine */
+void game_main(SDL_Instance instance);
 
 /* _print_map - calls print_map if debugging is on. */
 void _print_map(GameMap *map, GamePlayer *p);
