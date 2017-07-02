@@ -10,9 +10,15 @@ int main(void)
 
 	game_start(maze.instance);
 
-	SDL_DestroyRenderer(maze.instance.renderer);
-	SDL_DestroyWindow(maze.instance.window);
-	SDL_Quit();
 
 	return (0);
+}
+
+void exit_function(MazeStruct *maze)
+{
+	SDL_DestroyRenderer(maze->instance.renderer);
+	SDL_DestroyWindow(maze->instance.window);
+	SDL_Quit();
+
+	exit(1);
 }

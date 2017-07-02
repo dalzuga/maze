@@ -146,4 +146,6 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
 /* init_main - initialize all members of MazeStruct */
 void init_main(MazeStruct *maze);
 
+void exit_function(MazeStruct *maze);
+
 #endif

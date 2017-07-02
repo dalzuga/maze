@@ -6,11 +6,11 @@
  */
 void init_main(MazeStruct *maze)
 {
-	if (init_instance(&(maze->instance)) != 0)
-		exit(1);
-
 	if (check_edge_cases() != 0)
-		exit(1);
+		exit_function(maze);
+
+	if (init_instance(&(maze->instance)) != 0)
+		exit_function(maze);
 }
 
 int init_instance(SDL_Instance *instance)
