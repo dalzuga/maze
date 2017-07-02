@@ -121,7 +121,7 @@ void print_map(GameMap *map, GamePlayer *p)
 		{
 			if (i == Px / BLOCK_UNITS && j == Py / BLOCK_UNITS)
 			{
-				cprintf(31, 43, "%s", "P");
+				cprintf(31, 42, "%s", "P");
 			}
 			else
 			{
