@@ -27,7 +27,7 @@ void game_engine(SDL_Instance instance, GameMap *map, GamePlayer *p)
 			break;
 
 		/* draw_stuff(instance); */
-		game_func02(instance, map, p);
+		game_frame(instance, map, p);
 
 		fflush(stdout);
 

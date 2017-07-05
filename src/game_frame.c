@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * game_func02 - draws the game on the projection plane (monitor)
+ * game_frame - draws the game on the projection plane (monitor)
  *
  * @instance: SDL window and renderer instance
  * @map: the current map
@@ -9,7 +9,7 @@
  *
  * Return: Nothing.
  */
-void game_func02(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
+void game_frame(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
 		 GamePlayer *p)
 {
 	/* declarations */

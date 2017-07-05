@@ -99,8 +99,8 @@ void calc_pxpy(GamePlayer *p);
 /* game_engine - entry point for the game engine */
 void game_engine(SDL_Instance instance, GameMap *map, GamePlayer *p);
 
-/* draws the game on the projection plane (monitor) */
-void game_func02(SDL_Instance instance, GameMap *map, GamePlayer *p);
+/* grame_frame draws the game on the projection plane (monitor) */
+void game_frame(SDL_Instance instance, GameMap *map, GamePlayer *p);
 
 /* game_func03 - sets the wall color */
 void game_func03(SDL_Instance instance);
