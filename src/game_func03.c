@@ -1,6 +1,7 @@
 #include "../headers/demo.h"
 
 /**
+ * THIS FUNCTION IS NOT BEING USED
  * game_func03 - sets the wall color
  *
  * @instance: SDL window and renderer instance
