@@ -22,7 +22,7 @@ void game_main(SDL_Instance instance)
 	game_init_params(&map, &p);
 	_print_map(map, p);
 
-	game_func01(instance, map, p);
+	game_engine(instance, map, p);
 
 	/*
 	 * TODO - need to code free_map() to free the map here

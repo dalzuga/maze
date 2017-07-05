@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * game_func01 - entry point for the game engine
+ * game_engine - entry point for the game engine
  *
  * @instance: SDL window and renderer instance
  * @map: the current map
@@ -9,7 +9,7 @@
  *
  * Return: Nothing.
  */
-void game_func01(SDL_Instance instance, GameMap *map, GamePlayer *p)
+void game_engine(SDL_Instance instance, GameMap *map, GamePlayer *p)
 {
 	while(1)
 	{

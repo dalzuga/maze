@@ -96,8 +96,8 @@ int get_piy(GameMap *map __attribute__((unused)), GamePlayer *p);
  */
 void calc_pxpy(GamePlayer *p);
 
-/* game_func01 - entry point for the game engine */
-void game_func01(SDL_Instance instance, GameMap *map, GamePlayer *p);
+/* game_engine - entry point for the game engine */
+void game_engine(SDL_Instance instance, GameMap *map, GamePlayer *p);
 
 /* draws the game on the projection plane (monitor) */
 void game_func02(SDL_Instance instance, GameMap *map, GamePlayer *p);
