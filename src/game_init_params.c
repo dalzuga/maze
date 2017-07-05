@@ -29,4 +29,7 @@ void game_init_params(GameMap **map, GamePlayer **p)
 
 	(*p)->x = (*p)->px / BLOCK_UNITS;
 	(*p)->y = (*p)->py / BLOCK_UNITS;
+
+	/* set distance to projector plane */
+	(*p)->dpp = X_RES / 2 / tan((FOV_ANGLE / 2) * M_PI / 180);
 }
