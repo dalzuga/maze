@@ -55,6 +55,7 @@ typedef struct MazeStruct
 
 int init_instance(SDL_Instance *);
 void draw_stuff(SDL_Instance);
+void draw_column(MazeStruct *maze, int x, int top, int bottom);
 int poll_events(void);
 
 /* make_map - creates a map on the heap */
