@@ -65,13 +65,13 @@ int check_edge_cases(void)
 
 	if (FOV_ANGLE <= 0 || BLOCK_UNITS <= 0 || WALL_HEIGHT <= 0)
 	{
-		printf("Wrong game parameters.\n");
+		printf("Undefined game parameters.\n");
 		return (1);
 	}
 
 	if (MAP_ROWS < 3 || MAP_COLS < 3)
 	{
-		printf("Wrong game parameters.\n");
+		printf("Insufficient map size.\n");
 		return (1);
 	}
 
