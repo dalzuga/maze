@@ -14,9 +14,9 @@ void draw_stuff(SDL_Instance instance)
  * draw_column - draws a line from top to bottom in SDL renderer, with
  * y-coordinate increasing downwards (this behavior is dependent on SDL 2.0)
  *
- * @maze - pointer to the maze struct
- * @top - integer
- * @bottom - integer
+ * @maze: pointer to the maze struct
+ * @top: integer
+ * @bottom: integer
  */
 void draw_column(MazeStruct *maze, int x, int top, int bottom)
 {
