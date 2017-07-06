@@ -9,7 +9,6 @@
  */
 void game_main(MazeStruct *maze)
 {
-	game_init_params(&(maze->map), &(maze->p));
 	_print_map(maze->map, maze->p);
 
 	game_engine(maze->instance, maze->map, maze->p);

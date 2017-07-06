@@ -6,11 +6,16 @@
  */
 void init_main(MazeStruct *maze)
 {
+	/* start SDL window and renderer */
 	if (init_instance(&(maze->instance)) != 0)
 		exit(2);
 
+	/* check #define'd values */
 	if (check_edge_cases() != 0)
 		exit_function(maze);
+
+	/* allocate and init map and player */
+	game_init_params(&(maze->map), &(maze->p));
 }
 
 int init_instance(SDL_Instance *instance)
@@ -76,4 +81,38 @@ int check_edge_cases(void)
 	}
 
 	return (0);
+}
+
+/**
+ * game_init_params - allocates and initializes a map and player. Both must be
+ * freed by the user of this function.
+ *
+ * @map: address of map
+ * @p: address of player
+ *
+ * Return: Nothing.
+ */
+void game_init_params(GameMap **map, GamePlayer **p)
+{
+	*map = make_map(MAP_ROWS, MAP_COLS);
+	(*map)->array[1][1] = 0;
+	(*map)->array[1][2] = 0;
+	(*map)->array[2][2] = 0;
+
+	*p = malloc(sizeof(GamePlayer));
+	if (*p == NULL)
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
+
+	(*p)->px = START_X;
+	(*p)->py = START_Y;
+	(*p)->theta = START_THETA;
+
+	(*p)->x = (*p)->px / BLOCK_UNITS;
+	(*p)->y = (*p)->py / BLOCK_UNITS;
+
+	/* set distance to projector plane */
+	(*p)->dpp = X_RES / 2 / tan((FOV_ANGLE / 2) * M_PI / 180);
 }
