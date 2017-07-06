@@ -3,32 +3,22 @@
 /**
  * game_main - entry point for the game engine
  *
- * @instance: SDL window and renderer instance
+ * @maze: pointer to the maze struct
  *
  * Return: Nothing.
  */
-void game_main(SDL_Instance instance)
+void game_main(MazeStruct *maze)
 {
-	/* declarations */
-	GameMap *map;
-	GamePlayer *p;
-	/* end declarations */
+	game_init_params(&(maze->map), &(maze->p));
+	_print_map(maze->map, maze->p);
 
-	/* inits */
-	map = NULL;
-	p = NULL;
-	/* end inits */
-
-	game_init_params(&map, &p);
-	_print_map(map, p);
-
-	game_engine(instance, map, p);
+	game_engine(maze->instance, maze->map, maze->p);
 
 	/*
 	 * TODO - need to code free_map() to free the map here
 	 */
 
-	free(p);		/* frees the player */
+	free(maze->p);		/* frees the player */
 }
 
 int poll_events(void)

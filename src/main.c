@@ -8,7 +8,7 @@ int main(void)
 	/* inits */
 	init_main(&maze);
 
-	game_main(maze.instance);
+	game_main(&maze);
 
 	return (0);
 }
