@@ -19,7 +19,7 @@
 #define MAP_COLS 30
 #define START_X 198
 #define START_Y (198 + 96)
-#define START_THETA 30
+#define START_THETA 0
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 
@@ -97,7 +97,7 @@ int get_piy(GameMap *map __attribute__((unused)), GamePlayer *p);
 void calc_pxpy(GamePlayer *p);
 
 /* game_engine - entry point for the game engine */
-void game_engine(SDL_Instance instance, GameMap *map, GamePlayer *p);
+void game_engine(MazeStruct *maze);
 
 /* grame_frame draws the game on the projection plane (monitor) */
 void game_frame(SDL_Instance instance, GameMap *map, GamePlayer *p);

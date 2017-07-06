@@ -11,7 +11,7 @@ void game_main(MazeStruct *maze)
 {
 	_print_map(maze->map, maze->p);
 
-	game_engine(maze->instance, maze->map, maze->p);
+	game_engine(maze);
 
 	/*
 	 * TODO - need to code free_map() to free the map here

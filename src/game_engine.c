@@ -9,8 +9,12 @@
  *
  * Return: Nothing.
  */
-void game_engine(SDL_Instance instance, GameMap *map, GamePlayer *p)
+void game_engine(MazeStruct *maze)
 {
+	SDL_Instance instance = maze->instance;
+	GameMap *map = maze->map;
+	GamePlayer *p = maze->p;
+
 	while(1)
 	{
 		if (DEBUG == 1)
