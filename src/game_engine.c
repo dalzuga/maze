@@ -24,6 +24,7 @@ void game_engine(MazeStruct *maze)
 		else
 		{
 			usleep(FRAME_SLEEP);
+			/* this needs to be changed to a timer */
 		}
 		/* SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0); */
 		/* SDL_RenderClear(instance.renderer); */
