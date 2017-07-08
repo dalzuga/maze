@@ -100,10 +100,13 @@ void calc_pxpy(GamePlayer *p);
 void game_engine(MazeStruct *maze);
 
 /* grame_frame draws the game on the projection plane (monitor) */
-void game_frame(SDL_Instance instance, GameMap *map, GamePlayer *p);
+void game_frame(MazeStruct *maze);
 
 /* game_func03 - sets the wall color */
 void game_func03(SDL_Instance instance);
+
+/* calc_rclen - finds the length of the ray until it hits a wall */
+double calc_rclen(MazeStruct *maze, int ppcs4715);
 
 /* calc_func01 - calculate how far the ray cast travels until it meets a wall */
 double calc_func01(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);

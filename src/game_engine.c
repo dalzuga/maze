@@ -11,8 +11,6 @@
  */
 void game_engine(MazeStruct *maze)
 {
-	SDL_Instance instance = maze->instance;
-	GameMap *map = maze->map;
 	GamePlayer *p = maze->p;
 
 	while(1)
@@ -31,7 +29,7 @@ void game_engine(MazeStruct *maze)
 			break;
 
 		/* draw_stuff(instance); */
-		game_frame(instance, map, p);
+		game_frame(maze);
 
 		fflush(stdout);
 

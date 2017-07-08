@@ -9,9 +9,10 @@
  *
  * Return: Nothing.
  */
-void game_frame(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
-		 GamePlayer *p)
+void game_frame(MazeStruct *maze)
 {
+	GamePlayer *p = maze->p;
+
 	/* declarations */
 	int i;
 	double col_height;	/* column height */
@@ -22,7 +23,7 @@ void game_frame(SDL_Instance instance __attribute__ ((unused)), GameMap *map,
 	{
 		/* rclen = calc_func01(map, p, i); */
 
-		rclen = calc_dhi(map, p, i);
+		rclen = calc_rclen(maze, i);
 
 		col_height = WALL_HEIGHT * p->dpp / rclen;
 		top = Y_RES / 2 + col_height / 2;
