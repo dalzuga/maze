@@ -27,7 +27,20 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 		if (0 <= ap && ap < 90)
 		{
+			/*
+			 * get the distance `dy` to the horizontal block edge
+			 *
+			 * +--+------+ <--- horizontal edge
+			 * |  |      |
+			 * |  |      |
+			 * |  P      |
+			 * |         |
+			 * +---------+
+			 */
+
 			dy = (64) * (Py/64) - Py - 1;
+
+			/* `Ya` signed vertical direction */
 			Ya = -64;
 		}
 		else if (90 <= ap && ap < 180)
@@ -46,6 +59,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			Ya = -64;
 		}
 
+		/* `c` is the number of blocks crossed */
 		for (c = 0; ; c++)
 		{
 			j = Py + dy + c * Ya;
@@ -57,9 +71,23 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			}
 		}
 
+		/*
+		 * obtain `Dx`, inside distance to the vertical edge
+		 *
+		 * +---------+
+		 * |         |
+		 * |         |
+		 * |  P------+
+		 * |         |
+		 * +---------+
+		 */
+
 		Dx = fabs(dy * tan(ap * M_PI / 180));
+
+		/* Xa - horizontal distance of the ray for each block */
 		Xa = fabs(Ya * tan(ap * M_PI / 180));
 
+		/* calculate intersection i-coordinate in map */
 		if (ap < 180)
 		{
 			i = Px + Dx + c * Xa;
@@ -81,6 +109,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			i = Px;
 		}
 
+		/* calculate intersection j-coordinate in map */
 		j = Py + dy + c * Ya;
 	}
 
