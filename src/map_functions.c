@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * make_map - creates a map on the heap and initializes it
+ * make_map - creates a map on the heap
  * @rows - number of rows
  * @cols - number of columns
  *
@@ -84,16 +84,6 @@ void init_map(GameMap *map)
 			}
 		}
 	}
-
-	for (i = 0; i < map->rows; i++)
-	{
-		for (j = 0; j < map->cols; j++)
-		{
-			printf("[%d]", map->array[i][j]);
-		}
-		printf("\n");
-	}
-
 }
 
 /**
@@ -114,23 +104,30 @@ void _print_map(GameMap *map, GamePlayer *p)
 }
 
 /**
- * print_map - prints a map with the player positioned in it
+ * print_map - prints a map
  * @array - map array to print
  * @rows - number of rows
  * @cols - number of columns
  *
  * Return: Nothing.
  */
-void print_map(GameMap *map, GamePlayer __attribute__((unused)) *p)
+void print_map(GameMap *map, GamePlayer *p)
 {
 	int j, i;
-	/* int Px = p->px, Py = p->py; */
+	int Px = p->px, Py = p->py;
 
 	for (j = 0; j < map->rows; j++)
 	{
 		for (i = 0; i < map->cols; i++)
 		{
-			printf("%d", map->array[j][i]);
+			if (i == Px / BLOCK_UNITS && j == Py / BLOCK_UNITS)
+			{
+				cprintf(31, 46, "%s", "P");
+			}
+			else
+			{
+				printf("%d", map->array[j][i]);
+			}
 		}
 		printf("\n");
 	}
