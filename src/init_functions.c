@@ -104,10 +104,6 @@ int check_edge_cases(void)
 			return (1);
 	}
 
-	/*** DELETE ME (for testing only) ***/
-	exit(1);
-	/*** DELETE ME (for testing only) ***/
-
 	return (0);
 }
 
