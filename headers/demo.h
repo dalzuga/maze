@@ -15,11 +15,11 @@
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
 #define ANGLE_STEP 1
-#define MAP_ROWS 10
-#define MAP_COLS 30
-#define START_X 198
-#define START_Y (198 + 96)
-#define START_THETA 0
+#define MAP_ROWS 3
+#define MAP_COLS 3
+#define START_X (64 * 2 - 1)
+#define START_Y (64 * 2 - 1)
+#define START_THETA 45
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 

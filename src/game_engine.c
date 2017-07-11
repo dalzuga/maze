@@ -21,6 +21,9 @@ void game_engine(MazeStruct *maze)
 		}
 		else
 		{
+			/***** DELETE ME (test only) *****/
+			exit(255);
+			/***** DELETE ME (test only) *****/
 			usleep(FRAME_SLEEP);
 		}
 		/* SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0); */
