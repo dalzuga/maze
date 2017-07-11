@@ -119,9 +119,6 @@ int check_edge_cases(void)
 void game_init_params(GameMap **map, GamePlayer **p)
 {
 	*map = make_map(MAP_ROWS, MAP_COLS);
-	(*map)->array[1][1] = 0;
-	(*map)->array[1][2] = 0;
-	(*map)->array[2][2] = 0;
 
 	*p = malloc(sizeof(GamePlayer));
 	if (*p == NULL)
