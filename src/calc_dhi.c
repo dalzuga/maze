@@ -71,6 +71,10 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			}
 		}
 
+
+		/* calculate intersection j-coordinate in map */
+		j = Py + dy + c * Ya;
+
 		/*
 		 * obtain `Dx`, inside distance to the vertical edge
 		 *
@@ -108,9 +112,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		{
 			i = Px;
 		}
-
-		/* calculate intersection j-coordinate in map */
-		j = Py + dy + c * Ya;
 	}
 
 	if (DEBUG == 2)
