@@ -62,6 +62,9 @@ int init_instance(SDL_Instance *instance)
  */
 int check_edge_cases(void)
 {
+	int coord[2] = {START_X, START_Y};
+	int i;
+
 	if (X_RES <= 0 || Y_RES <= 0)
 	{
 		printf("Wrong resolution.\n");
@@ -78,6 +81,27 @@ int check_edge_cases(void)
 	{
 		printf("Insufficient map size.\n");
 		return (1);
+	}
+
+	for (i = 0; i < 2; i++)
+	{
+		if (coord[i] < BLOCK_UNITS)
+		{
+			printf("Player inside border wall.\n");
+			return (1);
+		}
+	}
+
+	if (START_X >= BLOCK_UNITS * (MAP_COLS - 1))
+	{
+			printf("Player inside border wall.\n");
+			return (1);
+	}
+
+	if (START_Y >= BLOCK_UNITS * (MAP_ROWS - 1))
+	{
+			printf("Player inside border wall.\n");
+			return (1);
 	}
 
 	return (0);
