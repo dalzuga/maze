@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * make_map - creates a map on the heap
+ * make_map - creates a map on the heap and initializes it
  * @rows - number of rows
  * @cols - number of columns
  *
