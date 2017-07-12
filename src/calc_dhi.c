@@ -106,17 +106,19 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 			if (i/64 < 0 || i/64 > map->rows - 1)
 			{
-				printf("horizontal border exceeded\n");
-				exit(1);
+				printf("horizontal border exceeded.\n");
+				printf("rolling back c...\n");
 				c = c - 1;
+				printf("c is now... c: %d\n", c);
 				break;
 			}
 
 			if (j/64 < 0 || j/64 > map->cols - 1)
 			{
-				printf("vertical border exceeded\n");
-				exit(1);
+				printf("vertical border exceeded.\n");
+				printf("rolling back c...\n");
 				c = c - 1;
+				printf("c is now... c: %d\n", c);
 				break;
 			}
 
