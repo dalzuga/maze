@@ -97,6 +97,8 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				break;
 			}
 
+			printf("checking - [i][j]: [%d][%d]\n", i/64, j/64);
+			usleep(200000);
 			if (map->array[i/64][j/64] == 1)
 			{
 				printf("boom! [i][j]: [%d][%d]\n", i/64, j/64);
