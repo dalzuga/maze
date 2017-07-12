@@ -91,6 +91,9 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			i = Px + Dx + c * Xa;
 			j = Py + dy + c * Ya;
 
+			printf("checking - [i][j]: [%d][%d]\t\t", i/64, j/64);
+			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
+
 			/*
                          * if ((j/64) < 0 || (j/64) > map->rows)
 			 * {
@@ -99,10 +102,23 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			 * }
                          */
 
-			printf("checking - [i][j]: [%d][%d]\t\t", i/64, j/64);
-			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
-
 			/* if (i/64 < 0 || i */
+
+			if (i/64 < 0 || i/64 > map->cols - 1)
+			{
+				printf("horizontal border exceeded\n");
+				exit(1);
+				c = c - 1;
+				break;
+			}
+
+			if (i/64 < 0 || i/64 > map->cols - 1)
+			{
+				printf("vertical border exceeded\n");
+				exit(1);
+				c = c - 1;
+				break;
+			}
 
 			usleep(200000);
 			if (map->array[i/64][j/64] == 1)
