@@ -39,6 +39,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			 */
 
 			dy = (64) * (Py/64) - Py - 1;
+			/* simplify with Py = Py % 64 */
 
 			/* `Ya` signed vertical direction */
 			Ya = -64;
@@ -86,6 +87,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		 * +---------+
 		 */
 
+		/* bug found */
 		Dx = fabs(dy * tan(ap * M_PI / 180));
 
 		/* Xa - horizontal distance of the ray for each block */
