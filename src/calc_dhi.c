@@ -91,13 +91,19 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			i = Px + Dx + c * Xa;
 			j = Py + dy + c * Ya;
 
-			if ((j/64) < 0 || (j/64) > map->rows)
-			{
-				c = c - 2;
-				break;
-			}
+			/*
+                         * if ((j/64) < 0 || (j/64) > map->rows)
+			 * {
+			 * 	c = c - 2;
+			 * 	break;
+			 * }
+                         */
 
-			printf("checking - [i][j]: [%d][%d]\n", i/64, j/64);
+			printf("checking - [i][j]: [%d][%d]\t\t", i/64, j/64);
+			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
+
+			/* if (i/64 < 0 || i */
+
 			usleep(200000);
 			if (map->array[i/64][j/64] == 1)
 			{
