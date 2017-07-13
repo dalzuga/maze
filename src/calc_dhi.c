@@ -107,8 +107,8 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			{
 				printf("boom! [j][i]: [%d][%d]\n", j/64, i/64);
 				printf("j, i: %d, %d\n", j, i);
+				print_map(map, p);
 				rcprint_map(map, p, j/64, i/64);
-				usleep(2500000);
 				break;
 			}
 
@@ -160,7 +160,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("Ya: %d\t\t", Ya);
 		printf("Xa: %d\n", Xa);
-		rcprint_map(map, p, j/64, i/64);
 	}
 
 	return (ap);
