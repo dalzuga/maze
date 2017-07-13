@@ -79,12 +79,14 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		/* put the proper signs on `Xa` component, calc `Dx` */
 		if (ap < 180)
 		{
-			Dx = 64 - (Px % 64);
+			/* Dx = 64 - (Px % 64); */
+			Dx = 64 * (Px/64 + 1) - Px;
 		}
 		if (ap > 180)
 		{
 			Xa = -Xa;
-			Dx = -(Px % 64);
+			/* Dx = -(Px % 64); */
+			Dx = 64 * (Px/64) - Px - 1;
 		}
 
 		/* `c` is the number of blocks crossed */
