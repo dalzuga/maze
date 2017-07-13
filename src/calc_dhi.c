@@ -15,7 +15,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
 
-	if (axis_angle(ap))
+	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
 	{
 		return (special_dhi(map, p, ap, ppcs4715));
 	}
@@ -25,7 +25,8 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		Px = p->px;
 		/* end inits */
 
-		if (0 <= ap && ap < 90)
+		/* up */
+		if ((0 <= ap && ap < 90) || (270 < ap && ap < 360))
 		{
 			/*
 			 * get the distance `dy` to the horizontal block edge
@@ -38,24 +39,15 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			 * +---------+
 			 */
 
-			dy = (64) * (Py/64) - Py - 1;
+			dy = (64) * (Py/64) - Py;
 			/* `Ya` signed vertical direction */
 			Ya = -64;
 		}
-		else if (90 <= ap && ap < 180)
+		/* down */
+		else		/* if (90 <= ap && ap < 270) */
 		{
 			dy = (64) * (Py/64 + 1) - Py;
 			Ya = 64;
-		}
-		else if (180 <= ap && ap < 270)
-		{
-			dy = (64) * (Py/64 + 1) - Py;
-			Ya = 64;
-		}
-		else
-		{
-			dy = (64) * (Py/64) - Py - 1;
-			Ya = -64;
 		}
 
 		/*
@@ -96,7 +88,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			printf("Px + Dx + c * Xa: %d\n", i);
 			j = Py + dy + c * Ya;
 
-			printf("checking - [i][j]: [%d][%d]\t\t", i/64, j/64);
+			printf("checking - [j][i]: [%d][%d]\t\t", j/64, i/64);
 			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
 
 			/*
@@ -107,10 +99,12 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			 * }
                          */
 
-			/* if (i/64 < 0 || i */
 
-			if (i/64 < 1 || i/64 > map->rows - 1)
+			if (j/64 < 1 || j/64 > map->rows - 2)
 			{
+				printf("map->rows - 2: %d\n", map->rows - 2);
+
+				printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
 				printf("horizontal border exceeded.\n");
 				/*
                                  * printf("rolling back c...\n");
@@ -120,7 +114,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				break;
 			}
 
-			if (j/64 < 1 || j/64 > map->cols - 1)
+			if (i/64 < 1 || i/64 > map->cols - 2)
 			{
 				printf("vertical border exceeded.\n");
 				/*
@@ -131,13 +125,15 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				break;
 			}
 
-			usleep(200000);
-			if (map->array[i/64][j/64] == 1)
-			{
-				printf("boom! [i][j]: [%d][%d]\n", i/64, j/64);
-				printf("i, j: %d, %d\n", i, j);
-				usleep(2500000);
-			}
+			/*
+                         * usleep(200000);
+			 * if (map->array[j/64][i/64] == 1)
+			 * {
+			 * 	printf("boom! [i][j]: [%d][%d]\n", i/64, j/64);
+			 * 	printf("i, j: %d, %d\n", i, j);
+			 * 	usleep(2500000);
+			 * }
+                         */
 		}
 
 		/* re-calculate intersection j-coordinate in map */
@@ -146,6 +142,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		/* re-calculate intersection i-coordinate in map */
 		i = Px + Dx + c * Xa;
 
+		/* bring back `i` if it's outside the map's boundary */
 		if (ap < 180)
 		{
 			if (i > map->cols * 64)
@@ -178,7 +175,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("Ya: %d\t\t", Ya);
 		printf("Xa: %d\n", Xa);
-		printf("dy * tan(ap * M_PI / 180): %f\n", dy * tan(ap * M_PI / 180));
 		rcprint_map(map, p, j/64, i/64);
 	}
 
