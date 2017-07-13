@@ -85,15 +85,20 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		for (c = 0; ; c++)
 		{
 			i = Px + Dx + c * Xa;
-			printf("Px + Dx + c * Xa: %d\n", i);
+			if (DEBUG == 4)
+				printf("Px + Dx + c * Xa: %d\n", i);
 			j = Py + dy + c * Ya;
 
-			printf("checking - [j][i]: [%d][%d]\t\t", j/64, i/64);
-			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
+			if (DEBUG >= 3)
+			{
+				printf("checking - [j][i]: [%d][%d]\t\t", j/64, i/64);
+				printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
+			}
 
 			if (i/64 < 1 || i/64 > map->cols - 2)
 			{
-				printf("vertical border exceeded.\n");
+				if (DEBUG == 4)
+					printf("vertical border exceeded.\n");
 				/*
                                  * printf("rolling back c...\n");
 				 * c = c - 1;
@@ -102,22 +107,29 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				break;
 			}
 
-			usleep(200000);
 			if (map->array[j/64][i/64] == 1)
 			{
-				printf("boom! [j][i]: [%d][%d]\n", j/64, i/64);
-				printf("j, i: %d, %d\n", j, i);
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
+				if (DEBUG == 4)
+				{
+					printf("inside hit. [j][i]: [%d][%d]\n", j/64, i/64);
+					printf("j, i: %d, %d\t\tc: %d\n", j, i, c);
+				}
+				if (DEBUG >= 2)
+				{
+					print_map(map, p);
+					rcprint_map(map, p, j/64, i/64);
+				}
 				break;
 			}
 
 			if (j/64 < 1 || j/64 > map->rows - 2)
 			{
-				printf("map->rows - 2: %d\n", map->rows - 2);
-
-				printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
-				printf("horizontal border exceeded.\n");
+				if (DEBUG == 4)
+				{
+					printf("map->rows - 2: %d\n", map->rows - 2);
+					printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
+					printf("horizontal border exceeded.\n");
+				}
 				/*
                                  * printf("rolling back c...\n");
 				 * c = c - 1;
@@ -148,7 +160,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		}
 	}
 
-	if (DEBUG == 2)
+	if (DEBUG >= 2)
 	{
 		printf("-------------11-1-------------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
