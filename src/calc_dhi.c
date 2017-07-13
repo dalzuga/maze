@@ -91,29 +91,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			printf("checking - [j][i]: [%d][%d]\t\t", j/64, i/64);
 			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
 
-			/*
-                         * if ((j/64) < 0 || (j/64) > map->rows)
-			 * {
-			 * 	c = c - 2;
-			 * 	break;
-			 * }
-                         */
-
-
-			if (j/64 < 1 || j/64 > map->rows - 2)
-			{
-				printf("map->rows - 2: %d\n", map->rows - 2);
-
-				printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
-				printf("horizontal border exceeded.\n");
-				/*
-                                 * printf("rolling back c...\n");
-				 * c = c - 1;
-				 * printf("c is now... c: %d\n", c);
-                                 */
-				break;
-			}
-
 			if (i/64 < 1 || i/64 > map->cols - 2)
 			{
 				printf("vertical border exceeded.\n");
@@ -132,6 +109,21 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				printf("j, i: %d, %d\n", j, i);
 				rcprint_map(map, p, j/64, i/64);
 				usleep(2500000);
+				break;
+			}
+
+			if (j/64 < 1 || j/64 > map->rows - 2)
+			{
+				printf("map->rows - 2: %d\n", map->rows - 2);
+
+				printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
+				printf("horizontal border exceeded.\n");
+				/*
+                                 * printf("rolling back c...\n");
+				 * c = c - 1;
+				 * printf("c is now... c: %d\n", c);
+                                 */
+				break;
 			}
 		}
 
