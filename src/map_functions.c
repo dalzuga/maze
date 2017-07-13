@@ -84,6 +84,16 @@ void init_map(GameMap *map)
 			}
 		}
 	}
+
+	map->array[2][3] = 1;
+	map->array[2][4] = 1;
+	map->array[2][5] = 1;
+	map->array[2][6] = 1;
+
+	map->array[8][14] = 1;
+	map->array[8][15] = 1;
+	map->array[8][16] = 1;
+
 }
 
 /**
@@ -123,6 +133,10 @@ void print_map(GameMap *map, GamePlayer *p)
 			if (i == Px / BLOCK_UNITS && j == Py / BLOCK_UNITS)
 			{
 				cprintf(31, 46, "%s", "P");
+			}
+			else if (map->array[j][i] == 1)
+			{
+				cprintf(31, 44, "%d", 1);
 			}
 			else
 			{

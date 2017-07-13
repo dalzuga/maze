@@ -125,22 +125,15 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				break;
 			}
 
-			/*
-                         * usleep(200000);
-			 * if (map->array[j/64][i/64] == 1)
-			 * {
-			 * 	printf("boom! [i][j]: [%d][%d]\n", i/64, j/64);
-			 * 	printf("i, j: %d, %d\n", i, j);
-			 * 	usleep(2500000);
-			 * }
-                         */
+			usleep(200000);
+			if (map->array[j/64][i/64] == 1)
+			{
+				printf("boom! [j][i]: [%d][%d]\n", j/64, i/64);
+				printf("j, i: %d, %d\n", j, i);
+				rcprint_map(map, p, j/64, i/64);
+				usleep(2500000);
+			}
 		}
-
-		/* re-calculate intersection j-coordinate in map */
-		j = Py + dy + c * Ya;
-
-		/* re-calculate intersection i-coordinate in map */
-		i = Px + Dx + c * Xa;
 
 		/* bring back `i` if it's outside the map's boundary */
 		if (ap < 180)
