@@ -97,6 +97,26 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 			if (i/64 < 1 || i/64 > map->cols - 2)
 			{
+				/* bring back `i` since it's outside the map's boundary */
+				if (ap < 180)
+				{
+					if (i > map->cols * 64)
+					{
+						i = (map->cols - 1) * 64;
+					}
+				}
+				else if (ap > 180)
+				{
+					if (i < 64 - 1)
+					{
+						i = 64 - 1;
+					}
+				}
+				else
+				{
+					i = Px;
+				}
+
 				if (DEBUG >= 3)
 				{
 					print_map(map, p);
@@ -138,26 +158,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				}
 				break;
 			}
-		}
-
-		/* bring back `i` if it's outside the map's boundary */
-		if (ap < 180)
-		{
-			if (i > map->cols * 64)
-			{
-				i = (map->cols - 1) * 64;
-			}
-		}
-		else if (ap > 180)
-		{
-			if (i < 64 - 1)
-			{
-				i = 64 - 1;
-			}
-		}
-		else
-		{
-			i = Px;
 		}
 	}
 
