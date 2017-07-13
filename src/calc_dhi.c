@@ -39,7 +39,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			 */
 
 			dy = (64) * (Py/64) - Py - 1;
-
 			/* `Ya` signed vertical direction */
 			Ya = -64;
 		}
@@ -70,19 +69,22 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		 * +---------+
 		 */
 
-		Dx = fabs(dy * tan(ap * M_PI / 180));
+		/************************************************
+                 * Dx = fabs(dy * tan(ap * M_PI / 180));        *
+                 ************************************************/
 
 		/* Xa - horizontal distance of the ray for each block */
 		Xa = fabs(Ya * tan(ap * M_PI / 180));
 
-		/* put the proper signs on `Xa` and `Dx` components */
+		/* put the proper signs on `Xa` component, calc `Dx` */
 		if (ap < 180)
 		{
+			Dx = 64 - (Px % 64);
 		}
 		if (ap > 180)
 		{
 			Xa = -Xa;
-			Dx = -Dx;
+			Dx = -(Px % 64);
 		}
 
 		/* `c` is the number of blocks crossed */
@@ -105,7 +107,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 			/* if (i/64 < 0 || i */
 
-			if (i/64 < 1 || i/64 > map->rows)
+			if (i/64 < 1 || i/64 > map->rows - 1)
 			{
 				printf("horizontal border exceeded.\n");
 				/*
@@ -131,14 +133,15 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			if (map->array[i/64][j/64] == 1)
 			{
 				printf("boom! [i][j]: [%d][%d]\n", i/64, j/64);
+				printf("i, j: %d, %d\n", i, j);
 				usleep(2500000);
 			}
 		}
 
-		/* calculate intersection j-coordinate in map */
+		/* re-calculate intersection j-coordinate in map */
 		j = Py + dy + c * Ya;
 
-		/* calculate intersection i-coordinate in map */
+		/* re-calculate intersection i-coordinate in map */
 		i = Px + Dx + c * Xa;
 
 		if (ap < 180)
@@ -167,6 +170,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
+		printf("player_pos: [%d, %d]\t\t", Px/64, Py/64);
 		printf("ap: %f\n", ap);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
