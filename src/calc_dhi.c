@@ -210,32 +210,6 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		}
 	}
 
-	/* 
-         * switch ((int) angle)
-	 * {
-	 * case 0:
-	 *   i = Px;
-	 *   j = 64 - 1;
-	 *   dist = (map->rows * 64 - Py - 1);
-	 *   break;
-	 * case 90:
-	 *   i = (map->cols - 1) * 64;
-	 *   j = Py;
-	 *   dist = (map->cols * 64 - Px - 1);
-	 *   break;
-	 * case 180:
-	 *   i = Px;
-	 *   j = (map->rows - 1) * 64;
-	 *   dist = (Py - map->rows * 64);
-	 *   break;
-	 * case 270:
-	 *   i = 64 - 1;
-	 *   j = Py;
-	 *   dist = (Px - map->cols * 64);
-	 *   break;
-	 * }
-         */
-
 	if (DEBUG >= 2)
 	{
 		printf("----------11-1-SPECIAL--------\n");
