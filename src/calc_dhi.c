@@ -155,54 +155,67 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	Px = p->px;
 	dist = -999999;
 
-	i = Px/64;
-	j = Py/64;
+	i = Px;
+	j = Py;
 
 	if (angle == 0)
 	{
 		for (c = 0; ; c++)
 		{
-			if (map[j/64][i/64] == 1)
+			/* subtract 64 * c */
+			j = Py - (64) * c;
+			if (map->array[j/64][i/64] == 1)
 			{
-				return ();
+				break;
 			}
 		}
 	}
 
-	switch ((int) angle)
-	{
-	case 0:
-	  i = Px;
-	  j = 64 - 1;
-	  dist = (map->rows * 64 - Py - 1);
-	  break;
-	case 90:
-	  i = (map->cols - 1) * 64;
-	  j = Py;
-	  dist = (map->cols * 64 - Px - 1);
-	  break;
-	case 180:
-	  i = Px;
-	  j = (map->rows - 1) * 64;
-	  dist = (Py - map->rows * 64);
-	  break;
-	case 270:
-	  i = 64 - 1;
-	  j = Py;
-	  dist = (Px - map->cols * 64);
-	  break;
-	}
+	/* 
+         * switch ((int) angle)
+	 * {
+	 * case 0:
+	 *   i = Px;
+	 *   j = 64 - 1;
+	 *   dist = (map->rows * 64 - Py - 1);
+	 *   break;
+	 * case 90:
+	 *   i = (map->cols - 1) * 64;
+	 *   j = Py;
+	 *   dist = (map->cols * 64 - Px - 1);
+	 *   break;
+	 * case 180:
+	 *   i = Px;
+	 *   j = (map->rows - 1) * 64;
+	 *   dist = (Py - map->rows * 64);
+	 *   break;
+	 * case 270:
+	 *   i = 64 - 1;
+	 *   j = Py;
+	 *   dist = (Px - map->cols * 64);
+	 *   break;
+	 * }
+         */
 
-	if (DEBUG == 2)
+	if (DEBUG >= 2)
 	{
 		printf("----------11-1-SPECIAL--------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
+		printf("player_pos: [%d, %d]\t\t", Px/64, Py/64);
+		/* 
+                 * printf("(i, j): (%d, %d)\t\t", i, j);
+		 * printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
+		 * printf("player_pos: (%d, %d)\t\t", Px, Py);
+                 */
 		printf("ap: %f\n", angle);
-		printf("\t\tppcs4715: %d\n", ppcs4715);
+		printf("c: %d\t\t", c);
+		printf("ppcs4715: %d\n", ppcs4715);
+		print_map(map, p);
 		rcprint_map(map, p, j/64, i/64);
 	}
+
 
 	return (dist);
 }
