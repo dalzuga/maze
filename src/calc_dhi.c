@@ -160,6 +160,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	j = Py;
 
 
+	/* up */
 	if (angle == 0)
 	{
 		/* displacement to top of map cell */
@@ -175,10 +176,11 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 			}
 		}
 	}
+	/* right */
 	else if (angle == 90)
 	{
 		/* displacement to right of map cell */
-		Dx = (Px/64 + 1) - Px;
+		Dx = (Px/64 + 1) * (64) - Px;
 
 		for (c = 0; ; c++)
 		{
@@ -191,14 +193,16 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 			}
 		}
 	}
+	/* down */
 	else if (angle == 180)
 	{
 		/* displacement to bottom of map cell */
-		dy = (Py/64 + 1) - Py;
+		dy = (Py/64 + 1) * (64) - Py;
+
 		for (c = 0; ; c++)
 		{
 			/* add 64 * c */
-			j = Px + (64) * c;
+			j = Py + (64) * c;
 
 			if (map->array[j/64][i/64] == 1)
 			{
@@ -206,10 +210,11 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 			}
 		}
 	}
-	else			/* if (angle == 270) */
+	/* left */
+	else			/* guaranteed --> (angle == 270) */
 	{
 		/* displacement to left of map cell */
-		Dx = (Px/64) - Px;
+		Dx = (Px/64) * 64 - Px;
 
 		for (c = 0; ; c++)
 		{
@@ -226,10 +231,14 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	/* calculate the distance */
 	/* up-down */
 	if (angle == 0 || angle == 180)
-		dist = dy + abs(Py - j);
+	{
+		dist = dy + abs(j - Py);
+	}
 	/* left-right */
 	else
-		dist = Dx + abs(Px - i);
+	{
+		dist = Dx + abs(i - Px);
+	}
 
 	if (DEBUG >= 2)
 	{
@@ -249,7 +258,6 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		printf("dist: %d\n", dist);
 		print_map(map, p);
 		rcprint_map(map, p, j/64, i/64);
-		exit(1);
 	}
 
 	return (dist);

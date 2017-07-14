@@ -94,6 +94,13 @@ void init_map(GameMap *map)
 	map->array[8][15] = 1;
 	map->array[8][16] = 1;
 
+	map->array[3][9] = 1;
+	map->array[4][9] = 1;
+	map->array[5][9] = 1;
+
+	map->array[6][3] = 1;
+	map->array[6][4] = 1;
+	map->array[6][5] = 1;
 }
 
 /**
