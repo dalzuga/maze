@@ -9,7 +9,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	/* declarations */
 	double ap;
 	int By __attribute__((unused));
-	int Dx, dy, Px, Py, Ya, Xa, c, i, j;
+	int Px, Py, Ya, Xa, c, i, j;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
@@ -28,66 +28,34 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		/* up */
 		if ((0 <= ap && ap < 90) || (270 < ap && ap < 360))
 		{
-			/*
-			 * get the distance `dy` to the horizontal block edge
-			 *
-			 * +--+------+ <--- horizontal edge
-			 * |  |      |
-			 * |  |      |
-			 * |  P      |
-			 * |         |
-			 * +---------+
-			 */
-
-			dy = (64) * (Py/64) - Py;
 			/* `Ya` signed vertical direction */
 			Ya = -64;
 		}
 		/* down */
 		else		/* if (90 <= ap && ap < 270) */
 		{
-			dy = (64) * (Py/64 + 1) - Py;
 			Ya = 64;
 		}
-
-		/*
-		 * obtain `Dx`, inside distance to the vertical edge
-		 *
-		 * +---------+
-		 * |         |
-		 * |         |
-		 * |  P------+
-		 * |         |
-		 * +---------+
-		 */
-
-		/************************************************
-                 * Dx = fabs(dy * tan(ap * M_PI / 180));        *
-                 ************************************************/
 
 		/* Xa - horizontal distance of the ray for each block */
 		Xa = fabs(Ya * tan(ap * M_PI / 180));
 
-		/* put the proper signs on `Xa` component, calc `Dx` */
+		/* put the proper signs on `Xa` component */
 		if (ap < 180)
 		{
-			/* Dx = 64 - (Px % 64); */
-			Dx = 64 * (Px/64 + 1) - Px;
 		}
 		if (ap > 180)
 		{
 			Xa = -Xa;
-			/* Dx = -(Px % 64); */
-			Dx = 64 * (Px/64) - Px - 1;
 		}
 
 		/* `c` is the number of blocks crossed */
 		for (c = 0; ; c++)
 		{
-			i = Px + Dx + c * Xa;
+			i = Px + c * Xa;
 			if (DEBUG == 4)
-				printf("Px + Dx + c * Xa: %d\n", i);
-			j = Py + dy + c * Ya;
+				printf("Px + c * Xa: %d\n", i);
+			j = Py + c * Ya;
 
 			if (DEBUG >= 4)
 			{
@@ -181,34 +149,48 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
  */
 int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 {
-	int Px, Py, i, j, dist;
+	int Px, Py, c, i, j, dist;
 
 	Py = p->py;
 	Px = p->px;
 	dist = -999999;
 
+	i = Px/64;
+	j = Py/64;
+
+	if (angle == 0)
+	{
+		for (c = 0; ; c++)
+		{
+			if (map[j/64][i/64] == 1)
+			{
+				return ();
+			}
+		}
+	}
+
 	switch ((int) angle)
 	{
 	case 0:
-		i = Px;
-		j = 64 - 1;
-		dist = (map->rows * 64 - Py - 1);
-		break;
+	  i = Px;
+	  j = 64 - 1;
+	  dist = (map->rows * 64 - Py - 1);
+	  break;
 	case 90:
-		i = (map->cols - 1) * 64;
-		j = Py;
-		dist = (map->cols * 64 - Px - 1);
-		break;
+	  i = (map->cols - 1) * 64;
+	  j = Py;
+	  dist = (map->cols * 64 - Px - 1);
+	  break;
 	case 180:
-		i = Px;
-		j = (map->rows - 1) * 64;
-		dist = (Py - map->rows * 64);
-		break;
+	  i = Px;
+	  j = (map->rows - 1) * 64;
+	  dist = (Py - map->rows * 64);
+	  break;
 	case 270:
-		i = 64 - 1;
-		j = Py;
-		dist = (Px - map->cols * 64);
-		break;
+	  i = 64 - 1;
+	  j = Py;
+	  dist = (Px - map->cols * 64);
+	  break;
 	}
 
 	if (DEBUG == 2)

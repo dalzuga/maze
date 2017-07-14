@@ -21,9 +21,6 @@ void game_frame(MazeStruct *maze)
 
 	for (i = 0; i < X_RES; i++)
 	{
-		if (i == 40)
-			exit(1);
-
 		/* rclen = calc_func01(map, p, i); */
 
 		rclen = calc_rclen(maze, i);
