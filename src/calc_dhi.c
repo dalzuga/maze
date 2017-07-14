@@ -170,6 +170,19 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 			}
 		}
 	}
+	else if (angle == 90)
+	{
+		for (c = 0; ; c++)
+		{
+			/* add 64 * c */
+			i = Px + (64) * c;
+
+			if (map->array[j/64][i/64] == 1)
+			{
+				break;
+			}
+		}
+	}
 
 	/* 
          * switch ((int) angle)
