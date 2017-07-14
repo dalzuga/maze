@@ -123,7 +123,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 					rcprint_map(map, p, j/64, i/64);
 					printf("vertical border exceeded.\n");
 				}
-
 				break;
 			}
 
@@ -140,7 +139,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 					printf("map->rows - 2: %d\n", map->rows - 2);
 					printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
 				}
-
 				break;
 			}
 

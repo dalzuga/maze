@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 3
+#define DEBUG 4
 #define DEBUG_SLEEP 50000
 #define FRAME_SLEEP 30000 	/* 30ms */
 #define X_RES 320
@@ -17,9 +17,9 @@
 #define ANGLE_STEP 1
 #define MAP_ROWS 12
 #define MAP_COLS 30
-#define START_X (4 * 64)
-#define START_Y (4 * 64)
-#define START_THETA 100
+#define START_X (4 * 64 + 32)
+#define START_Y (4 * 64 + 32)
+#define START_THETA 85
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 
