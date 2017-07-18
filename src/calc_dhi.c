@@ -19,111 +19,109 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	{
 		return (special_dhi(map, p, ap, ppcs4715));
 	}
-	else
+
+	Py = p->py;
+	Px = p->px;
+	/* end inits */
+
+	/* up */
+	if ((0 <= ap && ap < 90) || (270 < ap && ap < 360))
 	{
-		Py = p->py;
-		Px = p->px;
-		/* end inits */
+		/* `Ya` signed vertical direction */
+		Ya = -64;
+	}
+	/* down */
+	else		/* if (90 <= ap && ap < 270) */
+	{
+		Ya = 64;
+	}
 
-		/* up */
-		if ((0 <= ap && ap < 90) || (270 < ap && ap < 360))
+	/* Xa - horizontal distance of the ray for each block */
+	Xa = fabs(Ya * tan(ap * M_PI / 180));
+
+	/* put the proper signs on `Xa` component */
+	if (ap < 180)
+	{
+	}
+	if (ap > 180)
+	{
+		Xa = -Xa;
+	}
+
+	/* `c` is the number of blocks crossed */
+	for (c = 0; ; c++)
+	{
+		i = Px + c * Xa;
+		if (DEBUG == 4)
+			printf("Px + c * Xa: %d\n", i);
+		j = Py + c * Ya;
+
+		if (DEBUG >= 4)
 		{
-			/* `Ya` signed vertical direction */
-			Ya = -64;
+			printf("checking - [j][i]: [%d][%d]\t\t", j/64, i/64);
+			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
 		}
-		/* down */
-		else		/* if (90 <= ap && ap < 270) */
+
+		if (i/64 < 1 || i/64 > map->cols - 2)
 		{
-			Ya = 64;
+			/* bring back `i` since it's outside the map's boundary */
+			if (ap < 180)
+			{
+				if (i > map->cols * 64)
+				{
+					i = (map->cols - 1) * 64;
+				}
+			}
+			else if (ap > 180)
+			{
+				if (i < 64 - 1)
+				{
+					i = 64 - 1;
+				}
+			}
+			else
+			{
+				i = Px;
+			}
+
+			if (DEBUG >= 3)
+			{
+				print_map(map, p);
+				rcprint_map(map, p, j/64, i/64);
+				printf("vertical border exceeded.\n");
+			}
+			break;
 		}
 
-		/* Xa - horizontal distance of the ray for each block */
-		Xa = fabs(Ya * tan(ap * M_PI / 180));
-
-		/* put the proper signs on `Xa` component */
-		if (ap < 180)
+		if (j/64 < 1 || j/64 > map->rows - 2)
 		{
-		}
-		if (ap > 180)
-		{
-			Xa = -Xa;
-		}
-
-		/* `c` is the number of blocks crossed */
-		for (c = 0; ; c++)
-		{
-			i = Px + c * Xa;
-			if (DEBUG == 4)
-				printf("Px + c * Xa: %d\n", i);
-			j = Py + c * Ya;
-
+			if (DEBUG >= 3)
+			{
+				print_map(map, p);
+				rcprint_map(map, p, j/64, i/64);
+				printf("horizontal border exceeded.\n");
+			}
 			if (DEBUG >= 4)
 			{
-				printf("checking - [j][i]: [%d][%d]\t\t", j/64, i/64);
-				printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
+				printf("map->rows - 2: %d\n", map->rows - 2);
+				printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
 			}
+			break;
+		}
 
-			if (i/64 < 1 || i/64 > map->cols - 2)
+		if (map->array[j/64][i/64] == 1)
+		{
+			if (DEBUG == 3)
 			{
-				/* bring back `i` since it's outside the map's boundary */
-				if (ap < 180)
-				{
-					if (i > map->cols * 64)
-					{
-						i = (map->cols - 1) * 64;
-					}
-				}
-				else if (ap > 180)
-				{
-					if (i < 64 - 1)
-					{
-						i = 64 - 1;
-					}
-				}
-				else
-				{
-					i = Px;
-				}
-
-				if (DEBUG >= 3)
-				{
-					print_map(map, p);
-					rcprint_map(map, p, j/64, i/64);
-					printf("vertical border exceeded.\n");
-				}
-				break;
+				printf("inside hit. [j][i]: [%d][%d]\n", j/64, i/64);
+				printf("j, i: %d, %d\t\tc: %d\n", j, i, c);
 			}
-
-			if (j/64 < 1 || j/64 > map->rows - 2)
+			if (DEBUG >= 2)
 			{
-				if (DEBUG >= 3)
-				{
-					print_map(map, p);
-					rcprint_map(map, p, j/64, i/64);
-					printf("horizontal border exceeded.\n");
-				}
-				if (DEBUG >= 4)
-				{
-					printf("map->rows - 2: %d\n", map->rows - 2);
-					printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
-				}
-				break;
+				print_map(map, p);
+				rcprint_map(map, p, j/64, i/64);
 			}
-
-			if (map->array[j/64][i/64] == 1)
-			{
-				if (DEBUG == 3)
-				{
-					printf("inside hit. [j][i]: [%d][%d]\n", j/64, i/64);
-					printf("j, i: %d, %d\t\tc: %d\n", j, i, c);
-				}
-				if (DEBUG >= 2)
-				{
-					print_map(map, p);
-					rcprint_map(map, p, j/64, i/64);
-				}
-				break;
-			}
+			break;
 		}
 	}
 
