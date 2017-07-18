@@ -240,6 +240,16 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		dist = Dx + abs(i - Px);
 	}
 
+	/* adjust distance for positive direction */
+	if (angle == 90)
+	{
+		dist -= 64;
+	}
+	else if (angle == 180)
+	{
+		dist -= 64;
+	}
+
 	if (DEBUG >= 2)
 	{
 		printf("----------11-1-SPECIAL--------\n");
