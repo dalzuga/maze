@@ -6,7 +6,7 @@
 #include <math.h>
 
 #define DEBUG 4
-#define DEBUG_SLEEP 33000	/* 33ms */
+#define DEBUG_SLEEP 450000	/* 450ms */
 #define FRAME_SLEEP 33000 	/* 33ms */
 #define X_RES 320
 #define Y_RES 240
@@ -19,7 +19,7 @@
 #define MAP_COLS 30
 #define START_X (4 * 64 + 32)
 #define START_Y (4 * 64 + 32)
-#define START_THETA 0
+#define START_THETA 45
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 

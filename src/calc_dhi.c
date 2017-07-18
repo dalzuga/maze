@@ -52,15 +52,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	for (c = 0; ; c++)
 	{
 		i = Px + c * Xa;
-		if (DEBUG == 4)
-			printf("Px + c * Xa: %d\n", i);
 		j = Py + c * Ya;
-
-		if (DEBUG >= 4)
-		{
-			printf("checking - [j][i]: [%d][%d]\t\t", j/64, i/64);
-			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
-		}
 
 		if (i/64 < 1 || i/64 > map->cols - 2)
 		{
@@ -101,21 +93,11 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				rcprint_map(map, p, j/64, i/64);
 				printf("horizontal border exceeded.\n");
 			}
-			if (DEBUG >= 4)
-			{
-				printf("map->rows - 2: %d\n", map->rows - 2);
-				printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
-			}
 			break;
 		}
 
 		if (map->array[j/64][i/64] == 1)
 		{
-			if (DEBUG == 3)
-			{
-				printf("inside hit. [j][i]: [%d][%d]\n", j/64, i/64);
-				printf("j, i: %d, %d\t\tc: %d\n", j, i, c);
-			}
 			if (DEBUG >= 2)
 			{
 				print_map(map, p);
@@ -153,8 +135,8 @@ double _calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	int By __attribute__((unused));
 	int Px, Py, Ya, Xa, c, i, j;
 
-	if (DEBUG <= 2)
-		return (_calc_dhi(map, p, ppcs4715));
+	if (DEBUG <= 3)
+		return (calc_dhi(map, p, ppcs4715));
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
