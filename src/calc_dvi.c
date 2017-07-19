@@ -59,7 +59,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		if (j/64 < 1 || j/64 > map->rows - 2)
 		{
 			/* bring back `j` since it's outside the map boundary */
-			/* up */
+			/* down */
 			if (90 < ap && ap < 270)
 			{
 				if (j > map->rows * 64)
@@ -67,7 +67,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 					j = (map->rows - 1) * 64;
 				}
 			}
-			/* down */
+			/* up */
 			else if (ap < 90 || ap > 270)
 			{
 				if (j < 64)
