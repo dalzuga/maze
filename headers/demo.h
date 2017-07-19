@@ -19,7 +19,7 @@
 #define MAP_COLS 30
 #define START_X (4 * 64 + 32)
 #define START_Y (4 * 64 + 32)
-#define START_THETA 45
+#define START_THETA 0
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 
@@ -116,6 +116,9 @@ double calc_func02(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 
 /* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
 double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715);
+
+/* _calc_dvi - debug wrapper to call calc_dvi */
+double _calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715);
 
 /* _calc_dhi - debug wrapper to call calc_dhi */
 double _calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715);
