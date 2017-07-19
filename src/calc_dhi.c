@@ -109,7 +109,16 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	}
 
 	/* calculate the distance */
-	total_y = Py - j/64 * 64;
+	/* up */
+	if (ap < 90 || ap > 270)
+	{
+		total_y = Py - ((j/64 + 1) * 64);
+	}
+	/* down */
+	else
+	{
+		total_y = Py - (j/64 * 64);
+	}
 	dist_dhi = total_y / cos(ap * M_PI / 180);
 
 	if (DEBUG >= 2)
@@ -124,6 +133,8 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("Ya: %d\t\t", Ya);
 		printf("Xa: %d\n", Xa);
+		printf("(i,j): (%d,%d)\n", i, j);
+		printf("total_y: %d\n", total_y);
 		printf("dist_dhi: %d\n", dist_dhi);
 	}
 

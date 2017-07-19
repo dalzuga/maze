@@ -115,7 +115,16 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	}
 
 	/* calculate the distance */
-	total_x = (i/64) * 64 - Px;
+	/* right */
+	if (ap < 180)
+	{
+		total_x = i/64 * 64 - Px;
+	}
+	/* left */
+	else
+	{
+		total_x = (i/64 + 1) * 64 - Px;
+	}
 	dist_dvi = total_x / sin(ap * M_PI / 180);
 
 	if (DEBUG >= 2)

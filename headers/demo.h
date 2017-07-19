@@ -6,7 +6,7 @@
 #include <math.h>
 
 #define DEBUG 2
-#define DEBUG_SLEEP 450000	/* 450ms */
+#define DEBUG_SLEEP 33000	/* 33ms */
 #define FRAME_SLEEP 33000 	/* 33ms */
 #define X_RES 320
 #define Y_RES 240
