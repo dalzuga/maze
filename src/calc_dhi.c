@@ -10,6 +10,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	double ap;
 	int By __attribute__((unused));
 	int Px, Py, Ya, Xa, c, i, j;
+	int total_y, dist_dhi;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
@@ -76,7 +77,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				i = Px;
 			}
 
-			if (DEBUG >= 3)
+			if (DEBUG >= 2)
 			{
 				print_map(map, p);
 				rcprint_map(map, p, j/64, i/64);
@@ -87,7 +88,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 		if (j/64 < 1 || j/64 > map->rows - 2)
 		{
-			if (DEBUG >= 3)
+			if (DEBUG >= 2)
 			{
 				print_map(map, p);
 				rcprint_map(map, p, j/64, i/64);
@@ -107,6 +108,10 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		}
 	}
 
+	/* calculate the distance */
+	total_y = Py - j/64 * 64;
+	dist_dhi = total_y / cos(ap * M_PI / 180);
+
 	if (DEBUG >= 2)
 	{
 		printf("-------------11-1-------------\n");
@@ -119,9 +124,10 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("Ya: %d\t\t", Ya);
 		printf("Xa: %d\n", Xa);
+		printf("dist_dhi: %d\n", dist_dhi);
 	}
 
-	return (ap);
+	return (dist_dhi);
 }
 
 /**
@@ -377,6 +383,8 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 	if (DEBUG >= 2)
 	{
+		print_map(map, p);
+		rcprint_map(map, p, j/64, i/64);
 		printf("----------11-1-SPECIAL--------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
@@ -391,8 +399,6 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("dist: %d\n", dist);
-		print_map(map, p);
-		rcprint_map(map, p, j/64, i/64);
 	}
 
 	return (dist);

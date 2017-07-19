@@ -10,6 +10,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	double ap;
 	int By __attribute__((unused));
 	int Px, Py, Ya, Xa, c, i, j;
+	int total_x, dist_dvi;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
@@ -58,6 +59,8 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 		if (j/64 < 1 || j/64 > map->rows - 2)
 		{
+			c = c - 1;
+
 			/* bring back `j` since it's outside the map boundary */
 			/* down */
 			if (90 < ap && ap < 270)
@@ -111,6 +114,10 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		}
 	}
 
+	/* calculate the distance */
+	total_x = (i/64) * 64 - Px;
+	dist_dvi = total_x / sin(ap * M_PI / 180);
+
 	if (DEBUG >= 2)
 	{
 		printf("-------------11-1-------------\n");
@@ -123,9 +130,11 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("Ya: %d\t\t", Ya);
 		printf("Xa: %d\n", Xa);
+		printf("total_x: %d\n", total_x);
+		printf("dist_dvi: %d\n", dist_dvi);
 	}
 
-	return (ap);
+	return (dist_dvi);
 }
 
 /**

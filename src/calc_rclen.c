@@ -10,12 +10,23 @@
 double calc_rclen(MazeStruct *maze, int ppcs4715)
 {
 	double rclen;
+	int a, b;
 
-	rclen = -98;
+	rclen = a = b = -98;
 
-	/* rclen = _calc_dhi(maze->map, maze->p, ppcs4715); */
+	a = _calc_dhi(maze->map, maze->p, ppcs4715);
 
-	rclen = _calc_dvi(maze->map, maze->p, ppcs4715);
+	b = _calc_dvi(maze->map, maze->p, ppcs4715);
+
+	if (DEBUG >= 2)
+	{
+		printf("-------------12-1-------------\n");
+		printf("dist_dhi: %d\n", a);
+		printf("dist_dvi: %d\n", b);
+
+		printf("min dist: %d\n", a < b ? a : b);
+	}
+
 
 	return (rclen);
 }
