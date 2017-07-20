@@ -23,8 +23,8 @@ void game_engine(MazeStruct *maze)
 		{
 			usleep(FRAME_SLEEP);
 		}
-		/* SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0); */
-		/* SDL_RenderClear(instance.renderer); */
+		SDL_SetRenderDrawColor(maze->instance.renderer, 0, 0, 0, 0);
+		SDL_RenderClear(maze->instance.renderer);
 		if (poll_events() == 1)
 			break;
 
@@ -33,7 +33,7 @@ void game_engine(MazeStruct *maze)
 
 		fflush(stdout);
 
-		/* SDL_RenderPresent(instance.renderer); */
+		SDL_RenderPresent(maze->instance.renderer);
 
 		p->theta += ANGLE_STEP;
 		p->theta = p->theta % 360;
