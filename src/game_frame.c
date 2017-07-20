@@ -48,8 +48,8 @@ void game_frame(MazeStruct *maze)
 			usleep(DEBUG_SLEEP);
 		}
 
-		/* game_func03(instance); */
-		/* SDL_RenderDrawLine(instance.renderer, i, top, i, bottom); */
+		set_wcolor(maze->instance, 0x80, 0x80, 0x80);
+		SDL_RenderDrawLine(maze->instance.renderer, i, top, i, bottom);
 
 		if (DEBUG >= 1)
 		{

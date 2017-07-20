@@ -9,10 +9,7 @@
  */
 double calc_rclen(MazeStruct *maze, int ppcs4715)
 {
-	double rclen;
 	int a, b;
-
-	rclen = a = b = -98;
 
 	a = _calc_dhi(maze->map, maze->p, ppcs4715);
 
@@ -28,5 +25,5 @@ double calc_rclen(MazeStruct *maze, int ppcs4715)
 	}
 
 
-	return (rclen);
+	return (a < b ? a : b);
 }

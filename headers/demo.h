@@ -10,7 +10,7 @@
 #define FRAME_SLEEP 33000 	/* 33ms */
 #define X_RES 320
 #define Y_RES 240
-#define FOV_ANGLE 360
+#define FOV_ANGLE 60
 #define BLOCK_UNITS 64
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT WALL_HEIGHT / 2
@@ -102,8 +102,8 @@ void game_engine(MazeStruct *maze);
 /* grame_frame draws the game on the projection plane (monitor) */
 void game_frame(MazeStruct *maze);
 
-/* game_func03 - sets the wall color */
-void game_func03(SDL_Instance instance);
+/* set_wcolor - sets the wall color */
+void set_wcolor(SDL_Instance instance, int r, int g, int b);
 
 /* calc_rclen - finds the length of the ray until it hits a wall */
 double calc_rclen(MazeStruct *maze, int ppcs4715);
