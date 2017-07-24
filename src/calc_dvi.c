@@ -83,33 +83,39 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 				j = Py;
 			}
 
-			if (DEBUG >= 3)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-				printf("horizontal border exceeded.\n");
-			}
+			/* 
+                         * if (DEBUG >= 3)
+			 * {
+			 * 	print_map(map, p);
+			 * 	rcprint_map(map, p, j/64, i/64);
+			 * 	printf("horizontal border exceeded.\n");
+			 * }
+                         */
 			break;
 		}
 
 		if (i/64 < 1 || i/64 > map->cols - 2)
 		{
-			if (DEBUG >= 3)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-				printf("vertical border exceeded.\n");
-			}
+			/* 
+                         * if (DEBUG >= 3)
+			 * {
+			 * 	print_map(map, p);
+			 * 	rcprint_map(map, p, j/64, i/64);
+			 * 	printf("vertical border exceeded.\n");
+			 * }
+                         */
 			break;
 		}
 
 		if (map->array[j/64][i/64] == 1)
 		{
-			if (DEBUG >= 2)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-			}
+			/* 
+                         * if (DEBUG >= 2)
+			 * {
+			 * 	print_map(map, p);
+			 * 	rcprint_map(map, p, j/64, i/64);
+			 * }
+                         */
 			break;
 		}
 	}
@@ -129,7 +135,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	if (DEBUG >= 2)
 	{
-		printf("-------------11-1-------------\n");
+		printf("-----------11-1--dvi----------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
@@ -141,6 +147,8 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("Xa: %d\n", Xa);
 		printf("total_x: %d\n", total_x);
 		printf("dist_dvi: %d\n", dist_dvi);
+		print_map(map, p);
+		rcprint_map(map, p, j/64, i/64);
 	}
 
 	return (dist_dvi);

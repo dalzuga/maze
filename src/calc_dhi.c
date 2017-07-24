@@ -77,33 +77,39 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 				i = Px;
 			}
 
-			if (DEBUG >= 2)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-				printf("vertical border exceeded.\n");
-			}
+			/* 
+                         * if (DEBUG >= 2)
+			 * {
+			 * 	print_map(map, p);
+			 * 	rcprint_map(map, p, j/64, i/64);
+			 * 	printf("vertical border exceeded.\n");
+			 * }
+                         */
 			break;
 		}
 
 		if (j/64 < 1 || j/64 > map->rows - 2)
 		{
-			if (DEBUG >= 2)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-				printf("horizontal border exceeded.\n");
-			}
+			/* 
+                         * if (DEBUG >= 2)
+			 * {
+			 * 	print_map(map, p);
+			 * 	rcprint_map(map, p, j/64, i/64);
+			 * 	printf("horizontal border exceeded.\n");
+			 * }
+                         */
 			break;
 		}
 
 		if (map->array[j/64][i/64] == 1)
 		{
-			if (DEBUG >= 2)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-			}
+			/* 
+                         * if (DEBUG >= 2)
+			 * {
+			 * 	print_map(map, p);
+			 * 	rcprint_map(map, p, j/64, i/64);
+			 * }
+                         */
 			break;
 		}
 	}
@@ -123,7 +129,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	if (DEBUG >= 2)
 	{
-		printf("-------------11-1-------------\n");
+		printf("-----------11-1--dhi----------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
@@ -136,6 +142,8 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("(i,j): (%d,%d)\n", i, j);
 		printf("total_y: %d\n", total_y);
 		printf("dist_dhi: %d\n", dist_dhi);
+		print_map(map, p);
+		rcprint_map(map, p, j/64, i/64);
 	}
 
 	return (dist_dhi);
