@@ -60,30 +60,39 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		i = Px + dx + c * Xa;
 		j = Py + (i - Px) * tan(ap * M_PI / 180);
 
+		/*
+                 * check for top and bottom overrun
+		 * highlight the "escape" cell
+                 */
 		if (j/64 < 1 || j/64 > map->rows - 2)
 		{
-			c = c - 1;
+			/* calculate the distance */
+			/* right */
+			if (ap < 180)
+			{
+				total_x = i/64 * 64 - Px;
+			}
+			/* left */
+			else
+			{
+				total_x = (i/64 + 1) * 64 - Px;
+			}
 
-			/* bring back `j` since it's outside the map boundary */
-			/* down */
-			if (90 < ap && ap < 270)
+			/*
+                         * top boundary overrun, bring `j` back
+			 * (up)
+                         */
+			if (j/64 < 1)
 			{
-				if (j > map->rows * 64)
-				{
-					j = (map->rows - 1) * 64;
-				}
+				j = 0;
 			}
-			/* up */
-			else if (ap < 90 || ap > 270)
+			/*
+                         * bottom boundary overrun, bring `j` back
+			 * (down)
+                         */
+			else
 			{
-				if (j < 64)
-				{
-					j = 64 - 1;
-				}
-			}
-			else	/* this shouldn't happen */
-			{
-				j = Py;
+				j = (map->rows - 1) * 64;
 			}
 
 			/* 
@@ -97,8 +106,39 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 			break;
 		}
 
+		/*
+		 * check for left and right overrun
+		 * highlight the "escape" cell
+		 */
 		if (i/64 < 1 || i/64 > map->cols - 2)
 		{
+			/* calculate the distance */
+			/* right */
+			if (ap < 180)
+			{
+				total_x = i/64 * 64 - Px;
+			}
+			/* left */
+			else
+			{
+				total_x = (i/64 + 1) * 64 - Px;
+			}
+
+			/*
+                         * left boundary overrun, bring `i` back
+                         */
+			if (i/64 < 1)
+			{
+				i = 0;
+			}
+			/*
+                         * right boundary overrun, bring `i` back
+                         */
+			else
+			{
+				i = (map->cols - 1) * 64;
+			}
+
 			/* 
                          * if (DEBUG >= 3)
 			 * {
@@ -112,6 +152,18 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 		if (map->array[j/64][i/64] == 1)
 		{
+			/* calculate the (absolute) distance */
+			/* right */
+			if (ap < 180)
+			{
+				total_x = i/64 * 64 - Px;
+			}
+			/* left */
+			else
+			{
+				total_x = (i/64 + 1) * 64 - Px;
+			}
+
 			/* 
                          * if (DEBUG >= 2)
 			 * {
@@ -121,18 +173,6 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
                          */
 			break;
 		}
-	}
-
-	/* calculate the distance */
-	/* right */
-	if (ap < 180)
-	{
-		total_x = i/64 * 64 - Px;
-	}
-	/* left */
-	else
-	{
-		total_x = (i/64 + 1) * 64 - Px;
 	}
 
 	dist_dvi = total_x / sin(ap * M_PI / 180);
