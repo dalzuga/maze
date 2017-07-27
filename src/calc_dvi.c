@@ -31,13 +31,13 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (ap < 180)
 	{
 		Xa = 64;
-		dx = (Px/64 + 1) * 64; /* be on the right edge */
+		dx = (Px/64 + 1) * 64 - Px; /* be on the right edge */
 	}
 	/* left */
 	else			/* guaranteed --> (ap > 180) */
 	{
 		Xa = -64;
-		dx = (Px/64) * 64; /* be on the left edge */
+		dx = Px - (Px/64) * 64; /* be on the left edge */
 	}
 
 	/* Ya - vertical distance of the ray for each block */
