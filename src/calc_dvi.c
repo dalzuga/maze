@@ -8,12 +8,11 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
 	/* declarations */
 	double ap;
-	int dx __attribute__((unused));
+	int By __attribute__((unused));
 	int Px, Py, Ya, Xa, c, i, j;
 	int total_x, dist_dvi;
 
 	/* inits */
-	dx = 0;
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
 
@@ -31,13 +30,11 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (ap < 180)
 	{
 		Xa = 64;
-		dx = (Px/64 + 1) * 64; /* be on the right edge */
 	}
 	/* left */
 	else			/* guaranteed --> (ap > 180) */
 	{
 		Xa = -64;
-		dx = (Px/64) * 64; /* be on the left edge */
 	}
 
 	/* Ya - vertical distance of the ray for each block */
@@ -57,7 +54,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	/* `c` is the number of blocks crossed */
 	for (c = 0; ; c++)
 	{
-		i = Px + dx + c * Xa;
+		i = Px + c * Xa;
 		j = Py + c * Ya;
 
 		if (j/64 < 1 || j/64 > map->rows - 2)
@@ -134,7 +131,6 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	{
 		total_x = (i/64 + 1) * 64 - Px;
 	}
-
 	dist_dvi = total_x / sin(ap * M_PI / 180);
 
 	if (DEBUG >= 2)
