@@ -1,0 +1,33 @@
+set pagination off
+file a.out
+b src/calc_rclen.c:1
+r
+l
+l
+l
+n
+s
+s
+l
+n
+n
+n
+p ap
+c
+n
+s
+s
+n
+l
+p ap
+n
+n
+n
+n
+l
+n
+n
+n
+p dx
+n
+p dx
