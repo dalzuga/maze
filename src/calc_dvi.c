@@ -58,7 +58,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	for (c = 0; ; c++)
 	{
 		i = Px + dx + c * Xa;
-		j = Py + (i - Px) / tan(ap * M_PI / 180);
+		j = Py - (i - Px) / tan(ap * M_PI / 180);
 
 		/*
                  * check for top and bottom overrun
