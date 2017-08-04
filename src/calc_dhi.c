@@ -57,7 +57,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	for (c = 0; ; c++)
 	{
 		j = Py + dy + c * Ya;
-		i = Px - (j - Py) / tan(ap * M_PI / 180);
+		i = (j - Py) * tan(ap * M_PI / 180) + Px;
 
 		/*
                  * check for left and right overrun
@@ -190,7 +190,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("Xa: %d\n", Xa);
 		printf("total_y: %d\n", total_y);
 		printf("dist_dhi: %d\n", dist_dhi);
-		print_map(map, p);
+		/* print_map(map, p); */
 		rcprint_map(map, p, j/64, i/64);
 	}
 
@@ -314,8 +314,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 	if (DEBUG >= 2)
 	{
-		print_map(map, p);
-		rcprint_map(map, p, j/64, i/64);
+		/* print_map(map, p); */
 		printf("----------11-1-SPECIAL--------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
@@ -330,6 +329,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("dist: %d\n", dist);
+		rcprint_map(map, p, j/64, i/64);
 	}
 
 	return (dist);

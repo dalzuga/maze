@@ -11,6 +11,8 @@ double calc_rclen(MazeStruct *maze, int ppcs4715)
 {
 	int a, b;
 
+	print_map(maze->map, maze->p);
+
 	a = _calc_dhi(maze->map, maze->p, ppcs4715);
 
 	b = _calc_dvi(maze->map, maze->p, ppcs4715);

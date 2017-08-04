@@ -190,7 +190,6 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("Xa: %d\n", Xa);
 		printf("total_x: %d\n", total_x);
 		printf("dist_dvi: %d\n", dist_dvi);
-		print_map(map, p);
 		rcprint_map(map, p, j/64, i/64);
 	}
 
