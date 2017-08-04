@@ -57,7 +57,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	for (c = 0; ; c++)
 	{
 		j = Py + dy + c * Ya;
-		i = (j - Py) * tan(ap * M_PI / 180) + Px;
+		i = (Py - j) * tan(ap * M_PI / 180) + Px;
 
 		/*
                  * check for left and right overrun
