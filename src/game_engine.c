@@ -15,14 +15,6 @@ void game_engine(MazeStruct *maze)
 
 	while(1)
 	{
-		if (DEBUG == 1)
-		{
-			sleep(1); /* one second */
-		}
-		else
-		{
-			usleep(FRAME_SLEEP);
-		}
 		SDL_SetRenderDrawColor(maze->instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(maze->instance.renderer);
 		if (poll_events() == 1)

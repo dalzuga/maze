@@ -8,43 +8,47 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
 	/* declarations */
 	double ap;
-	int By __attribute__((unused));
+	int dy;
 	int Px, Py, Ya, Xa, c, i, j;
 	int total_y, dist_dhi;
 
 	/* inits */
+	dy = 0;
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
+	Py = p->py;
+	Px = p->px;
+	/* end inits */
 
 	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
 	{
 		return (special_dhi(map, p, ap, ppcs4715));
 	}
 
-	Py = p->py;
-	Px = p->px;
-	/* end inits */
-
-	/* up */
-	if ((0 <= ap && ap < 90) || (270 < ap && ap < 360))
-	{
-		/* `Ya` signed vertical direction */
-		Ya = -64;
-	}
+	/* `Ya` signed vertical direction */
 	/* down */
-	else		/* if (90 <= ap && ap < 270) */
+	if (90 <= ap && ap < 270)
 	{
 		Ya = 64;
+		dy = (Py/64 + 1) * 64 - Py; /* be on the bottom edge (neg) */
+	}
+	/* up */
+	else /* guaranteed --> (0 <= ap && ap < 90) || (270 < ap && ap < 360) */
+	{
+		Ya = -64;
+		dy = Py - (Py/64) * 64; /* be on the top edge (positive) */
 	}
 
 	/* Xa - horizontal distance of the ray for each block */
-	Xa = fabs(Ya * tan(ap * M_PI / 180));
+	Xa = fabs(Ya / tan(ap * M_PI / 180));
 
 	/* put the proper signs on `Xa` component */
+	/* right */
 	if (ap < 180)
 	{
 	}
-	if (ap > 180)
+	/* left */
+	else /* guaranteed --> (ap > 180) */
 	{
 		Xa = -Xa;
 	}
@@ -52,29 +56,42 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 	/* `c` is the number of blocks crossed */
 	for (c = 0; ; c++)
 	{
-		i = Px + c * Xa;
-		j = Py + c * Ya;
+		j = Py + dy + c * Ya;
+		i = Px - (j - Py) / tan(ap * M_PI / 180);
 
+		/*
+                 * check for left and right overrun
+		 * highlight the "escape" cell
+                 */
 		if (i/64 < 1 || i/64 > map->cols - 2)
 		{
-			/* bring back `i` since it's outside the map boundary */
-			if (ap < 180)
+			/* calculate the distance */
+			/* down */
+			if (90 <= ap && ap < 270)
 			{
-				if (i > map->cols * 64)
-				{
-					i = (map->cols - 1) * 64;
-				}
+				total_y = j/64 * 64 - Py;
 			}
-			else if (ap > 180)
-			{
-				if (i < 64 - 1)
-				{
-					i = 64 - 1;
-				}
-			}
+			/* up */
 			else
 			{
-				i = Px;
+				total_y = (j/64 + 1) * 64 - Py;
+			}
+
+			/*
+                         * left boundary overrun, bring `i` back
+			 * (left)
+                         */
+			if (i/64 < 1)
+			{
+				i = 0;
+			}
+			/*
+                         * right boundary overrun, bring `i` back
+			 * (right)
+                         */
+			else
+			{
+				i = (map->cols - 1) * 64;
 			}
 
 			/* 
@@ -88,8 +105,39 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			break;
 		}
 
+		/*
+                 * check for top and bottom overrun
+		 * highlight the "escape" cell
+                 */
 		if (j/64 < 1 || j/64 > map->rows - 2)
 		{
+			/* calculate the distance */
+			/* down */
+			if (90 <= ap && ap < 270)
+			{
+				total_y = j/64 * 64 - Py;
+			}
+			/* up */
+			else
+			{
+				total_y = (j/64 + 1) * 64 - Py;
+			}
+
+			/*
+                         * top boundary overrun, bring `j` back
+                         */
+			if (j/64 < 1)
+			{
+				j = 0;
+			}
+			/*
+                         * bottom boundary overrun, bring `j` back
+                         */
+			else
+			{
+				j = (map->rows - 1) * 64;
+			}
+
 			/* 
                          * if (DEBUG >= 2)
 			 * {
@@ -103,6 +151,18 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 		if (map->array[j/64][i/64] == 1)
 		{
+			/* calculate the (absolute) distance */
+			/* down */
+			if (90 <= ap && ap < 270)
+			{
+				total_y = j/64 * 64 - Py;
+			}
+			/* up */
+			else
+			{
+				total_y = (j/64 + 1) * 64 - Py;
+			}
+
 			/* 
                          * if (DEBUG >= 2)
 			 * {
@@ -114,17 +174,6 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 		}
 	}
 
-	/* calculate the distance */
-	/* up */
-	if (ap < 90 || ap > 270)
-	{
-		total_y = Py - ((j/64 + 1) * 64);
-	}
-	/* down */
-	else
-	{
-		total_y = Py - (j/64 * 64);
-	}
 	dist_dhi = total_y / cos(ap * M_PI / 180);
 
 	if (DEBUG >= 2)
@@ -154,143 +203,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
  */
 double _calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
-	/* declarations */
-	double ap;
-	int By __attribute__((unused));
-	int Px, Py, Ya, Xa, c, i, j;
-
-	if (DEBUG <= 3)
-		return (calc_dhi(map, p, ppcs4715));
-
-	/* inits */
-	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
-	ap = calc_mod360(ap);
-
-	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
-	{
-		return (special_dhi(map, p, ap, ppcs4715));
-	}
-
-	Py = p->py;
-	Px = p->px;
-	/* end inits */
-
-	/* up */
-	if ((0 <= ap && ap < 90) || (270 < ap && ap < 360))
-	{
-		/* `Ya` signed vertical direction */
-		Ya = -64;
-	}
-	/* down */
-	else		/* if (90 <= ap && ap < 270) */
-	{
-		Ya = 64;
-	}
-
-	/* Xa - horizontal distance of the ray for each block */
-	Xa = fabs(Ya * tan(ap * M_PI / 180));
-
-	/* put the proper signs on `Xa` component */
-	if (ap < 180)
-	{
-	}
-	if (ap > 180)
-	{
-		Xa = -Xa;
-	}
-
-	/* `c` is the number of blocks crossed */
-	for (c = 0; ; c++)
-	{
-		i = Px + c * Xa;
-		if (DEBUG == 4)
-			printf("Px + c * Xa: %d\n", i);
-		j = Py + c * Ya;
-
-		if (DEBUG >= 4)
-		{
-			printf("checking - [j][i]: [%d][%d]\t\t", j/64, i/64);
-			printf("c: %d\t\ti:%d\tj:%d\n", c, i, j);
-		}
-
-		if (i/64 < 1 || i/64 > map->cols - 2)
-		{
-			/* bring back `i` since it's outside the map boundary */
-			if (ap < 180)
-			{
-				if (i > map->cols * 64)
-				{
-					i = (map->cols - 1) * 64;
-				}
-			}
-			else if (ap > 180)
-			{
-				if (i < 64 - 1)
-				{
-					i = 64 - 1;
-				}
-			}
-			else
-			{
-				i = Px;
-			}
-
-			if (DEBUG >= 3)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-				printf("vertical border exceeded.\n");
-			}
-			break;
-		}
-
-		if (j/64 < 1 || j/64 > map->rows - 2)
-		{
-			if (DEBUG >= 3)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-				printf("horizontal border exceeded.\n");
-			}
-			if (DEBUG >= 4)
-			{
-				printf("map->rows - 2: %d\n", map->rows - 2);
-				printf("j is: %d\t\tj/64 is: %d\n", j, j/64);
-			}
-			break;
-		}
-
-		if (map->array[j/64][i/64] == 1)
-		{
-			if (DEBUG == 3)
-			{
-				printf("inside hit. [j][i]: [%d][%d]\n", j/64, i/64);
-				printf("j, i: %d, %d\t\tc: %d\n", j, i, c);
-			}
-			if (DEBUG >= 2)
-			{
-				print_map(map, p);
-				rcprint_map(map, p, j/64, i/64);
-			}
-			break;
-		}
-	}
-
-	if (DEBUG >= 2)
-	{
-		printf("-------------11-1-------------\n");
-		printf("(i, j): (%d, %d)\t\t", i, j);
-		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
-		printf("player_pos: (%d, %d)\t\t", Px, Py);
-		printf("player_pos: [%d, %d]\t\t", Px/64, Py/64);
-		printf("ap: %f\n", ap);
-		printf("c: %d\t\t", c);
-		printf("ppcs4715: %d\n", ppcs4715);
-		printf("Ya: %d\t\t", Ya);
-		printf("Xa: %d\n", Xa);
-	}
-
-	return (ap);
+	return (calc_dhi(map, p, ppcs4715));
 }
 
 /**

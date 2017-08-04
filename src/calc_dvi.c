@@ -8,7 +8,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
 	/* declarations */
 	double ap;
-	int dx __attribute__((unused));
+	int dx;
 	int Px, Py, Ya, Xa, c, i, j;
 	int total_x, dist_dvi;
 
@@ -16,15 +16,14 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	dx = 0;
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
+	Py = p->py;
+	Px = p->px;
+	/* end inits */
 
 	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
 	{
 		return (special_dhi(map, p, ap, ppcs4715));
 	}
-
-	Py = p->py;
-	Px = p->px;
-	/* end inits */
 
 	/* `Xa` signed horizontal direction */
 	/* right */
