@@ -160,7 +160,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 			/* left */
 			else
 			{
-				total_x = (i/64 + 1) * 64 - Px;
+				total_x = Px - (i/64 + 1) * 64;
 			}
 
 			/* 
