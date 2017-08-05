@@ -2,3 +2,9 @@ set pagination off
 file a.out
 b src/calc_rclen.c:1
 r
+c 62
+n
+s
+s
+n 19
+b
