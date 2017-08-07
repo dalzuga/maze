@@ -160,7 +160,7 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			/* up */
 			else
 			{
-				total_y = Py - (j/64) * 64;
+				total_y = Py - (j/64 + 1) * 64;
 			}
 
 			/* 
