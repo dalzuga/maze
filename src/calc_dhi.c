@@ -149,7 +149,9 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			break;
 		}
 
-		if (map->array[j/64][i/64] == 1)
+		/* check both sides of the border */
+		if (map->array[j/64][i/64] == 1 ||
+		    map->array[(j - 1) / 64][i / 64] == 1)
 		{
 			/* calculate the (absolute) distance */
 			/* down */
