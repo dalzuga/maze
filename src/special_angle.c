@@ -122,7 +122,6 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("dist: %d\n", dist);
-		print_map(map, p);
 		rcprint_map(map, p, j/64, i/64);
 	}
 

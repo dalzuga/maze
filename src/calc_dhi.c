@@ -6,57 +6,64 @@
  */
 double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs4715)
 {
-	/* 
-         * /\* declarations *\/
-	 * double ap;
-	 * int dy;
-	 * int Px, Py, Ya, Xa, c, i, j;
-	 * 
-	 * /\* inits *\/
-	 * ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
-	 * ap = calc_mod360(ap);
-	 * 
-	 * if (axis_angle(ap))	/\* special cases: 0, 90, 180, 270 *\/
-	 * {
-	 * 	return (special_dhi(map, p, ap, ppcs4715));
-	 * }
-	 * 
-	 * Py = p->py;
-	 * Px = p->px;
-	 * /\* end inits *\/
-         */
-
-	int dy;
+	/* declarations */
 	double ap;
-
+	int dy;
+	int Px, Py, c, i, j;
+	int Ya;
+	
+	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
+	Py = p->py;
+	Px = p->px;
+	i = 0;
+	j = 0;
+	/* end inits */
 
+	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
+	{
+		return (special_dhi(map, p, ap, ppcs4715));
+	}
+	
 	dy = calc_dy(p, ap);
+	Ya = calc_Ya(ap);
 
-	/* 
-         * if (DEBUG >= 2)
-	 * {
-	 * 	printf("----------11-1-SPECIAL--------\n");
-	 * 	printf("(i, j): (%d, %d)\t\t", i, j);
-	 * 	printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
-	 * 	printf("player_pos: (%d, %d)\t\t", Px, Py);
-	 * 	printf("player_pos: [%d, %d]\t\t", Px/64, Py/64);
-	 * 	/\* 
-         *          * printf("(i, j): (%d, %d)\t\t", i, j);
-	 * 	 * printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
-	 * 	 * printf("player_pos: (%d, %d)\t\t", Px, Py);
-         *          *\/
-	 * 	printf("ap: %f\n", angle);
-	 * 	printf("c: %d\t\t", c);
-	 * 	printf("ppcs4715: %d\n", ppcs4715);
-	 * 	printf("dist: %d\n", dist);
-	 * 	print_map(map, p);
-	 * 	rcprint_map(map, p, j/64, i/64);
-	 * }
-	 * 
-	 * return (dist);
-         */
+	for (c = 0; ; c++)
+	{
+		j = Py + dy + c * Ya;
+
+		if (j/64 < 1)
+		{
+			break;
+		}
+
+		if (j/64 > map->rows - 2)
+		{
+			break;
+		}
+
+		/* 
+                 * if (map->array[(j - 1) / 64][i] == 1)
+		 * {
+		 * 	break;
+		 * }
+                 */
+	}
+
+	if (DEBUG >= 2)
+	{
+		printf("-----------11-1--dhi----------\n");
+		rcprint_map(map, p, j/64, i/64);
+		printf("player_pos: (%d, %d)\t\t", Px, Py);
+		printf("player_pos: [%d, %d]\n", Px/64, Py/64);
+		printf("(i, j): (%d, %d)\t\t", i, j);
+		printf("(i/64, j/64): [%d, %d]\n", i/64, j/64);
+		printf("ap: %f\n", ap);
+		printf("c: %d\t\t", c);
+		printf("ppcs4715: %d\n", ppcs4715);
+	}
+
 
 	return (dy);
 }
@@ -78,4 +85,15 @@ int calc_dy(GamePlayer *p, double ap)
 	}
 
 	return (dy);
+}
+
+int calc_Ya(double ap)
+{
+	if (ap < 90 || ap > 270) /* up */
+	{
+		return (-64);
+	}
+
+	/* down */
+	return (64);
 }
