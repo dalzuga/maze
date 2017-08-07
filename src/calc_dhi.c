@@ -162,7 +162,13 @@ double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 			/* up */
 			else
 			{
-				total_y = Py - (j/64 + 1) * 64;
+				total_y = Py - (j/64) * 64;
+			}
+
+			/* highlight correction */
+			if (map->array[(j - 1) / 64][i / 64] == 1)
+			{
+				j = j - 64;
 			}
 
 			/* 
