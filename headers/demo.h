@@ -158,4 +158,6 @@ void init_main(MazeStruct *maze);
 
 void exit_function(MazeStruct *maze);
 
+int calc_dy(GamePlayer *p, double ap);
+
 #endif

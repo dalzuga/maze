@@ -1,3 +1,4 @@
 a.out
 compilemain.sh
 test.c
+.gdb_history
