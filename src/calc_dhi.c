@@ -11,12 +11,14 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	int dy;
 	int Px, Py, c, i, j;
 	int Ya;
-	
+	int flag;
+
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
 	Py = p->py;
 	Px = p->px;
+	flag = 0;
 	/* end inits */
 
 	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
@@ -34,32 +36,30 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	{
 		if (j/64 < 1)
 		{
+			flag = 1;
 			break;
 		}
 
 		if (j/64 > map->rows - 2)
 		{
+			flag = 2;
 			break;
 		}
 
 		j = Py + dy + c * Ya;
 		i = Px + (Py - j) * tan(ap * M_PI / 180);
 
-		/* hacky way to highlight the cell if it goes out of bounds */
-		if (i > map->cols * 64)
-		{
-			i = map->cols * 64 - 1;
-		}
-
 		/* going up */
 		if (map->array[(j - 1) / 64][i/64] == 1)
 		{
+			flag = 3;
 			break;
 		}
 
 		/* going down */
 		if (map->array[(j / 64)][i/64] == 1)
 		{
+			flag = 4;
 			break;
 		}
 	}
@@ -73,7 +73,8 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	if (DEBUG >= 2)
 	{
 		printf("-----------11-1--dhi----------\n");
-		rcprint_map(map, p, j/64, i/64);
+		printf("map size: [%d, %d]\t\t", map->cols, map->rows);
+		printf("(%d, %d)\n", map->cols * BLOCK_UNITS, map->rows * 64);
 		printf("player_pos:\t(%d, %d)\t", Px, Py);
 		printf("player_pos: [%d, %d]\n", Px/64, Py/64);
 		printf("(i, j):\t(%d, %d)\t", i, j);
@@ -81,6 +82,26 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		printf("ap: %f\n", ap);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
+		rcprint_map(map, p, j/64, i/64);
+
+		switch (flag)
+		{
+		case 0:
+		  break;
+		case 1:
+		  printf("j < 64\n");
+		  break;
+		case 2:
+		  printf("j/64 > map->rows - 2\n");
+		  break;
+		case 3:
+		  printf("upper hit\n");
+		  break;
+		case 4:
+		  printf("lower hit\n");
+		  break;
+		}
+		flag = 0;
 	}
 
 

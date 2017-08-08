@@ -109,6 +109,8 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	if (DEBUG >= 2)
 	{
 		printf("----------11-1-SPECIAL--------\n");
+		printf("map size: [%d, %d]\t\t", map->cols, map->rows);
+		printf("(%d, %d)\n", map->cols * BLOCK_UNITS, map->rows * 64);
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
