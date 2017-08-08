@@ -17,22 +17,21 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	ap = calc_mod360(ap);
 	Py = p->py;
 	Px = p->px;
-	i = 0;
-	j = 0;
 	/* end inits */
 
 	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
 	{
 		return (special_dhi(map, p, ap, ppcs4715));
 	}
-	
+
 	dy = calc_dy(p, ap);
 	Ya = calc_Ya(ap);
 
-	for (c = 0; ; c++)
-	{
-		j = Py + dy + c * Ya;
+	j = Py + dy;
+	i = Px + dy * tan(ap * M_PI / 180);
 
+	for (c = 1; ; c++)
+	{
 		if (j/64 < 1)
 		{
 			break;
@@ -43,22 +42,42 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 			break;
 		}
 
-		/* 
-                 * if (map->array[(j - 1) / 64][i] == 1)
-		 * {
-		 * 	break;
-		 * }
-                 */
+		j = Py + dy + c * Ya;
+		i = Px + (Py - j) * tan(ap * M_PI / 180);
+
+		/* hacky way to highlight the cell if it goes out of bounds */
+		if (i > map->cols * 64)
+		{
+			i = map->cols * 64 - 1;
+		}
+
+		/* going up */
+		if (map->array[(j - 1) / 64][i/64] == 1)
+		{
+			break;
+		}
+
+		/* going down */
+		if (map->array[(j / 64)][i/64] == 1)
+		{
+			break;
+		}
+	}
+
+	/* up */
+	if (ap < 90 || ap > 270)
+	{
+		j = j - 64;
 	}
 
 	if (DEBUG >= 2)
 	{
 		printf("-----------11-1--dhi----------\n");
 		rcprint_map(map, p, j/64, i/64);
-		printf("player_pos: (%d, %d)\t\t", Px, Py);
+		printf("player_pos:\t(%d, %d)\t", Px, Py);
 		printf("player_pos: [%d, %d]\n", Px/64, Py/64);
-		printf("(i, j): (%d, %d)\t\t", i, j);
-		printf("(i/64, j/64): [%d, %d]\n", i/64, j/64);
+		printf("(i, j):\t(%d, %d)\t", i, j);
+		printf("(i/64, j/64): [%d, %d]\t", i/64, j/64);
 		printf("ap: %f\n", ap);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);

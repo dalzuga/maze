@@ -116,7 +116,6 @@ void _print_map(GameMap *map, GamePlayer *p)
 	if (DEBUG)
 	{
 		print_map(map, p);
-		usleep(2000000); /* 2 seconds */
 	}
 }
 

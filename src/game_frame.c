@@ -45,7 +45,6 @@ void game_frame(MazeStruct *maze)
 			{
 				exit(EXIT_FAILURE); /* press ESC to exit */
 			}
-			usleep(DEBUG_SLEEP);
 		}
 
 		/* game_func03(instance); */
