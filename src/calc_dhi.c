@@ -29,6 +29,10 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	dy = calc_dy(p, ap);
 	Ya = calc_Ya(ap);
 
+	printf("##########################\n");
+	printf("dy: %d\n", dy);
+	printf("##########################\n");
+
 	j = Py + dy;
 	i = Px + dy * tan(ap * M_PI / 180);
 
@@ -104,7 +108,6 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		flag = 0;
 	}
 
-
 	return (dy);
 }
 
@@ -117,7 +120,7 @@ int calc_dy(GamePlayer *p, double ap)
 
 	if (ap < 90 || ap > 270) /* up */
 	{
-		dy = Py - Py/64 * 64;
+		dy = (Py/64 * 64) - Py;
 	}
 	else 			/* down */
 	{
