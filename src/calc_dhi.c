@@ -38,40 +38,29 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 
 	for (c = 1; ; c++)
 	{
-		if (j/64 < 1)
+		if (i <= 0 || i >= map->cols * 64)
 		{
-			flag = 1;
+			flag = 2;
 			break;
 		}
 
-		if (j/64 > map->rows - 2)
+		if (j == 0)
 		{
-			flag = 2;
+			flag = 1;
 			break;
 		}
 
 		j = Py + dy + c * Ya;
 		i = Px + (Py - j) * tan(ap * M_PI / 180);
 
-		/* going up */
-		if (map->array[(j - 1) / 64][i/64] == 1)
-		{
-			flag = 3;
-			break;
-		}
-
-		/* going down */
-		if (map->array[(j / 64)][i/64] == 1)
-		{
-			flag = 4;
-			break;
-		}
-	}
-
-	/* up */
-	if (ap < 90 || ap > 270)
-	{
-		j = j - 64;
+		/* 
+                 * /\* going up *\/
+		 * if (map->array[(j - 1) / 64][i/64] == 1)
+		 * {
+		 * 	flag = 3;
+		 * 	break;
+		 * }
+                 */
 	}
 
 	if (DEBUG >= 2)
@@ -93,10 +82,10 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		case 0:
 		  break;
 		case 1:
-		  printf("j < 64\n");
+		  printf("j == 0\n");
 		  break;
 		case 2:
-		  printf("j/64 > map->rows - 2\n");
+		  printf("i <= 0 || i >= map->cols * 64\n");
 		  break;
 		case 3:
 		  printf("upper hit\n");
