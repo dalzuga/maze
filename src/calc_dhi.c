@@ -33,8 +33,16 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	printf("dy: %d\n", dy);
 	printf("##########################\n");
 
-	j = Py + dy;
-	i = Px + dy * tan(ap * M_PI / 180);
+	if (ap < 90)
+	{
+		j = Py + dy;
+		i = Px + fabs(dy) * tan(ap * M_PI / 180);
+	}
+	else if (ap < 180)
+	{
+		j = Py + dy;
+		i = Px + fabs(dy) / tan((ap - 90) * M_PI / 180);
+	}
 
 	for (c = 1; ; c++)
 	{
@@ -51,7 +59,14 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		}
 
 		j = Py + dy + c * Ya;
-		i = Px + (Py - j) * tan(ap * M_PI / 180);
+		if (ap < 90)
+		{
+			i = Px + fabs(Py - j) * tan(ap * M_PI / 180);
+		}
+		else if (ap < 180)
+		{
+			i = Px + fabs(Py - j) / tan((ap - 90) * M_PI / 180);
+		}
 
 		/* 
                  * /\* going up *\/
