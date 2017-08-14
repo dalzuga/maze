@@ -29,10 +29,6 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	dy = calc_dy(p, ap);
 	Ya = calc_Ya(ap);
 
-	printf("##########################\n");
-	printf("dy: %d\n", dy);
-	printf("##########################\n");
-
 	j = Py + dy;
 
 	if (ap < 90)
@@ -47,6 +43,11 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	{
 		j = Py + dy;
 		i = Px - fabs(dy) * tan((ap - 180) * M_PI / 180);
+	}
+	else
+	{
+		j = Py + dy;
+		i = Px - fabs(dy) / tan((ap - 270) * M_PI / 180);
 	}
 
 	for (c = 1; ; c++)
@@ -82,6 +83,10 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		{
 			i = Px - fabs(Py - j) * tan((ap - 180) * M_PI / 180);
 		}
+		else
+		{
+			i = Px - fabs(j - Py) / tan((ap - 270) * M_PI / 180);
+		}
 
 		/* 
                  * /\* going up *\/
@@ -107,11 +112,11 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		printf("ppcs4715: %d\n", ppcs4715);
 
 		/* highlight the correct cell depending on approach */
-		if (ap < 90)
+		if (ap < 90 || ap > 270)
 		{
 			rcprint_map(map, p, j/64, i/64);
 		}
-		else if (ap < 270)
+		else
 		{
 			rcprint_map(map, p, (j/64) - 1, i/64);
 		}
