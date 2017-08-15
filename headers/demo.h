@@ -162,4 +162,8 @@ int calc_dy(GamePlayer *p, double ap);
 
 int calc_Ya(double ap);
 
+int calc_dx(GamePlayer *p, double ap);
+
+int calc_Xa(double ap);
+
 #endif
