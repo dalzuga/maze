@@ -41,15 +41,15 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	else if (ap < 180)
 	{
 		i = Px + fabs(dy) / tan((ap - 90) * M_PI / 180);
+		dist = (j - Py) / sin((ap - 90) * M_PI / 180);
 	}
 	else if (ap < 270)
 	{
-		j = Py + dy;
 		i = Px - fabs(dy) * tan((ap - 180) * M_PI / 180);
+		dist = (j - Py) / cos((ap - 180) * M_PI / 180);
 	}
 	else
 	{
-		j = Py + dy;
 		i = Px - fabs(dy) / tan((ap - 270) * M_PI / 180);
 	}
 
@@ -101,10 +101,12 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		else if (ap < 180)
 		{
 			i = Px + fabs(Py - j) / tan((ap - 90) * M_PI / 180);
+			dist = (j - Py) / sin((ap - 90) * M_PI / 180);
 		}
 		else if (ap < 270)
 		{
 			i = Px - fabs(Py - j) * tan((ap - 180) * M_PI / 180);
+			dist = (j - Py) / cos((ap - 180) * M_PI / 180);
 		}
 		else
 		{
