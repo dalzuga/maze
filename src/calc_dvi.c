@@ -56,7 +56,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	for (c = 1; ; c++)
 	{
-		if (j <= 0 || j >= map->cols * 64)
+		if (j <= 0 || j >= map->rows * 64)
 		{
 			/* flag = 1; */
 			break;
@@ -124,6 +124,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("Xa: %d\n", Xa);
+		rcprint_map(map, p, j/64, i/64);
 	}
 
 	return (ap);
