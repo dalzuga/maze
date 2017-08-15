@@ -12,7 +12,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	int Px, Py, c, i, j;
 	int Ya;
 	int flag;
-	/* int dist; */
+	int dist;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
@@ -20,7 +20,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	Py = p->py;
 	Px = p->px;
 	flag = 0;
-	/* dist = 0; */
+	dist = 0;
 	/* end inits */
 
 	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
@@ -36,7 +36,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	if (ap < 90)
 	{
 		i = Px + fabs(dy) * tan(ap * M_PI / 180);
-		/* dist = (Py - j) / cos(ap * M_PI / 180); */
+		dist = (Py - j) / cos(ap * M_PI / 180);
 	}
 	else if (ap < 180)
 	{
@@ -83,7 +83,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		/* check lower side of border */
 		if (map->array[j/64][i/64] == 1)
 		{
-			flag = 4;
+			flag = 5;
 			break;
 		}
 
@@ -91,6 +91,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		if (ap < 90)
 		{
 			i = Px + fabs(Py - j) * tan(ap * M_PI / 180);
+			dist = (Py - j) / cos(ap * M_PI / 180);
 		}
 		else if (ap < 180)
 		{
@@ -118,7 +119,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		printf("ap: %f\n", ap);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
-		/* printf("dist: %d\n", dist); */
+		printf("dist: %d\n", dist);
 		rcprint_map(map, p, j/64, i/64);
 
 		switch (flag)
@@ -135,7 +136,10 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		  printf("j == map->rows * 64\n");
 		  break;
 		case 4:
-		  printf("inside hit\n");
+		  printf("cell upper hit\n");
+		  break;
+		case 5:
+		  printf("cell lower hit\n");
 		  break;
 		}
 		flag = 0;
