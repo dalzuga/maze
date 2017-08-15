@@ -33,9 +33,26 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 
 	i = Px + dx;
 
+	if (ap < 90)
+	{
+		j = Py - (i - Px) / tan(ap * M_PI / 180);
+	}
+	else if (ap < 180)
+	{
+		j = Py + (i - Px) * tan((ap - 90) * M_PI / 180);
+	}
+	else if (ap < 270)
+	{
+		j = Py + (Px - i) / tan((ap - 180) * M_PI / 180);
+	}
+	else
+	{
+		j = Py - (Px - i) * tan((ap - 270) * M_PI / 180);
+	}
+
 	if (DEBUG >= 2)
 	{
-		printf("-------------11-1-------------\n");
+		printf("-----------11-1--dvi----------\n");
 		printf("(i, j): (%d, %d)\t\t", i, j);
 		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
