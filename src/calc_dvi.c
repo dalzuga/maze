@@ -58,3 +58,22 @@ double _calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
 	return (calc_dvi(map, p, ppcs4715));
 }
+
+int calc_dx(GamePlayer *p, double ap)
+{
+	int dx;
+	int Px;
+
+	Px = p->px;
+
+	if (ap < 180) 		/* right */
+	{
+		dx = (Px/64 * 64) - Px;
+	}
+	else			/* left */
+	{
+		dx = (Px/64 + 1) * 64 - Px;
+	}
+
+	return (dx);
+}
