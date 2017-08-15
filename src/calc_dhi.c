@@ -73,18 +73,23 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 			break;
 		}
 
-		/* check upper side of border */
-		if (map->array[(j - 1) / 64][i/64] == 1)
+		if (ap < 90 || ap > 270) /* up */
 		{
-			flag = 4;
-			break;
+			/* check upper side of border */
+			if (map->array[(j - 1) / 64][i/64] == 1)
+			{
+				flag = 4;
+				break;
+			}
 		}
-
-		/* check lower side of border */
-		if (map->array[j/64][i/64] == 1)
+		else		/* down */
 		{
-			flag = 5;
-			break;
+			/* check lower side of border */
+			if (map->array[j/64][i/64] == 1)
+			{
+				flag = 5;
+				break;
+			}
 		}
 
 		j = Py + dy + c * Ya;
@@ -120,26 +125,31 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("dist: %d\n", dist);
-		rcprint_map(map, p, j/64, i/64);
 
 		switch (flag)
 		{
 		case 0:
+		  rcprint_map(map, p, j/64, i/64);
 		  break;
 		case 1:
+		  rcprint_map(map, p, j/64, i/64);
 		  printf("i <= 0 || i >= map->cols * 64\n");
 		  break;
 		case 2:
+		  rcprint_map(map, p, j/64, i/64);
 		  printf("j == 0\n");
 		  break;
 		case 3:
+		  rcprint_map(map, p, j/64, i/64);
 		  printf("j == map->rows * 64\n");
 		  break;
 		case 4:
-		  printf("cell upper hit\n");
+		  rcprint_map(map, p, (j - 1)/64, i/64);
+		  printf("hit going up.\n");
 		  break;
 		case 5:
-		  printf("cell lower hit\n");
+		  rcprint_map(map, p, j/64, i/64);
+		  printf("hit going down.\n");
 		  break;
 		}
 		flag = 0;
