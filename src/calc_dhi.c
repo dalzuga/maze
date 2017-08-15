@@ -51,6 +51,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	else
 	{
 		i = Px - fabs(dy) / tan((ap - 270) * M_PI / 180);
+		dist = (Py - j) / sin((ap - 270) * M_PI / 180);
 	}
 
 	for (c = 1; ; c++)
@@ -111,6 +112,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		else
 		{
 			i = Px - fabs(j - Py) / tan((ap - 270) * M_PI / 180);
+			dist = (Py - j) / sin((ap - 270) * M_PI / 180);
 		}
 	}
 
