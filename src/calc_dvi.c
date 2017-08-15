@@ -77,3 +77,14 @@ int calc_dx(GamePlayer *p, double ap)
 
 	return (dx);
 }
+
+int calc_Xa(double ap)
+{
+	if (ap > 180) 		/* left */
+	{
+		return (-64);
+	}
+
+	/* right */
+	return (64);
+}
