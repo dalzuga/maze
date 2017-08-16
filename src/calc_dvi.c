@@ -36,7 +36,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (ap < 90)
 	{
 		j = Py - (i - Px) / tan(ap * M_PI / 180);
-		dist = (i - Px) / sin(ap);
+		dist = (i - Px) / sin(ap * M_PI / 180);
 	}
 	else if (ap < 180)
 	{
@@ -154,11 +154,11 @@ int calc_dx(GamePlayer *p, double ap)
 
 	if (ap < 180) 		/* right */
 	{
-		dx = (Px/64 * 64) - Px;
+		dx = (Px/64 + 1) * 64 - Px;
 	}
 	else			/* left */
 	{
-		dx = (Px/64 + 1) * 64 - Px;
+		dx = (Px/64 * 64) - Px;
 	}
 
 	return (dx);
