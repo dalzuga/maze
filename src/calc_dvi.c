@@ -36,22 +36,22 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (ap < 90)
 	{
 		j = Py - (i - Px) / tan(ap * M_PI / 180);
-		dist = (i - Px) / sin(ap * M_PI / 180);
+		dist = (int) (i - Px) / sin(ap * M_PI / 180);
 	}
 	else if (ap < 180)
 	{
 		j = Py + (i - Px) * tan((ap - 90) * M_PI / 180);
-		dist = (i - Px) / cos((ap - 90) * M_PI / 180);
+		dist = (int) (i - Px) / cos((ap - 90) * M_PI / 180);
 	}
 	else if (ap < 270)
 	{
 		j = Py + (Px - i) / tan((ap - 180) * M_PI / 180);
-		dist = (Px - i) / sin((ap - 180) * M_PI / 180);
+		dist = (int) (Px - i) / sin((ap - 180) * M_PI / 180);
 	}
 	else
 	{
 		j = Py - (Px - i) * tan((ap - 270) * M_PI / 180);
-		dist = (Px - i) / cos((ap - 270) * M_PI / 180);
+		dist = (int) (Px - i) / cos((ap - 270) * M_PI / 180);
 	}
 
 	for (c = 1; ; c++)
@@ -98,22 +98,22 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		if (ap < 90)
 		{
 			j = Py - (i - Px) / tan(ap * M_PI / 180);
-			dist = (i - Px) / sin(ap * M_PI / 180);
+			dist = (int) (i - Px) / sin(ap * M_PI / 180);
 		}
 		else if (ap < 180)
 		{
 			j = Py + (i - Px) * tan((ap - 90) * M_PI / 180);
-			dist = (i - Px) / cos((ap - 90) * M_PI / 180);
+			dist = (int) (i - Px) / cos((ap - 90) * M_PI / 180);
 		}
 		else if (ap < 270)
 		{
 			j = Py + (Px - i) / tan((ap - 180) * M_PI / 180);
-			dist = (Px - i) / sin((ap - 180) * M_PI / 180);
+			dist = (int) (Px - i) / sin((ap - 180) * M_PI / 180);
 		}
 		else
 		{
 			j = Py - (Px - i) * tan((ap - 270) * M_PI / 180);
-			dist = (Px - i) / cos((ap - 270) * M_PI / 180);
+			dist = (int) (Px - i) / cos((ap - 270) * M_PI / 180);
 		}
 	}
 

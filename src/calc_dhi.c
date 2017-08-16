@@ -36,22 +36,22 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	if (ap < 90)
 	{
 		i = Px + fabs(dy) * tan(ap * M_PI / 180);
-		dist = (Py - j) / cos(ap * M_PI / 180);
+		dist = (int) (Py - j) / cos(ap * M_PI / 180);
 	}
 	else if (ap < 180)
 	{
 		i = Px + fabs(dy) / tan((ap - 90) * M_PI / 180);
-		dist = (j - Py) / sin((ap - 90) * M_PI / 180);
+		dist = (int) (j - Py) / sin((ap - 90) * M_PI / 180);
 	}
 	else if (ap < 270)
 	{
 		i = Px - fabs(dy) * tan((ap - 180) * M_PI / 180);
-		dist = (j - Py) / cos((ap - 180) * M_PI / 180);
+		dist = (int) (j - Py) / cos((ap - 180) * M_PI / 180);
 	}
 	else
 	{
 		i = Px - fabs(dy) / tan((ap - 270) * M_PI / 180);
-		dist = (Py - j) / sin((ap - 270) * M_PI / 180);
+		dist = (int) (Py - j) / sin((ap - 270) * M_PI / 180);
 	}
 
 	for (c = 1; ; c++)
@@ -97,22 +97,22 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		if (ap < 90)
 		{
 			i = Px + fabs(Py - j) * tan(ap * M_PI / 180);
-			dist = (Py - j) / cos(ap * M_PI / 180);
+			dist = (int) (Py - j) / cos(ap * M_PI / 180);
 		}
 		else if (ap < 180)
 		{
 			i = Px + fabs(Py - j) / tan((ap - 90) * M_PI / 180);
-			dist = (j - Py) / sin((ap - 90) * M_PI / 180);
+			dist = (int) (j - Py) / sin((ap - 90) * M_PI / 180);
 		}
 		else if (ap < 270)
 		{
 			i = Px - fabs(Py - j) * tan((ap - 180) * M_PI / 180);
-			dist = (j - Py) / cos((ap - 180) * M_PI / 180);
+			dist = (int) (j - Py) / cos((ap - 180) * M_PI / 180);
 		}
 		else
 		{
 			i = Px - fabs(j - Py) / tan((ap - 270) * M_PI / 180);
-			dist = (Py - j) / sin((ap - 270) * M_PI / 180);
+			dist = (int) (Py - j) / sin((ap - 270) * M_PI / 180);
 		}
 	}
 
