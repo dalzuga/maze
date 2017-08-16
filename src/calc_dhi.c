@@ -159,7 +159,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		flag = 0;
 	}
 
-	return (dy);
+	return (dist);
 }
 
 int calc_dy(GamePlayer *p, double ap)

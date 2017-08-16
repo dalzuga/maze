@@ -133,7 +133,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		rcprint_map(map, p, j/64, i/64);
 	}
 
-	return (ap);
+	return (dist);
 }
 
 /**
