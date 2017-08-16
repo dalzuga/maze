@@ -98,7 +98,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		if (ap < 90)
 		{
 			j = Py - (i - Px) / tan(ap * M_PI / 180);
-			dist = (i - Px) / sin(ap);
+			dist = (i - Px) / sin(ap * M_PI / 180);
 		}
 		else if (ap < 180)
 		{
