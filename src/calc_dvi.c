@@ -11,20 +11,16 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	int dx;
 	int Px, Py, c, i, j;
 	int Xa;
-	/* 
-         * int flag;
-	 * int dist;
-         */
+	/* int flag; */
+	int dist;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
 	ap = calc_mod360(ap);
 	Py = p->py;
 	Px = p->px;
-	/* 
-         * flag = 0;
-	 * dist = 0;
-         */
+	/* flag = 0; */
+	dist = 0;
 	/* end inits */
 
 	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
@@ -40,6 +36,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (ap < 90)
 	{
 		j = Py - (i - Px) / tan(ap * M_PI / 180);
+		dist = (i - Px) / sin(ap);
 	}
 	else if (ap < 180)
 	{
