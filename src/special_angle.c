@@ -15,12 +15,11 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	i = Px;
 	j = Py;
 
-
 	/* up */
 	if (angle == 0)
 	{
 		/* displacement to top of map cell */
-		dy = (Py/64) * (64) - Py;
+		dy = calc_dy(p, angle);
 
 		for (c = 0; ; c++)
 		{
@@ -36,7 +35,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	else if (angle == 90)
 	{
 		/* displacement to right of map cell */
-		Dx = (Px/64 + 1) * (64) - Px;
+		Dx = calc_dx(p, angle);
 
 		for (c = 0; ; c++)
 		{
@@ -53,7 +52,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	else if (angle == 180)
 	{
 		/* displacement to bottom of map cell */
-		dy = (Py/64 + 1) * (64) - Py;
+		dy = calc_dy(p, angle);
 
 		for (c = 0; ; c++)
 		{
@@ -70,7 +69,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	else			/* guaranteed --> (angle == 270) */
 	{
 		/* displacement to left of map cell */
-		Dx = (Px/64) * 64 - Px;
+		Dx = calc_dx(p, angle);
 
 		for (c = 0; ; c++)
 		{
