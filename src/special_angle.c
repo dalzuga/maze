@@ -21,6 +21,13 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		{
 			j = Py - 64 * c;
 
+			/* border safety */
+			if (j/64 != 0 && j/64 != map->rows)
+			{
+				break;
+			}
+
+			/* hit wall */
 			if (map->array[j / 64][Px / 64] == 1)
 			{
 				break;
@@ -37,6 +44,13 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		{
 			i = Px + 64 * c;
 
+			/* border safety */
+			if (i/64 != 0 && i/64 != map->cols)
+			{
+				break;
+			}
+
+			/* hit wall */
 			if (map->array[Py / 64][i / 64] == 1)
 			{
 				break;
@@ -53,6 +67,13 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		{
 			j = Py + 64 * c;
 
+			/* border safety */
+			if (j/64 != 0 && j/64 != map->rows)
+			{
+				break;
+			}
+
+			/* hit wall */
 			if (map->array[j / 64][Px / 64] == 1)
 			{
 				break;
@@ -66,10 +87,17 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	}
 	else /* (angle == 270) */
 	{
-		for (c = 0; ; c++)
+		for (c = 0; i/64 != 0 && i/64 != map->cols; c++)
 		{
 			i = Px - 64 * c;
 
+			/* border safety */
+			if (i/64 != 0 && i/64 != map->cols)
+			{
+				break;
+			}
+
+			/* hit wall */
 			if (map->array[Py / 64][i / 64] == 1)
 			{
 				break;
