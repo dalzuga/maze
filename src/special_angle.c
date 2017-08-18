@@ -105,6 +105,23 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		dist -= 64;
 	}
 
+	if (angle == 0)
+	{
+		for (c = 0; ; c++)
+		{
+			j = Py - 64 * c;
+
+			if (map->array[j / 64][Px / 64] == 1)
+			{
+				break;
+			}
+		}
+
+		dy = calc_dy(p, angle);
+
+		dist = Py - (j + dy + 64);
+	}
+
 	if (DEBUG >= 2)
 	{
 		printf("----------11-1-SPECIAL--------\n");
