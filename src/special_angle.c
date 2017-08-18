@@ -15,96 +15,6 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	i = Px;
 	j = Py;
 
-	/* up */
-	if (angle == 0)
-	{
-		/* displacement to top of map cell */
-		dy = calc_dy(p, angle);
-
-		for (c = 0; ; c++)
-		{
-			/* subtract 64 * c */
-			j = Py - (64) * c;
-			if (map->array[j/64][i/64] == 1)
-			{
-				break;
-			}
-		}
-	}
-	/* right */
-	else if (angle == 90)
-	{
-		/* displacement to right of map cell */
-		Dx = calc_dx(p, angle);
-
-		for (c = 0; ; c++)
-		{
-			/* add 64 * c */
-			i = Px + (64) * c;
-
-			if (map->array[j/64][i/64] == 1)
-			{
-				break;
-			}
-		}
-	}
-	/* down */
-	else if (angle == 180)
-	{
-		/* displacement to bottom of map cell */
-		dy = calc_dy(p, angle);
-
-		for (c = 0; ; c++)
-		{
-			/* add 64 * c */
-			j = Py + (64) * c;
-
-			if (map->array[j/64][i/64] == 1)
-			{
-				break;
-			}
-		}
-	}
-	/* left */
-	else			/* guaranteed --> (angle == 270) */
-	{
-		/* displacement to left of map cell */
-		Dx = calc_dx(p, angle);
-
-		for (c = 0; ; c++)
-		{
-			/* subtract 64 * c */
-			i = Px - (64) * c;
-
-			if (map->array[j/64][i/64] == 1)
-			{
-				break;
-			}
-		}
-	}
-
-	/* calculate the distance */
-	/* up-down */
-	if (angle == 0 || angle == 180)
-	{
-		dist = dy + abs(j - Py);
-	}
-	/* left-right */
-	else
-	{
-		dist = Dx + abs(i - Px);
-	}
-
-	/* adjust distance for positive direction */
-	if (angle == 90)
-	{
-		dist -= 64;
-	}
-	else if (angle == 180)
-	{
-		dist -= 64;
-	}
-
 	if (angle == 0)
 	{
 		for (c = 0; ; c++)
@@ -120,6 +30,55 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 		dy = calc_dy(p, angle);
 
 		dist = Py - (j + dy + 64);
+	}
+	else if (angle == 90)
+	{
+		for (c = 0; ; c++)
+		{
+			i = Px + 64 * c;
+
+			if (map->array[Py / 64][i / 64] == 1)
+			{
+				break;
+			}
+		}
+
+		Dx = calc_dx(p, angle);
+
+		dist = (i + Dx - 64) - Px;
+	}
+	else if (angle == 180)
+	{
+		for (c = 0; ; c++)
+		{
+			j = Py + 64 * c;
+
+			if (map->array[j / 64][Px / 64] == 1)
+			{
+				break;
+			}
+		}
+
+		dy = calc_dy(p, angle);
+
+		dist = (j + dy - 64) - Py;
+
+	}
+	else /* (angle == 270) */
+	{
+		for (c = 0; ; c++)
+		{
+			i = Px - 64 * c;
+
+			if (map->array[Py / 64][i / 64] == 1)
+			{
+				break;
+			}
+		}
+
+		Dx = calc_dx(p, angle);
+
+		dist = Px - (i + Dx + 64);
 	}
 
 	if (DEBUG >= 2)
