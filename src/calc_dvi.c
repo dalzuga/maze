@@ -68,7 +68,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 			break;
 		}
 
-		if (i == map->rows * 64)
+		if (i == map->cols * 64)
 		{
 			/* flag = 3; */
 			break;
