@@ -131,10 +131,12 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("dist: %d\n", dist);
 
+		/* right */
 		if (ap < 180)
 		{
 			rcprint_map(map, p, j/64, i/64);
 		}
+		/* left */
 		else /* (ap > 180) */
 		{
 			rcprint_map(map, p, j/64, (i - 1)/64);
