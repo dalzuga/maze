@@ -22,7 +22,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 			j = Py - 64 * c;
 
 			/* border safety */
-			if (j/64 != 0 && j/64 != map->rows)
+			if (j/64 == 0 || j/64 == map->rows)
 			{
 				break;
 			}
@@ -92,7 +92,7 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 			i = Px - 64 * c;
 
 			/* border safety */
-			if (i/64 != 0 && i/64 != map->cols)
+			if (i/64 == 0 || i/64 == map->cols)
 			{
 				break;
 			}
