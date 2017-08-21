@@ -24,8 +24,8 @@ double calc_rclen(MazeStruct *maze, int ppcs4715)
 	{
 		printf("----------calc_rclen---------\n");
 		printf("dhi: %d\t\t", a);
-		printf("dvi: %d\n", b);
 		printf("min: %d\n", a < b ? a : b);
+		printf("dvi: %d\n", b);
 	}
 
 	return (a < b ? a : b);
