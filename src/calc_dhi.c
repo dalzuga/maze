@@ -56,7 +56,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 
 	for (c = 1; ; c++)
 	{
-		if (i <= 0 || i >= map->cols * 64)
+		if (i <= 0 || i >= map->cols * BLOCK_UNITS)
 		{
 			flag = 1;
 			break;
@@ -68,7 +68,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 			break;
 		}
 
-		if (j == map->rows * 64)
+		if (j == map->rows * BLOCK_UNITS)
 		{
 			flag = 3;
 			break;
@@ -77,7 +77,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		if (ap < 90 || ap > 270) /* up */
 		{
 			/* check upper side of border */
-			if (map->array[(j - 1) / 64][i/64] == 1)
+			if (map->array[(j - 1) / BLOCK_UNITS][i/BLOCK_UNITS] == 1)
 			{
 				flag = 4;
 				break;
@@ -86,7 +86,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		else		/* down */
 		{
 			/* check lower side of border */
-			if (map->array[j/64][i/64] == 1)
+			if (map->array[j/BLOCK_UNITS][i/BLOCK_UNITS] == 1)
 			{
 				flag = 5;
 				break;
@@ -120,11 +120,12 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	{
 		printf("-----------11-1--dhi----------\n");
 		printf("map size: [%d, %d]\t\t", map->cols, map->rows);
-		printf("(%d, %d)\n", map->cols * BLOCK_UNITS, map->rows * 64);
+		printf("(%d, %d)\n", map->cols * BLOCK_UNITS, map->rows * BLOCK_UNITS);
 		printf("player_pos:\t(%d, %d)\t", Px, Py);
-		printf("player_pos: [%d, %d]\n", Px/64, Py/64);
+		printf("player_pos: [%d, %d]\n", Px/BLOCK_UNITS, Py/BLOCK_UNITS);
 		printf("(i, j):\t(%d, %d)\t", i, j);
-		printf("(i/64, j/64): [%d, %d]\t", i/64, j/64);
+		printf("(i/%d, j/%d): [%d, %d]\t", BLOCK_UNITS, BLOCK_UNITS,
+		       i/BLOCK_UNITS, j/BLOCK_UNITS);
 		printf("ap: %f\n", ap);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
@@ -133,26 +134,26 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		switch (flag)
 		{
 		case 0:
-		  rcprint_map(map, p, j/64, i/64);
+		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
 		  break;
 		case 1:
-		  rcprint_map(map, p, j/64, i/64);
-		  printf("i <= 0 || i >= map->cols * 64\n");
+		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
+		  printf("i <= 0 || i >= map->cols * %d\n", BLOCK_UNITS);
 		  break;
 		case 2:
-		  rcprint_map(map, p, j/64, i/64);
+		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
 		  printf("j == 0\n");
 		  break;
 		case 3:
-		  rcprint_map(map, p, j/64, i/64);
-		  printf("j == map->rows * 64\n");
+		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
+		  printf("j == map->rows * %d\n", BLOCK_UNITS);
 		  break;
 		case 4:
-		  rcprint_map(map, p, (j - 1)/64, i/64);
+		  rcprint_map(map, p, (j - 1)/BLOCK_UNITS, i/BLOCK_UNITS);
 		  printf("hit going up.\n");
 		  break;
 		case 5:
-		  rcprint_map(map, p, j/64, i/64);
+		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
 		  printf("hit going down.\n");
 		  break;
 		}
@@ -171,11 +172,11 @@ int calc_dy(GamePlayer *p, double ap)
 
 	if (ap < 90 || ap > 270) /* up */
 	{
-		dy = (Py/64 * 64) - Py;
+		dy = (Py/BLOCK_UNITS * BLOCK_UNITS) - Py;
 	}
 	else 			/* down */
 	{
-		dy = (Py/64 + 1) * 64 - Py;
+		dy = (Py/BLOCK_UNITS + 1) * BLOCK_UNITS - Py;
 	}
 
 	return (dy);
@@ -185,9 +186,9 @@ int calc_Ya(double ap)
 {
 	if (ap < 90 || ap > 270) /* up */
 	{
-		return (-64);
+		return (-BLOCK_UNITS);
 	}
 
 	/* down */
-	return (64);
+	return (BLOCK_UNITS);
 }

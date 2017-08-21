@@ -47,13 +47,13 @@ void game_frame(MazeStruct *maze)
 			}
 		}
 
-		/* game_func03(instance); */
-		/* SDL_RenderDrawLine(instance.renderer, i, top, i, bottom); */
+		game_func03(maze->instance);
+		SDL_RenderDrawLine(maze->instance.renderer, i, top, i, bottom);
 
-		/* if (DEBUG == 1) */
-		/* { */
-		/* 	SDL_RenderPresent(instance.renderer); */
-		/* } */
+		if (DEBUG >= 1)
+		{
+			SDL_RenderPresent(maze->instance.renderer);
+		}
 	}
 }
 

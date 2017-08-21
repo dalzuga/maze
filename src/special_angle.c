@@ -19,16 +19,16 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 	{
 		for (c = 0; ; c++)
 		{
-			j = Py - 64 * c;
+			j = Py - BLOCK_UNITS * c;
 
 			/* border safety */
-			if (j/64 == 0 || j/64 == map->rows)
+			if (j/BLOCK_UNITS == 0 || j/BLOCK_UNITS == map->rows)
 			{
 				break;
 			}
 
 			/* hit wall */
-			if (map->array[j / 64][Px / 64] == 1)
+			if (map->array[j / BLOCK_UNITS][Px / BLOCK_UNITS] == 1)
 			{
 				break;
 			}
@@ -36,22 +36,22 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 		dy = calc_dy(p, angle);
 
-		dist = Py - (j + dy + 64);
+		dist = Py - (j + dy + BLOCK_UNITS);
 	}
 	else if (angle == 90)
 	{
 		for (c = 0; ; c++)
 		{
-			i = Px + 64 * c;
+			i = Px + BLOCK_UNITS * c;
 
 			/* border safety */
-			if (i/64 == 0 || i/64 == map->cols)
+			if (i/BLOCK_UNITS == 0 || i/BLOCK_UNITS == map->cols)
 			{
 				break;
 			}
 
 			/* hit wall */
-			if (map->array[Py / 64][i / 64] == 1)
+			if (map->array[Py / BLOCK_UNITS][i / BLOCK_UNITS] == 1)
 			{
 				break;
 			}
@@ -59,22 +59,22 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 		Dx = calc_dx(p, angle);
 
-		dist = (i + Dx - 64) - Px;
+		dist = (i + Dx - BLOCK_UNITS) - Px;
 	}
 	else if (angle == 180)
 	{
 		for (c = 0; ; c++)
 		{
-			j = Py + 64 * c;
+			j = Py + BLOCK_UNITS * c;
 
 			/* border safety */
-			if (j/64 == 0 || j/64 == map->rows)
+			if (j/BLOCK_UNITS == 0 || j/BLOCK_UNITS == map->rows)
 			{
 				break;
 			}
 
 			/* hit wall */
-			if (map->array[j / 64][Px / 64] == 1)
+			if (map->array[j / BLOCK_UNITS][Px / BLOCK_UNITS] == 1)
 			{
 				break;
 			}
@@ -82,23 +82,23 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 		dy = calc_dy(p, angle);
 
-		dist = (j + dy - 64) - Py;
+		dist = (j + dy - BLOCK_UNITS) - Py;
 
 	}
 	else /* (angle == 270) */
 	{
-		for (c = 0; i/64 != 0 && i/64 != map->cols; c++)
+		for (c = 0; i/BLOCK_UNITS != 0 && i/BLOCK_UNITS != map->cols; c++)
 		{
-			i = Px - 64 * c;
+			i = Px - BLOCK_UNITS * c;
 
 			/* border safety */
-			if (i/64 == 0 || i/64 == map->cols)
+			if (i/BLOCK_UNITS == 0 || i/BLOCK_UNITS == map->cols)
 			{
 				break;
 			}
 
 			/* hit wall */
-			if (map->array[Py / 64][i / 64] == 1)
+			if (map->array[Py / BLOCK_UNITS][i / BLOCK_UNITS] == 1)
 			{
 				break;
 			}
@@ -106,28 +106,26 @@ int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 
 		Dx = calc_dx(p, angle);
 
-		dist = Px - (i + Dx + 64);
+		dist = Px - (i + Dx + BLOCK_UNITS);
 	}
 
 	if (DEBUG >= 2)
 	{
 		printf("----------11-1-SPECIAL--------\n");
 		printf("map size: [%d, %d]\t\t", map->cols, map->rows);
-		printf("(%d, %d)\n", map->cols * BLOCK_UNITS, map->rows * 64);
+		printf("(%d, %d)\n",
+		       map->cols * BLOCK_UNITS, map->rows * BLOCK_UNITS);
 		printf("(i, j): (%d, %d)\t\t", i, j);
-		printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
+		printf("(i/%d, j/%d): (%d, %d)\n", BLOCK_UNITS, BLOCK_UNITS,
+		       i/BLOCK_UNITS, j/BLOCK_UNITS);
 		printf("player_pos: (%d, %d)\t\t", Px, Py);
-		printf("player_pos: [%d, %d]\t\t", Px/64, Py/64);
-		/* 
-                 * printf("(i, j): (%d, %d)\t\t", i, j);
-		 * printf("(i/64, j/64): (%d, %d)\n", i/64, j/64);
-		 * printf("player_pos: (%d, %d)\t\t", Px, Py);
-                 */
+		printf("player_pos: [%d, %d]\t\t",
+		       Px/BLOCK_UNITS, Py/BLOCK_UNITS);
 		printf("ap: %f\n", angle);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
 		printf("dist: %d\n", dist);
-		rcprint_map(map, p, j/64, i/64);
+		rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
 	}
 
 	return (dist);
