@@ -113,7 +113,7 @@ void init_map(GameMap *map)
  */
 void _print_map(GameMap *map, GamePlayer *p)
 {
-	if (DEBUG)
+	if (DEBUG >= 2)
 	{
 		print_map(map, p);
 	}

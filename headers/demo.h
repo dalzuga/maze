@@ -20,7 +20,7 @@
 #define MAP_COLS 30
 #define START_X (4 * 64 + 20)
 #define START_Y (4 * 64 + 40)
-#define START_THETA 90
+#define START_THETA 0
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 
@@ -103,8 +103,8 @@ void game_engine(MazeStruct *maze);
 /* grame_frame draws the game on the projection plane (monitor) */
 void game_frame(MazeStruct *maze);
 
-/* game_func03 - sets the wall color */
-void game_func03(SDL_Instance instance);
+/* set_wcolor - sets the wall color */
+void set_wcolor(SDL_Instance instance, int r, int g, int b);
 
 /* calc_rclen - finds the length of the ray until it hits a wall */
 double calc_rclen(MazeStruct *maze, int ppcs4715);

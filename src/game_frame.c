@@ -36,7 +36,8 @@ void game_frame(MazeStruct *maze)
 			       col_height, top, bottom);
 			printf("i: %d, X_RES: %d\n", i, X_RES);
 			printf("i / X_RES: %f\n", (double) i / X_RES);
-			printf("FOV_ANGLE: %d\n", FOV_ANGLE);
+			printf("FOV_ANGLE: %d\t\t", FOV_ANGLE);
+			printf("p->theta: %d\n", p->theta);
 			printf("------------------------------\n");
 		}
 		if (DEBUG > 0)
@@ -47,7 +48,6 @@ void game_frame(MazeStruct *maze)
 			}
 		}
 
-		game_func03(maze->instance);
 		SDL_RenderDrawLine(maze->instance.renderer, i, top, i, bottom);
 
 		if (DEBUG >= 1)

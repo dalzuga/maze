@@ -1,8 +1,7 @@
 #include "../headers/demo.h"
 
 /**
- * THIS FUNCTION IS NOT BEING USED
- * game_func03 - sets the wall color
+ * set-wcolor - sets the wall color
  *
  * @instance: SDL window and renderer instance
  * @map: the current map
@@ -10,7 +9,7 @@
  *
  * Return: Nothing.
  */
-void game_func03(SDL_Instance instance)
+void set_wcolor(SDL_Instance instance, int r, int g, int b)
 {
-	SDL_SetRenderDrawColor(instance.renderer, 0x80, 0x80, 0x80, 0xFF);
+	SDL_SetRenderDrawColor(instance.renderer, r, g, b, 0xFF);
 }

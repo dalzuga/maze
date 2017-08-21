@@ -9,7 +9,7 @@
  */
 double calc_rclen(MazeStruct *maze, int ppcs4715)
 {
-	int a, b;
+	int a, b, min;
 
 	a = 0;
 	b = 0;
@@ -20,6 +20,17 @@ double calc_rclen(MazeStruct *maze, int ppcs4715)
 
 	b = calc_dvi(maze->map, maze->p, ppcs4715);
 
+	if (a <= b)
+	{
+		min = a;
+		set_wcolor(maze->instance, 0x40, 0x40, 0x40);
+	}
+	else
+	{
+		min = b;
+		set_wcolor(maze->instance, 0x80, 0x80, 0x80);
+	}
+
 	if (DEBUG >= 2)
 	{
 		printf("----------calc_rclen---------\n");
@@ -28,5 +39,5 @@ double calc_rclen(MazeStruct *maze, int ppcs4715)
 		printf("dvi: %d\n", b);
 	}
 
-	return (a < b ? a : b);
+	return (min);
 }

@@ -1,5 +1,6 @@
 set pagination off
 file a.out
-b src/calc_rclen.c:30
+b src/calc_rclen.c:42
+b game_frame
+dis 1
 r
-c 348
