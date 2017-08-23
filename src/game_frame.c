@@ -17,15 +17,19 @@ void game_frame(MazeStruct *maze)
 	int i;
 	double col_height;	/* column height */
 	double rclen;		/* ray cast length */
+	double adj_dist;	/* adjusted distance */
 	int top, bottom;
+	double beta;
 
 	for (i = 0; i < X_RES; i++)
 	{
-		/* rclen = calc_func01(map, p, i); */
-
 		rclen = calc_rclen(maze, i);
 
-		col_height = WALL_HEIGHT * p->dpp / rclen;
+		beta = (double) i / X_RES * FOV_ANGLE - FOV_ANGLE / 2;
+		beta = calc_mod360(beta);
+		adj_dist = rclen * cos(beta * M_PI / 180);
+
+		col_height = WALL_HEIGHT * p->dpp / adj_dist;
 		top = Y_RES / 2 + col_height / 2;
 		bottom = Y_RES / 2 - col_height / 2;
 

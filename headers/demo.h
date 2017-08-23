@@ -5,21 +5,21 @@
 #include <unistd.h>
 #include <math.h>
 
-#define DEBUG 4
+#define DEBUG 0
 #define DEBUG_SLEEP 450000	/* 450ms */
 #define FRAME_SLEEP 33000 	/* 33ms */
-#define SCALE 4
+#define SCALE 5
 #define X_RES (320 * SCALE)
 #define Y_RES (240 * SCALE)
 #define FOV_ANGLE 60
 #define BLOCK_UNITS (64)
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT (WALL_HEIGHT / 2)
-#define ANGLE_STEP 30
+#define ANGLE_STEP 5
 #define MAP_ROWS 12
 #define MAP_COLS 30
-#define START_X (4 * 64 + 20)
-#define START_Y (4 * 64 + 40)
+#define START_X (4 * BLOCK_UNITS + 20)
+#define START_Y (4 * BLOCK_UNITS + 40)
 #define START_THETA 0
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
