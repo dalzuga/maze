@@ -1,9 +1,9 @@
 #include "../headers/demo.h"
 
 /**
- * special_dhi - calculates distance when angle is on an axis
+ * special_angle - calculates distance when angle is on an axis
  */
-int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
+int special_angle(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 {
 	/* declarations */
 	int Dx, dy, Px, Py, c, i, j, dist;

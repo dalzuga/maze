@@ -12,7 +12,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	int Px, Py, c, i, j;
 	int Ya;
 	int flag;
-	int dist;
+	double dist;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
@@ -23,11 +23,6 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	dist = 0;
 	/* end inits */
 
-	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
-	{
-		return (special_dhi(map, p, ap, ppcs4715));
-	}
-
 	dy = calc_dy(p, ap);
 	Ya = calc_Ya(ap);
 
@@ -36,22 +31,22 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	if (ap < 90)
 	{
 		i = Px + fabs(dy) * tan(ap * M_PI / 180);
-		dist = (int) (Py - j) / cos(ap * M_PI / 180);
+		dist = (Py - j) / cos(ap * M_PI / 180);
 	}
 	else if (ap < 180)
 	{
 		i = Px + fabs(dy) / tan((ap - 90) * M_PI / 180);
-		dist = (int) (j - Py) / sin((ap - 90) * M_PI / 180);
+		dist = (j - Py) / sin((ap - 90) * M_PI / 180);
 	}
 	else if (ap < 270)
 	{
 		i = Px - fabs(dy) * tan((ap - 180) * M_PI / 180);
-		dist = (int) (j - Py) / cos((ap - 180) * M_PI / 180);
+		dist = (j - Py) / cos((ap - 180) * M_PI / 180);
 	}
 	else
 	{
 		i = Px - fabs(dy) / tan((ap - 270) * M_PI / 180);
-		dist = (int) (Py - j) / sin((ap - 270) * M_PI / 180);
+		dist = (Py - j) / sin((ap - 270) * M_PI / 180);
 	}
 
 	for (c = 1; ; c++)
@@ -97,22 +92,22 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		if (ap < 90)
 		{
 			i = Px + fabs(Py - j) * tan(ap * M_PI / 180);
-			dist = (int) (Py - j) / cos(ap * M_PI / 180);
+			dist = (Py - j) / cos(ap * M_PI / 180);
 		}
 		else if (ap < 180)
 		{
 			i = Px + fabs(Py - j) / tan((ap - 90) * M_PI / 180);
-			dist = (int) (j - Py) / sin((ap - 90) * M_PI / 180);
+			dist = (j - Py) / sin((ap - 90) * M_PI / 180);
 		}
 		else if (ap < 270)
 		{
 			i = Px - fabs(Py - j) * tan((ap - 180) * M_PI / 180);
-			dist = (int) (j - Py) / cos((ap - 180) * M_PI / 180);
+			dist = (j - Py) / cos((ap - 180) * M_PI / 180);
 		}
 		else
 		{
 			i = Px - fabs(j - Py) / tan((ap - 270) * M_PI / 180);
-			dist = (int) (Py - j) / sin((ap - 270) * M_PI / 180);
+			dist = (Py - j) / sin((ap - 270) * M_PI / 180);
 		}
 	}
 
@@ -129,7 +124,7 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		printf("ap: %f\n", ap);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
-		printf("dist: %d\n", dist);
+		printf("dist: %f\n", dist);
 
 		switch (flag)
 		{

@@ -12,7 +12,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	int Px, Py, c, i, j;
 	int Xa;
 	/* int flag; */
-	int dist;
+	double dist;
 
 	/* inits */
 	ap = p->theta + (double) ppcs4715 / X_RES * FOV_ANGLE;
@@ -23,11 +23,6 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	dist = 0;
 	/* end inits */
 
-	if (axis_angle(ap))	/* special cases: 0, 90, 180, 270 */
-	{
-		return (special_dhi(map, p, ap, ppcs4715));
-	}
-
 	dx = calc_dx(p, ap);
 	Xa = calc_Xa(ap);
 
@@ -36,22 +31,22 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	if (ap < 90)
 	{
 		j = Py - (i - Px) / tan(ap * M_PI / 180);
-		dist = (int) (i - Px) / sin(ap * M_PI / 180);
+		dist = (i - Px) / sin(ap * M_PI / 180);
 	}
 	else if (ap < 180)
 	{
 		j = Py + (i - Px) * tan((ap - 90) * M_PI / 180);
-		dist = (int) (i - Px) / cos((ap - 90) * M_PI / 180);
+		dist = (i - Px) / cos((ap - 90) * M_PI / 180);
 	}
 	else if (ap < 270)
 	{
 		j = Py + (Px - i) / tan((ap - 180) * M_PI / 180);
-		dist = (int) (Px - i) / sin((ap - 180) * M_PI / 180);
+		dist = (Px - i) / sin((ap - 180) * M_PI / 180);
 	}
 	else
 	{
 		j = Py - (Px - i) * tan((ap - 270) * M_PI / 180);
-		dist = (int) (Px - i) / cos((ap - 270) * M_PI / 180);
+		dist = (Px - i) / cos((ap - 270) * M_PI / 180);
 	}
 
 	for (c = 1; ; c++)
@@ -98,22 +93,22 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		if (ap < 90)
 		{
 			j = Py - (i - Px) / tan(ap * M_PI / 180);
-			dist = (int) (i - Px) / sin(ap * M_PI / 180);
+			dist = (i - Px) / sin(ap * M_PI / 180);
 		}
 		else if (ap < 180)
 		{
 			j = Py + (i - Px) * tan((ap - 90) * M_PI / 180);
-			dist = (int) (i - Px) / cos((ap - 90) * M_PI / 180);
+			dist = (i - Px) / cos((ap - 90) * M_PI / 180);
 		}
 		else if (ap < 270)
 		{
 			j = Py + (Px - i) / tan((ap - 180) * M_PI / 180);
-			dist = (int) (Px - i) / sin((ap - 180) * M_PI / 180);
+			dist = (Px - i) / sin((ap - 180) * M_PI / 180);
 		}
 		else
 		{
 			j = Py - (Px - i) * tan((ap - 270) * M_PI / 180);
-			dist = (int) (Px - i) / cos((ap - 270) * M_PI / 180);
+			dist = (Px - i) / cos((ap - 270) * M_PI / 180);
 		}
 	}
 
@@ -132,7 +127,7 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 		printf("ap: %f\n", ap);
 		printf("c: %d\t\t", c);
 		printf("ppcs4715: %d\n", ppcs4715);
-		printf("dist: %d\n", dist);
+		printf("dist: %f\n", dist);
 
 		/* right */
 		if (ap < 180)

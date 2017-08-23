@@ -151,8 +151,8 @@ double calc_mod360(double angle);
 /* axis_angle - if the angle is on an axis */
 int axis_angle(double angle);
 
-/* special_dhi - calculates distance when angle is on an axis */
-int special_dhi(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
+/* special_angle - calculates distance when angle is on an axis */
+int special_angle(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
 
 /* init_main - initialize all members of MazeStruct */
 void init_main(MazeStruct *maze);
