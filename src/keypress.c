@@ -7,7 +7,7 @@ int keypress(SDL_KeyboardEvent key)
 	fnScanCode array[] =
 	{
 	  {0x29, fn_29},
-	  {0x81, fn_81},
+	  {0x51, fn_51},
 	  {0, 0}
 	};
 
@@ -52,7 +52,7 @@ int fn_29()
 	return (1);
 }
 
-int fn_81()
+int fn_51()
 {
 	printf("down arrow key\n");
 	return (0);

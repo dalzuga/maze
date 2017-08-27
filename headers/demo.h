@@ -177,6 +177,6 @@ int keypress(SDL_KeyboardEvent key);
 
 int fn_29();
 
-int fn_81();
+int fn_51();
 
 #endif
