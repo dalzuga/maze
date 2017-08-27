@@ -57,13 +57,13 @@ typedef struct MazeStruct
 typedef struct fnScanCode
 {
   unsigned int code;
-  int (*fp)();
+  int (*fp)(MazeStruct *maze);
 } fnScanCode;
 
 int init_instance(SDL_Instance *);
 void draw_stuff(SDL_Instance);
 void draw_column(MazeStruct *maze, int x, int top, int bottom);
-int poll_events(void);
+int poll_events(MazeStruct *maze);
 
 /* make_map - creates a map on the heap */
 GameMap *make_map(int rows, int cols);
@@ -173,10 +173,10 @@ int calc_dx(GamePlayer *p, double ap);
 
 int calc_Xa(double ap);
 
-int keypress(SDL_KeyboardEvent key);
+int keypress(MazeStruct *, SDL_KeyboardEvent key);
 
-int fn_29();
+int fn_29(MazeStruct *);
 
-int fn_51();
+int fn_51(MazeStruct *);
 
 #endif

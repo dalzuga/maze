@@ -17,7 +17,7 @@ void game_engine(MazeStruct *maze)
 	{
 		SDL_SetRenderDrawColor(maze->instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(maze->instance.renderer);
-		if (poll_events() == 1)
+		if (poll_events(maze) == 1)
 			break;
 
 		/* draw_stuff(instance); */
@@ -33,7 +33,7 @@ void game_engine(MazeStruct *maze)
 
 }
 
-int poll_events(void)
+int poll_events(MazeStruct *maze)
 {
 	SDL_Event event;
 	SDL_KeyboardEvent key;
@@ -47,7 +47,7 @@ int poll_events(void)
 		case SDL_KEYDOWN:
 			key = event.key;
 
-			if (keypress(key) == 1)
+			if (keypress(maze, key) == 1)
 			{
 				return (1);
 			}

@@ -46,7 +46,7 @@ void game_frame(MazeStruct *maze)
 		}
 		if (DEBUG > 0)
 		{
-			if (poll_events() == 1)
+			if (poll_events(maze) == 1)
 			{
 				exit(EXIT_FAILURE); /* press ESC to exit */
 			}

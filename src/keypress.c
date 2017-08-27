@@ -1,6 +1,6 @@
 #include "../headers/demo.h"
 
-int keypress(SDL_KeyboardEvent key)
+int keypress(MazeStruct *maze, SDL_KeyboardEvent key)
 {
 	/* declarations + inits */
 	int i, r;
@@ -24,33 +24,23 @@ int keypress(SDL_KeyboardEvent key)
 
 		if (key.keysym.scancode == array[i].code)
 		{
-			r = array[i].fp();
+			r = array[i].fp(maze);
 			break;
 		}
 
 		i++;
 	}
 
-	/* 
-         * /\* If 'ESCAPE' is pressed *\/
-	 * if (key.keysym.scancode == 0x29)
-	 * 	return (1);
-	 * 
-	 * if (key.keysym.scancode == 0x81)
-	 * {
-	 * }
-         */
-
 	return (r);
 }
 
-int fn_29()
+int fn_29(MazeStruct *maze __attribute__ ((unused)))
 {
 	printf("fn_29\n");
 	return (1);
 }
 
-int fn_51()
+int fn_51(MazeStruct *maze __attribute__ ((unused)))
 {
 	printf("down arrow key\n");
 	return (0);
