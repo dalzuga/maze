@@ -17,21 +17,19 @@ int keypress(SDL_KeyboardEvent key)
 
 	while (array[i].code)
 	{
-		printf("2\n");
-		sleep(1);
-		printf("array[i].code: %d\n", array[i].code);
+		if (DEBUG >= 1)
+		{
+			printf("array[i].code: 0x%x\n", array[i].code);
+		}
 
 		if (key.keysym.scancode == array[i].code)
 		{
-			printf("3\n");
 			r = array[i].fp();
 			break;
 		}
 
 		i++;
 	}
-
-	printf("4\n");
 
 	/* 
          * /\* If 'ESCAPE' is pressed *\/
