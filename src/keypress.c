@@ -6,8 +6,8 @@ int keypress(SDL_KeyboardEvent key)
 	int i, r;
 	fnScanCode array[] =
 	{
-	  {29, fn_29},
-	  {81, fn_81},
+	  {0x29, fn_29},
+	  {0x81, fn_81},
 	  {0, 0}
 	};
 
@@ -23,12 +23,15 @@ int keypress(SDL_KeyboardEvent key)
 
 		if (key.keysym.scancode == array[i].code)
 		{
+			printf("3\n");
 			r = array[i].fp();
 			break;
 		}
 
 		i++;
 	}
+
+	printf("4\n");
 
 	/* 
          * /\* If 'ESCAPE' is pressed *\/
@@ -45,8 +48,7 @@ int keypress(SDL_KeyboardEvent key)
 
 int fn_29()
 {
-	printf("1\n");
-	sleep(1);
+	printf("fn_29\n");
 	return (1);
 }
 

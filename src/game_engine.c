@@ -51,7 +51,6 @@ int poll_events(void)
 			{
 				return (1);
 			}
-
 			break;
 		}
 	}
