@@ -54,6 +54,12 @@ typedef struct MazeStruct
   GamePlayer *p;
 } MazeStruct;
 
+typedef struct fnScanCode
+{
+  unsigned int code;
+  int (*fp)();
+} fnScanCode;
+
 int init_instance(SDL_Instance *);
 void draw_stuff(SDL_Instance);
 void draw_column(MazeStruct *maze, int x, int top, int bottom);
@@ -166,5 +172,11 @@ int calc_Ya(double ap);
 int calc_dx(GamePlayer *p, double ap);
 
 int calc_Xa(double ap);
+
+int keypress(SDL_KeyboardEvent key);
+
+int fn_29();
+
+int fn_81();
 
 #endif
