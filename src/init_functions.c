@@ -129,7 +129,7 @@ void game_init_params(GameMap **map, GamePlayer **p)
 
 	(*p)->px = START_X;
 	(*p)->py = START_Y;
-	(*p)->theta = START_THETA;
+	(*p)->theta = START_THETA % 360;
 
 	(*p)->x = (*p)->px / BLOCK_UNITS;
 	(*p)->y = (*p)->py / BLOCK_UNITS;

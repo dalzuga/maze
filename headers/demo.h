@@ -15,7 +15,8 @@
 #define BLOCK_UNITS (64)
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT (WALL_HEIGHT / 2)
-#define ANGLE_STEP 5
+#define ANGLE_FACTOR 1
+#define STEP_FACTOR 5
 #define MAP_ROWS 12
 #define MAP_COLS 30
 #define START_X (4 * BLOCK_UNITS + 20)
@@ -184,5 +185,17 @@ int fn_52(MazeStruct *);
 int fn_4f(MazeStruct *);
 
 int fn_50(MazeStruct *);
+
+int fn_04(MazeStruct *);
+
+int fn_07(MazeStruct *);
+
+void step_up(MazeStruct *maze);
+
+void step_down(MazeStruct *maze);
+
+void step_left(MazeStruct *maze);
+
+void step_right(MazeStruct *maze);
 
 #endif

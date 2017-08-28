@@ -11,8 +11,6 @@
  */
 void game_engine(MazeStruct *maze)
 {
-	GamePlayer *p = maze->p;
-
 	while(1)
 	{
 		SDL_SetRenderDrawColor(maze->instance.renderer, 0, 0, 0, 0);
@@ -26,11 +24,7 @@ void game_engine(MazeStruct *maze)
 		fflush(stdout);
 
 		SDL_RenderPresent(maze->instance.renderer);
-
-		p->theta += ANGLE_STEP;
-		p->theta = p->theta % 360;
 	}
-
 }
 
 int poll_events(MazeStruct *maze)
