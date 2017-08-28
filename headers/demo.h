@@ -179,4 +179,10 @@ int fn_29(MazeStruct *);
 
 int fn_51(MazeStruct *);
 
+int fn_52(MazeStruct *);
+
+int fn_4f(MazeStruct *);
+
+int fn_50(MazeStruct *);
+
 #endif
