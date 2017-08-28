@@ -202,4 +202,8 @@ void step_left(MazeStruct *maze);
 
 void step_right(MazeStruct *maze);
 
+void step_fwd(MazeStruct *maze);
+
+void step_rwd(MazeStruct *maze);
+
 #endif
