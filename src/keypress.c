@@ -13,6 +13,8 @@ int keypress(MazeStruct *maze, SDL_KeyboardEvent key)
 	  {0x50, fn_50},
 	  {0x04, fn_04},
 	  {0x07, fn_07},
+	  {0x16, fn_16},
+	  {0x1a, fn_1a},
 	  {0, 0}
 	};
 
@@ -90,5 +92,21 @@ int fn_07(MazeStruct *maze)
 	step_right(maze);
 
 	printf("'d' key\n");
+	return (0);
+}
+
+int fn_16(MazeStruct *maze)
+{
+	step_down(maze);
+
+	printf("'s' key\n");
+	return (0);
+}
+
+int fn_1a(MazeStruct *maze)
+{
+	step_up(maze);
+
+	printf("'w' key\n");
 	return (0);
 }

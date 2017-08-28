@@ -190,6 +190,10 @@ int fn_04(MazeStruct *);
 
 int fn_07(MazeStruct *);
 
+int fn_16(MazeStruct *);
+
+int fn_1a(MazeStruct *);
+
 void step_up(MazeStruct *maze);
 
 void step_down(MazeStruct *maze);
