@@ -49,7 +49,7 @@ int fn_29(MazeStruct *maze __attribute__ ((unused)))
 
 int fn_51(MazeStruct *maze __attribute__ ((unused)))
 {
-	step_down(maze);
+	step_rwd(maze);
 
 	printf("down arrow key\n");
 	return (0);
