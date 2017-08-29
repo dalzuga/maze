@@ -206,4 +206,6 @@ void step_fwd(MazeStruct *maze);
 
 void step_rwd(MazeStruct *maze);
 
+void keystates();
+
 #endif

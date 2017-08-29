@@ -49,5 +49,7 @@ int poll_events(MazeStruct *maze)
 		}
 	}
 
+	keystates();
+
 	return (0);
 }
