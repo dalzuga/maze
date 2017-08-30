@@ -29,5 +29,4 @@ void keystates(MazeStruct *maze)
 		i++;
 	}
 
-	printf("---keystates---\n\t\t\taddress: %p\n", (void *) state);
 }

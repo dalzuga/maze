@@ -26,6 +26,8 @@ void step_fwd(MazeStruct *maze)
 	int dy;
 	double tc;
 
+	int i, j;
+
 	tc = (double) maze->p->theta + FOV_ANGLE / 2;
 	tc = calc_mod360(tc);
 
@@ -42,8 +44,14 @@ void step_fwd(MazeStruct *maze)
 		printf("dy: %d\n", dy);
 	}
 
-	maze->p->px += dx;
-	maze->p->py += dy;
+	i = maze->p->px + dx;
+	j = maze->p->py + dy;
+
+	if (check_blocks(maze, i, j))
+	{
+		maze->p->px = i;
+		maze->p->py = j;
+	}
 }
 
 void step_rwd(MazeStruct *maze __attribute__((unused)))
