@@ -49,7 +49,8 @@ int poll_events(MazeStruct *maze)
 		}
 	}
 
-	keystates();
+	keystates(maze);
+	usleep(10000);
 
 	return (0);
 }
