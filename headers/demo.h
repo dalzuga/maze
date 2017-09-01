@@ -212,6 +212,4 @@ int check_blocks(MazeStruct *maze, int i, int j);
 
 int check_map_bounds(MazeStruct *maze, int i, int j);
 
-int check_wall(MazeStruct *maze, int i, int j);
-
 #endif

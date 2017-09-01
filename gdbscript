@@ -4,4 +4,3 @@ b src/calc_rclen.c:42
 b game_frame
 dis 1
 r
-c 16
