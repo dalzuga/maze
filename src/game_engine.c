@@ -40,7 +40,6 @@ int poll_events(MazeStruct *maze)
 			return (1);
 		case SDL_KEYDOWN:
 			key = event.key;
-
 			if (keypress(maze, key) == 1)
 			{
 				return (1);
@@ -50,8 +49,11 @@ int poll_events(MazeStruct *maze)
 	}
 
 	keystates(maze);
-	print_map(maze->map, maze->p);
-	usleep(10000);
+	if (DEBUG == 0)
+	{
+		print_map(maze->map, maze->p);
+		usleep(500000);
+	}
 
 	return (0);
 }
