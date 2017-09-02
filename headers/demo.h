@@ -72,6 +72,10 @@ GameMap *make_map(int rows, int cols);
 /* init_map - initializes a map with borders made of blocks */
 void init_map(GameMap *map);
 
+void load_map(GameMap *map);
+
+void default_map(GameMap *map);
+
 /* check_edge_cases - check game parameters before running */
 int check_edge_cases(void);
 
