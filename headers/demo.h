@@ -1,6 +1,7 @@
 #ifndef _DEMO_H_
 #define _DEMO_H_
 
+#include <stdio.h>
 #include <SDL2/SDL.h>
 #include <unistd.h>
 #include <math.h>
