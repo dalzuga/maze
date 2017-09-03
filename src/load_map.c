@@ -9,11 +9,14 @@ int load_map(MazeStruct *maze, GameMap *map)
 
 	linelen = 0;
 	line = NULL;
-	f = fopen("../maps/map_2A_12x12.map", "r");
+	f = fopen("./maps/map_2A_12x12.map", "r");
 
 	while(1)
 	{
 		linelen = getline(&line, 0, f);
+
+		printf("line: %s\n", line);
+
 		if (linelen == -1)
 		{
 			break;

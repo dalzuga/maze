@@ -21,7 +21,8 @@ void init_main(MazeStruct *maze)
 	}
 	else
 	{
-		
+		load_map(maze, maze->map);
+		exit(2);
 	}
 }
 
