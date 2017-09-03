@@ -3,25 +3,29 @@
 /* assumes file ends with a new line */
 int load_map(MazeStruct *maze, GameMap *map)
 {
-	int linelen;
+	ssize_t n;
+	size_t linelen;
 	char *line;
 	FILE *f;
 
 	linelen = 0;
+	n = 0;
 	line = NULL;
-	f = fopen("./maps/map_2A_12x12.map", "r");
+	f = fopen("maps/map_2A_12x12.map", "r");
 
 	while(1)
 	{
-		linelen = getline(&line, 0, f);
+		n = getline(&line, &linelen, f);
 
 		printf("line: %s\n", line);
 
-		if (linelen == -1)
+		if (n == -1)
 		{
 			break;
 		}
 	}
+
+	free(line);
 
 	return (0);
 
