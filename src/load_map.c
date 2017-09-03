@@ -4,20 +4,21 @@
 int load_map(MazeStruct *maze, GameMap *map)
 {
 	ssize_t n;
-	size_t linelen;
+	size_t buflen;
 	char *line;
 	FILE *f;
 
-	linelen = 0;
+	buflen = 0;
 	n = 0;
 	line = NULL;
 	f = fopen("maps/map_2A_12x12.map", "r");
 
 	while(1)
 	{
-		n = getline(&line, &linelen, f);
+		n = getline(&line, &buflen, f);
 
 		printf("line: %s", line);
+		printf("buflen: %ld\n", buflen);
 
 		if (n == -1)
 		{
@@ -32,7 +33,6 @@ int load_map(MazeStruct *maze, GameMap *map)
 	if (0)
 	{
 		printf("%p\n", (void *) map);
-		printf("%p\n", (void *) &linelen);
 		printf("%p\n", (void *) &maze);
 	}
 }
