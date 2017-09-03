@@ -17,7 +17,7 @@ int load_map(MazeStruct *maze, GameMap *map)
 	{
 		n = getline(&line, &linelen, f);
 
-		printf("line: %s\n", line);
+		printf("line: %s", line);
 
 		if (n == -1)
 		{
