@@ -1,19 +1,33 @@
 #include "../headers/demo.h"
 
-void load_map(GameMap *map)
+/* assumes file ends with a new line */
+int load_map(MazeStruct *maze, GameMap *map)
 {
-	#define LINE_BUFFER 128
 	int linelen;
-	char **line;
-	FILE *f = fopen("../maps/map_2A_12x12.map", "r");
+	char *line;
+	FILE *f;
+
+	linelen = 0;
+	line = NULL;
+	f = fopen("../maps/map_2A_12x12.map", "r");
 
 	while(1)
 	{
-		linelen = getline(line, LINE_BUFFER, f);
+		linelen = getline(&line, 0, f);
+		if (linelen == -1)
+		{
+			break;
+		}
 	}
 
+	return (0);
+
 	if (0)
+	{
 		printf("%p\n", (void *) map);
+		printf("%p\n", (void *) &linelen);
+		printf("%p\n", (void *) &maze);
+	}
 }
 
 void default_map(GameMap *map)

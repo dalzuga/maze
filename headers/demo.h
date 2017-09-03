@@ -73,7 +73,7 @@ GameMap *make_map(int rows, int cols);
 /* init_map - initializes a map with borders made of blocks */
 void init_map(GameMap *map);
 
-void load_map(GameMap *map);
+int load_map(MazeStruct *maze, GameMap *map);
 
 void default_map(GameMap *map);
 
