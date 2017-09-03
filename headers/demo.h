@@ -18,6 +18,7 @@
 #define PLAYER_HEIGHT (WALL_HEIGHT / 2)
 #define ANGLE_FACTOR 2
 #define STEP_FACTOR 10
+#define DEFAULT_MAP 1
 #define MAP_ROWS 12
 #define MAP_COLS 30
 #define START_X (4 * BLOCK_UNITS + 20)
@@ -77,8 +78,8 @@ int load_map(MazeStruct *maze, GameMap *map);
 
 void default_map(GameMap *map);
 
-/* check_edge_cases - check game parameters before running */
-int check_edge_cases(void);
+/* check_hardcoded_values - check game parameters before running */
+int check_hardcoded_values(void);
 
 /* game_main - entry point for the game engine */
 void game_main(MazeStruct *maze);
