@@ -3,27 +3,30 @@
 /* assumes file ends with a new line */
 int load_map(MazeStruct *maze, GameMap *map)
 {
-	ssize_t n;
+	ssize_t r;
 	size_t buflen;
 	char *line;
 	FILE *f;
+	int i;
 
 	buflen = 0;
-	n = 0;
+	r = 0;
 	line = NULL;
 	f = fopen("maps/map_2A_12x12.map", "r");
 
-	while(1)
+	for (i = 0; ; i++)
 	{
-		n = getline(&line, &buflen, f);
+		r = getline(&line, &buflen, f);
 
-		printf("line: %s", line);
-		printf("buflen: %ld\n", buflen);
-
-		if (n == -1)
+		if (r == -1)
 		{
 			break;
 		}
+
+		printf("line: %s", line);
+		printf("r: %ld\n", r);
+		printf("strlen(line) - 1: %ld\n", strlen(line) - 1);
+		printf("buflen: %ld\n", buflen);
 	}
 
 	free(line);

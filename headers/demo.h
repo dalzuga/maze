@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <unistd.h>
 #include <math.h>
+#include <string.h>
 
 #define DEBUG 0
 #define DEBUG_SLEEP 450000	/* 450ms */
