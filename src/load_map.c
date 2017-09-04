@@ -7,12 +7,13 @@ int load_map(MazeStruct *maze, GameMap *map)
 	size_t buflen;
 	char *line;
 	FILE *f;
-	int i;
+	int i, cols;
+	char *file1 = "maps/map_2A_12x12.map";
 
 	buflen = 0;
 	r = 0;
 	line = NULL;
-	f = fopen("maps/map_2A_12x12.map", "r");
+	f = fopen(file1, "r");
 
 	for (i = 0; ; i++)
 	{
@@ -21,6 +22,52 @@ int load_map(MazeStruct *maze, GameMap *map)
 		if (r == -1)
 		{
 			break;
+		}
+
+		if (i == 0)
+		{
+			cols = r - 1;
+		}
+		else
+		{
+			if (cols != r - 1)
+			{
+				perror("Bad map");
+				return (1);
+			}
+		}
+
+		printf("line: %s", line);
+		printf("r: %ld\n", r);
+		printf("strlen(line) - 1: %ld\n", strlen(line) - 1);
+		printf("buflen: %ld\n", buflen);
+	}
+
+	fclose(f);
+	map = make_map(i, cols);
+
+	f = fopen(file1, "r");
+
+	for (i = 0; ; i++)
+	{
+		r = getline(&line, &buflen, f);
+
+		if (r == -1)
+		{
+			break;
+		}
+
+		if (i == 0)
+		{
+			cols = r - 1;
+		}
+		else
+		{
+			if (cols != r - 1)
+			{
+				perror("Bad map");
+				return (1);
+			}
 		}
 
 		printf("line: %s", line);

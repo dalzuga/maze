@@ -84,8 +84,6 @@ void init_map(GameMap *map)
 			}
 		}
 	}
-
-	default_map(map);
 }
 
 /**

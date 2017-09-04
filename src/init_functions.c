@@ -18,11 +18,17 @@ void init_main(MazeStruct *maze)
 
 		/* allocate and init map and player */
 		game_init_params(&(maze->map), &(maze->p));
+
+		/* load default map */
+		default_map(maze->map);
 	}
 	else
 	{
-		load_map(maze, maze->map);
-		exit(2);
+		if (load_map(maze, maze->map) == 1)
+		{
+			perror("load_map");
+			exit(2);
+		}
 	}
 }
 
