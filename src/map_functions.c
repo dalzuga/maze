@@ -98,7 +98,7 @@ void _print_map(GameMap *map, GamePlayer *p)
 {
 	if (DEBUG >= 2)
 	{
-		print_map(map, p);
+		print_map_p(map, p);
 	}
 }
 
@@ -110,7 +110,36 @@ void _print_map(GameMap *map, GamePlayer *p)
  *
  * Return: Nothing.
  */
-void print_map(GameMap *map, GamePlayer *p)
+void print_map(GameMap *map)
+{
+	int j, i;
+
+	for (j = 0; j < map->rows; j++)
+	{
+		for (i = 0; i < map->cols; i++)
+		{
+			if (map->array[j][i] == 1)
+			{
+				cprintf(31, 44, "%d", 1);
+			}
+			else
+			{
+				printf("%d", map->array[j][i]);
+			}
+		}
+		printf("\n");
+	}
+}
+
+/**
+ * print_map_p - prints a map with player
+ * @array - map array to print
+ * @rows - number of rows
+ * @cols - number of columns
+ *
+ * Return: Nothing.
+ */
+void print_map_p(GameMap *map, GamePlayer *p)
 {
 	int j, i;
 	int Px = p->px, Py = p->py;

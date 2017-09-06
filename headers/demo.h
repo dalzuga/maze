@@ -89,7 +89,10 @@ void game_main(MazeStruct *maze);
 void _print_map(GameMap *map, GamePlayer *p);
 
 /* print_map - prints a map */
-void print_map(GameMap *map, GamePlayer *p);
+void print_map_p(GameMap *map, GamePlayer *p);
+
+/*  */
+void print_map(GameMap *map);
 
 /* rcprint_map - prints a map with ray hitting wall */
 void rcprint_map(GameMap *map, GamePlayer *p, int x, int y);

@@ -7,7 +7,7 @@ int load_map(MazeStruct *maze, GameMap *map)
 	size_t buflen;
 	char *line;
 	FILE *f;
-	int i, cols;
+	int i, cols, j;
 	char *file1 = "maps/map_2A_12x12.map";
 
 	buflen = 0;
@@ -57,17 +57,10 @@ int load_map(MazeStruct *maze, GameMap *map)
 			break;
 		}
 
-		if (i == 0)
+		for (j = 0; j < (r - 1) ; j++)
 		{
-			cols = r - 1;
-		}
-		else
-		{
-			if (cols != r - 1)
-			{
-				perror("Bad map");
-				return (1);
-			}
+			/* ASCII convert from char to int */
+			map->array[i][j] = (int) (line[j] - 48);
 		}
 
 		printf("line: %s", line);
@@ -77,6 +70,10 @@ int load_map(MazeStruct *maze, GameMap *map)
 	}
 
 	free(line);
+
+	printf("---1---\n");
+	print_map(map);
+	printf("---1---\n");
 
 	return (0);
 
