@@ -19,7 +19,7 @@
 #define PLAYER_HEIGHT (WALL_HEIGHT / 2)
 #define ANGLE_FACTOR 2
 #define STEP_FACTOR 10
-#define DEFAULT_MAP 0
+#define DEFAULT_MAP 1
 #define MAP_ROWS 12
 #define MAP_COLS 30
 #define START_X (4 * BLOCK_UNITS + 20)
@@ -69,7 +69,10 @@ void draw_stuff(SDL_Instance);
 void draw_column(MazeStruct *maze, int x, int top, int bottom);
 int poll_events(MazeStruct *maze);
 
-/* make_map - creates a map on the heap */
+/* make_player - creates a player */
+GamePlayer *make_player(void);
+
+/* make_map - creates a map */
 GameMap *make_map(int rows, int cols);
 
 /* init_map - initializes a map with borders made of blocks */
