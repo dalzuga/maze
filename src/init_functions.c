@@ -28,7 +28,9 @@ void init_main(MazeStruct *maze)
 		{
 			perror("load_map");
 			exit(2);
-		}		
+		}
+
+		maze->p = make_player();
 	}
 }
 
