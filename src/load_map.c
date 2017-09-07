@@ -1,7 +1,7 @@
 #include "../headers/demo.h"
 
 /* assumes file ends with a new line */
-int load_map(MazeStruct *maze, GameMap *map)
+int load_map(MazeStruct *maze)
 {
 	ssize_t r;
 	size_t buflen;
@@ -76,12 +76,6 @@ int load_map(MazeStruct *maze, GameMap *map)
 	printf("---1---\n");
 
 	return (0);
-
-	if (0)
-	{
-		printf("%p\n", (void *) map);
-		printf("%p\n", (void *) &maze);
-	}
 }
 
 void default_map(GameMap *map)

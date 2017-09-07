@@ -24,7 +24,7 @@ void init_main(MazeStruct *maze)
 	}
 	else
 	{
-		if (load_map(maze, maze->map) == 1)
+		if (load_map(maze) == 1)
 		{
 			perror("load_map");
 			exit(2);

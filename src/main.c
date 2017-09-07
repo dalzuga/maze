@@ -6,6 +6,11 @@ int main(void)
 	MazeStruct maze;
 
 	/* inits */
+	maze.map = NULL;
+	maze.p = NULL;
+	maze.instance.window = NULL;
+	maze.instance.renderer = NULL;
+
 	init_main(&maze);
 
 	game_main(&maze);
