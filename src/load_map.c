@@ -44,7 +44,7 @@ int load_map(MazeStruct *maze, GameMap *map)
 	}
 
 	fclose(f);
-	map = make_map(i, cols);
+	maze->map = make_map(i, cols);
 
 	f = fopen(file1, "r");
 
@@ -60,7 +60,7 @@ int load_map(MazeStruct *maze, GameMap *map)
 		for (j = 0; j < (r - 1) ; j++)
 		{
 			/* ASCII convert from char to int */
-			map->array[i][j] = (int) (line[j] - 48);
+			maze->map->array[i][j] = (int) (line[j] - 48);
 		}
 
 		printf("line: %s", line);
@@ -72,7 +72,7 @@ int load_map(MazeStruct *maze, GameMap *map)
 	free(line);
 
 	printf("---1---\n");
-	print_map(map);
+	print_map(maze->map);
 	printf("---1---\n");
 
 	return (0);
