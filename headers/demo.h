@@ -19,12 +19,12 @@
 #define PLAYER_HEIGHT (WALL_HEIGHT / 2)
 #define ANGLE_FACTOR 2
 #define STEP_FACTOR 10
-#define DEFAULT_MAP 0
+#define DEFAULT_MAP 1
 #define MAP_ROWS 12
 #define MAP_COLS 30
 #define START_X (4 * BLOCK_UNITS + 20)
 #define START_Y (3 * BLOCK_UNITS + 40)
-#define START_THETA 90
+#define START_THETA 60
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 

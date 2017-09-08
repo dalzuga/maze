@@ -32,7 +32,7 @@ int load_map(MazeStruct *maze)
 		{
 			if (cols != r - 1)
 			{
-				perror("Bad map");
+				perror("Bad map - cols must be of same length");
 				return (1);
 			}
 		}

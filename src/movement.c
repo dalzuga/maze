@@ -52,6 +52,14 @@ void step_fwd(MazeStruct *maze)
 		maze->p->px = i;
 		maze->p->py = j;
 	}
+	else if (check_blocks(maze, i - dx, j))
+	{
+		maze->p->py = j;
+	}
+	else if (check_blocks(maze, i, j - dy))
+	{
+		maze->p->px = i;
+	}
 }
 
 void step_rwd(MazeStruct *maze __attribute__((unused)))
