@@ -1,0 +1,2 @@
+Segfault encountered when going backwards into the northern border of the
+map. Seems to happen when the angle is shallow with the wall.
