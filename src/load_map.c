@@ -37,10 +37,13 @@ int load_map(MazeStruct *maze)
 			}
 		}
 
-		printf("line: %s", line);
-		printf("r: %ld\n", r);
-		printf("strlen(line) - 1: %ld\n", strlen(line) - 1);
-		printf("buflen: %ld\n", buflen);
+		if (DEBUG >= 1)
+		{
+			printf("line: %s", line);
+			printf("r: %ld\n", r);
+			printf("strlen(line) - 1: %ld\n", strlen(line) - 1);
+			printf("buflen: %ld\n", buflen);
+		}
 	}
 
 	fclose(f);
@@ -60,20 +63,26 @@ int load_map(MazeStruct *maze)
 		for (j = 0; j < (r - 1) ; j++)
 		{
 			/* ASCII convert from char to int */
-			maze->map->array[i][j] = (int) (line[j] - 48);
+			maze->map->array[i][j] = (int) (line[j] - '0');
 		}
 
-		printf("line: %s", line);
-		printf("r: %ld\n", r);
-		printf("strlen(line) - 1: %ld\n", strlen(line) - 1);
-		printf("buflen: %ld\n", buflen);
+		if (DEBUG >= 1)
+		{
+			printf("line: %s", line);
+			printf("r: %ld\n", r);
+			printf("strlen(line) - 1: %ld\n", strlen(line) - 1);
+			printf("buflen: %ld\n", buflen);
+		}
 	}
 
 	free(line);
 
-	printf("---1---\n");
-	print_map(maze->map);
-	printf("---1---\n");
+	if (DEBUG == 5)
+	{
+		printf("---1---\n");
+		print_map(maze->map);
+		printf("---1---\n");
+	}
 
 	return (0);
 }

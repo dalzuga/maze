@@ -53,7 +53,10 @@ int fn_51(MazeStruct *maze __attribute__ ((unused)))
 {
 	step_rwd(maze);
 
-	printf("down arrow key\n");
+	if (DEBUG == 5)
+	{
+		printf("down arrow key\n");
+	}
 	return (0);
 }
 
@@ -61,7 +64,10 @@ int fn_52(MazeStruct *maze __attribute__ ((unused)))
 {
 	step_fwd(maze);
 
-	printf("up arrow key\n");
+	if (DEBUG == 5)
+	{
+		printf("up arrow key\n");
+	}
 	return (0);
 }
 
@@ -69,7 +75,10 @@ int fn_4f(MazeStruct *maze __attribute__ ((unused)))
 {
 	maze->p->theta = (maze->p->theta + 1 * ANGLE_FACTOR) % 360;
 
-	printf("right arrow key\n");
+	if (DEBUG == 5)
+	{
+		printf("right arrow key\n");
+	}
 	return (0);
 }
 
@@ -77,7 +86,10 @@ int fn_50(MazeStruct *maze __attribute__ ((unused)))
 {
 	maze->p->theta = (maze->p->theta - 1 * ANGLE_FACTOR) % 360;
 
-	printf("left arrow key\n");
+	if (DEBUG == 5)
+	{
+		printf("left arrow key\n");
+	}
 	return (0);
 }
 

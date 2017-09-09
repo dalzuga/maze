@@ -24,13 +24,15 @@ void init_main(MazeStruct *maze)
 	}
 	else
 	{
+		maze->p = make_player();
+
 		if (load_map(maze) == 1)
 		{
 			perror("load_map");
 			exit(2);
 		}
 
-		maze->p = make_player();
+		rspawn(maze);
 	}
 }
 
