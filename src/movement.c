@@ -100,6 +100,6 @@ void step_rwd(MazeStruct *maze __attribute__((unused)))
 	}
 	else if (check_blocks(maze, i, j + dy))
 	{
-		maze->p->py = i;
+		maze->p->px = i;
 	}
 }
