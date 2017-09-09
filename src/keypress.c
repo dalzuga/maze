@@ -7,16 +7,14 @@ int keypress(MazeStruct *maze, SDL_KeyboardEvent key)
 	fnScanCode array[] =
 	{
 		{0x29, fn_29},	/* 'esc' key */
-		/*
-                 * {0x51, fn_51},	/\* key down *\/
-		 * {0x52, fn_52},	/\* key up *\/
-		 * {0x4f, fn_4f},	/\* key right *\/
-		 * {0x50, fn_50},	/\* key left *\/
-		 * {0x04, fn_04},	/\* 'a' key *\/
-		 * {0x07, fn_07},	/\* 'd' key *\/
-		 * {0x16, fn_16},	/\* 's' key *\/
-		 * {0x1a, fn_1a},	/\* 'w' key *\/
-                 */
+		{0x51, fn_51},	/* key down */
+		{0x52, fn_52},	/* key up */
+		{0x4f, fn_4f},	/* key right */
+		{0x50, fn_50},	/* key left */
+		{0x04, fn_04},	/* 'a' key */
+		{0x07, fn_07},	/* 'd' key */
+		{0x16, fn_16},	/* 's' key */
+		{0x1a, fn_1a},	/* 'w' key */
 		{0, 0}
 	};
 

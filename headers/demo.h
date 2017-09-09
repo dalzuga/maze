@@ -22,9 +22,9 @@
 #define DEFAULT_MAP 1
 #define MAP_ROWS 12
 #define MAP_COLS 30
-#define START_X (4 * BLOCK_UNITS + 20)
-#define START_Y (3 * BLOCK_UNITS + 40)
-#define START_THETA 60
+#define START_X (891)
+#define START_Y (65)
+#define START_THETA 76
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 
