@@ -53,8 +53,11 @@ void rspawn(MazeStruct *maze)
 	p->px = BLOCK_UNITS * i + 32;
 	p->theta = ( rand() % 8 ) * 45;
 
-	printf("p->py: %d\n", p->py);
-	printf("p->px: %d\n", p->px);
-	printf("p->theta: %d\n", p->theta);
-	print_map_p(maze->map, maze->p);
+	if (DEBUG == 5)
+	{
+		printf("p->py: %d\n", p->py);
+		printf("p->px: %d\n", p->px);
+		printf("p->theta: %d\n", p->theta);
+		print_map_p(maze->map, maze->p);
+	}
 }

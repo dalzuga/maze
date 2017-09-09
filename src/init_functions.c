@@ -21,6 +21,7 @@ void init_main(MazeStruct *maze)
 
 		/* load default map */
 		default_map(maze->map);
+		rspawn(maze);
 	}
 	else
 	{
