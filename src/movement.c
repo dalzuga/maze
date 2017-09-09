@@ -34,7 +34,7 @@ void step_fwd(MazeStruct *maze)
 	dx = STEP_FACTOR * sin(tc * M_PI / 180);
 	dy = -( STEP_FACTOR * cos(tc * M_PI / 180) );
 
-	if (DEBUG >= 1)
+	if (DEBUG >= 0)
 	{
 		printf("sin(tc * M_PI / 180): %f\t", sin(tc * M_PI / 180));
 		printf("cos(tc * M_PI / 180): %f\n", cos(tc * M_PI / 180));

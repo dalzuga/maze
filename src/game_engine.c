@@ -49,9 +49,8 @@ int poll_events(MazeStruct *maze)
 		}
 	}
 
-	step_rwd(maze);
 	keystates(maze);
-	/* print_map_p(maze->map, maze->p); */
+	print_map_p(maze->map, maze->p);
 	usleep(10000);
 
 	return (0);
