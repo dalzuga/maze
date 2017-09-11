@@ -11,6 +11,19 @@
  */
 void game_engine(MazeStruct *maze)
 {
+	int t_flag, counter;
+	clock_t start, end;
+	double time_used;
+
+	t_flag = 1;
+	start = clock();
+	if (start == -1)
+	{
+		perror("timer not working");
+		t_flag = 0;
+	}
+
+	counter = 0;
 	while(1)
 	{
 		SDL_SetRenderDrawColor(maze->instance.renderer, 0, 0, 0, 0);
@@ -18,12 +31,30 @@ void game_engine(MazeStruct *maze)
 		if (poll_events(maze) == 1)
 			break;
 
+
+
 		/* draw_stuff(instance); */
 		game_frame(maze);
 
 		fflush(stdout);
 
 		SDL_RenderPresent(maze->instance.renderer);
+
+		usleep(10000);
+
+		if (t_flag)
+		{
+			counter++;
+			printf("counter: %d\n", counter);
+			if (counter % 60 == 0)
+			{
+				counter = 0;
+				end = clock();
+				time_used = ((double) (end - start))
+					/ CLOCKS_PER_SEC;
+				printf("time used: %f\n", time_used);
+			}
+		}
 	}
 }
 
@@ -50,8 +81,10 @@ int poll_events(MazeStruct *maze)
 	}
 
 	keystates(maze);
-	print_map_p(maze->map, maze->p);
-	usleep(10000);
+	if (DEBUG == 5)
+	{
+		print_map_p(maze->map, maze->p);
+	}
 
 	return (0);
 }
