@@ -31,8 +31,6 @@ void game_engine(MazeStruct *maze)
 		if (poll_events(maze) == 1)
 			break;
 
-
-
 		/* draw_stuff(instance); */
 		game_frame(maze);
 
@@ -45,14 +43,23 @@ void game_engine(MazeStruct *maze)
 		if (t_flag)
 		{
 			counter++;
-			printf("counter: %d\n", counter);
-			if (counter % 60 == 0)
+			/* printf("counter: %d\n", counter); */
+
+			end = clock();
+			time_used = ((double) (end - start))
+				/ CLOCKS_PER_SEC;
+			if (time_used >= 1)
 			{
+				if (1)
+				{
+					printf("-----------FPS-----------\n");
+					printf("fps: %.2f\n", (double)
+					       counter / time_used);
+					printf("frames: %d\n", counter);
+					printf("time: %.3fs\n", time_used);
+				}
 				counter = 0;
-				end = clock();
-				time_used = ((double) (end - start))
-					/ CLOCKS_PER_SEC;
-				printf("time used: %f\n", time_used);
+				start = clock();
 			}
 		}
 	}

@@ -25,8 +25,11 @@ void rspawn(MazeStruct *maze)
 	r = rand();
 	r = (r % zeroes) + 1;
 
-	printf("r: %d\n", r);
-	printf("zeroes: %d\n", zeroes);
+	if (DEBUG == 5)
+	{
+		printf("r: %d\n", r);
+		printf("zeroes: %d\n", zeroes);
+	}
 
 	zeroes = 0;
 	for (j = 0; j < map->rows; j++)
