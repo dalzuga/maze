@@ -1,0 +1,20 @@
+#include "../headers/demo.h"
+
+int timespec_subtract(struct timespec *result, struct timespec *start,
+		      struct timespec *end)
+{
+	/* subtract seconds */
+	result->tv_sec = end->tv_sec - start->tv_sec;
+
+	/* subtract nanoseconds */
+	result->tv_nsec = end->tv_nsec - start->tv_nsec;
+
+	/* fix remainder */
+	if (result->tv_nsec < 0)
+	{
+		result->tv_sec--;
+		result->tv_nsec += BILLION;
+	}
+
+	return (end->tv_sec < start->tv_sec);
+}

@@ -26,6 +26,7 @@
 #define START_X (4 * BLOCK_UNITS + 20)
 #define START_Y (3 * BLOCK_UNITS + 40)
 #define START_THETA 60
+#define BILLION (1000000000)
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 
@@ -229,5 +230,8 @@ int check_map_bounds(MazeStruct *maze, int i, int j);
 int check_wall(MazeStruct *maze, int i, int j);
 
 void rspawn(MazeStruct *maze);
+
+int timespec_subtract(struct timespec *result, struct timespec *x,
+		      struct timespec *y);
 
 #endif

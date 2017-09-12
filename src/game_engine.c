@@ -12,15 +12,12 @@
 void game_engine(MazeStruct *maze)
 {
 	int t_flag, counter;
-	clock_t start, end;
-	double time_used;
+	struct timespec start, end, time_used;
 
-	t_flag = 1;
-	start = clock();
-	if (start == -1)
+	t_flag = clock_gettime(CLOCK_MONOTONIC, &start);
+	if (t_flag == -1)
 	{
 		perror("timer not working");
-		t_flag = 0;
 	}
 
 	counter = 0;
@@ -40,26 +37,26 @@ void game_engine(MazeStruct *maze)
 
 		usleep(10000);
 
-		if (t_flag)
+		if (t_flag == 0)
 		{
 			counter++;
 			/* printf("counter: %d\n", counter); */
 
-			end = clock();
-			time_used = ((double) (end - start))
-				/ CLOCKS_PER_SEC;
-			if (time_used >= 1)
+			clock_gettime(CLOCK_MONOTONIC, &end);
+			timespec_subtract(&time_used, &start, &end);
+			if (time_used.tv_sec >= 1)
 			{
 				if (1)
 				{
 					printf("-----------FPS-----------\n");
 					printf("fps: %.2f\n", (double)
-					       counter / time_used);
+					       counter / time_used.tv_sec);
 					printf("frames: %d\n", counter);
-					printf("time: %.3fs\n", time_used);
+					printf("time: %.3fs\n", (double)
+					       time_used.tv_sec);
 				}
 				counter = 0;
-				start = clock();
+				clock_gettime(CLOCK_MONOTONIC, &start);
 			}
 		}
 	}
