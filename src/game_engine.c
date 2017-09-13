@@ -58,6 +58,7 @@ int poll_events(MazeStruct *maze)
 {
 	SDL_Event event;
 	SDL_KeyboardEvent key;
+	struct timespec now, interval;
 
 	while (SDL_PollEvent(&event))
 	{
@@ -76,7 +77,14 @@ int poll_events(MazeStruct *maze)
 		}
 	}
 
-	keystates(maze);
+	clock_gettime(CLOCK_MONOTONIC, &now);
+	timespec_subtract(&interval, &(maze->time_s), &now);
+
+	if ((interval.tv_sec * BILLION + interval.tv_nsec) > BILLION / 100)
+	{
+		clock_gettime(CLOCK_MONOTONIC, &(maze->time_s));
+		keystates(maze);
+	}
 	if (DEBUG == 5)
 	{
 		print_map_p(maze->map, maze->p);

@@ -15,7 +15,7 @@
 #define X_RES (320 * SCALE)
 #define Y_RES (240 * SCALE)
 #define FOV_ANGLE 60
-#define BLOCK_UNITS (64)
+#define BLOCK_UNITS (256)
 #define WALL_HEIGHT BLOCK_UNITS
 #define PLAYER_HEIGHT (WALL_HEIGHT / 2)
 #define ANGLE_FACTOR 2
