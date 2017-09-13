@@ -44,8 +44,7 @@ void game_engine(MazeStruct *maze)
 		if (time_used.tv_sec >= 1)
 		{
 			printf("-----------FPS-----------\n");
-			printf("fps: %.2f\n", (double)
-			       counter / time_used.tv_sec);
+			printf("fps: %d\n", fps_calc(counter, time_used));
 			printf("frames: %d\n", counter);
 			printf("time: %.3fs\n", (double)
 			       (time_used.tv_sec * BILLION + time_used.tv_nsec)

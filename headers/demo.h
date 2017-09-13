@@ -234,4 +234,8 @@ void rspawn(MazeStruct *maze);
 int timespec_subtract(struct timespec *result, struct timespec *x,
 		      struct timespec *y);
 
+int fps_calc(int count, struct timespec time_used);
+
+double get_td(struct timespec t);
+
 #endif
