@@ -24,20 +24,13 @@ void game_engine(MazeStruct *maze)
 		if (poll_events(maze) == 1)
 			break;
 
-		/* draw_stuff(instance); */
 		game_frame(maze);
 
 		fflush(stdout);
 
 		SDL_RenderPresent(maze->instance.renderer);
 
-		/*
-                 * DON'T USE THIS
-		 * usleep(10000);
-                 */
-
 		counter++;
-		/* printf("counter: %d\n", counter); */
 
 		clock_gettime(CLOCK_MONOTONIC, &end);
 		timespec_subtract(&time_used, &start, &end);
@@ -49,7 +42,6 @@ void game_engine(MazeStruct *maze)
 			printf("time: %.3fs\n", (double)
 			       (time_used.tv_sec * BILLION + time_used.tv_nsec)
 			       / BILLION);
-
 			counter = 0;
 			clock_gettime(CLOCK_MONOTONIC, &start);
 		}

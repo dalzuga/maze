@@ -24,20 +24,9 @@ int fps_calc(int count, struct timespec time_used)
 	int fps = 0;
 	double td;
 
-	td = get_td(time_used);
+	td = (time_used.tv_sec * BILLION + time_used.tv_nsec) / BILLION;
 
 	fps = (int) ((double) count / (double) td);
 
 	return (fps);
-}
-
-double get_td(struct timespec t)
-{
-	double td;
-
-	td = (double) t.tv_sec * BILLION;
-	td += (double) t.tv_nsec;
-	td = td / BILLION;
-
-	return (td);
 }
