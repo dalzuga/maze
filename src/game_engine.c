@@ -12,9 +12,11 @@
 void game_engine(MazeStruct *maze)
 {
 	int counter;
-	struct timespec start, end, time_used;
+	struct timespec fps_start, fps_end, time_used;
 
-	clock_gettime(CLOCK_MONOTONIC, &start);
+	clock_gettime(CLOCK_MONOTONIC, &(maze->time_s));
+
+	fps_start = maze->time_s;
 
 	counter = 0;
 	while(1)
@@ -24,16 +26,20 @@ void game_engine(MazeStruct *maze)
 		if (poll_events(maze) == 1)
 			break;
 
+		/* draw_stuff(instance); */
 		game_frame(maze);
 
 		fflush(stdout);
 
 		SDL_RenderPresent(maze->instance.renderer);
 
-		counter++;
+		/* usleep(10000); */
 
-		clock_gettime(CLOCK_MONOTONIC, &end);
-		timespec_subtract(&time_used, &start, &end);
+		counter++;
+		/* printf("counter: %d\n", counter); */
+
+		clock_gettime(CLOCK_MONOTONIC, &fps_end);
+		timespec_subtract(&time_used, &fps_start, &fps_end);
 		if (time_used.tv_sec >= 1)
 		{
 			printf("-----------FPS-----------\n");
@@ -43,7 +49,7 @@ void game_engine(MazeStruct *maze)
 			       (time_used.tv_sec * BILLION + time_used.tv_nsec)
 			       / BILLION);
 			counter = 0;
-			clock_gettime(CLOCK_MONOTONIC, &start);
+			clock_gettime(CLOCK_MONOTONIC, &fps_start);
 		}
 	}
 }

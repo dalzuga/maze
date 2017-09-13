@@ -27,6 +27,7 @@
 #define START_Y (3 * BLOCK_UNITS + 40)
 #define START_THETA 60
 #define BILLION (1000000000)
+#define TIME_THRESHOLD (100000000)
 
 #define cprintf(bg, c, f, s) printf("\033[%d;%dm" f "\033[0m", bg, c, s)
 
@@ -58,6 +59,7 @@ typedef struct MazeStruct
   SDL_Instance instance;
   GameMap *map;
   GamePlayer *p;
+  struct timespec time_s;
 } MazeStruct;
 
 typedef struct fnScanCode

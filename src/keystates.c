@@ -28,5 +28,4 @@ void keystates(MazeStruct *maze)
 
 		i++;
 	}
-
 }
