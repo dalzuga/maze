@@ -11,14 +11,10 @@
  */
 void game_engine(MazeStruct *maze)
 {
-	int t_flag, counter;
+	int counter;
 	struct timespec start, end, time_used;
 
-	t_flag = clock_gettime(CLOCK_MONOTONIC, &start);
-	if (t_flag == -1)
-	{
-		perror("timer not working");
-	}
+	clock_gettime(CLOCK_MONOTONIC, &start);
 
 	counter = 0;
 	while(1)
@@ -35,29 +31,28 @@ void game_engine(MazeStruct *maze)
 
 		SDL_RenderPresent(maze->instance.renderer);
 
-		usleep(10000);
+		/*
+                 * DON'T USE THIS
+		 * usleep(10000);
+                 */
 
-		if (t_flag == 0)
+		counter++;
+		/* printf("counter: %d\n", counter); */
+
+		clock_gettime(CLOCK_MONOTONIC, &end);
+		timespec_subtract(&time_used, &start, &end);
+		if (time_used.tv_sec >= 1)
 		{
-			counter++;
-			/* printf("counter: %d\n", counter); */
+			printf("-----------FPS-----------\n");
+			printf("fps: %.2f\n", (double)
+			       counter / time_used.tv_sec);
+			printf("frames: %d\n", counter);
+			printf("time: %.3fs\n", (double)
+			       (time_used.tv_sec * BILLION + time_used.tv_nsec)
+			       / BILLION);
 
-			clock_gettime(CLOCK_MONOTONIC, &end);
-			timespec_subtract(&time_used, &start, &end);
-			if (time_used.tv_sec >= 1)
-			{
-				if (1)
-				{
-					printf("-----------FPS-----------\n");
-					printf("fps: %.2f\n", (double)
-					       counter / time_used.tv_sec);
-					printf("frames: %d\n", counter);
-					printf("time: %.3fs\n", (double)
-					       time_used.tv_sec);
-				}
-				counter = 0;
-				clock_gettime(CLOCK_MONOTONIC, &start);
-			}
+			counter = 0;
+			clock_gettime(CLOCK_MONOTONIC, &start);
 		}
 	}
 }
