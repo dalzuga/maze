@@ -66,7 +66,15 @@ typedef struct fnScanCode
   int (*fp)(MazeStruct *maze);
 } fnScanCode;
 
+/* exit_function - main program exit point */
+void exit_function(MazeStruct *maze);
+
+/* init_main - initialize all members of MazeStruct */
+void init_main(MazeStruct *maze);
+
+/* init_instance - instantiate SDL window and renderer */
 int init_instance(SDL_Instance *);
+
 void draw_stuff(SDL_Instance);
 void draw_column(MazeStruct *maze, int x, int top, int bottom);
 int poll_events(MazeStruct *maze);
@@ -102,7 +110,7 @@ void print_map(GameMap *map);
 /* rcprint_map - prints a map with ray hitting wall */
 void rcprint_map(GameMap *map, GamePlayer *p, int x, int y);
 
-/* game_init_params - allocates and inits a map and player, both must be freed. */
+/* game_init_params - allocates and initializes a map and player. */
 void game_init_params(GameMap **map, GamePlayer **p);
 
 /*  */
@@ -175,11 +183,6 @@ int axis_angle(double angle);
 
 /* special_angle - calculates distance when angle is on an axis */
 int special_angle(GameMap *map, GamePlayer *p, double angle, int ppcs4715);
-
-/* init_main - initialize all members of MazeStruct */
-void init_main(MazeStruct *maze);
-
-void exit_function(MazeStruct *maze);
 
 int calc_dy(GamePlayer *p, double ap);
 

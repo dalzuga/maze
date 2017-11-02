@@ -1,5 +1,10 @@
 #include "../headers/demo.h"
 
+/**
+ * main - main program entry point
+ *
+ * Return: 0 on success;
+ */
 int main(void)
 {
 	/* declarations */
@@ -18,6 +23,9 @@ int main(void)
 	return (0);
 }
 
+/**
+ * exit_function - main program exit point
+ */
 void exit_function(MazeStruct *maze)
 {
 	SDL_DestroyRenderer(maze->instance.renderer);

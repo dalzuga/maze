@@ -1,7 +1,8 @@
 #include "../headers/demo.h"
 
 /**
- * init function - allocates and initializes all the members of the maze struct
+ * init_main - allocates and initializes all the members of the maze struct
+ *
  * @maze: pointer to the maze struct
  */
 void init_main(MazeStruct *maze)
@@ -37,6 +38,13 @@ void init_main(MazeStruct *maze)
 	}
 }
 
+/**
+ * init_instance - instantiate SDL window and renderer
+ *
+ * @instance: pointer to the SDL instance of window and renderer
+ *
+ * Return: 0 on success, 1 on failure
+ */
 int init_instance(SDL_Instance *instance)
 {
 	/* Initialize SDL */
