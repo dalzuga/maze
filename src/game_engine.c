@@ -3,9 +3,7 @@
 /**
  * game_engine - entry point for the game engine
  *
- * @instance: SDL window and renderer instance
- * @map: the current map
- * @p: the player struct
+ * @maze: pointer to the MazeStruct
  *
  * Return: Nothing.
  */
@@ -47,7 +45,7 @@ void game_engine(MazeStruct *maze)
 			printf("fps: %.2f\n", (double)
 			       counter / time_used.tv_sec);
 			printf("frames: %d\n", counter);
-			printf("time: %.3fs\n", (double)
+ 			printf("time: %.3fs\n", (double)
 			       (time_used.tv_sec * BILLION + time_used.tv_nsec)
 			       / BILLION);
 
@@ -57,6 +55,13 @@ void game_engine(MazeStruct *maze)
 	}
 }
 
+/**
+ * poll_events - check for mouse, keyboard, and window events by user
+ *
+ * @maze: pointer to the MazeStruct
+ *
+ * Return: 1 if event happened, 0 otherwise.
+ */
 int poll_events(MazeStruct *maze)
 {
 	SDL_Event event;

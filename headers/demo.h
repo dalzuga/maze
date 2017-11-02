@@ -77,6 +77,8 @@ int init_instance(SDL_Instance *);
 
 void draw_stuff(SDL_Instance);
 void draw_column(MazeStruct *maze, int x, int top, int bottom);
+
+/* poll_events - check for mouse, keyboard, and window events by user */
 int poll_events(MazeStruct *maze);
 
 /* make_player - creates a player */
@@ -140,10 +142,10 @@ void set_wcolor(SDL_Instance instance, int r, int g, int b);
 double calc_rclen(MazeStruct *maze, int ppcs4715);
 
 /* calc_func01 - calculate how far the ray travels until it meets a wall */
-double calc_func01(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
+double calc_func01(GameMap *map, GamePlayer *p, int i);
 
 /* calc_func02 - calculate how far the ray travels until it meets a wall */
-double calc_func02(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
+double calc_func02(GameMap *map, GamePlayer *p, int i);
 
 /* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
 double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715);

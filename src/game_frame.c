@@ -3,9 +3,7 @@
 /**
  * game_frame - draws the game on the projection plane (monitor)
  *
- * @instance: SDL window and renderer instance
- * @map: the current map
- * @p: the player struct
+ * @maze: pointer to the MazeStruct
  *
  * Return: Nothing.
  */
@@ -62,7 +60,11 @@ void game_frame(MazeStruct *maze)
 }
 
 /**
- * axis_angle - if the angle is on an axis
+ * axis_angle - checks if the angle is on an axis
+ *
+ * @angle: the angle
+ *
+ * Return: 1 if angle is on an axis, 0 otherwise.
  */
 int axis_angle(double angle)
 {

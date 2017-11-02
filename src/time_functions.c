@@ -1,5 +1,14 @@
 #include "../headers/demo.h"
 
+/**
+ * timespec_subtract - subtracts time between two time points
+ *
+ * @result: address to store the result in
+ * @start: address of the first time point
+ * @end: address of the second time point
+ *
+ * Return: 1 if the second time point occurs before the first time point.
+ */
 int timespec_subtract(struct timespec *result, struct timespec *start,
 		      struct timespec *end)
 {
