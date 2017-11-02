@@ -10,7 +10,7 @@
 
 #define DEBUG 0
 #define DEBUG_SLEEP 450000	/* 450ms */
-#define FRAME_SLEEP 33000 	/* 33ms */
+#define FRAME_SLEEP 33000	/* 33ms */
 #define SCALE 5
 #define X_RES (320 * SCALE)
 #define Y_RES (240 * SCALE)
@@ -32,38 +32,38 @@
 
 typedef struct SDL_Instance
 {
-  SDL_Window *window;
-  SDL_Renderer *renderer;
+	SDL_Window *window;
+	SDL_Renderer *renderer;
 } SDL_Instance;
 
 typedef struct GamePlayer
 {
-  int x;			/* player x-position */
-  int y;			/* player y-position */
-  int theta; 			/* angle between 0 and 359 degrees */
-  double dpp;			/* distance to projection plane */
-  int px;
-  int py;
+	int x;			/* player x-position */
+	int y;			/* player y-position */
+	int theta;		/* angle between 0 and 359 degrees */
+	double dpp;		/* distance to projection plane */
+	int px;
+	int py;
 } GamePlayer;
 
 typedef struct GameMap
 {
-  int **array;
-  int rows;
-  int cols;
+	int **array;
+	int rows;
+	int cols;
 } GameMap;
 
 typedef struct MazeStruct
 {
-  SDL_Instance instance;
-  GameMap *map;
-  GamePlayer *p;
+	SDL_Instance instance;
+	GameMap *map;
+	GamePlayer *p;
 } MazeStruct;
 
 typedef struct fnScanCode
 {
-  unsigned int code;
-  int (*fp)(MazeStruct *maze);
+	unsigned int code;
+	int (*fp)(MazeStruct *maze);
 } fnScanCode;
 
 /* exit_function - main program exit point */
@@ -139,10 +139,10 @@ void set_wcolor(SDL_Instance instance, int r, int g, int b);
 /* calc_rclen - finds the length of the ray until it hits a wall */
 double calc_rclen(MazeStruct *maze, int ppcs4715);
 
-/* calc_func01 - calculate how far the ray cast travels until it meets a wall */
+/* calc_func01 - calculate how far the ray travels until it meets a wall */
 double calc_func01(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 
-/* calc_func02 - calculate how far the ray cast travels until it meets a wall */
+/* calc_func02 - calculate how far the ray travels until it meets a wall */
 double calc_func02(GameMap *map __attribute__ ((unused)), GamePlayer *p, int i);
 
 /* calc_dvi - finds the closest vertical wall (x == C) hit by the ray */
