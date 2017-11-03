@@ -1,11 +1,12 @@
 #include "../headers/demo.h"
 
 /**
- * set-wcolor - sets the wall color
+ * set_wcolor - sets the wall color
  *
  * @instance: SDL window and renderer instance
- * @map: the current map
- * @p: the player struct
+ * @r: red value
+ * @g: green value
+ * @b: blue value
  *
  * Return: Nothing.
  */

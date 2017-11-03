@@ -1,5 +1,12 @@
 #include "../headers/demo.h"
 
+/**
+ * keypress - detect if a key is being pressed, and run the associated function.
+ *
+ * @maze: the maze struct
+ *
+ * Return: Nothing.
+ */
 void keystates(MazeStruct *maze)
 {
 	/* from [[http://lazyfoo.net/tutorials/SDL/18_key_states/index.php]] */

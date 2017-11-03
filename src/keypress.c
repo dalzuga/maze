@@ -1,5 +1,13 @@
 #include "../headers/demo.h"
 
+/**
+ * keypress - detect if a key has been pressed.
+ *
+ * @maze: the maze struct
+ * @key: the SDL keyboard event struct
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int keypress(MazeStruct *maze, SDL_KeyboardEvent key)
 {
 	/* declarations + inits */
@@ -43,12 +51,22 @@ int keypress(MazeStruct *maze, SDL_KeyboardEvent key)
 	return (r);
 }
 
+/**
+ * fn_29 - code for escape key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_29(MazeStruct *maze __attribute__ ((unused)))
 {
 	printf("exit\n");
 	return (1);
 }
 
+/**
+ * fn_51 - code for 'down arrow' key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_51(MazeStruct *maze __attribute__ ((unused)))
 {
 	step_rwd(maze);
@@ -60,6 +78,11 @@ int fn_51(MazeStruct *maze __attribute__ ((unused)))
 	return (0);
 }
 
+/**
+ * fn_52 - code for 'up arrow' key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_52(MazeStruct *maze __attribute__ ((unused)))
 {
 	step_fwd(maze);
@@ -71,6 +94,11 @@ int fn_52(MazeStruct *maze __attribute__ ((unused)))
 	return (0);
 }
 
+/**
+ * fn_4f - code for 'right arrow' key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_4f(MazeStruct *maze __attribute__ ((unused)))
 {
 	maze->p->theta = (maze->p->theta + 1 * ANGLE_FACTOR) % 360;
@@ -82,6 +110,11 @@ int fn_4f(MazeStruct *maze __attribute__ ((unused)))
 	return (0);
 }
 
+/**
+ * fn_50 - code for 'left arrow' key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_50(MazeStruct *maze __attribute__ ((unused)))
 {
 	maze->p->theta = (maze->p->theta - 1 * ANGLE_FACTOR) % 360;
@@ -93,6 +126,11 @@ int fn_50(MazeStruct *maze __attribute__ ((unused)))
 	return (0);
 }
 
+/**
+ * fn_04 - code for 'a' key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_04(MazeStruct *maze)
 {
 	step_left(maze);
@@ -101,6 +139,11 @@ int fn_04(MazeStruct *maze)
 	return (0);
 }
 
+/**
+ * fn_07 - code for 'd' key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_07(MazeStruct *maze)
 {
 	step_right(maze);
@@ -109,6 +152,11 @@ int fn_07(MazeStruct *maze)
 	return (0);
 }
 
+/**
+ * fn_16 - code for 's' key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_16(MazeStruct *maze)
 {
 	step_down(maze);
@@ -117,6 +165,11 @@ int fn_16(MazeStruct *maze)
 	return (0);
 }
 
+/**
+ * fn_1a - code for 'w' key
+ *
+ * Return: 1 if key ends the game, 0 otherwise.
+ */
 int fn_1a(MazeStruct *maze)
 {
 	step_up(maze);
