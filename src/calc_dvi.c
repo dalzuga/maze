@@ -150,15 +150,6 @@ double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 }
 
 /**
- * _calc_dvi - debug wrapper to call calc_dvi
- *
- */
-double _calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
-{
-	return (calc_dvi(map, p, ppcs4715));
-}
-
-/**
  * calc_dx - calculate the horizontal player offset within the grid block
  *
  * @p: the player

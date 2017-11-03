@@ -1,11 +1,13 @@
 #include "../headers/demo.h"
 
 /**
- * calc_pxpy - calculates player position in the center of the player's
+ * calc_pxpy - calculates and sets player position in the center of the player's
  * block. This is necessary because we are using finer resolution to position
  * player inside the block itself.
  *
+ * @p: the player
  *
+ * Return: Nothing.
  */
 void calc_pxpy(GamePlayer *p)
 {
