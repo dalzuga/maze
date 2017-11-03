@@ -1,6 +1,13 @@
 #include "../headers/demo.h"
 
-/* assumes file ends with a new line */
+/**
+ * load_map - loads the map from a file (assumes file ends with a new line) and
+ * stores it in the map struct.
+ *
+ * @maze: the maze struct
+ *
+ * Return: 0 on successful map read, 1 otherwise.
+ */
 int load_map(MazeStruct *maze)
 {
 	ssize_t r;
@@ -87,6 +94,11 @@ int load_map(MazeStruct *maze)
 	return (0);
 }
 
+/**
+ * default_map - this function defines and loads the default map.
+ *
+ * @map: pointer to the map struct.
+ */
 void default_map(GameMap *map)
 {
 	map->array[2][3] = 1;

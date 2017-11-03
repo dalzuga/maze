@@ -9,7 +9,7 @@
  *
  * Return: 1 if the second time point occurs before the first time point.
  */
-int timespec_subtract(struct timespec *result, struct timespec *start,
+int timespec_subtract(struct timespec *result, struct timespec *start, \
 		      struct timespec *end)
 {
 	/* subtract seconds */

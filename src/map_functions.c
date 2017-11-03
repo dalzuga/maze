@@ -2,8 +2,8 @@
 
 /**
  * make_map - creates a map on the heap
- * @rows - number of rows
- * @cols - number of columns
+ * @rows: number of rows
+ * @cols: number of columns
  *
  * Return: pointer to map. On error, returns NULL.
  */
@@ -55,9 +55,7 @@ GameMap *make_map(int rows, int cols)
  * init_map - initializes a map with borders made of blocks, and free space
  * inside. '1' represents a block, '0' represents free space.
  *
- * @map - map to initialize
- * @rows - number of rows
- * @cols - number of columns
+ * @map: map to initialize
  *
  * Return: Nothing.
  */
@@ -88,9 +86,8 @@ void init_map(GameMap *map)
 
 /**
  * _print_map - calls print_map if debugging is on.
- * @map - map to print
- * @rows - number of rows
- * @cols - number of columns
+ * @map: map to print
+ * @p: the player struct
  *
  * Return: Nothing.
  */
@@ -104,9 +101,7 @@ void _print_map(GameMap *map, GamePlayer *p)
 
 /**
  * print_map - prints a map
- * @array - map array to print
- * @rows - number of rows
- * @cols - number of columns
+ * @map: map to print
  *
  * Return: Nothing.
  */
@@ -133,9 +128,8 @@ void print_map(GameMap *map)
 
 /**
  * print_map_p - prints a map with player
- * @array - map array to print
- * @rows - number of rows
- * @cols - number of columns
+ * @map: map to print
+ * @p: the player struct
  *
  * Return: Nothing.
  */
@@ -167,11 +161,10 @@ void print_map_p(GameMap *map, GamePlayer *p)
 
 /**
  * rcprint_map - prints a map with ray hitting wall
- * @array - map array to print
- * @rows - number of rows
- * @cols - number of columns
- * @x - x-coordinate of where ray hits
- * @y - y-coordinate of where ray hits
+ * @map: map to print
+ * @p: the player struct
+ * @x: x-coordinate of where ray hits
+ * @y: y-coordinate of where ray hits
  *
  * Return: Nothing.
  */

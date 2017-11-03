@@ -1,7 +1,8 @@
 #include "../headers/demo.h"
 
 /**
- * keypress - detect if a key is being pressed, and run the associated function.
+ * keystates - detect if a key is currently being pressed, and run the
+ * associated function.
  *
  * @maze: the maze struct
  *

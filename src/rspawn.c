@@ -1,5 +1,9 @@
 #include "../headers/demo.h"
 
+/**
+ * rspawn - make the player spawn in a randomized position
+ * @maze: the maze struct
+ */
 void rspawn(MazeStruct *maze)
 {
 	GamePlayer *p;

@@ -2,6 +2,13 @@
 
 /**
  * special_angle - calculates distance when angle is on an axis
+ *
+ * @map: the map
+ * @p: the player
+ * @angle: the angle of the ray
+ * @ppcs4715: projector plane cross-section (the vertical column being rendered)
+ *
+ * Return: the distance to the wall.
  */
 int special_angle(GameMap *map, GamePlayer *p, double angle, int ppcs4715)
 {

@@ -2,7 +2,7 @@
 
 /**
  * calc_rclen - finds the length of the ray segment at the point where it hits
- * something on the map
+ * something on the map.
  *
  * @maze: pointer to the maze struct
  * @ppcs4715: "projection plane cross section" (also "the column"), with SHA-256

@@ -1,25 +1,45 @@
 #include "../headers/demo.h"
 
+/**
+ * step_up - moves player north, ignores walls
+ * @maze: the maze struct
+ */
 void step_up(MazeStruct *maze)
 {
 	(maze->p->py) -= STEP_FACTOR;
 }
 
+/**
+ * step_down - moves player south, ignores walls
+ * @maze: the maze struct
+ */
 void step_down(MazeStruct *maze)
 {
 	(maze->p->py) += STEP_FACTOR;
 }
 
+/**
+ * step_left - moves player west, ignores walls
+ * @maze: the maze struct
+ */
 void step_left(MazeStruct *maze)
 {
 	(maze->p->px) -= STEP_FACTOR;
 }
 
+/**
+ * step_right - moves player east, ignores walls
+ * @maze: the maze struct
+ */
 void step_right(MazeStruct *maze)
 {
 	(maze->p->px) += STEP_FACTOR;
 }
 
+/**
+ * step_fwd - moves the player forward
+ * @maze: the maze struct
+ */
 void step_fwd(MazeStruct *maze)
 {
 	int dx;
@@ -62,6 +82,10 @@ void step_fwd(MazeStruct *maze)
 	}
 }
 
+/**
+ * step_rwd - moves the player backwards
+ * @maze: the maze struct
+ */
 void step_rwd(MazeStruct *maze __attribute__((unused)))
 {
 	int dx;

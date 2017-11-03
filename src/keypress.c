@@ -54,6 +54,8 @@ int keypress(MazeStruct *maze, SDL_KeyboardEvent key)
 /**
  * fn_29 - code for escape key
  *
+ * @maze: the maze struct
+ *
  * Return: 1 if key ends the game, 0 otherwise.
  */
 int fn_29(MazeStruct *maze __attribute__ ((unused)))
@@ -64,6 +66,8 @@ int fn_29(MazeStruct *maze __attribute__ ((unused)))
 
 /**
  * fn_51 - code for 'down arrow' key
+ *
+ * @maze: the maze struct
  *
  * Return: 1 if key ends the game, 0 otherwise.
  */
@@ -81,6 +85,8 @@ int fn_51(MazeStruct *maze __attribute__ ((unused)))
 /**
  * fn_52 - code for 'up arrow' key
  *
+ * @maze: the maze struct
+ *
  * Return: 1 if key ends the game, 0 otherwise.
  */
 int fn_52(MazeStruct *maze __attribute__ ((unused)))
@@ -95,7 +101,9 @@ int fn_52(MazeStruct *maze __attribute__ ((unused)))
 }
 
 /**
- * fn_4f - code for 'right arrow' key
+ * fn_4f - code for 'right arrow' key, make player turn right.
+ *
+ * @maze: the maze struct
  *
  * Return: 1 if key ends the game, 0 otherwise.
  */
@@ -111,7 +119,8 @@ int fn_4f(MazeStruct *maze __attribute__ ((unused)))
 }
 
 /**
- * fn_50 - code for 'left arrow' key
+ * fn_50 - code for 'left arrow' key, makes player turn left.
+ * @maze: the maze struct
  *
  * Return: 1 if key ends the game, 0 otherwise.
  */
@@ -129,6 +138,8 @@ int fn_50(MazeStruct *maze __attribute__ ((unused)))
 /**
  * fn_04 - code for 'a' key
  *
+ * @maze: the maze struct
+ *
  * Return: 1 if key ends the game, 0 otherwise.
  */
 int fn_04(MazeStruct *maze)
@@ -141,6 +152,8 @@ int fn_04(MazeStruct *maze)
 
 /**
  * fn_07 - code for 'd' key
+ *
+ * @maze: the maze struct
  *
  * Return: 1 if key ends the game, 0 otherwise.
  */
@@ -155,6 +168,8 @@ int fn_07(MazeStruct *maze)
 /**
  * fn_16 - code for 's' key
  *
+ * @maze: the maze struct
+ *
  * Return: 1 if key ends the game, 0 otherwise.
  */
 int fn_16(MazeStruct *maze)
@@ -167,6 +182,8 @@ int fn_16(MazeStruct *maze)
 
 /**
  * fn_1a - code for 'w' key
+ *
+ * @maze: the maze struct
  *
  * Return: 1 if key ends the game, 0 otherwise.
  */

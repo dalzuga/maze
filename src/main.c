@@ -24,7 +24,9 @@ int main(void)
 }
 
 /**
- * exit_function - main program exit point
+ * exit_function - main program exit point. Destroys all SDL struct members.
+ *
+ * @maze: the maze struct
  */
 void exit_function(MazeStruct *maze)
 {
