@@ -3,6 +3,11 @@
 /**
  * calc_dvi - finds the closest horizontal wall (y == C) hit by the ray
  *
+ * @map: the map
+ * @p: the player
+ * @ppcs4715: projector plane cross-section (the vertical column being rendered)
+ *
+ * Return: the distance to the closest vertical grid wall.
  */
 double calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
@@ -153,6 +158,14 @@ double _calc_dvi(GameMap *map, GamePlayer *p, int ppcs4715)
 	return (calc_dvi(map, p, ppcs4715));
 }
 
+/**
+ * calc_dx - calculate the horizontal player offset within the grid block
+ *
+ * @p: the player
+ * @ap: a copy of the angle
+ *
+ * Return: the horizontal distance.
+ */
 int calc_dx(GamePlayer *p, double ap)
 {
 	int dx;
@@ -172,6 +185,13 @@ int calc_dx(GamePlayer *p, double ap)
 	return (dx);
 }
 
+/**
+ * calc_Xa - calculate horizontal direction.
+ *
+ * @ap: a copy of the angle
+ *
+ * Return: the signed horizontal direction.
+ */
 int calc_Xa(double ap)
 {
 	if (ap > 180) 		/* left */

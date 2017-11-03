@@ -3,15 +3,19 @@
 /**
  * calc_dhi - finds the closest horizontal wall (y == C) hit by the ray
  *
+ * @map: the map
+ * @p: the player
+ * @ppcs4715: projector plane cross-section (the vertical column being rendered)
+ *
+ * Return: the distance to the closest horizontal grid wall.
  */
-double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs4715)
+double calc_dhi(GameMap *map, GamePlayer *p, int ppcs4715)
 {
 	/* declarations */
 	double ap;
 	int dy;
 	int Px, Py, c, i, j;
 	int Ya;
-	int flag;
 	double dist;
 
 	/* inits */
@@ -19,7 +23,6 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	ap = calc_mod360(ap);
 	Py = p->py;
 	Px = p->px;
-	flag = 0;
 	dist = 0;
 	/* end inits */
 
@@ -53,19 +56,16 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 	{
 		if (i <= 0 || i >= map->cols * BLOCK_UNITS)
 		{
-			flag = 1;
 			break;
 		}
 
 		if (j == 0)
 		{
-			flag = 2;
 			break;
 		}
 
 		if (j == map->rows * BLOCK_UNITS)
 		{
-			flag = 3;
 			break;
 		}
 
@@ -74,7 +74,6 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 			/* check upper side of border */
 			if (map->array[(j - 1) / BLOCK_UNITS][i/BLOCK_UNITS] == 1)
 			{
-				flag = 4;
 				break;
 			}
 		}
@@ -83,7 +82,6 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 			/* check lower side of border */
 			if (map->array[j/BLOCK_UNITS][i/BLOCK_UNITS] == 1)
 			{
-				flag = 5;
 				break;
 			}
 		}
@@ -111,53 +109,17 @@ double calc_dhi(GameMap *map __attribute__ ((unused)), GamePlayer *p, int ppcs47
 		}
 	}
 
-	if (DEBUG >= 2)
-	{
-		printf("-----------11-1--dhi----------\n");
-		printf("map size: [%d, %d]\t\t", map->cols, map->rows);
-		printf("(%d, %d)\n", map->cols * BLOCK_UNITS, map->rows * BLOCK_UNITS);
-		printf("player_pos:\t(%d, %d)\t", Px, Py);
-		printf("player_pos: [%d, %d]\n", Px/BLOCK_UNITS, Py/BLOCK_UNITS);
-		printf("(i, j):\t(%d, %d)\t", i, j);
-		printf("(i/%d, j/%d): [%d, %d]\t", BLOCK_UNITS, BLOCK_UNITS,
-		       i/BLOCK_UNITS, j/BLOCK_UNITS);
-		printf("ap: %f\n", ap);
-		printf("c: %d\t\t", c);
-		printf("ppcs4715: %d\n", ppcs4715);
-		printf("dist: %f\n", dist);
-
-		switch (flag)
-		{
-		case 0:
-		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
-		  break;
-		case 1:
-		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
-		  printf("i <= 0 || i >= map->cols * %d\n", BLOCK_UNITS);
-		  break;
-		case 2:
-		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
-		  printf("j == 0\n");
-		  break;
-		case 3:
-		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
-		  printf("j == map->rows * %d\n", BLOCK_UNITS);
-		  break;
-		case 4:
-		  rcprint_map(map, p, (j - 1)/BLOCK_UNITS, i/BLOCK_UNITS);
-		  printf("hit going up.\n");
-		  break;
-		case 5:
-		  rcprint_map(map, p, j/BLOCK_UNITS, i/BLOCK_UNITS);
-		  printf("hit going down.\n");
-		  break;
-		}
-		flag = 0;
-	}
-
 	return (dist);
 }
 
+/**
+ * calc_dy - calculate the vertical player offset within the grid block
+ *
+ * @p: the player
+ * @ap: a copy of the angle
+ *
+ * Return: the vertical distance.
+ */
 int calc_dy(GamePlayer *p, double ap)
 {
 	int dy;
@@ -177,6 +139,13 @@ int calc_dy(GamePlayer *p, double ap)
 	return (dy);
 }
 
+/**
+ * calc_Ya - calculate vertical direction.
+ *
+ * @ap: a copy of the angle
+ *
+ * Return: the signed vertical direction.
+ */
 int calc_Ya(double ap)
 {
 	if (ap < 90 || ap > 270) /* up */
